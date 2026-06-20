@@ -6,7 +6,7 @@
     "js": "qianfan_custom_url_fix.js",
     "css": "style.css",
     "author": "从前跟你一样",
-    "version": "2.7.0",
+    "version": "2.7.1",
     "homePage": "https://github.com/damoshen123/st-chatu8",
-    "updata": "v.2.7.0\n修复百度千帆 Coding Plan 的 custom_url 被错误追加 /v1 的问题\n新增千帆 Coding Plan 请求的 LLM 附加参数注入，支持 custom_include_body 和 custom_include_headers\n在插件自己的 LLM 设置页加入 LLM 附加参数面板，可直接填写 JSON 参数\n"
+    "updata": "v.2.7.1\n合并上游 v2.6.9\n保留百度千帆 Coding Plan custom_url 修复\n保留 LLM 附加请求体和请求头参数设置\n保留插件 LLM 设置页附加参数面板\n"
 }
