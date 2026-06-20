@@ -6,7 +6,7 @@
     "js": "qianfan_custom_url_fix.js",
     "css": "style.css",
     "author": "从前跟你一样",
-    "version": "2.7.1",
+    "version": "2.6.9.1",
     "homePage": "https://github.com/damoshen123/st-chatu8",
-    "updata": "v.2.7.1\n合并上游 v2.6.9\n保留百度千帆 Coding Plan custom_url 修复\n保留 LLM 附加请求体和请求头参数设置\n保留插件 LLM 设置页附加参数面板\n"
+    "updata": "v.2.6.9.1\n基于上游 v2.6.9 重新实现百度千帆 Coding Plan 扩展\n附加 Body、Header 和 thinking 设置按 LLM 配置档案分别保存\n扩展 UI 加载失败时不再阻断上游核心插件\n保留 custom_url /v1 兼容修复\n"
 }
