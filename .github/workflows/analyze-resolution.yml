@@ -1,6 +1,9 @@
 name: Analyze resolution implementation
 
 on:
+  push:
+    branches:
+      - analysis-auto-resolution
   pull_request:
     branches:
       - main
