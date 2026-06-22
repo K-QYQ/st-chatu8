@@ -1,0 +1,56 @@
+name: Analyze resolution implementation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Deobfuscate bundle
+        run: |
+          npx --yes webcrack index.js > deobfuscated.js
+
+      - name: Print resolution-related snippets
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          text = Path('deobfuscated.js').read_text(encoding='utf-8', errors='replace')
+          patterns = [
+              r'<size>', r'</size>', r'1216', r'832', r'resolution',
+              r'width', r'height', r'image[_-]?size', r'prompt.*size',
+          ]
+          regex = re.compile('|'.join(f'(?:{p})' for p in patterns), re.I)
+          matches = list(regex.finditer(text))
+          print(f'TOTAL_MATCHES={len(matches)}')
+
+          seen = []
+          for match in matches:
+              start = max(0, match.start() - 700)
+              end = min(len(text), match.end() + 900)
+              snippet = text[start:end]
+              key = re.sub(r'\s+', ' ', snippet[:300])
+              if any(key == old for old in seen):
+                  continue
+              seen.append(key)
+              print('\n' + '=' * 100)
+              print(f'MATCH={match.group(0)!r} OFFSET={match.start()}')
+              print(snippet)
+              if len(seen) >= 80:
+                  break
+          PY
