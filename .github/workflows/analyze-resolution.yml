@@ -4,19 +4,20 @@ on:
   push:
     branches:
       - analysis-auto-resolution
-  pull_request:
-    branches:
-      - main
+    paths-ignore:
+      - 'analysis/**'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout analysis branch
         uses: actions/checkout@v4
+        with:
+          ref: analysis-auto-resolution
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -27,8 +28,9 @@ jobs:
         run: |
           npx --yes webcrack index.js > deobfuscated.js
 
-      - name: Print resolution-related snippets
+      - name: Extract resolution-related code
         run: |
+          mkdir -p analysis
           python - <<'PY'
           import re
           from pathlib import Path
@@ -37,23 +39,35 @@ jobs:
           patterns = [
               r'<size>', r'</size>', r'1216', r'832', r'resolution',
               r'width', r'height', r'image[_-]?size', r'prompt.*size',
+              r'dataset\.(?:width|height|size)', r'prompt[_-]?(?:width|height)',
           ]
           regex = re.compile('|'.join(f'(?:{p})' for p in patterns), re.I)
           matches = list(regex.finditer(text))
-          print(f'TOTAL_MATCHES={len(matches)}')
+          out = [f'TOTAL_MATCHES={len(matches)}\n']
+          seen = set()
 
-          seen = []
           for match in matches:
-              start = max(0, match.start() - 700)
-              end = min(len(text), match.end() + 900)
+              start = max(0, match.start() - 900)
+              end = min(len(text), match.end() + 1200)
               snippet = text[start:end]
-              key = re.sub(r'\s+', ' ', snippet[:300])
-              if any(key == old for old in seen):
+              key = re.sub(r'\s+', ' ', snippet[:400])
+              if key in seen:
                   continue
-              seen.append(key)
-              print('\n' + '=' * 100)
-              print(f'MATCH={match.group(0)!r} OFFSET={match.start()}')
-              print(snippet)
-              if len(seen) >= 80:
+              seen.add(key)
+              out.append('\n' + '=' * 100 + '\n')
+              out.append(f'MATCH={match.group(0)!r} OFFSET={match.start()}\n')
+              out.append(snippet + '\n')
+              if len(seen) >= 120:
                   break
+
+          Path('analysis/resolution-snippets.txt').write_text(''.join(out), encoding='utf-8')
           PY
+
+      - name: Commit analysis result
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add analysis/resolution-snippets.txt
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: record temporary resolution analysis [skip ci]"
+          git push origin analysis-auto-resolution
