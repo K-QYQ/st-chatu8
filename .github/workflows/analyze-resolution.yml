@@ -1,11 +1,9 @@
 name: Analyze resolution implementation
 
 on:
-  push:
+  pull_request:
     branches:
-      - analysis-auto-resolution
-    paths-ignore:
-      - 'analysis/**'
+      - main
 
 permissions:
   contents: write
