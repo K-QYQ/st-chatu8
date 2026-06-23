@@ -1,4 +1,4 @@
-name: Analyze resolution implementation
+name: Analyze image marker validation
 
 on:
   pull_request:
@@ -23,67 +23,49 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Fetch target commits
+      - name: Fetch 2.7.2 bundle
         run: |
-          git fetch origin 481e187efbd1b806fb59a423b49704bb446bb073
           git fetch origin 55584d71d44d6684a9ecb539827f45ab85e6f05a
-          git show 481e187efbd1b806fb59a423b49704bb446bb073:index.js > old-index.js
-          git show 55584d71d44d6684a9ecb539827f45ab85e6f05a:index.js > new-index.js
+          git show 55584d71d44d6684a9ecb539827f45ab85e6f05a:index.js > index-2.7.2.js
+          npx --yes webcrack index-2.7.2.js > deob.js
 
-      - name: Deobfuscate both bundles
+      - name: Extract image marker logic
         run: |
-          npx --yes webcrack old-index.js > old-deob.js
-          npx --yes webcrack new-index.js > new-deob.js
-
-      - name: Extract compact snippets
-        run: |
-          mkdir -p analysis/version-diff
+          mkdir -p analysis/image-format
           python - <<'PY'
-          import re
           from pathlib import Path
-
-          def read(path):
-              return Path(path).read_text(encoding='utf-8', errors='replace')
-
-          def window(text, marker, before=3500, after=6500):
-              pos = text.find(marker)
-              if pos < 0:
-                  return f'NOT FOUND: {marker}\n'
-              return text[max(0, pos-before):min(len(text), pos+after)]
-
-          def regex_windows(text):
-              pats = [
-                  re.compile(r'<size>'),
-                  re.compile(r'payload222'),
-                  re.compile(r'\(\?:\^\|,.*?\\d.*?[x×].*?\\d', re.I),
-                  re.compile(r'\.match\(/[^\n]{0,220}[x×][^\n]{0,220}/[gimyus]*\)', re.I),
-                  re.compile(r'width\s*:\s*[^,\n]+'),
-                  re.compile(r'height\s*:\s*[^,\n]+'),
-              ]
-              out=[]; seen=[]
-              for p in pats:
-                  for m in p.finditer(text):
-                      a=max(0,m.start()-1200); b=min(len(text),m.end()+1800)
-                      key=(a//500,b//500)
-                      if key in seen: continue
-                      seen.append(key)
-                      out.append('\n'+'='*100+f'\nPATTERN={p.pattern} OFFSET={m.start()}\n'+text[a:b]+'\n')
-                      if len(out)>=30: return ''.join(out)
-              return ''.join(out)
-
-          old=read('old-deob.js'); new=read('new-deob.js')
-          Path('analysis/version-diff/old-payload222.txt').write_text(window(old,'payload222'),encoding='utf-8')
-          Path('analysis/version-diff/new-payload222.txt').write_text(window(new,'payload222'),encoding='utf-8')
-          Path('analysis/version-diff/old-size-parser.txt').write_text(window(old,'function convertNewXmlFormatToOld',0,18000),encoding='utf-8')
-          Path('analysis/version-diff/new-size-parser.txt').write_text(window(new,'function convertNewXmlFormatToOld',0,18000),encoding='utf-8')
-          Path('analysis/version-diff/new-dimension-windows.txt').write_text(regex_windows(new),encoding='utf-8')
+          import re
+          text = Path('deob.js').read_text(encoding='utf-8', errors='replace')
+          markers = [
+              'image###',
+              '需要',
+              '格式',
+              'parseImagesFromPrompt',
+              'normalizeImagesReply',
+              'getImageTags',
+              'getImageTags4',
+              'extractPureTag',
+          ]
+          out=[]
+          for marker in markers:
+              start=0
+              count=0
+              while True:
+                  pos=text.find(marker,start)
+                  if pos<0: break
+                  a=max(0,pos-1800); b=min(len(text),pos+2600)
+                  out.append('\n'+'='*110+f'\nMARKER={marker!r} OFFSET={pos}\n'+text[a:b]+'\n')
+                  start=pos+len(marker)
+                  count+=1
+                  if count>=15: break
+          Path('analysis/image-format/image-marker-snippets.txt').write_text(''.join(out),encoding='utf-8')
           PY
 
       - name: Commit analysis result
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add analysis/version-diff
+          git add analysis/image-format/image-marker-snippets.txt
           git diff --cached --quiet && exit 0
-          git commit -m "chore: record compact 2.7.2 resolution snippets [skip ci]"
+          git commit -m "chore: record image marker validation snippets [skip ci]"
           git push origin analysis-auto-resolution
