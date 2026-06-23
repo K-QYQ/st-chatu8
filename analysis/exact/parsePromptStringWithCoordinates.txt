@@ -1,0 +1,44 @@
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+    if (_0x1b9234) {
+      _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+    }
+  }
+  addLog("解析结果: " + JSON.stringify(_0x3d49cc, null, 2));
+  return _0x3d49cc;
+}

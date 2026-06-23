@@ -1,0 +1,71 @@
+name: Analyze image marker validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout analysis branch
+        uses: actions/checkout@v4
+        with:
+          ref: analysis-auto-resolution
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch 2.7.2 bundle
+        run: |
+          git fetch origin 55584d71d44d6684a9ecb539827f45ab85e6f05a
+          git show 55584d71d44d6684a9ecb539827f45ab85e6f05a:index.js > index-2.7.2.js
+          npx --yes webcrack index-2.7.2.js > deob.js
+
+      - name: Extract image marker logic
+        run: |
+          mkdir -p analysis/image-format
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          text = Path('deob.js').read_text(encoding='utf-8', errors='replace')
+          markers = [
+              'image###',
+              '需要',
+              '格式',
+              'parseImagesFromPrompt',
+              'normalizeImagesReply',
+              'getImageTags',
+              'getImageTags4',
+              'extractPureTag',
+          ]
+          out=[]
+          for marker in markers:
+              start=0
+              count=0
+              while True:
+                  pos=text.find(marker,start)
+                  if pos<0: break
+                  a=max(0,pos-1800); b=min(len(text),pos+2600)
+                  out.append('\n'+'='*110+f'\nMARKER={marker!r} OFFSET={pos}\n'+text[a:b]+'\n')
+                  start=pos+len(marker)
+                  count+=1
+                  if count>=15: break
+          Path('analysis/image-format/image-marker-snippets.txt').write_text(''.join(out),encoding='utf-8')
+          PY
+
+      - name: Commit analysis result
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add analysis/image-format/image-marker-snippets.txt
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: record image marker validation snippets [skip ci]"
+          git push origin analysis-auto-resolution

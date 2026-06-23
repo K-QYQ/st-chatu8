@@ -1,0 +1,803 @@
+GROUP=dataset
+TOTAL_MATCHES=9
+
+====================================================================================================
+MATCH='dataset.width' OFFSET=1235253
+({
+  "utils/iframe/gorkVideo.js"() {
+    init_dialogs();
+    _triggerGeneration = null;
+  }
+});
+function setTriggerGeneration(_0x21a889) {
+  _triggerGeneration2 = _0x21a889;
+}
+function getImageSizeConfigKeys(_0x5b07fb) {
+  const _0x27f062 = {
+    sd: {
+      widthKey: "sd_cwidth",
+      heightKey: "sd_cheight",
+      modeName: "SD"
+    },
+    novelai: {
+      widthKey: "novelai_width",
+      heightKey: "novelai_height",
+      modeName: "NovelAI"
+    },
+    comfyui: {
+      widthKey: "comfyui_width",
+      heightKey: "comfyui_height",
+      modeName: "ComfyUI"
+    },
+    banana: {
+      widthKey: null,
+      heightKey: null,
+      modeName: "Banana"
+    }
+  };
+  return _0x27f062[_0x5b07fb] || _0x27f062.comfyui;
+}
+function showImageSizePopup(_0x4cd6cf, _0x2e5444, _0x33795b) {
+  return new Promise(_0x4c302a => {
+    const _0x139b90 = window.top.document;
+    const _0x4f0570 = isMobileDevice();
+    const _0x3ef78e = _0x4bfbc2[extensionName];
+    const _0x3aa0fb = _0x3ef78e.mode || "comfyui";
+    const {
+      widthKey: _0x119bd5,
+      heightKey: _0x271647,
+      modeName: _0x5a15db
+    } = getImageSizeConfigKeys(_0x3aa0fb);
+    let _0x24e853;
+    let _0x191892;
+    if (_0x3aa0fb === "banana") {
+      const _0x1f7391 = _0x4cd6cf.dataset.aspectRatio || _0x3ef78e.banana?.aspectRatio || "1:1";
+      _0x24e853 = _0x1f7391;
+      _0x191892 = "";
+    } else {
+      _0x24e853 = _0x4cd6cf.dataset.width;
+      _0x191892 = _0x4cd6cf.dataset.height;
+      if (!_0x24e853 || !_0x191892) {
+        const _0x1f5d0d = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+        const _0x56182d = _0x4cd6cf.dataset.change || _0x4cd6cf.dataset.link || "";
+        const _0x100b2f = _0x56182d.match(_0x1f5d0d);
+        if (_0x100b2f) {
+          _0x24e853 = _0x100b2f[1];
+          _0x191892 = _0x100b2f[2];
+        }
+      }
+      _0x24e853 = _0x24e853 || _0x3ef78e[_0x119bd5] || "1024";
+      _0x191892 = _0x191892 || _0x3ef78e[_0x271647] || "1024";
+      const _0x34796c = {
+        mode: _0x3aa0fb,
+        widthKey: _0x119bd5,
+        heightKey: _0x271647,
+        buttonWidth: _0x4cd6cf.dataset.width,
+        buttonHeight: _0x4cd6cf.dataset.height,
+        configWidth: _0x3ef78e[_0x119bd5],
+        configHeight: _0x3ef78e[_0x271647],
+        currentWidth: _0x24e853,
+        currentHeight: _0x191892
+      };
+      console.log("[showImageSizePopup] 读取配置:", _0x34796c);
+    }
+    let _0xe4a48f = 10;
+    let _0x41b141 = window.innerHeight - 10;
+    if (_0x4f0570) {
+      const _0x5e3486 = _0x139b90.querySelector("#top-settings-holder");
+      if (_0x5e3486) {
+        const _0x1483f4 = _0x5e3486.getBoundingClientRect();
+        _0xe4a48f = _0x1483f4.bottom + 10;
+      }
+      const _0x2f1f62 = _0x139b90.querySelector("#send_form");
+      if (_0x2f1f62) {
+        const _0x285c85 = _0x2f1f62.getBoundingClientRect();
+        _0x41b141 = _0x285c85.top - 10;
+      }
+    }
+    const _0x2ef2eb = _0x41b141 - _0xe4a48f;
+    const _0x19229b = _0x139b90.createElement("div");
+    _0x19229b.id = "image-size-overlay";
+    _0x19229b.className = "st-chatu8-popup-overlay";
+    const _0x55c8f3 = _0x139b90.createElement("div");
+    _0x55c8f3.className = "st-chatu8-popup-bubble";
+    if (_0x4f0570) {
+      _0x55c8f3.classL
+
+====================================================================================================
+MATCH='dataset.height' OFFSET=1235296
+it_dialogs();
+    _triggerGeneration = null;
+  }
+});
+function setTriggerGeneration(_0x21a889) {
+  _triggerGeneration2 = _0x21a889;
+}
+function getImageSizeConfigKeys(_0x5b07fb) {
+  const _0x27f062 = {
+    sd: {
+      widthKey: "sd_cwidth",
+      heightKey: "sd_cheight",
+      modeName: "SD"
+    },
+    novelai: {
+      widthKey: "novelai_width",
+      heightKey: "novelai_height",
+      modeName: "NovelAI"
+    },
+    comfyui: {
+      widthKey: "comfyui_width",
+      heightKey: "comfyui_height",
+      modeName: "ComfyUI"
+    },
+    banana: {
+      widthKey: null,
+      heightKey: null,
+      modeName: "Banana"
+    }
+  };
+  return _0x27f062[_0x5b07fb] || _0x27f062.comfyui;
+}
+function showImageSizePopup(_0x4cd6cf, _0x2e5444, _0x33795b) {
+  return new Promise(_0x4c302a => {
+    const _0x139b90 = window.top.document;
+    const _0x4f0570 = isMobileDevice();
+    const _0x3ef78e = _0x4bfbc2[extensionName];
+    const _0x3aa0fb = _0x3ef78e.mode || "comfyui";
+    const {
+      widthKey: _0x119bd5,
+      heightKey: _0x271647,
+      modeName: _0x5a15db
+    } = getImageSizeConfigKeys(_0x3aa0fb);
+    let _0x24e853;
+    let _0x191892;
+    if (_0x3aa0fb === "banana") {
+      const _0x1f7391 = _0x4cd6cf.dataset.aspectRatio || _0x3ef78e.banana?.aspectRatio || "1:1";
+      _0x24e853 = _0x1f7391;
+      _0x191892 = "";
+    } else {
+      _0x24e853 = _0x4cd6cf.dataset.width;
+      _0x191892 = _0x4cd6cf.dataset.height;
+      if (!_0x24e853 || !_0x191892) {
+        const _0x1f5d0d = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+        const _0x56182d = _0x4cd6cf.dataset.change || _0x4cd6cf.dataset.link || "";
+        const _0x100b2f = _0x56182d.match(_0x1f5d0d);
+        if (_0x100b2f) {
+          _0x24e853 = _0x100b2f[1];
+          _0x191892 = _0x100b2f[2];
+        }
+      }
+      _0x24e853 = _0x24e853 || _0x3ef78e[_0x119bd5] || "1024";
+      _0x191892 = _0x191892 || _0x3ef78e[_0x271647] || "1024";
+      const _0x34796c = {
+        mode: _0x3aa0fb,
+        widthKey: _0x119bd5,
+        heightKey: _0x271647,
+        buttonWidth: _0x4cd6cf.dataset.width,
+        buttonHeight: _0x4cd6cf.dataset.height,
+        configWidth: _0x3ef78e[_0x119bd5],
+        configHeight: _0x3ef78e[_0x271647],
+        currentWidth: _0x24e853,
+        currentHeight: _0x191892
+      };
+      console.log("[showImageSizePopup] 读取配置:", _0x34796c);
+    }
+    let _0xe4a48f = 10;
+    let _0x41b141 = window.innerHeight - 10;
+    if (_0x4f0570) {
+      const _0x5e3486 = _0x139b90.querySelector("#top-settings-holder");
+      if (_0x5e3486) {
+        const _0x1483f4 = _0x5e3486.getBoundingClientRect();
+        _0xe4a48f = _0x1483f4.bottom + 10;
+      }
+      const _0x2f1f62 = _0x139b90.querySelector("#send_form");
+      if (_0x2f1f62) {
+        const _0x285c85 = _0x2f1f62.getBoundingClientRect();
+        _0x41b141 = _0x285c85.top - 10;
+      }
+    }
+    const _0x2ef2eb = _0x41b141 - _0xe4a48f;
+    const _0x19229b = _0x139b90.createElement("div");
+    _0x19229b.id = "image-size-overlay";
+    _0x19229b.className = "st-chatu8-popup-overlay";
+    const _0x55c8f3 = _0x139b90.createElement("div");
+    _0x55c8f3.className = "st-chatu8-popup-bubble";
+    if (_0x4f0570) {
+      _0x55c8f3.classList.add("mobile");
+      _0x55c8f3.style.top
+
+====================================================================================================
+MATCH='dataset.width' OFFSET=1235934
+7f062[_0x5b07fb] || _0x27f062.comfyui;
+}
+function showImageSizePopup(_0x4cd6cf, _0x2e5444, _0x33795b) {
+  return new Promise(_0x4c302a => {
+    const _0x139b90 = window.top.document;
+    const _0x4f0570 = isMobileDevice();
+    const _0x3ef78e = _0x4bfbc2[extensionName];
+    const _0x3aa0fb = _0x3ef78e.mode || "comfyui";
+    const {
+      widthKey: _0x119bd5,
+      heightKey: _0x271647,
+      modeName: _0x5a15db
+    } = getImageSizeConfigKeys(_0x3aa0fb);
+    let _0x24e853;
+    let _0x191892;
+    if (_0x3aa0fb === "banana") {
+      const _0x1f7391 = _0x4cd6cf.dataset.aspectRatio || _0x3ef78e.banana?.aspectRatio || "1:1";
+      _0x24e853 = _0x1f7391;
+      _0x191892 = "";
+    } else {
+      _0x24e853 = _0x4cd6cf.dataset.width;
+      _0x191892 = _0x4cd6cf.dataset.height;
+      if (!_0x24e853 || !_0x191892) {
+        const _0x1f5d0d = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+        const _0x56182d = _0x4cd6cf.dataset.change || _0x4cd6cf.dataset.link || "";
+        const _0x100b2f = _0x56182d.match(_0x1f5d0d);
+        if (_0x100b2f) {
+          _0x24e853 = _0x100b2f[1];
+          _0x191892 = _0x100b2f[2];
+        }
+      }
+      _0x24e853 = _0x24e853 || _0x3ef78e[_0x119bd5] || "1024";
+      _0x191892 = _0x191892 || _0x3ef78e[_0x271647] || "1024";
+      const _0x34796c = {
+        mode: _0x3aa0fb,
+        widthKey: _0x119bd5,
+        heightKey: _0x271647,
+        buttonWidth: _0x4cd6cf.dataset.width,
+        buttonHeight: _0x4cd6cf.dataset.height,
+        configWidth: _0x3ef78e[_0x119bd5],
+        configHeight: _0x3ef78e[_0x271647],
+        currentWidth: _0x24e853,
+        currentHeight: _0x191892
+      };
+      console.log("[showImageSizePopup] 读取配置:", _0x34796c);
+    }
+    let _0xe4a48f = 10;
+    let _0x41b141 = window.innerHeight - 10;
+    if (_0x4f0570) {
+      const _0x5e3486 = _0x139b90.querySelector("#top-settings-holder");
+      if (_0x5e3486) {
+        const _0x1483f4 = _0x5e3486.getBoundingClientRect();
+        _0xe4a48f = _0x1483f4.bottom + 10;
+      }
+      const _0x2f1f62 = _0x139b90.querySelector("#send_form");
+      if (_0x2f1f62) {
+        const _0x285c85 = _0x2f1f62.getBoundingClientRect();
+        _0x41b141 = _0x285c85.top - 10;
+      }
+    }
+    const _0x2ef2eb = _0x41b141 - _0xe4a48f;
+    const _0x19229b = _0x139b90.createElement("div");
+    _0x19229b.id = "image-size-overlay";
+    _0x19229b.className = "st-chatu8-popup-overlay";
+    const _0x55c8f3 = _0x139b90.createElement("div");
+    _0x55c8f3.className = "st-chatu8-popup-bubble";
+    if (_0x4f0570) {
+      _0x55c8f3.classList.add("mobile");
+      _0x55c8f3.style.top = _0xe4a48f + "px";
+      _0x55c8f3.style.maxHeight = _0x2ef2eb + "px";
+    }
+    const _0x1503ae = _0x139b90.createElement("div");
+    _0x1503ae.textContent = "📐 图片大小设置 (" + _0x5a15db + ")";
+    _0x1503ae.className = "st-chatu8-popup-title";
+    const _0x294e66 = _0x139b90.createElement("div");
+    _0x294e66.textContent = _0x3aa0fb === "banana" ? "设置生成图片的纵横比" : "设置生成图片的宽度和高度";
+    _0x294e66.className = "st-chatu8-popup-hint";
+    const _0x29f0e4 = _0x139b90.createElement("div");
+    _0x29f0e4.className = "st-chatu8-popup-size-form";
+    let _0x5239e6;
+    let _0xf4855f;
+    if (_0x3aa0fb === "banana") {
+      const _0x169e98 = 
+
+====================================================================================================
+MATCH='dataset.height' OFFSET=1235981
+on showImageSizePopup(_0x4cd6cf, _0x2e5444, _0x33795b) {
+  return new Promise(_0x4c302a => {
+    const _0x139b90 = window.top.document;
+    const _0x4f0570 = isMobileDevice();
+    const _0x3ef78e = _0x4bfbc2[extensionName];
+    const _0x3aa0fb = _0x3ef78e.mode || "comfyui";
+    const {
+      widthKey: _0x119bd5,
+      heightKey: _0x271647,
+      modeName: _0x5a15db
+    } = getImageSizeConfigKeys(_0x3aa0fb);
+    let _0x24e853;
+    let _0x191892;
+    if (_0x3aa0fb === "banana") {
+      const _0x1f7391 = _0x4cd6cf.dataset.aspectRatio || _0x3ef78e.banana?.aspectRatio || "1:1";
+      _0x24e853 = _0x1f7391;
+      _0x191892 = "";
+    } else {
+      _0x24e853 = _0x4cd6cf.dataset.width;
+      _0x191892 = _0x4cd6cf.dataset.height;
+      if (!_0x24e853 || !_0x191892) {
+        const _0x1f5d0d = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+        const _0x56182d = _0x4cd6cf.dataset.change || _0x4cd6cf.dataset.link || "";
+        const _0x100b2f = _0x56182d.match(_0x1f5d0d);
+        if (_0x100b2f) {
+          _0x24e853 = _0x100b2f[1];
+          _0x191892 = _0x100b2f[2];
+        }
+      }
+      _0x24e853 = _0x24e853 || _0x3ef78e[_0x119bd5] || "1024";
+      _0x191892 = _0x191892 || _0x3ef78e[_0x271647] || "1024";
+      const _0x34796c = {
+        mode: _0x3aa0fb,
+        widthKey: _0x119bd5,
+        heightKey: _0x271647,
+        buttonWidth: _0x4cd6cf.dataset.width,
+        buttonHeight: _0x4cd6cf.dataset.height,
+        configWidth: _0x3ef78e[_0x119bd5],
+        configHeight: _0x3ef78e[_0x271647],
+        currentWidth: _0x24e853,
+        currentHeight: _0x191892
+      };
+      console.log("[showImageSizePopup] 读取配置:", _0x34796c);
+    }
+    let _0xe4a48f = 10;
+    let _0x41b141 = window.innerHeight - 10;
+    if (_0x4f0570) {
+      const _0x5e3486 = _0x139b90.querySelector("#top-settings-holder");
+      if (_0x5e3486) {
+        const _0x1483f4 = _0x5e3486.getBoundingClientRect();
+        _0xe4a48f = _0x1483f4.bottom + 10;
+      }
+      const _0x2f1f62 = _0x139b90.querySelector("#send_form");
+      if (_0x2f1f62) {
+        const _0x285c85 = _0x2f1f62.getBoundingClientRect();
+        _0x41b141 = _0x285c85.top - 10;
+      }
+    }
+    const _0x2ef2eb = _0x41b141 - _0xe4a48f;
+    const _0x19229b = _0x139b90.createElement("div");
+    _0x19229b.id = "image-size-overlay";
+    _0x19229b.className = "st-chatu8-popup-overlay";
+    const _0x55c8f3 = _0x139b90.createElement("div");
+    _0x55c8f3.className = "st-chatu8-popup-bubble";
+    if (_0x4f0570) {
+      _0x55c8f3.classList.add("mobile");
+      _0x55c8f3.style.top = _0xe4a48f + "px";
+      _0x55c8f3.style.maxHeight = _0x2ef2eb + "px";
+    }
+    const _0x1503ae = _0x139b90.createElement("div");
+    _0x1503ae.textContent = "📐 图片大小设置 (" + _0x5a15db + ")";
+    _0x1503ae.className = "st-chatu8-popup-title";
+    const _0x294e66 = _0x139b90.createElement("div");
+    _0x294e66.textContent = _0x3aa0fb === "banana" ? "设置生成图片的纵横比" : "设置生成图片的宽度和高度";
+    _0x294e66.className = "st-chatu8-popup-hint";
+    const _0x29f0e4 = _0x139b90.createElement("div");
+    _0x29f0e4.className = "st-chatu8-popup-size-form";
+    let _0x5239e6;
+    let _0xf4855f;
+    if (_0x3aa0fb === "banana") {
+      const _0x169e98 = _0x139b90.createElement("div");
+      _0x169e98.
+
+====================================================================================================
+MATCH='dataset.width' OFFSET=1241519
+me = "st-chatu8-popup-swap-btn";
+      _0x454d99.onclick = () => {
+        const _0x582ced = _0x5239e6.value;
+        _0x5239e6.value = _0xf4855f.value;
+        _0xf4855f.value = _0x582ced;
+      };
+      _0x18b74f.appendChild(_0x454d99);
+      _0x29f0e4.appendChild(_0xadd907);
+      _0x29f0e4.appendChild(_0x23b8e0);
+      _0x29f0e4.appendChild(_0x18b74f);
+    }
+    const _0x578a82 = _0x139b90.createElement("div");
+    _0x578a82.className = "st-chatu8-popup-buttons";
+    const _0x227ce4 = _0x139b90.createElement("button");
+    _0x227ce4.textContent = "取消";
+    _0x227ce4.className = "st-chatu8-popup-btn-cancel";
+    const _0x430f30 = _0x139b90.createElement("button");
+    _0x430f30.textContent = "确定并生成";
+    _0x430f30.className = "st-chatu8-popup-btn-confirm";
+    const _0x52776e = _0x5a651b => {
+      _0x19229b.classList.add("closing");
+      setTimeout(() => {
+        _0x19229b.remove();
+        _0x4c302a(_0x5a651b);
+      }, 150);
+    };
+    _0x227ce4.addEventListener("click", () => _0x52776e(null));
+    _0x430f30.addEventListener("click", () => {
+      if (_0x3aa0fb === "banana") {
+        _0x4cd6cf.dataset.aspectRatio = _0x5239e6.value;
+        const _0x5ba05b = {
+          aspectRatio: _0x5239e6.value
+        };
+        _0x52776e(_0x5ba05b);
+      } else {
+        const _0x20a6e2 = _0x5239e6.value.trim();
+        const _0x2268bf = _0xf4855f.value.trim();
+        _0x4cd6cf.dataset.width = _0x20a6e2;
+        _0x4cd6cf.dataset.height = _0x2268bf;
+        const _0x2ca756 = {
+          width: _0x20a6e2,
+          height: _0x2268bf
+        };
+        _0x52776e(_0x2ca756);
+      }
+    });
+    const _0x3375d8 = _0x36ff7a => {
+      if (_0x36ff7a.key === "Escape") {
+        _0x52776e(null);
+        _0x139b90.removeEventListener("keydown", _0x3375d8);
+      } else if (_0x36ff7a.key === "Enter") {
+        _0x430f30.click();
+        _0x139b90.removeEventListener("keydown", _0x3375d8);
+      }
+    };
+    _0x139b90.addEventListener("keydown", _0x3375d8);
+    _0x578a82.appendChild(_0x227ce4);
+    _0x578a82.appendChild(_0x430f30);
+    _0x55c8f3.appendChild(_0x1503ae);
+    _0x55c8f3.appendChild(_0x294e66);
+    _0x55c8f3.appendChild(_0x29f0e4);
+    _0x55c8f3.appendChild(_0x578a82);
+    _0x19229b.appendChild(_0x55c8f3);
+    _0x139b90.body.appendChild(_0x19229b);
+    setTimeout(() => _0x5239e6?.focus(), 100);
+  });
+}
+function showBananaRetouchDialog(_0x28a81e, _0x41a826) {
+  const _0x573ffa = _0x28a81e.src;
+  const _0x26411e = isMobileDeviceDialog2();
+  const _0x1aae64 = {
+    title: "Banana 修图",
+    isMobile: _0x26411e
+  };
+  const {
+    backdrop: _0x415c5d,
+    dialog: _0xaf85dd,
+    closeDialog: _0x26f2e0
+  } = createUnifiedDialog(_0x1aae64);
+  const _0x41bd4f = document.createElement("img");
+  _0x41bd4f.src = _0x573ffa;
+  _0x41bd4f.style.display = "block";
+  _0x41bd4f.style.maxWidth = "100%";
+  _0x41bd4f.style.maxHeight = "30vh";
+  _0x41bd4f.style.objectFit = "contain";
+  _0x41bd4f.style.margin = "0 auto 15px auto";
+  _0x41bd4f.style.borderRadius = "8px";
+  const _0x38b49e = {
+    placeholder: "输入修图指令，例如：\"给人物换上红色的连衣裙\"",
+    value: _0x41a826.dataset.retouchPrompt || "",
+    rows: 2
+  };
+  const _0x303bd4 = createUnifiedInput(_0x38b49e);
+  const _0x1151e1 = () => {
+
+
+====================================================================================================
+MATCH='dataset.height' OFFSET=1241564
+d99.onclick = () => {
+        const _0x582ced = _0x5239e6.value;
+        _0x5239e6.value = _0xf4855f.value;
+        _0xf4855f.value = _0x582ced;
+      };
+      _0x18b74f.appendChild(_0x454d99);
+      _0x29f0e4.appendChild(_0xadd907);
+      _0x29f0e4.appendChild(_0x23b8e0);
+      _0x29f0e4.appendChild(_0x18b74f);
+    }
+    const _0x578a82 = _0x139b90.createElement("div");
+    _0x578a82.className = "st-chatu8-popup-buttons";
+    const _0x227ce4 = _0x139b90.createElement("button");
+    _0x227ce4.textContent = "取消";
+    _0x227ce4.className = "st-chatu8-popup-btn-cancel";
+    const _0x430f30 = _0x139b90.createElement("button");
+    _0x430f30.textContent = "确定并生成";
+    _0x430f30.className = "st-chatu8-popup-btn-confirm";
+    const _0x52776e = _0x5a651b => {
+      _0x19229b.classList.add("closing");
+      setTimeout(() => {
+        _0x19229b.remove();
+        _0x4c302a(_0x5a651b);
+      }, 150);
+    };
+    _0x227ce4.addEventListener("click", () => _0x52776e(null));
+    _0x430f30.addEventListener("click", () => {
+      if (_0x3aa0fb === "banana") {
+        _0x4cd6cf.dataset.aspectRatio = _0x5239e6.value;
+        const _0x5ba05b = {
+          aspectRatio: _0x5239e6.value
+        };
+        _0x52776e(_0x5ba05b);
+      } else {
+        const _0x20a6e2 = _0x5239e6.value.trim();
+        const _0x2268bf = _0xf4855f.value.trim();
+        _0x4cd6cf.dataset.width = _0x20a6e2;
+        _0x4cd6cf.dataset.height = _0x2268bf;
+        const _0x2ca756 = {
+          width: _0x20a6e2,
+          height: _0x2268bf
+        };
+        _0x52776e(_0x2ca756);
+      }
+    });
+    const _0x3375d8 = _0x36ff7a => {
+      if (_0x36ff7a.key === "Escape") {
+        _0x52776e(null);
+        _0x139b90.removeEventListener("keydown", _0x3375d8);
+      } else if (_0x36ff7a.key === "Enter") {
+        _0x430f30.click();
+        _0x139b90.removeEventListener("keydown", _0x3375d8);
+      }
+    };
+    _0x139b90.addEventListener("keydown", _0x3375d8);
+    _0x578a82.appendChild(_0x227ce4);
+    _0x578a82.appendChild(_0x430f30);
+    _0x55c8f3.appendChild(_0x1503ae);
+    _0x55c8f3.appendChild(_0x294e66);
+    _0x55c8f3.appendChild(_0x29f0e4);
+    _0x55c8f3.appendChild(_0x578a82);
+    _0x19229b.appendChild(_0x55c8f3);
+    _0x139b90.body.appendChild(_0x19229b);
+    setTimeout(() => _0x5239e6?.focus(), 100);
+  });
+}
+function showBananaRetouchDialog(_0x28a81e, _0x41a826) {
+  const _0x573ffa = _0x28a81e.src;
+  const _0x26411e = isMobileDeviceDialog2();
+  const _0x1aae64 = {
+    title: "Banana 修图",
+    isMobile: _0x26411e
+  };
+  const {
+    backdrop: _0x415c5d,
+    dialog: _0xaf85dd,
+    closeDialog: _0x26f2e0
+  } = createUnifiedDialog(_0x1aae64);
+  const _0x41bd4f = document.createElement("img");
+  _0x41bd4f.src = _0x573ffa;
+  _0x41bd4f.style.display = "block";
+  _0x41bd4f.style.maxWidth = "100%";
+  _0x41bd4f.style.maxHeight = "30vh";
+  _0x41bd4f.style.objectFit = "contain";
+  _0x41bd4f.style.margin = "0 auto 15px auto";
+  _0x41bd4f.style.borderRadius = "8px";
+  const _0x38b49e = {
+    placeholder: "输入修图指令，例如：\"给人物换上红色的连衣裙\"",
+    value: _0x41a826.dataset.retouchPrompt || "",
+    rows: 2
+  };
+  const _0x303bd4 = createUnifiedInput(_0x38b49e);
+  const _0x1151e1 = () => {
+    const _0xf8f61 = _0x303bd4.value.trim();
+ 
+
+====================================================================================================
+MATCH='dataset.width' OFFSET=1298181
+rEach(_0xbe5b71 => {
+                const _0x1616b1 = _0xbe5b71.previousElementSibling;
+                if (_0x1616b1 && _0x1616b1.matches("button[data-request-id=\"" + _0x58eed1 + "\"]")) {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", _0x1616b1, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                } else {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", null, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                }
+              });
+            }
+            _0x2c9210.forEach(_0x32db75 => {
+              _0x32db75.removeAttribute("data-loading");
+              if (_0x487cc5 && _0x2204a5[extensionName].dbclike == "true") {
+                _0x32db75.style.setProperty("display", "none", "important");
+              } else {
+                _0x32db75.disabled = false;
+                _0x32db75.textContent = "生成图片";
+              }
+            });
+          });
+        };
+        _0x1c99a1.on(EventType.GENERATE_IMAGE_RESPONSE, _0x325b2e);
+        addLog("图像响应监听器已创建 (ID: " + _0x58eed1 + ")");
+        if (!_0x558a06) {
+          _0x5c08b1.setAttribute("data-loading", "true");
+          _0x5c08b1.textContent = "加载中...";
+          startGenerating(_0x157886);
+          const _0x5c7fca = _0x5c08b1.dataset.change;
+          let _0x422532 = _0x157886;
+          let _0x47a449 = _0x5c7fca;
+          let _0x3291ff = _0x5c08b1.dataset.width || null;
+          let _0x53022b = _0x5c08b1.dataset.height || null;
+          let _0x26dc2 = !!_0x5c08b1.dataset.width;
+          const _0x15ae41 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+          if (_0x47a449) {
+            const _0x555330 = _0x47a449.match(_0x15ae41);
+            if (_0x555330) {
+              _0x3291ff = _0x555330[1];
+              _0x53022b = _0x555330[2];
+              _0x26dc2 = true;
+            }
+          }
+          const _0x478f1a = _0x422532.match(_0x15ae41);
+          if (_0x478f1a) {
+            if (!_0x26dc2) {
+              _0x3291ff = _0x478f1a[1];
+              _0x53022b = _0x478f1a[2];
+            }
+          }
+          const _0xcdb6c7 = {
+            id: _0x58eed1,
+            prompt: _0x422532,
+            width: _0x3291ff,
+            height: _0x53022b
+          };
+          const _0xb090c8 = _0xcdb6c7;
+          if (_0x47a449) {
+            _0xb090c8.change = _0x47a449;
+            if (_0x47a449.includes("{修图}")) {
+              _0xb090c8.retouchPrompt = _0x5c08b1.dataset.retouchPrompt || "";
+              _0xb090c8.retouchImage = _0x5c08b1.dataset.retouchImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{修图}", "");
+            }
+            if (_0x47a449.includes("{视频}")) {
+              _0xb090c8.videoPrompt = _0x5c08b1.dataset.videoPrompt || "";
+              _0xb090c8.videoImage = _0x5c08b1.dataset.videoImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{视频}", "");
+            }
+          }
+          _0x1c99a1.emit(EventType.GENERATE_IMAGE_REQUEST, _0xb090c8);
+          addLog("发出图像生成请求 (ID: " + _0xb090c8.id + ")");
+        }
+      };
+      const _0x22e007 = [document, ...Array.from(document.querySelectorAll("iframe")).map(_0x441bce => _0x441bc
+
+====================================================================================================
+MATCH='dataset.height' OFFSET=1298240
+e5b71.previousElementSibling;
+                if (_0x1616b1 && _0x1616b1.matches("button[data-request-id=\"" + _0x58eed1 + "\"]")) {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", _0x1616b1, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                } else {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", null, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                }
+              });
+            }
+            _0x2c9210.forEach(_0x32db75 => {
+              _0x32db75.removeAttribute("data-loading");
+              if (_0x487cc5 && _0x2204a5[extensionName].dbclike == "true") {
+                _0x32db75.style.setProperty("display", "none", "important");
+              } else {
+                _0x32db75.disabled = false;
+                _0x32db75.textContent = "生成图片";
+              }
+            });
+          });
+        };
+        _0x1c99a1.on(EventType.GENERATE_IMAGE_RESPONSE, _0x325b2e);
+        addLog("图像响应监听器已创建 (ID: " + _0x58eed1 + ")");
+        if (!_0x558a06) {
+          _0x5c08b1.setAttribute("data-loading", "true");
+          _0x5c08b1.textContent = "加载中...";
+          startGenerating(_0x157886);
+          const _0x5c7fca = _0x5c08b1.dataset.change;
+          let _0x422532 = _0x157886;
+          let _0x47a449 = _0x5c7fca;
+          let _0x3291ff = _0x5c08b1.dataset.width || null;
+          let _0x53022b = _0x5c08b1.dataset.height || null;
+          let _0x26dc2 = !!_0x5c08b1.dataset.width;
+          const _0x15ae41 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+          if (_0x47a449) {
+            const _0x555330 = _0x47a449.match(_0x15ae41);
+            if (_0x555330) {
+              _0x3291ff = _0x555330[1];
+              _0x53022b = _0x555330[2];
+              _0x26dc2 = true;
+            }
+          }
+          const _0x478f1a = _0x422532.match(_0x15ae41);
+          if (_0x478f1a) {
+            if (!_0x26dc2) {
+              _0x3291ff = _0x478f1a[1];
+              _0x53022b = _0x478f1a[2];
+            }
+          }
+          const _0xcdb6c7 = {
+            id: _0x58eed1,
+            prompt: _0x422532,
+            width: _0x3291ff,
+            height: _0x53022b
+          };
+          const _0xb090c8 = _0xcdb6c7;
+          if (_0x47a449) {
+            _0xb090c8.change = _0x47a449;
+            if (_0x47a449.includes("{修图}")) {
+              _0xb090c8.retouchPrompt = _0x5c08b1.dataset.retouchPrompt || "";
+              _0xb090c8.retouchImage = _0x5c08b1.dataset.retouchImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{修图}", "");
+            }
+            if (_0x47a449.includes("{视频}")) {
+              _0xb090c8.videoPrompt = _0x5c08b1.dataset.videoPrompt || "";
+              _0xb090c8.videoImage = _0x5c08b1.dataset.videoImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{视频}", "");
+            }
+          }
+          _0x1c99a1.emit(EventType.GENERATE_IMAGE_REQUEST, _0xb090c8);
+          addLog("发出图像生成请求 (ID: " + _0xb090c8.id + ")");
+        }
+      };
+      const _0x22e007 = [document, ...Array.from(document.querySelectorAll("iframe")).map(_0x441bce => _0x441bce.contentDocument).filter(Boolean)];
+      let _0x457667 = f
+
+====================================================================================================
+MATCH='dataset.width' OFFSET=1298301
+& _0x1616b1.matches("button[data-request-id=\"" + _0x58eed1 + "\"]")) {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", _0x1616b1, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                } else {
+                  createAndShowImage(_0xbe5b71, _0x6b5c54, "Generated Image", null, _0x45d1b0, _0x384173, _0x59cdc6 || "");
+                }
+              });
+            }
+            _0x2c9210.forEach(_0x32db75 => {
+              _0x32db75.removeAttribute("data-loading");
+              if (_0x487cc5 && _0x2204a5[extensionName].dbclike == "true") {
+                _0x32db75.style.setProperty("display", "none", "important");
+              } else {
+                _0x32db75.disabled = false;
+                _0x32db75.textContent = "生成图片";
+              }
+            });
+          });
+        };
+        _0x1c99a1.on(EventType.GENERATE_IMAGE_RESPONSE, _0x325b2e);
+        addLog("图像响应监听器已创建 (ID: " + _0x58eed1 + ")");
+        if (!_0x558a06) {
+          _0x5c08b1.setAttribute("data-loading", "true");
+          _0x5c08b1.textContent = "加载中...";
+          startGenerating(_0x157886);
+          const _0x5c7fca = _0x5c08b1.dataset.change;
+          let _0x422532 = _0x157886;
+          let _0x47a449 = _0x5c7fca;
+          let _0x3291ff = _0x5c08b1.dataset.width || null;
+          let _0x53022b = _0x5c08b1.dataset.height || null;
+          let _0x26dc2 = !!_0x5c08b1.dataset.width;
+          const _0x15ae41 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+          if (_0x47a449) {
+            const _0x555330 = _0x47a449.match(_0x15ae41);
+            if (_0x555330) {
+              _0x3291ff = _0x555330[1];
+              _0x53022b = _0x555330[2];
+              _0x26dc2 = true;
+            }
+          }
+          const _0x478f1a = _0x422532.match(_0x15ae41);
+          if (_0x478f1a) {
+            if (!_0x26dc2) {
+              _0x3291ff = _0x478f1a[1];
+              _0x53022b = _0x478f1a[2];
+            }
+          }
+          const _0xcdb6c7 = {
+            id: _0x58eed1,
+            prompt: _0x422532,
+            width: _0x3291ff,
+            height: _0x53022b
+          };
+          const _0xb090c8 = _0xcdb6c7;
+          if (_0x47a449) {
+            _0xb090c8.change = _0x47a449;
+            if (_0x47a449.includes("{修图}")) {
+              _0xb090c8.retouchPrompt = _0x5c08b1.dataset.retouchPrompt || "";
+              _0xb090c8.retouchImage = _0x5c08b1.dataset.retouchImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{修图}", "");
+            }
+            if (_0x47a449.includes("{视频}")) {
+              _0xb090c8.videoPrompt = _0x5c08b1.dataset.videoPrompt || "";
+              _0xb090c8.videoImage = _0x5c08b1.dataset.videoImage || "";
+              _0x5c08b1.dataset.change = _0x5c08b1.dataset.change.replaceAll("{视频}", "");
+            }
+          }
+          _0x1c99a1.emit(EventType.GENERATE_IMAGE_REQUEST, _0xb090c8);
+          addLog("发出图像生成请求 (ID: " + _0xb090c8.id + ")");
+        }
+      };
+      const _0x22e007 = [document, ...Array.from(document.querySelectorAll("iframe")).map(_0x441bce => _0x441bce.contentDocument).filter(Boolean)];
+      let _0x457667 = false;
+      for (const _0x46055d of _0x22e007) {
+        con

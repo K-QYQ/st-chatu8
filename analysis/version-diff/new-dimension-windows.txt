@@ -1,0 +1,877 @@
+
+====================================================================================================
+PATTERN=<size> OFFSET=460452
+4817f.slice(_0x59a861, _0x307d35).trim();
+    if (_0x525157) {
+      _0x4dbd2e.push(_0x525157);
+    }
+  }
+  return _0x4dbd2e;
+}
+function convertNewXmlFormatToOld(_0xb30745) {
+  if (!_0xb30745 || typeof _0xb30745 !== "string") {
+    return _0xb30745;
+  }
+  const _0x3ba02c = [..._0xb30745.matchAll(/<images>([\s\S]*?)<\/images>/gi)];
+  if (_0x3ba02c.length === 0) {
+    return _0xb30745;
+  }
+  const _0x5c9fd5 = _0x3ba02c[_0x3ba02c.length - 1];
+  const _0x438133 = _0x5c9fd5[1];
+  if (!/<prompts>|<title_styled>/i.test(_0x438133)) {
+    return _0xb30745;
+  }
+  const _0x5decd5 = _0x438133.replace(/<image>([\s\S]*?)<\/image>/gi, (_0x4f4f43, _0x42f2b5) => {
+    const _0xf8eee4 = _0x42f2b5.match(/<regex>([\s\S]*?)<\/regex>/i);
+    const _0x2d9e72 = _0xf8eee4 ? "regex:" + _0xf8eee4[1].trim() : "";
+    const _0x25b4e7 = _0x42f2b5.match(/<title_styled>([\s\S]*?)<\/title_styled>/i);
+    const _0xee3ce4 = _0x25b4e7 ? "<font color=\"steelblue\">[" + _0x25b4e7[1].trim() + "]</font>" : "";
+    const _0x3fb71e = _0x42f2b5.match(/<Tag_think>([\s\S]*?)<\/Tag_think>/i);
+    const _0x2c7197 = _0x3fb71e ? "<Tag_think>\n" + _0x3fb71e[1].trim() + "\n</Tag_think>" : "";
+    const _0x3f4ad5 = _0x42f2b5.match(/<size>([\s\S]*?)<\/size>/i);
+    let _0x377d10 = "";
+    if (_0x3f4ad5) {
+      const _0x1edaf7 = _0x3f4ad5[1].trim().replace(/，/g, ",").split(",");
+      if (_0x1edaf7.length > 0) {
+        _0x377d10 = _0x1edaf7[_0x1edaf7.length - 1].trim();
+      }
+    }
+    const _0x439bab = _0x42f2b5.match(/<prompts>([\s\S]*?)<\/prompts>/i);
+    let _0x4ef1ef = "";
+    if (_0x439bab) {
+      const _0x206256 = _0x439bab[1];
+      const _0x26f089 = _0x206256.match(/<scene_composition>([\s\S]*?)<\/scene_composition>/i);
+      const _0xc30118 = /<character_(\d+)>([\s\S]*?)<\/character_\1>/gi;
+      const _0x50c1aa = [..._0x206256.matchAll(_0xc30118)];
+      if (_0x26f089 || _0x50c1aa.length > 0) {
+        let _0x30f0b5 = _0x26f089 ? _0x26f089[1].trim() : "";
+        if (_0x377d10) {
+          if (_0x30f0b5 && !_0x30f0b5.endsWith(",")) {
+            _0x30f0b5 += ",";
+          }
+          _0x30f0b5 += _0x377d10;
+        }
+        const _0x4919a4 = _0x30f0b5 ? "Scene Composition:" + _0x30f0b5 + ";" : "";
+        let _0x501de4 = "";
+        for (const _0x20ca75 of _0x50c1aa) {
+          const _0x251b94 = _0x20ca75[1];
+          const _0x5dc9ee = _0x20ca75[2];
+          const _0x2acfb1 = _0x5dc9ee.match(/<prompt>([\s\S]*?)<\/prompt>/i);
+          const _0x23efd9 = _0x2acfb1 ? _0x2acfb1[1].trim() : "";
+          const _0xf4cf03 = _0x5dc9ee.match(/<centers>([\s\S]*?)<\/centers>/i);
+          const _0x56b895 = _0xf4cf03 ? _0xf4cf03[1].trim() : "";
+          const _0x3f0b4d = _0x5dc9ee.match(/<uc>([\s\S]*?)<\/uc>/i);
+          const _0x30c92b = _0x3f0b4d ? _0x3f0b4d[1].trim() : "";
+          if (_0x23efd9 || _0x56b895) {
+            _0x501de4 += "Character " + _0x251b94 + " Prompt:" + _0x23efd9 + "|centers:" + _0x56b895 + ";\n";
+          }
+          if (_0x30c92b) {
+            _0x501de4 += "Charact
+
+====================================================================================================
+PATTERN=payload222 OFFSET=2247402
+orkflow").on("click", () => {
+    const _0x51a8bc = _0x49f1bd[extensionName];
+    const _0x3760b5 = _0x51a8bc.worker;
+    const _0x3c0d0c = _0x51a8bc.workerid;
+    _0x51a8bc.worker = _0x51a8bc.editWorker;
+    _0x51a8bc.workerid = _0x51a8bc.editWorkerid;
+    visualizeWorkflow();
+    setTimeout(() => {
+      _0x51a8bc.worker = _0x3760b5;
+      _0x51a8bc.workerid = _0x3c0d0c;
+    }, 100);
+  });
+}
+function getComfyUIHeaders(_0x2414c8 = null) {
+  const _0x52a469 = {};
+  if (_0x2414c8) {
+    _0x52a469["Content-Type"] = _0x2414c8;
+  }
+  return _0x52a469;
+}
+function stringifyJsonString(_0x1ee3e3) {
+  return JSON.stringify(_0x1ee3e3 == null ? "" : String(_0x1ee3e3));
+}
+function stringifyJsonNumber(_0x48c389, _0x3befc8 = 0) {
+  const _0x322df9 = Number(_0x48c389);
+  if (Number.isFinite(_0x322df9)) {
+    return String(_0x322df9);
+  } else {
+    return String(_0x3befc8);
+  }
+}
+function normalizeSettingString(_0x11f679) {
+  if (_0x11f679 == null) {
+    return "";
+  } else {
+    return String(_0x11f679).trim();
+  }
+}
+function normalizeBackslashPath(_0x5b415e) {
+  return normalizeSettingString(_0x5b415e).replace(/\\{2,}/g, "\\");
+}
+async function replacepro(_0x43c9ce, _0x53b145) {
+  console.log("payload222", _0x43c9ce);
+  _0x53b145 = _0x53b145.replaceAll("\"%seed%\"", stringifyJsonNumber(_0x43c9ce.seed));
+  _0x53b145 = _0x53b145.replaceAll("\"%steps%\"", stringifyJsonNumber(_0x43c9ce.steps));
+  _0x53b145 = _0x53b145.replaceAll("\"%cfg_scale%\"", stringifyJsonNumber(_0x43c9ce.cfg_scale));
+  _0x53b145 = _0x53b145.replaceAll("\"%sampler_name%\"", stringifyJsonString(_0x43c9ce.sampler_name));
+  _0x53b145 = _0x53b145.replaceAll("\"%width%\"", stringifyJsonNumber(_0x43c9ce.width));
+  _0x53b145 = _0x53b145.replaceAll("\"%height%\"", stringifyJsonNumber(_0x43c9ce.height));
+  _0x53b145 = _0x53b145.replaceAll("\"%negative_prompt%\"", stringifyJsonString(_0x43c9ce.negative_prompt));
+  _0x53b145 = _0x53b145.replaceAll("\"%prompt%\"", stringifyJsonString(_0x43c9ce.prompt));
+  _0x53b145 = _0x53b145.replaceAll("\"%MODEL_NAME%\"", stringifyJsonString(_0x43c9ce.MODEL_NAME));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_quanzhong%\"", stringifyJsonNumber(_0x43c9ce.c_quanzhong));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_idquanzhong%\"", stringifyJsonNumber(_0x43c9ce.c_idquanzhong));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_xijie%\"", stringifyJsonNumber(_0x43c9ce.c_xijie));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_fenwei%\"", stringifyJsonNumber(_0x43c9ce.c_fenwei));
+  _0x53b145 = _0x53b145.replaceAll("\"%comfyuicankaotupian%\"", stringifyJsonString(_0x43c9ce.comfyuicankaotupian));
+  _0x53b145 = _0x53b145.replaceAll("\"%ipa%\"", stringifyJsonString(_0x43c9ce.ipa));
+  _0x53b145 = _0x53b145.replaceAll("\"%scheduler%\"", stringifyJsonString(_0x43c9ce.scheduler));
+  _0x53b145 = _0x53b145.replaceAll("\"%vae%\"", stringifyJsonString(_0x43c9ce.vae));
+  _0x53b145 = _0x53b145.replaceAll("\"%clip%\"", stringifyJsonString(_0x43c9ce.clip));
+  console.log(_0x53b145);
+  if (_0x43c9ce.inpaint_image) {
+    _0
+
+====================================================================================================
+PATTERN=\.match\(/[^\n]{0,220}[x×][^\n]{0,220}/[gimyus]*\) OFFSET=459939
+_0x168398 = _0x3c7a15.exec(_0x68ff4);
+  while (_0x168398) {
+    _0x5638f2.push(_0x168398.index);
+    _0x168398 = _0x3c7a15.exec(_0x68ff4);
+  }
+  _0x3c7a15.lastIndex = 0;
+  return _0x5638f2;
+}
+function _sliceByPositions(_0x44817f, _0x5b01f5) {
+  const _0x4dbd2e = [];
+  for (let _0x43801c = 0; _0x43801c < _0x5b01f5.length; _0x43801c += 1) {
+    const _0x59a861 = _0x5b01f5[_0x43801c];
+    const _0x307d35 = _0x43801c + 1 < _0x5b01f5.length ? _0x5b01f5[_0x43801c + 1] : _0x44817f.length;
+    const _0x525157 = _0x44817f.slice(_0x59a861, _0x307d35).trim();
+    if (_0x525157) {
+      _0x4dbd2e.push(_0x525157);
+    }
+  }
+  return _0x4dbd2e;
+}
+function convertNewXmlFormatToOld(_0xb30745) {
+  if (!_0xb30745 || typeof _0xb30745 !== "string") {
+    return _0xb30745;
+  }
+  const _0x3ba02c = [..._0xb30745.matchAll(/<images>([\s\S]*?)<\/images>/gi)];
+  if (_0x3ba02c.length === 0) {
+    return _0xb30745;
+  }
+  const _0x5c9fd5 = _0x3ba02c[_0x3ba02c.length - 1];
+  const _0x438133 = _0x5c9fd5[1];
+  if (!/<prompts>|<title_styled>/i.test(_0x438133)) {
+    return _0xb30745;
+  }
+  const _0x5decd5 = _0x438133.replace(/<image>([\s\S]*?)<\/image>/gi, (_0x4f4f43, _0x42f2b5) => {
+    const _0xf8eee4 = _0x42f2b5.match(/<regex>([\s\S]*?)<\/regex>/i);
+    const _0x2d9e72 = _0xf8eee4 ? "regex:" + _0xf8eee4[1].trim() : "";
+    const _0x25b4e7 = _0x42f2b5.match(/<title_styled>([\s\S]*?)<\/title_styled>/i);
+    const _0xee3ce4 = _0x25b4e7 ? "<font color=\"steelblue\">[" + _0x25b4e7[1].trim() + "]</font>" : "";
+    const _0x3fb71e = _0x42f2b5.match(/<Tag_think>([\s\S]*?)<\/Tag_think>/i);
+    const _0x2c7197 = _0x3fb71e ? "<Tag_think>\n" + _0x3fb71e[1].trim() + "\n</Tag_think>" : "";
+    const _0x3f4ad5 = _0x42f2b5.match(/<size>([\s\S]*?)<\/size>/i);
+    let _0x377d10 = "";
+    if (_0x3f4ad5) {
+      const _0x1edaf7 = _0x3f4ad5[1].trim().replace(/，/g, ",").split(",");
+      if (_0x1edaf7.length > 0) {
+        _0x377d10 = _0x1edaf7[_0x1edaf7.length - 1].trim();
+      }
+    }
+    const _0x439bab = _0x42f2b5.match(/<prompts>([\s\S]*?)<\/prompts>/i);
+    let _0x4ef1ef = "";
+    if (_0x439bab) {
+      const _0x206256 = _0x439bab[1];
+      const _0x26f089 = _0x206256.match(/<scene_composition>([\s\S]*?)<\/scene_composition>/i);
+      const _0xc30118 = /<character_(\d+)>([\s\S]*?)<\/character_\1>/gi;
+      const _0x50c1aa = [..._0x206256.matchAll(_0xc30118)];
+      if (_0x26f089 || _0x50c1aa.length > 0) {
+        let _0x30f0b5 = _0x26f089 ? _0x26f089[1].trim() : "";
+        if (_0x377d10) {
+          if (_0x30f0b5 && !_0x30f0b5.endsWith(",")) {
+            _0x30f0b5 += ",";
+          }
+          _0x30f0b5 += _0x377d10;
+        }
+        const _0x4919a4 = _0x30f0b5 ? "Scene Composition:" + _0x30f0b5 + ";" : "";
+        let _0x501de4 = "";
+        for (const _0x20ca75 of _0x50c1aa) {
+          const _0x251b94 = _0x20ca75[1];
+          const _0x5dc9ee = _0x20ca75[2];
+          const _0x2acfb1 = _0x5dc9ee.match(/<prompt>([\s\S]*?)<\/prompt>/i);
+          const _0x23efd9 = _0x2acfb1 ? _0x2acfb1[1].trim() : "";
+          const _0xf4c
+
+====================================================================================================
+PATTERN=\.match\(/[^\n]{0,220}[x×][^\n]{0,220}/[gimyus]*\) OFFSET=466286
+长度:", _0x2d4ffb.length, "）");
+  } else {
+    debugBranch("parseImagesFromPrompt", "未找到 <images> 容器 - 使用完整文本", true);
+    console.log("[parseImagesFromPrompt] 未找到 <images> 容器，使用完整文本");
+  }
+  const _0xba0807 = /<image>([\s\S]*?)<\/image>/g;
+  const _0x5d7ca3 = [];
+  let _0xd93467;
+  while ((_0xd93467 = _0xba0807.exec(_0x2d4ffb)) !== null) {
+    const _0x569c4f = {
+      fullMatch: _0xd93467[0],
+      content: _0xd93467[1],
+      startIndex: _0xd93467.index
+    };
+    _0x5d7ca3.push(_0x569c4f);
+  }
+  const _0x45681f = {
+    块数量: _0x5d7ca3.length
+  };
+  debugLog("imageInserter.parseImagesFromPrompt", "找到 <image> 块", _0x45681f);
+  console.log("[parseImagesFromPrompt] 找到", _0x5d7ca3.length, "个 <image> 块");
+  for (let _0x32fb9b = 0; _0x32fb9b < _0x5d7ca3.length; _0x32fb9b++) {
+    const _0x3b7658 = _0x5d7ca3[_0x32fb9b];
+    const _0x3ab414 = _0x3b7658.content;
+    console.log("[parseImagesFromPrompt] 解析第 " + (_0x32fb9b + 1) + " 个 <image> 块，内容长度: " + _0x3ab414.length);
+    let _0x2fc444 = "";
+    const _0x23edf1 = /<imgthink>([\s\S]*?)<\/imgthink>/;
+    const _0xe2d916 = _0x3ab414.match(_0x23edf1);
+    if (_0xe2d916) {
+      const _0x1261ae = _0xe2d916[1];
+      const _0x42b03e = _0x1261ae.match(/regex:(.*?)(?:\n|$)/);
+      if (_0x42b03e) {
+        _0x2fc444 = _0x42b03e[1].trim();
+      }
+    }
+    if (!_0x2fc444) {
+      const _0x151cd2 = _0x3ab414.match(/regex:(.*?)(?:\n|$)/);
+      if (_0x151cd2) {
+        _0x2fc444 = _0x151cd2[1].trim();
+      }
+    }
+    const _0x4a2a4d = String(_0xcdca2[extensionName]?.tagthinkEcho) === "true";
+    const {
+      startTag: _0x43eef9,
+      endTag: _0x51fb77
+    } = getImageTags();
+    let _0x55d707;
+    if (!_0x4a2a4d) {
+      const _0x1aea4d = _0x43eef9.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const _0x58676f = _0x51fb77.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const _0x4ed0b2 = new RegExp(_0x1aea4d + "([\\s\\S]*?)" + _0x58676f);
+      const _0x228c4c = _0x3ab414.match(_0x4ed0b2);
+      const _0x1b406f = _0x228c4c ? _0x228c4c[1].trim() : "";
+      _0x55d707 = _0x1b406f ? "" + _0x43eef9 + _0x1b406f + _0x51fb77 : "";
+      console.log("[parseImagesFromPrompt] tagthinkEcho=false, 仅提取纯 tag: \"" + _0x55d707.substring(0, 50) + "...\"");
+    } else {
+      _0x55d707 = _0x3ab414.replace(/regex:.*?(?:\n|$)/g, "").trim();
+      console.log("[parseImagesFromPrompt] tagthinkEcho=true, 保留完整内容: \"" + _0x55d707.substring(0, 50) + "...\"");
+    }
+    console.log("[parseImagesFromPrompt] 块 " + (_0x32fb9b + 1) + " 结果: regex=\"" + _0x2fc444.substring(0, 30) + "...\", tag=\"" + _0x55d707.substring(0, 50) + "...\"");
+    debugLog("imageInserter.parseImagesFromPrompt", "块 " + (_0x32fb9b + 1) + " 解析结果", {
+      索引: _0x32fb9b + 1,
+      有regex: !!_0x2fc444,
+      regex预览: _0x2fc444 ? _0x2fc444.substring(0, 40) : "(无)",
+      有tag: !!_0x55d707,
+      tag长度: _0x55d707.length
+    });
+    if (_0x2fc444 && _0x55d707) {
+      _0x55d707 = _0x55d707.replace(/，/g, ",").replace(/；/g, ";").replace(/：/g, ":");
+      const _0x22bd90 = {
+        regex: _0x2fc444,
+      
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=62398
+ssing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap",
+      AQT_novelai: "best quality, amazing quality, very aesthetic, absurdres",
+      UCP_novelai: "Heavy",
+      addFurryDataset: "false",
+      AQT_comfyui: "best quality, amazing quality, very aesthetic, absurdres",
+      UCP_comfyui: "bad proportions, out of focus, username, text, bad anatomy, lowres, worstquality, watermark, cropped, bad body, deformed, mutated, disfigured, poorly drawn face, malformed hands, extra arms, extra limb, missing limb, too many fingers, extra legs, bad feet, missing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap",
+      sd_csteps: "28",
+      sd_cwidth: "1024",
+      sd_cheight: "1024",
+      sd_cseed: "-1",
+      novelai_steps: "28",
+      novelai_width: "1024",
+      novelai_height: "1024",
+      novelai_seed: "0",
+      comfyui_steps: "28",
+      comfyui_width: "1024",
+      comfyui_height: "1024",
+      comfyui_seed: "0",
+      inpaint_denoise: "0.75",
+      weilin_lora_fix: "false",
+      inpaint_brush_size: 30,
+      inpaint_positive_prompt: "",
+      inpaint_negative_prompt: "",
+      cfg_comfyui: "6",
+      sd_cchatu_8_model: "连接后选择",
+      sd_cchatu_8_vae: "Automatic",
+      sd_cchatu_8_scheduler: "连接后选择",
+      sd_cchatu_8_upscaler: "Latent",
+      sd_cupscale_factor: "1",
+      sd_chires_fix: "false",
+      sd_chires_steps: "0",
+      sd_cdenoising_strength: "0.7",
+      sd_cclip_skip: "2",
+      sd_cadetailer: "false",
+      restoreFaces: "false",
+      sd_cchatu_8_samplerName: "DPM++ 2M",
+      comfyuisamplerName: "连接后选择",
+      comfyuiCLIPName: "连接后选择",
+      comfyui_scheduler: "连接后选择",
+      comfyui_vae: "连接后选择",
+      novelai_sampler: "k_euler",
+      zidongdianji: "false",
+      zidongdianji2: "false",
+      longPressToEdit: "false",
+      clickToPreview: "true",
+      nai3VibeTransfer: "false",
+      enableVibeGroupTransfer: "false",
+      normalizeRefStrength: "false",
+      nai3CharRef: "false",
+      nai3StylePerception: "false",
+      InformationExtracted: "0.3",
+      ReferenceStrength: "0.6",
+      nai3Deceisp: "true",
+      nai3Variety: "true",
+      Schedule: "karras",
+      MODEL_NAME: "连接后选择",
+      c_fenwei: "0.8",
+      c_xijie: "0.8",
+      c_idquanzhong: "1.10",
+      c_quanzhong: "0.8",
+      ipa: "STANDARD (medium strength)",
+      dbclike: "false",
+      collapseImage: "false",
+      workers: _0x50a511,
+      workerid: "新版默认",
+      worker: jsonweldf,
+      editWorkerid: "图像编辑",
+      editW
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=221322
+0x4aad53 && typeof _0x4aad53 === "object" && !Array.isArray(_0x4aad53);
+}
+function deepMerge(_0x5d153d, _0x3f0527) {
+  let _0x38cd9f = Object.assign({}, _0x5d153d);
+  if (isObject(_0x5d153d) && isObject(_0x3f0527)) {
+    Object.keys(_0x3f0527).forEach(_0x2bcc95 => {
+      if (isObject(_0x3f0527[_0x2bcc95])) {
+        if (!(_0x2bcc95 in _0x5d153d)) {
+          Object.assign(_0x38cd9f, {
+            [_0x2bcc95]: _0x3f0527[_0x2bcc95]
+          });
+        } else {
+          _0x38cd9f[_0x2bcc95] = deepMerge(_0x5d153d[_0x2bcc95], _0x3f0527[_0x2bcc95]);
+        }
+      } else {
+        const _0x204a3a = {
+          [_0x2bcc95]: _0x3f0527[_0x2bcc95]
+        };
+        Object.assign(_0x38cd9f, _0x204a3a);
+      }
+    });
+  }
+  return _0x38cd9f;
+}
+async function processReferenceImage(_0x29c431) {
+  addLog("开始处理参考图...");
+  return new Promise((_0x1fdc53, _0x550ffc) => {
+    const _0x462c7b = new Image();
+    _0x462c7b.onload = function () {
+      const _0x14954c = _0x462c7b.width;
+      const _0x400040 = _0x462c7b.height;
+      const _0x5e5964 = _0x14954c / _0x400040;
+      addLog("参考图原始尺寸: " + _0x14954c + "x" + _0x400040 + ", 宽高比: " + _0x5e5964.toFixed(2));
+      const _0x1491c8 = {
+        width: 1024,
+        height: 1536,
+        ratio: 1024 / 1536
+      };
+      const _0xb0d7ed = {
+        width: 1536,
+        height: 1024,
+        ratio: 1536 / 1024
+      };
+      const _0x522eb3 = [_0x1491c8, {
+        width: 1472,
+        height: 1472,
+        ratio: 1
+      }, _0xb0d7ed];
+      let _0x3d6f30 = _0x522eb3[0];
+      let _0x3ba27b = Math.abs(_0x5e5964 - _0x522eb3[0].ratio);
+      for (let _0x5dbb42 = 1; _0x5dbb42 < _0x522eb3.length; _0x5dbb42++) {
+        const _0x204d13 = Math.abs(_0x5e5964 - _0x522eb3[_0x5dbb42].ratio);
+        if (_0x204d13 < _0x3ba27b) {
+          _0x3ba27b = _0x204d13;
+          _0x3d6f30 = _0x522eb3[_0x5dbb42];
+        }
+      }
+      const _0x36e70e = document.createElement("canvas");
+      _0x36e70e.width = _0x3d6f30.width;
+      _0x36e70e.height = _0x3d6f30.height;
+      const _0x45c6cd = _0x36e70e.getContext("2d");
+      _0x45c6cd.imageSmoothingEnabled = true;
+      _0x45c6cd.imageSmoothingQuality = "high";
+      _0x45c6cd.drawImage(_0x462c7b, 0, 0, _0x3d6f30.width, _0x3d6f30.height);
+      addLog("正在缩放参考图...");
+      let _0x5b8026;
+      if (isMobileDevice()) {
+        _0x5b8026 = _0x36e70e.toDataURL("image/jpeg", 0.3).replace(/^data:image\/jpeg;base64,/, "");
+      } else {
+        _0x5b8026 = _0x36e70e.toDataURL("image/png").replace(/^data:image\/png;base64,/, "");
+      }
+      _0x1fdc53(_0x5b8026);
+    };
+    _0x462c7b.onerror = _0x3e2fc7 => {
+      const _0x320a53 = _0x3e2fc7 instanceof Error ? _0x3e2fc7.message : "未知错误";
+      addLog("参考图加载失败: " + _0x320a53);
+      _0x550ffc(new Error("图片加载失败"));
+    };
+    let _0x4e8ec1 = _0x29c431;
+    if (_0x29c431 && !_0x29c431.startsWith("data:image")) {
+      addLog("输入为原始base64，正在添加Data URL前缀...");
+      _0x4e8ec1 = "data:image/png;base64," + _0x29c431;
+    }
+    _0x462c7b.src = _0x4e8ec1;
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=279354
+o: () => switchToIdleVideo(_0x4a3bb1),
+    switchToDraggingVideo: () => switchToDraggingVideo(_0x4a3bb1),
+    playHeadPatVideo: () => playHeadPatVideo(_0x4a3bb1),
+    playThinkingVideo: () => playThinkingVideo(_0x4a3bb1),
+    stopThinkingVideo: () => stopThinkingVideo(_0x4a3bb1),
+    playTalkVideo: () => playTalkVideo(_0x4a3bb1),
+    stopTalkVideo: () => stopTalkVideo(_0x4a3bb1),
+    pause: () => pause(_0x4a3bb1),
+    resume: () => resume(_0x4a3bb1),
+    destroy: () => destroy(_0x4a3bb1),
+    updateSize: _0xc6889f => updateSize(_0x4a3bb1, _0xc6889f),
+    hitTest: (_0x305220, _0x51818f) => hitTest(_0x4a3bb1, _0x305220, _0x51818f),
+    getState: () => _0x4a3bb1,
+    setPipBackground: _0x254a00 => {
+      _0x4a3bb1.pipBackgroundEnabled = !!_0x254a00;
+      _0x4a3bb1.lastVideoTime = -1;
+    }
+  };
+}
+function updateCanvasSize(_0x36fcf8, _0x4e07dc = true) {
+  const _0x374020 = _0x36fcf8.container;
+  const _0x450605 = _0x36fcf8.canvasElement;
+  const _0x88e915 = _0x36fcf8.activeVideo;
+  _0x374020.offsetWidth;
+  const _0x313a39 = _0x374020.offsetWidth;
+  const _0xb150a0 = _0x374020.offsetHeight;
+  if (_0x313a39 === 0 || _0xb150a0 === 0) {
+    console.warn("[st-chatu8] Container size is 0 (width:", _0x313a39, "height:", _0xb150a0, ")");
+    if (_0x4e07dc && !_0x36fcf8._sizeRetryScheduled) {
+      _0x36fcf8._sizeRetryScheduled = true;
+      _0x36fcf8._sizeRetryCount = (_0x36fcf8._sizeRetryCount || 0) + 1;
+      if (_0x36fcf8._sizeRetryCount <= 20) {
+        const _0x344e46 = _0x36fcf8._sizeRetryCount <= 5 ? 50 : (_0x36fcf8._sizeRetryCount - 5) * 100;
+        console.log("[st-chatu8] Scheduling retry #" + _0x36fcf8._sizeRetryCount + " in " + _0x344e46 + "ms");
+        setTimeout(() => {
+          _0x36fcf8._sizeRetryScheduled = false;
+          const _0xc95052 = updateCanvasSize(_0x36fcf8, true);
+          if (_0xc95052 && _0x36fcf8.isLoaded && _0x36fcf8.activeVideo && _0x36fcf8.activeVideo.readyState >= 2) {
+            console.log("[st-chatu8] Canvas size updated successfully after retry");
+            renderFrame(_0x36fcf8);
+            updateAlphaCache(_0x36fcf8);
+            _0x36fcf8.alphaCacheDirty = false;
+            _0x36fcf8.lastAlphaCacheTime = performance.now();
+          }
+        }, _0x344e46);
+      } else {
+        console.error("[st-chatu8] Max retry count reached for updateCanvasSize, giving up");
+      }
+    }
+    return false;
+  }
+  _0x36fcf8._sizeRetryCount = 0;
+  _0x36fcf8._sizeRetryScheduled = false;
+  const _0x152398 = _0x88e915.videoWidth || 1;
+  const _0x16d1c8 = (_0x88e915.videoHeight || 1) / 2;
+  const _0x3e6276 = _0x152398 / _0x16d1c8;
+  const _0x5db2b7 = _0x313a39 / _0xb150a0;
+  let _0x3430cb;
+  let _0x4279b7;
+  if (_0x3e6276 > _0x5db2b7) {
+    _0x3430cb = _0x313a39;
+    _0x4279b7 = _0x313a39 / _0x3e6276;
+  } else {
+    _0x4279b7 = _0xb150a0;
+    _0x3430cb = _0xb150a0 * _0x3e6276;
+  }
+  _0x450605.style.width = _0x3430cb + "px";
+  _0x450605.style.height = _0x4279b7 + "px";
+  _0x450605.width = _0x152398;
+  _0x450605.height = _0x16d1c8;
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=284250
+a72,
+    texture: _0x5a1d61,
+    activeVideo: _0x33b429
+  } = _0x30bba2;
+  if (_0x3d8a72.isContextLost()) {
+    return;
+  }
+  if (_0x33b429.readyState < 2) {
+    return;
+  }
+  const _0x10f8c0 = _0x33b429.currentTime;
+  if (_0x10f8c0 === _0x30bba2.lastVideoTime) {
+    return;
+  }
+  _0x30bba2.lastVideoTime = _0x10f8c0;
+  _0x30bba2.alphaCacheDirty = true;
+  _0x3d8a72.bindTexture(_0x3d8a72.TEXTURE_2D, _0x5a1d61);
+  _0x3d8a72.texImage2D(_0x3d8a72.TEXTURE_2D, 0, _0x3d8a72.RGBA, _0x3d8a72.RGBA, _0x3d8a72.UNSIGNED_BYTE, _0x33b429);
+  if (_0x30bba2.pipBackgroundEnabled) {
+    _0x3d8a72.clearColor(0.102, 0.102, 0.18, 1);
+  } else {
+    _0x3d8a72.clearColor(0, 0, 0, 0);
+  }
+  _0x3d8a72.clear(_0x3d8a72.COLOR_BUFFER_BIT);
+  _0x3d8a72.drawArrays(_0x3d8a72.TRIANGLE_STRIP, 0, 4);
+}
+function updateAlphaCache(_0x18145f) {
+  const {
+    gl: _0x56ac70,
+    canvasElement: _0xe54542
+  } = _0x18145f;
+  const _0x266157 = _0xe54542.width;
+  const _0x2d5b8a = _0xe54542.height;
+  try {
+    const _0x5ef7cd = new Uint8Array(_0x266157 * _0x2d5b8a * 4);
+    _0x56ac70.readPixels(0, 0, _0x266157, _0x2d5b8a, _0x56ac70.RGBA, _0x56ac70.UNSIGNED_BYTE, _0x5ef7cd);
+    const _0x8ca8ee = {
+      pixels: _0x5ef7cd,
+      width: _0x266157,
+      height: _0x2d5b8a
+    };
+    _0x18145f.alphaCache = _0x8ca8ee;
+  } catch (_0x49bec5) {
+    console.warn("Failed to update alpha cache:", _0x49bec5);
+  }
+}
+function preloadVideoToFirstFrame(_0x1ba27d) {
+  _0x1ba27d.currentTime = 0;
+  _0x1ba27d.pause();
+}
+function ensureVideoLoaded(_0x3e5985, _0x244dca, _0x299d70, _0x414163) {
+  return new Promise((_0x405778, _0x34d840) => {
+    if (_0x3e5985[_0x244dca] && _0x3e5985[_0x244dca].readyState >= 2) {
+      _0x405778(_0x3e5985[_0x244dca]);
+      return;
+    }
+    const _0x377858 = _0x244dca + "Loading";
+    if (_0x3e5985[_0x377858] && _0x3e5985[_0x244dca]) {
+      const _0x2fedb4 = () => {
+        _0x3e5985[_0x244dca].removeEventListener("loadeddata", _0x2fedb4);
+        _0x3e5985[_0x244dca].removeEventListener("error", _0x71424d);
+        _0x405778(_0x3e5985[_0x244dca]);
+      };
+      const _0x71424d = () => {
+        _0x3e5985[_0x244dca].removeEventListener("loadeddata", _0x2fedb4);
+        _0x3e5985[_0x244dca].removeEventListener("error", _0x71424d);
+        _0x34d840(new Error("可选视频 " + _0x414163 + " 加载失败"));
+      };
+      _0x3e5985[_0x244dca].addEventListener("loadeddata", _0x2fedb4);
+      _0x3e5985[_0x244dca].addEventListener("error", _0x71424d);
+      return;
+    }
+    _0x3e5985[_0x377858] = true;
+    const _0x1b5067 = createHiddenVideo(_0x3e5985[_0x299d70], _0x414163);
+    _0x3e5985[_0x244dca] = _0x1b5067;
+    _0x1b5067.addEventListener("loadeddata", () => {
+      _0x3e5985[_0x377858] = false;
+      _0x405778(_0x1b5067);
+    });
+    _0x1b5067.addEventListener("error", () => {
+      _0x3e5985[_0x377858] = false;
+      console.warn("[st-chatu8] 可选视频 " + _0x414163 + " 加载失败，功能不可用");
+      _0x34d840(new Error("可选视频 " + _0x414163 + " 加载失败"));
+    });
+    startVideoLoad(_0x1b5067);
+  });
+}
+function setupHeadPatEnded
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=327738
+gradient {\n            0% { background-position: 0% 50%; }\n            50% { background-position: 100% 50%; }\n            100% { background-position: 0% 50%; }\n        }\n        @keyframes st-chatu8-wobble {\n            0% { transform: translateY(0); }\n            20% { transform: translateY(-3px); }\n            40% { transform: translateY(1px); }\n            60% { transform: translateY(-1px); }\n            80% { transform: translateY(0.5px); }\n            100% { transform: translateY(0); }\n        }\n        @keyframes st-chatu8-spin {\n            0% { transform: translate(-50%, -50%) rotate(0deg); }\n            100% { transform: translate(-50%, -50%) rotate(360deg); }\n        }\n    ";
+  const _0x20291c = "\n        /* 加载状态 - 隐藏原有文字和图标，显示旋转加载动画 */\n        " + _0x2130f4 + "[data-loading=\"true\"] {\n            /* 使用透明色隐藏文字，但保持文字占位以维持按钮尺寸 */\n            color: transparent !important;\n            position: relative !important;\n            pointer-events: none !important;\n        }\n        " + _0x2130f4 + "[data-loading=\"true\"]::before {\n            /* 清除任何原有的装饰内容 */\n            content: '' !important;\n            /* 使用 CSS border 绘制的纯色旋转圆环 */\n            width: 14px !important;\n            height: 14px !important;\n            background: transparent !important;\n            border: 2px solid rgba(255, 255, 255, 0.7) !important;\n            border-top-color: transparent !important;\n            border-radius: 50% !important;\n            position: absolute !important;\n            top: 50% !important;\n            left: 50% !important;\n            /* 使用动画中的 translate 居中，不设置 margin 和 transform */\n            margin: 0 !important;\n            animation: st-chatu8-spin 0.8s linear infinite !important;\n            /* 重置其他样式 */\n            font-family: inherit !important;\n            font-size: 0 !important;\n            text-indent: 0 !important;\n            box-shadow: none !important;\n            filter: none !important;\n            text-shadow: none !important;\n        }\n        /* 加载状态下隐藏 ::after 装饰元素 */\n        " + _0x2130f4 + "[data-loading=\"true\"]::after {\n            display: none !important;\n            content: none !important;\n        }\n    ";
+  _0x222266 += _0x3cc65b;
+  _0x222266 += _0x20291c;
+  switch (_0x248669) {
+    case "默认":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: var(--st-chatu8-accent-primary, #4a90d9) !important;\n                    color: white !important;\n                    border: none !important;\n                    border-radius: 6px !important;\n                    padding: 6px 14px !important;\n                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;\n                    transition: all 0.2s ease;\n                    font-weight: 500;\n                }\n                " + _0x2130f4 + ":hover {\n                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;\n                    transform: translateY(-1px);\n                    filter: brightness(1.1);\n                }\n                " + _0x2130f4 + ":active {\n                    transfo
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=333831
+ _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(145deg, rgba(0, 25, 50, 0.95), rgba(0, 15, 35, 0.98)) !important;\n                    color: #00ffff !important;\n                    border: 1.5px solid rgba(0, 255, 255, 0.6) !important;\n                    border-radius: 6px !important;\n                    padding: 8px 18px !important;\n                    box-shadow: \n                        0 0 8px rgba(0, 255, 255, 0.3),\n                        0 2px 10px rgba(0, 0, 0, 0.3),\n                        inset 0 1px 0 rgba(0, 255, 255, 0.1) !important;\n                    text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);\n                    transition: all 0.25s ease;\n                    font-weight: 600;\n                    letter-spacing: 1px;\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* 电路线条装饰 - 左侧 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: 6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 12px;\n                    height: 2px;\n                    background: rgba(0, 255, 255, 0.5);\n                    box-shadow: \n                        0 -6px 0 0 rgba(0, 255, 255, 0.3),\n                        0 6px 0 0 rgba(0, 255, 255, 0.3),\n                        12px 0 0 0 rgba(0, 255, 255, 0.4),\n                        12px -6px 0 0 rgba(0, 255, 255, 0.2);\n                }\n                /* 电路线条装饰 - 右侧 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    right: 6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 12px;\n                    height: 2px;\n                    background: rgba(0, 255, 255, 0.5);\n                    box-shadow: \n                        0 -6px 0 0 rgba(0, 255, 255, 0.3),\n                        0 6px 0 0 rgba(0, 255, 255, 0.3),\n                        -12px 0 0 0 rgba(0, 255, 255, 0.4),\n                        -12px 6px 0 0 rgba(0, 255, 255, 0.2);\n                }\n                " + _0x2130f4 + ":hover {\n                    background: linear-gradient(145deg, rgba(0, 35, 60, 0.95), rgba(0, 20, 45, 0.98)) !important;\n                    border-color: rgba(0, 255, 255, 0.8) !important;\n                    box-shadow: \n                        0 0 15px rgba(0, 255, 255, 0.4),\n                        0 4px 15px rgba(0, 0, 0, 0.3),\n                        inset 0 1px 0 rgba(0, 255, 255, 0.15) !important;\n                    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);\n                    transform: translateY(-1px);\n                }\n                " + _0x2130f4 + ":hover::before,\n                " + _0x2130f4 + ":hover::after {\n                    background: rgba(0, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + ":
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=334519
+               transition: all 0.25s ease;\n                    font-weight: 600;\n                    letter-spacing: 1px;\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* 电路线条装饰 - 左侧 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: 6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 12px;\n                    height: 2px;\n                    background: rgba(0, 255, 255, 0.5);\n                    box-shadow: \n                        0 -6px 0 0 rgba(0, 255, 255, 0.3),\n                        0 6px 0 0 rgba(0, 255, 255, 0.3),\n                        12px 0 0 0 rgba(0, 255, 255, 0.4),\n                        12px -6px 0 0 rgba(0, 255, 255, 0.2);\n                }\n                /* 电路线条装饰 - 右侧 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    right: 6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 12px;\n                    height: 2px;\n                    background: rgba(0, 255, 255, 0.5);\n                    box-shadow: \n                        0 -6px 0 0 rgba(0, 255, 255, 0.3),\n                        0 6px 0 0 rgba(0, 255, 255, 0.3),\n                        -12px 0 0 0 rgba(0, 255, 255, 0.4),\n                        -12px 6px 0 0 rgba(0, 255, 255, 0.2);\n                }\n                " + _0x2130f4 + ":hover {\n                    background: linear-gradient(145deg, rgba(0, 35, 60, 0.95), rgba(0, 20, 45, 0.98)) !important;\n                    border-color: rgba(0, 255, 255, 0.8) !important;\n                    box-shadow: \n                        0 0 15px rgba(0, 255, 255, 0.4),\n                        0 4px 15px rgba(0, 0, 0, 0.3),\n                        inset 0 1px 0 rgba(0, 255, 255, 0.15) !important;\n                    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);\n                    transform: translateY(-1px);\n                }\n                " + _0x2130f4 + ":hover::before,\n                " + _0x2130f4 + ":hover::after {\n                    background: rgba(0, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(0);\n                    filter: brightness(0.9);\n                }\n            ";
+      break;
+    case "极简黑白":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: #ffffff !important;\n                    color: #1a1a1a !important;\n                    border: 2px solid #1a1a1a !important;\n                    border-radius: 4px !important;\n                    padding: 8px 18px !important;\n                    text-transform: uppercase;\n                    transition: all 0.2s ease;\n                    font-weight: 700;\n                    letter-spacing: 1.5px;\n                    
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=346884
+n                    right: 8px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    font-size: 10px;\n                    color: rgba(255, 255, 255, 0.6);\n                }\n                " + _0x2130f4 + ":hover {\n                    box-shadow: \n                        0 6px 20px rgba(32, 167, 254, 0.5),\n                        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;\n                    transform: translateY(-2px);\n                    filter: brightness(1.08);\n                }\n                " + _0x2130f4 + ":hover::after {\n                    color: rgba(255, 255, 255, 0.9);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(0);\n                    filter: brightness(0.95);\n                }\n            ";
+      break;
+    case "魔法图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #667eea, #764ba2) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 40px !important;\n                    height: 40px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f0d0'; /* fa-magic (wand) - ensure FontAwesome is loaded */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: rotate(15deg) scale(1.1);\n                    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "赛博几何":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: #fce300 !important; /* Cyberpunk Yellow */\n                    color: #000 !important;\n                    border: none !important;\n                    padding: 8px 16px !important;\n                    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);\n                    font-family: 'Courier New', Courier, monospace !important;\n                    font-weight: 900;\n                    text-transform: uppercase;\n                    letter-spacing: 2px;\n                    transition: all 0.2s;\n              
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=351635
+ow: 2px 2px 0px 0px rgba(0,0,0,0.1);\n                }\n                " + _0x2130f4 + ":hover {\n                    border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px !important;\n                    transform: scale(1.05) rotate(-2deg);\n                    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);\n                }\n            ";
+      if (_0x7ac0a7) {
+        _0x222266 += "\n                    " + _0x2130f4 + " {\n                        color: #ddd !important;\n                        border-color: #ddd !important;\n                    }\n                ";
+      }
+      break;
+    case "极简文字":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: transparent !important;\n                    color: #4a90d9 !important; /* Original blue or theme color */\n                    border: none !important;\n                    padding: 4px 8px !important;\n                    position: relative;\n                    overflow: visible;\n                }\n                /* Underline effect */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    width: 0;\n                    height: 2px;\n                    bottom: 0;\n                    left: 0;\n                    background-color: #4a90d9;\n                    transition: width 0.3s ease;\n                }\n                " + _0x2130f4 + ":hover {\n                    background: transparent !important;\n                    color: #2c5282 !important; /* Darker blue */\n                }\n                " + _0x2130f4 + ":hover::after {\n                    width: 100%;\n                }\n            ";
+      if (_0x7ac0a7) {
+        _0x222266 += "\n                    " + _0x2130f4 + " {\n                         color: #90cdf4 !important; /* Lighter blue for dark mode */\n                    }\n                    " + _0x2130f4 + "::after {\n                        background-color: #90cdf4;\n                    }\n                    " + _0x2130f4 + ":hover {\n                        color: #63b3ed !important;\n                    }\n                ";
+      }
+      break;
+    case "冰封水晶":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    /* Ice block base */\n                    background: rgba(255, 255, 255, 0.15) !important;\n                    color: #e0f7fa !important; /* Icy blue text */\n                    border: 1px solid rgba(255, 255, 255, 0.6) !important;\n                    border-radius: 4px !important;\n                    padding: 8px 16px !important;\n                    font-weight: bold;\n                    text-shadow: 0 1px 2px rgba(0, 100, 255, 0.3);\n                    backdrop-filter: blur(4px);\n                    -webkit-backdrop-filter: blur(4px);\n                    box-shadow: \n                        inset 0 0 10px rgba(255, 255, 255, 0.5), /* Inner glow */\n                        inset 2px 2px 5px rgba(255, 255, 255, 0.8), /* Top-left highlight */\n                        inset -2px -2px 5px rgba(0, 0, 50, 0.1), /* Bottom-right shadow */\n                        0 5px 15px rgba(0, 0, 0, 0.1); /* External shadow */\n                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* Shine effect */\n                " + _0x2130f4 + "::before {\n                    content: '
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=354091
+ text */\n                    border: 1px solid rgba(255, 255, 255, 0.6) !important;\n                    border-radius: 4px !important;\n                    padding: 8px 16px !important;\n                    font-weight: bold;\n                    text-shadow: 0 1px 2px rgba(0, 100, 255, 0.3);\n                    backdrop-filter: blur(4px);\n                    -webkit-backdrop-filter: blur(4px);\n                    box-shadow: \n                        inset 0 0 10px rgba(255, 255, 255, 0.5), /* Inner glow */\n                        inset 2px 2px 5px rgba(255, 255, 255, 0.8), /* Top-left highlight */\n                        inset -2px -2px 5px rgba(0, 0, 50, 0.1), /* Bottom-right shadow */\n                        0 5px 15px rgba(0, 0, 0, 0.1); /* External shadow */\n                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* Shine effect */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    top: -50%;\n                    left: -50%;\n                    width: 200%;\n                    height: 200%;\n                    background: linear-gradient(\n                        to bottom right,\n                        rgba(255, 255, 255, 0) 0%,\n                        rgba(255, 255, 255, 0) 40%,\n                        rgba(255, 255, 255, 0.4) 50%,\n                        rgba(255, 255, 255, 0) 60%,\n                        rgba(255, 255, 255, 0) 100%\n                    );\n                    transform: rotate(45deg);\n                    transition: transform 0.5s;\n                    pointer-events: none;\n                }\n                " + _0x2130f4 + ":hover {\n                    background: rgba(255, 255, 255, 0.25) !important;\n                    transform: translateY(-2px);\n                    box-shadow: \n                        inset 0 0 15px rgba(255, 255, 255, 0.6),\n                        0 8px 25px rgba(0, 0, 0, 0.15);\n                    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: rotate(45deg) translate(50%, 50%);\n                }\n            ";
+      break;
+    case "流光宝石":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: \n                        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 35%),\n                        linear-gradient(135deg, #23d5ab 0%, #23a6d5 40%, #9c5bd5 70%, #e73c7e 100%) !important;\n                    color: white !important;\n                    border: 1px solid rgba(255, 255, 255, 0.25) !important;\n                    border-radius: 25px !important;\n                    padding: 8px 22px !important;\n                    font-weight: 700;\n                    letter-spacing: 0.5px;\n                    box-shadow: \n                        0 6px 20px rgba(35, 166, 213, 0.3),\n                        0 3px 8px rg
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=358006
+ctive {\n                    transform: translateY(0);\n                    filter: brightness(0.95);\n                }\n            ";
+      break;
+    case "悬浮胶囊":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: rgba(255, 255, 255, 0.05) !important;\n                    color: var(--smart-theme-body-color, #eee) !important;\n                    border: 1px solid rgba(255, 255, 255, 0.1) !important;\n                    border-radius: 50px !important;\n                    padding: 8px 20px !important;\n                    box-shadow: \n                        inset 0 0 10px rgba(0,0,0,0.5),\n                        0 0 0 4px rgba(255, 255, 255, 0.05),\n                        0 10px 20px rgba(0,0,0,0.3);\n                    backdrop-filter: blur(2px);\n                    transition: all 0.4s ease;\n                    font-weight: 500;\n                    letter-spacing: 2px;\n                    position: relative;\n                }\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    width: 0%;\n                    height: 2px;\n                    background: #fff;\n                    transform: translate(-50%, -50%);\n                    transition: width 0.3s ease;\n                    opacity: 0.5;\n                    box-shadow: 0 0 10px #fff;\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: translateY(-5px);\n                    box-shadow: \n                        inset 0 0 20px rgba(0,0,0,0.6),\n                        0 0 0 6px rgba(255, 255, 255, 0.1),\n                        0 20px 40px rgba(0,0,0,0.4);\n                    color: #fff !important;\n                    text-shadow: 0 0 8px rgba(255,255,255,0.8);\n                }\n                " + _0x2130f4 + ":hover::after {\n                    width: 80%;\n                    opacity: 1;\n                }\n            ";
+      if (!_0x7ac0a7) {
+        _0x222266 += "\n                    " + _0x2130f4 + " {\n                        color: #333 !important;\n                        border-color: rgba(0,0,0,0.1) !important;\n                        background: rgba(0,0,0,0.02) !important;\n                        box-shadow: \n                            inset 0 0 10px rgba(0,0,0,0.05),\n                            0 0 0 4px rgba(0,0,0,0.02),\n                            0 10px 20px rgba(0,0,0,0.1);\n                    }\n                    " + _0x2130f4 + ":hover {\n                        box-shadow: \n                            inset 0 0 20px rgba(0,0,0,0.1),\n                            0 0 0 6px rgba(0,0,0,0.05),\n                            0 20px 40px rgba(0,0,0,0.15);\n                    }\n                    " + _0x2130f4 + "::after {\n                        background: #333;\n                        box-shadow: 0 0 5px #333;\n                    }\n                ";
+      }
+      break;
+    case "全息立方":
+      _0x222266 += "\n                " + _0
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=358796
+ilter: blur(2px);\n                    transition: all 0.4s ease;\n                    font-weight: 500;\n                    letter-spacing: 2px;\n                    position: relative;\n                }\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    width: 0%;\n                    height: 2px;\n                    background: #fff;\n                    transform: translate(-50%, -50%);\n                    transition: width 0.3s ease;\n                    opacity: 0.5;\n                    box-shadow: 0 0 10px #fff;\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: translateY(-5px);\n                    box-shadow: \n                        inset 0 0 20px rgba(0,0,0,0.6),\n                        0 0 0 6px rgba(255, 255, 255, 0.1),\n                        0 20px 40px rgba(0,0,0,0.4);\n                    color: #fff !important;\n                    text-shadow: 0 0 8px rgba(255,255,255,0.8);\n                }\n                " + _0x2130f4 + ":hover::after {\n                    width: 80%;\n                    opacity: 1;\n                }\n            ";
+      if (!_0x7ac0a7) {
+        _0x222266 += "\n                    " + _0x2130f4 + " {\n                        color: #333 !important;\n                        border-color: rgba(0,0,0,0.1) !important;\n                        background: rgba(0,0,0,0.02) !important;\n                        box-shadow: \n                            inset 0 0 10px rgba(0,0,0,0.05),\n                            0 0 0 4px rgba(0,0,0,0.02),\n                            0 10px 20px rgba(0,0,0,0.1);\n                    }\n                    " + _0x2130f4 + ":hover {\n                        box-shadow: \n                            inset 0 0 20px rgba(0,0,0,0.1),\n                            0 0 0 6px rgba(0,0,0,0.05),\n                            0 20px 40px rgba(0,0,0,0.15);\n                    }\n                    " + _0x2130f4 + "::after {\n                        background: #333;\n                        box-shadow: 0 0 5px #333;\n                    }\n                ";
+      }
+      break;
+    case "全息立方":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: rgba(0, 255, 255, 0.05) !important;\n                    color: #0ff !important;\n                    border: 1px solid rgba(0, 255, 255, 0.3) !important;\n                    padding: 0 16px !important;\n                    min-width: 100px !important;\n                    height: 40px !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                    transform-style: preserve-3d;\n                    transform: perspective(800px) rotateY(0deg);\n                    transition: transform 0.5s ease;\n                    position: relative;\n                    box-shadow: 0 0 1
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=360212
+\n                        border-color: rgba(0,0,0,0.1) !important;\n                        background: rgba(0,0,0,0.02) !important;\n                        box-shadow: \n                            inset 0 0 10px rgba(0,0,0,0.05),\n                            0 0 0 4px rgba(0,0,0,0.02),\n                            0 10px 20px rgba(0,0,0,0.1);\n                    }\n                    " + _0x2130f4 + ":hover {\n                        box-shadow: \n                            inset 0 0 20px rgba(0,0,0,0.1),\n                            0 0 0 6px rgba(0,0,0,0.05),\n                            0 20px 40px rgba(0,0,0,0.15);\n                    }\n                    " + _0x2130f4 + "::after {\n                        background: #333;\n                        box-shadow: 0 0 5px #333;\n                    }\n                ";
+      }
+      break;
+    case "全息立方":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: rgba(0, 255, 255, 0.05) !important;\n                    color: #0ff !important;\n                    border: 1px solid rgba(0, 255, 255, 0.3) !important;\n                    padding: 0 16px !important;\n                    min-width: 100px !important;\n                    height: 40px !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                    transform-style: preserve-3d;\n                    transform: perspective(800px) rotateY(0deg);\n                    transition: transform 0.5s ease;\n                    position: relative;\n                    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);\n                    font-size: 14px !important;\n                    font-weight: bold;\n                    letter-spacing: 1px;\n                    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.5);\n                    transform: translateZ(20px);\n                    pointer-events: none;\n                    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);\n                }\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.3);\n                    transform: translateZ(-20px);\n                    pointer-events: none;\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: perspective(800px) rotateX(10deg) rotateY(20deg) scale(1.1);\n                    background: rgba(0, 255, 255, 0.1) !important;\n                    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);\n                    text-shadow: 0 0 10px rgba(0, 255, 255, 1);\n                }\n            ";
+      break;
+    case "赛博方块":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(to bottom, #444, #333) !important;\n                    color: white !important;\n                    border: none !important;\n                 
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=361060
+}
+      break;
+    case "全息立方":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: rgba(0, 255, 255, 0.05) !important;\n                    color: #0ff !important;\n                    border: 1px solid rgba(0, 255, 255, 0.3) !important;\n                    padding: 0 16px !important;\n                    min-width: 100px !important;\n                    height: 40px !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                    transform-style: preserve-3d;\n                    transform: perspective(800px) rotateY(0deg);\n                    transition: transform 0.5s ease;\n                    position: relative;\n                    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);\n                    font-size: 14px !important;\n                    font-weight: bold;\n                    letter-spacing: 1px;\n                    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.5);\n                    transform: translateZ(20px);\n                    pointer-events: none;\n                    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);\n                }\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.3);\n                    transform: translateZ(-20px);\n                    pointer-events: none;\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: perspective(800px) rotateX(10deg) rotateY(20deg) scale(1.1);\n                    background: rgba(0, 255, 255, 0.1) !important;\n                    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);\n                    text-shadow: 0 0 10px rgba(0, 255, 255, 1);\n                }\n            ";
+      break;
+    case "赛博方块":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(to bottom, #444, #333) !important;\n                    color: white !important;\n                    border: none !important;\n                    border-radius: 0 !important;\n                    padding: 8px 16px !important;\n                    position: relative;\n                    transform-style: preserve-3d;\n                    transition: transform 0.1s;\n                    font-family: monospace !important;\n                    text-transform: uppercase;\n                    /* Combined Isometric View */\n                    transform: perspective(800px) rotateX(20deg) rotateY(0deg) rot
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=361552
+      justify-content: center;\n                    align-items: center;\n                    transform-style: preserve-3d;\n                    transform: perspective(800px) rotateY(0deg);\n                    transition: transform 0.5s ease;\n                    position: relative;\n                    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);\n                    font-size: 14px !important;\n                    font-weight: bold;\n                    letter-spacing: 1px;\n                    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);\n                }\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.5);\n                    transform: translateZ(20px);\n                    pointer-events: none;\n                    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);\n                }\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    width: 100%;\n                    height: 100%;\n                    background: rgba(0, 255, 255, 0.1);\n                    border: 1px solid rgba(0, 255, 255, 0.3);\n                    transform: translateZ(-20px);\n                    pointer-events: none;\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: perspective(800px) rotateX(10deg) rotateY(20deg) scale(1.1);\n                    background: rgba(0, 255, 255, 0.1) !important;\n                    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);\n                    text-shadow: 0 0 10px rgba(0, 255, 255, 1);\n                }\n            ";
+      break;
+    case "赛博方块":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(to bottom, #444, #333) !important;\n                    color: white !important;\n                    border: none !important;\n                    border-radius: 0 !important;\n                    padding: 8px 16px !important;\n                    position: relative;\n                    transform-style: preserve-3d;\n                    transition: transform 0.1s;\n                    font-family: monospace !important;\n                    text-transform: uppercase;\n                    /* Combined Isometric View */\n                    transform: perspective(800px) rotateX(20deg) rotateY(0deg) rotateZ(0deg); \n                    box-shadow: \n                        -1px 0 0 #222, \n                        -2px 0 0 #222, \n                        -3px 0 0 #222, \n                        -4px 0 0 #222, \n                        -5px 0 0 #222, \n                        0 1px 0 #222, \n                        0 2px 0 #222,\n                        0 0 0 2px rgba(0,0,0,0.5); /* Outline */\n                }\n                \n                " + _0x2130f4 + ":hover {\n              
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=364276
+n                        -3px 0 0 #222, \n                        -4px 0 0 #222, \n                        -5px 0 0 #222, \n                        0 1px 0 #222, \n                        0 2px 0 #222,\n                        0 0 0 2px rgba(0,0,0,0.5); /* Outline */\n                }\n                \n                " + _0x2130f4 + ":hover {\n                    background: linear-gradient(to bottom, #555, #444) !important;\n                    color: #0ff !important;\n                    text-shadow: 0 0 5px #0ff;\n                }\n                \n                " + _0x2130f4 + ":active {\n                    /* Press down animation, maintaining perspective but adding translation */\n                    transform: perspective(800px) rotateX(20deg) translate(-3px, 3px); \n                    box-shadow: \n                        -1px 0 0 #222, \n                        -2px 0 0 #222, \n                        0 0 0 2px rgba(0,0,0,0.5);\n                }\n                \n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: 0; \n                    bottom: 0;\n                    width: 100%;\n                    height: 3px;\n                    background: #0ff;\n                    opacity: 0.5;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    opacity: 1;\n                    box-shadow: 0 0 10px #0ff;\n                }\n            ";
+      break;
+    case "森林图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #56ab2f 0%, #7bc043 50%, #a8e063 100%) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(255, 255, 255, 0.3) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 4px 12px rgba(86, 171, 47, 0.4),\n                        inset 0 2px 0 rgba(255, 255, 255, 0.25) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f4d8'; /* fa-leaf */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 1px 2px rgba(0, 60, 0, 0.3);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n  
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=364952
+but adding translation */\n                    transform: perspective(800px) rotateX(20deg) translate(-3px, 3px); \n                    box-shadow: \n                        -1px 0 0 #222, \n                        -2px 0 0 #222, \n                        0 0 0 2px rgba(0,0,0,0.5);\n                }\n                \n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: 0; \n                    bottom: 0;\n                    width: 100%;\n                    height: 3px;\n                    background: #0ff;\n                    opacity: 0.5;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    opacity: 1;\n                    box-shadow: 0 0 10px #0ff;\n                }\n            ";
+      break;
+    case "森林图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #56ab2f 0%, #7bc043 50%, #a8e063 100%) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(255, 255, 255, 0.3) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 4px 12px rgba(86, 171, 47, 0.4),\n                        inset 0 2px 0 rgba(255, 255, 255, 0.25) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f4d8'; /* fa-leaf */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 1px 2px rgba(0, 60, 0, 0.3);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 6px 18px rgba(86, 171, 47, 0.5),\n                        inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: translate(-50%, -50%) rotate(-10deg);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "少女图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=367167
+n                    text-indent: 0 !important;\n                    text-shadow: 0 1px 2px rgba(0, 60, 0, 0.3);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 6px 18px rgba(86, 171, 47, 0.5),\n                        inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: translate(-50%, -50%) rotate(-10deg);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "少女图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffb6c1 100%) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(255, 255, 255, 0.5) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 4px 15px rgba(255, 154, 158, 0.45),                        inset 0 2px 0 rgba(255, 255, 255, 0.35) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f004'; /* fa-heart */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 1px 3px rgba(200, 100, 120, 0.4);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 6px 20px rgba(255, 154, 158, 0.55),                        inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: translate(-50%, -50%) scale(1.15);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "星空图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, rgba(84, 13, 171,
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=369427
+ant;\n                    text-shadow: 0 1px 3px rgba(200, 100, 120, 0.4);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 6px 20px rgba(255, 154, 158, 0.55),                        inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: translate(-50%, -50%) scale(1.15);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "星空图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, rgba(84, 13, 171, 1) 0%, rgba(60, 80, 180, 1) 50%, rgba(32, 167, 254, 1) 100%) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(255, 255, 255, 0.25) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 4px 15px rgba(84, 13, 171, 0.45),                        inset 0 2px 0 rgba(255, 255, 255, 0.2) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                /* 背景星点装饰 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    top: 0; left: 0; right: 0; bottom: 0;\n                    background: \n                        radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),                        radial-gradient(circle at 75% 70%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),                        radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.35) 0.8px, transparent 0.8px);\n                    pointer-events: none;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f005'; /* fa-star */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);\n                    z-index: 1;\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=372309
+portant;\n                    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);\n                    z-index: 1;\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 6px 20px rgba(32, 167, 254, 0.5),                        inset 0 2px 0 rgba(255, 255, 255, 0.25) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "霓虹图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(145deg, rgba(0, 25, 50, 0.98), rgba(0, 15, 35, 1)) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(0, 255, 255, 0.5) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 0 10px rgba(0, 255, 255, 0.3),                        0 4px 12px rgba(0, 0, 0, 0.4),                        inset 0 0 8px rgba(0, 255, 255, 0.1) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f0e7'; /* fa-bolt */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 900;\n                    color: #00ffff;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    border-color: rgba(0, 255, 255, 0.8) !important;\n                    box-shadow: \n                        0 0 18px rgba(0, 255, 255, 0.5),                        0 6px 15px rgba(0, 0, 0, 0.4),                        inset 0 0 12px rgba(0, 255, 255, 0.15) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    text-shadow: 0 0 15px rgba(0, 255, 255, 1);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+  
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=374845
+                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    border-color: rgba(0, 255, 255, 0.8) !important;\n                    box-shadow: \n                        0 0 18px rgba(0, 255, 255, 0.5),                        0 6px 15px rgba(0, 0, 0, 0.4),                        inset 0 0 12px rgba(0, 255, 255, 0.15) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    text-shadow: 0 0 15px rgba(0, 255, 255, 1);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: scale(0.95);\n                }\n            ";
+      break;
+    case "宝石图标":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: \n                        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 40%),\n                        linear-gradient(135deg, #23d5ab 0%, #23a6d5 40%, #9c5bd5 70%, #e73c7e 100%) !important;\n                    color: transparent !important;\n                    font-size: 0 !important;\n                    text-indent: -9999px !important;\n                    width: 42px !important;\n                    height: 42px !important;\n                    padding: 0 !important;\n                    border-radius: 50% !important;\n                    border: 2px solid rgba(255, 255, 255, 0.3) !important;\n                    position: relative;\n                    overflow: hidden;\n                    transition: all 0.25s ease;\n                    box-shadow: \n                        0 5px 18px rgba(35, 166, 213, 0.4),                        0 3px 8px rgba(0, 0, 0, 0.2),                        inset 0 1px 0 rgba(255, 255, 255, 0.4),                        inset 0 -2px 4px rgba(0, 0, 0, 0.15) !important;\n                    display: inline-flex !important;\n                    justify-content: center;\n                    align-items: center;\n                }\n                " + _0x2130f4 + "::before {\n                    content: '\\f3a5'; /* fa-gem */\n                    font-family: \"Font Awesome 6 Free\", \"Font Awesome 5 Free\", \"FontAwesome\";\n                    font-weight: 400; /* Regular style for gem */\n                    color: white;\n                    font-size: 18px;\n                    text-indent: 0 !important;\n                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);\n                    position: absolute;\n                    top: 50%;\n                    left: 50%;\n                    transform: translate(-50%, -50%);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: scale(1.1);\n                    box-shadow: \n                        0 7px 22px rgba(35, 166, 213, 0.5),                        0 4px 10px rgba(0, 0, 0, 0.25),                        inset 0 1px 0 rgba(255, 255, 255, 0.5),                        inset 0 -2px 4px rgba(0, 0, 0, 0.18) !important;\n                }\n                " + _0x2130f4 + ":hover::before {\n                    transform: translate(-50%, -50%) rotate(15deg);\n                }\n                " + _0x2130f4 + ":acti
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=379141
+       content: '';\n                    position: absolute;\n                    top: 0;\n                    left: 0;\n                    right: 0;\n                    bottom: 0;\n                    background: \n                        repeating-linear-gradient(\n                            90deg,\n                            transparent 0px,\n                            transparent 8px,\n                            rgba(0, 0, 0, 0.05) 8px,\n                            rgba(0, 0, 0, 0.05) 9px\n                        ),                        repeating-linear-gradient(\n                            0deg,\n                            transparent 0px,\n                            transparent 3px,\n                            rgba(255, 255, 255, 0.03) 3px,\n                            rgba(255, 255, 255, 0.03) 4px\n                        );\n                    pointer-events: none;\n                }\n                /* 木节装饰 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    right: 8px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 8px;\n                    height: 8px;\n                    background: radial-gradient(circle, #5D3A1A 0%, #8B4513 60%, transparent 70%);\n                    border-radius: 50%;\n                    opacity: 0.6;\n                }\n                " + _0x2130f4 + ":hover {\n                    box-shadow: \n                        0 6px 15px rgba(93, 58, 26, 0.5),                        inset 0 1px 0 rgba(255, 255, 255, 0.2),                        inset 0 -1px 0 rgba(0, 0, 0, 0.25) !important;\n                    transform: translateY(-2px);\n                    filter: brightness(1.05);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(0);\n                    filter: brightness(0.95);\n                }\n            ";
+      break;
+    case "云朵白":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 50%, #e8ecf0 100%) !important;\n                    color: #5a6a7a !important;\n                    border: none !important;\n                    border-radius: 25px !important;\n                    padding: 8px 22px !important;\n                    box-shadow: \n                        0 6px 20px rgba(0, 0, 0, 0.08),                        0 2px 6px rgba(0, 0, 0, 0.04),                        inset 0 2px 0 rgba(255, 255, 255, 1),                        inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;\n                    transition: all 0.3s ease;\n                    font-weight: 600;\n                    position: relative;\n                    overflow: visible;\n                }\n                /* 云朵蓬松边缘 - 左侧 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: -6px;\n                    top: 50%;\n                    tran
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=381088
+rightness(0.95);\n                }\n            ";
+      break;
+    case "云朵白":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 50%, #e8ecf0 100%) !important;\n                    color: #5a6a7a !important;\n                    border: none !important;\n                    border-radius: 25px !important;\n                    padding: 8px 22px !important;\n                    box-shadow: \n                        0 6px 20px rgba(0, 0, 0, 0.08),                        0 2px 6px rgba(0, 0, 0, 0.04),                        inset 0 2px 0 rgba(255, 255, 255, 1),                        inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;\n                    transition: all 0.3s ease;\n                    font-weight: 600;\n                    position: relative;\n                    overflow: visible;\n                }\n                /* 云朵蓬松边缘 - 左侧 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: -6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 14px;\n                    height: 14px;\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);\n                    border-radius: 50%;\n                    box-shadow: \n                        0 3px 8px rgba(0, 0, 0, 0.06),                        inset 0 1px 0 rgba(255, 255, 255, 1);\n                }\n                /* 云朵蓬松边缘 - 右侧 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    right: -6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 14px;\n                    height: 14px;\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);\n                    border-radius: 50%;\n                    box-shadow: \n                        0 3px 8px rgba(0, 0, 0, 0.06),                        inset 0 1px 0 rgba(255, 255, 255, 1);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: translateY(-3px);\n                    box-shadow: \n                        0 10px 30px rgba(0, 0, 0, 0.1),                        0 4px 10px rgba(0, 0, 0, 0.05),                        inset 0 2px 0 rgba(255, 255, 255, 1),                        inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(-1px);\n                }\n            ";
+      break;
+    case "水流蓝":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #00b4db 0%, #0083b0 50%, #00b4db 100%) !important;\n                    color: white !important;\n                    border: 1px solid rgba(255, 255, 255, 0.3) !important;\n                    border-radius: 20px !important;\n                    padding: 8px 22p
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=381721
+55, 255, 255, 1),                        inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;\n                    transition: all 0.3s ease;\n                    font-weight: 600;\n                    position: relative;\n                    overflow: visible;\n                }\n                /* 云朵蓬松边缘 - 左侧 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    left: -6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 14px;\n                    height: 14px;\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);\n                    border-radius: 50%;\n                    box-shadow: \n                        0 3px 8px rgba(0, 0, 0, 0.06),                        inset 0 1px 0 rgba(255, 255, 255, 1);\n                }\n                /* 云朵蓬松边缘 - 右侧 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    right: -6px;\n                    top: 50%;\n                    transform: translateY(-50%);\n                    width: 14px;\n                    height: 14px;\n                    background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);\n                    border-radius: 50%;\n                    box-shadow: \n                        0 3px 8px rgba(0, 0, 0, 0.06),                        inset 0 1px 0 rgba(255, 255, 255, 1);\n                }\n                " + _0x2130f4 + ":hover {\n                    transform: translateY(-3px);\n                    box-shadow: \n                        0 10px 30px rgba(0, 0, 0, 0.1),                        0 4px 10px rgba(0, 0, 0, 0.05),                        inset 0 2px 0 rgba(255, 255, 255, 1),                        inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(-1px);\n                }\n            ";
+      break;
+    case "水流蓝":
+      _0x222266 += "\n                " + _0x2130f4 + " {\n                    background: linear-gradient(135deg, #00b4db 0%, #0083b0 50%, #00b4db 100%) !important;\n                    color: white !important;\n                    border: 1px solid rgba(255, 255, 255, 0.3) !important;\n                    border-radius: 20px !important;\n                    padding: 8px 22px !important;\n                    box-shadow: \n                        0 4px 15px rgba(0, 131, 176, 0.4),                        inset 0 2px 0 rgba(255, 255, 255, 0.25),                        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;\n                    transition: all 0.25s ease;\n                    font-weight: 600;\n                    text-shadow: 0 1px 2px rgba(0, 50, 80, 0.3);\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* 波浪纹理 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: a
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=384411
+ 0, 0.1) !important;\n                    transition: all 0.25s ease;\n                    font-weight: 600;\n                    text-shadow: 0 1px 2px rgba(0, 50, 80, 0.3);\n                    position: relative;\n                    overflow: hidden;\n                }\n                /* 波浪纹理 */\n                " + _0x2130f4 + "::before {\n                    content: '';\n                    position: absolute;\n                    top: 0;\n                    left: 0;\n                    right: 0;\n                    bottom: 0;\n                    background: \n                        repeating-linear-gradient(\n                            -45deg,\n                            transparent 0px,\n                            transparent 4px,\n                            rgba(255, 255, 255, 0.08) 4px,\n                            rgba(255, 255, 255, 0.08) 8px\n                        );\n                    pointer-events: none;\n                }\n                /* 水滴高光 */\n                " + _0x2130f4 + "::after {\n                    content: '';\n                    position: absolute;\n                    left: 10px;\n                    top: 6px;\n                    width: 6px;\n                    height: 6px;\n                    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);\n                    border-radius: 50%;\n                }\n                " + _0x2130f4 + ":hover {\n                    box-shadow: \n                        0 6px 20px rgba(0, 131, 176, 0.5),                        inset 0 2px 0 rgba(255, 255, 255, 0.3),                        inset 0 -1px 0 rgba(0, 0, 0, 0.15) !important;\n                    transform: translateY(-2px);\n                    filter: brightness(1.05);\n                }\n                " + _0x2130f4 + ":active {\n                    transform: translateY(0);\n                    filter: brightness(0.95);\n                }\n            ";
+      break;
+    default:
+      _0x222266 += "";
+      break;
+  }
+  _0x4d5714.textContent = _0x222266;
+  currentButtonStyleCSS = _0x222266;
+}
+var currentButtonStyleCSS;
+const _0x1df891 = {
+  "utils/settings/buttonstyle.js": function () {
+    currentButtonStyleCSS = "";
+  }
+};
+var init_buttonstyle = __esm(_0x1df891);
+function injectFrameStyleToDocument(_0x2ce681) {
+  if (!_0x2ce681 || !currentFrameStyleCSS) {
+    return;
+  }
+  const _0x5b4af6 = "st-chatu8-image-frame-style";
+  let _0x154d29 = _0x2ce681.getElementById(_0x5b4af6);
+  if (!_0x154d29) {
+    _0x154d29 = _0x2ce681.createElement("style");
+    _0x154d29.id = _0x5b4af6;
+    const _0x497e91 = _0x2ce681.head || _0x2ce681.documentElement;
+    if (_0x497e91) {
+      _0x497e91.appendChild(_0x154d29);
+    } else {
+      return;
+    }
+  }
+  if (_0x154d29.textContent !== currentFrameStyleCSS) {
+    _0x154d29.textContent = currentFrameStyleCSS;
+  }
+}
+function applyImageFrameStyle(_0x84144e, _0x37a55f = true) {
+  const _0x17e21a = "st-chatu8-image-frame-style";
+  let _0x536ac1 = document.getElementById(_0x17e21a);
+  if (!_0x536ac1) {
+    _0x536ac1 = document.createElem
+
+====================================================================================================
+PATTERN=width\s*:\s*[^,\n]+ OFFSET=387053
+ _0x2ce681.documentElement;
+    if (_0x497e91) {
+      _0x497e91.appendChild(_0x154d29);
+    } else {
+      return;
+    }
+  }
+  if (_0x154d29.textContent !== currentFrameStyleCSS) {
+    _0x154d29.textContent = currentFrameStyleCSS;
+  }
+}
+function applyImageFrameStyle(_0x84144e, _0x37a55f = true) {
+  const _0x17e21a = "st-chatu8-image-frame-style";
+  let _0x536ac1 = document.getElementById(_0x17e21a);
+  if (!_0x536ac1) {
+    _0x536ac1 = document.createElement("style");
+    _0x536ac1.id = _0x17e21a;
+    document.head.appendChild(_0x536ac1);
+  }
+  const _0x2bafdf = _0x5b9a8e[extensionName];
+  const _0x18c386 = _0x2bafdf?.imageAlignment || "center";
+  const _0x10ceb2 = _0x2bafdf?.imageSizeScale || "100";
+  let _0x224442 = "";
+  const _0x245fca = ".st-chatu8-image-container";
+  const _0x38b715 = _0x245fca + " img, " + _0x245fca + " video";
+  _0x224442 += "\n        " + _0x245fca + " {\n            display: block;\n            position: relative;\n            line-height: 0;\n            text-align: " + _0x18c386 + ";\n            margin: 0.5em 0;\n        }\n        " + _0x245fca + " img,\n        " + _0x245fca + " video {\n            display: inline-block !important;\n            max-width: " + _0x10ceb2 + "% !important;\n            height: auto !important;\n            vertical-align: middle;\n        }\n    ";
+  switch (_0x84144e) {
+    case "无样式":
+    default:
+      _0x224442 += "\n                " + _0x38b715 + " {\n                    border: none !important;\n                    box-shadow: none !important;\n                    outline: none !important;\n                    border-radius: 0 !important;\n                }\n            ";
+      break;
+    case "简约白边":
+      _0x224442 += "\n                " + _0x38b715 + " {\n                    border: 3px solid rgba(255, 255, 255, 0.9) !important;\n                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;\n                    border-radius: 2px !important;\n                }\n            ";
+      if (!_0x37a55f) {
+        _0x224442 += "\n                    " + _0x38b715 + " {\n                        border-color: rgba(30, 30, 30, 0.85) !important;\n                    }\n                ";
+      }
+      break;
+    case "柔和阴影":
+      _0x224442 += "\n                " + _0x38b715 + " {\n                    border: none !important;\n                    box-shadow: \n                        0 4px 12px rgba(0, 0, 0, 0.15),\n                        0 2px 4px rgba(0, 0, 0, 0.1) !important;\n                    border-radius: 4px !important;\n                }\n            ";
+      break;
+    case "圆角相框":
+      _0x224442 += "\n                " + _0x38b715 + " {\n                    border: 2px solid rgba(128, 128, 128, 0.3) !important;\n                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;\n                    border-radius: 12px !important;\n                }\n            ";
+      break;
+    case "复古画框":
+      _0x224442 += "\n                " + _0x38b715 + " {\n                    border: 4px solid #8B7355 !important;\n                    box-shadow: \n                        inset 0 0 0 
