@@ -16,50 +16,115 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: analysis-auto-resolution
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Deobfuscate bundle
-        run: npx --yes webcrack index.js > deobfuscated.js
-
-      - name: Extract dimension parsing statements
+      - name: Fetch target commits
         run: |
-          mkdir -p analysis/exact
+          git fetch origin 481e187efbd1b806fb59a423b49704bb446bb073
+          git fetch origin 55584d71d44d6684a9ecb539827f45ab85e6f05a
+          git show 481e187efbd1b806fb59a423b49704bb446bb073:index.js > old-index.js
+          git show 55584d71d44d6684a9ecb539827f45ab85e6f05a:index.js > new-index.js
+
+      - name: Deobfuscate both bundles
+        run: |
+          npx --yes webcrack old-index.js > old-deob.js
+          npx --yes webcrack new-index.js > new-deob.js
+
+      - name: Extract focused diff
+        run: |
+          mkdir -p analysis/version-diff
           python - <<'PY'
+          import difflib
           import re
           from pathlib import Path
-          text = Path('deobfuscated.js').read_text(encoding='utf-8', errors='replace')
-          lines = text.splitlines()
-          pats = [
-              re.compile(r'\.split\(["\'][x×]["\']\)', re.I),
-              re.compile(r'\.match\([^\n]{0,300}[x×][^\n]{0,300}\)', re.I),
-              re.compile(r'new RegExp\([^\n]{0,300}[x×]', re.I),
-              re.compile(r'%width%|%height%', re.I),
-              re.compile(r'\.replace\([^\n]{0,300}%width%|\.replace\([^\n]{0,300}%height%', re.I),
-              re.compile(r'(?:width|height)\s*=\s*(?:parseInt|Number|Math\.)', re.I),
-              re.compile(r'(?:1216|832)\s*[,}:]|[,:{]\s*(?:1216|832)', re.I),
+
+          old = Path('old-deob.js').read_text(encoding='utf-8', errors='replace')
+          new = Path('new-deob.js').read_text(encoding='utf-8', errors='replace')
+
+          def function_from_marker(text, marker, max_len=30000):
+              pos = text.find(marker)
+              if pos < 0:
+                  return f'NOT FOUND: {marker}\n'
+              starts = list(re.finditer(r'(?:^|\n)(?:async\s+)?function\s+[A-Za-z_$][\w$]*\s*\(', text[:pos]))
+              if starts:
+                  start = starts[-1].start()
+              else:
+                  start = max(0, pos - 4000)
+              nxt = re.search(r'\n(?:async\s+)?function\s+[A-Za-z_$][\w$]*\s*\(', text[pos + 1:])
+              end = pos + 1 + nxt.start() if nxt else min(len(text), start + max_len)
+              return text[start:min(end, start + max_len)]
+
+          markers = [
+              'function convertNewXmlFormatToOld',
+              'payload222',
+              '<size>',
+              'generate-image-request',
           ]
-          out=[]; seen=set()
-          for i,line in enumerate(lines):
-              if len(line)>1800 or not any(p.search(line) for p in pats):
-                  continue
-              start=max(0,i-12); end=min(len(lines),i+18)
-              key=(start,end)
-              if key in seen: continue
-              seen.add(key)
-              out.append('\n'+'='*100+f'\nLINES {start+1}-{end}\n')
-              out.extend(f'{j+1:06d}: {lines[j]}\n' for j in range(start,end))
-          Path('analysis/exact/dimension-statements.txt').write_text(''.join(out),encoding='utf-8')
+
+          out = []
+          for marker in markers:
+              old_block = function_from_marker(old, marker)
+              new_block = function_from_marker(new, marker)
+              out.append('\n' + '=' * 120 + '\n')
+              out.append(f'MARKER: {marker}\n')
+              out.extend(difflib.unified_diff(
+                  old_block.splitlines(True),
+                  new_block.splitlines(True),
+                  fromfile='2.7.1',
+                  tofile='2.7.2',
+                  n=8,
+              ))
+
+          # Extract all compact lines likely related to dimension parsing or payload assignment.
+          patterns = [
+              re.compile(r'payload222', re.I),
+              re.compile(r'<\/?size>', re.I),
+              re.compile(r'\d+\s*[x×]\s*\d+', re.I),
+              re.compile(r'\\d[^\n]{0,120}[x×][^\n]{0,120}\\d', re.I),
+              re.compile(r'(?:width|height)\s*[:=]', re.I),
+              re.compile(r'%width%|%height%', re.I),
+              re.compile(r'parse.*(?:width|height|size)', re.I),
+              re.compile(r'(?:width|height|size).*match\(', re.I),
+          ]
+
+          def relevant_lines(text):
+              lines = text.splitlines()
+              selected = []
+              for i, line in enumerate(lines):
+                  if len(line) > 1600:
+                      continue
+                  if any(p.search(line) for p in patterns):
+                      selected.append((i, line))
+              return selected
+
+          old_lines = relevant_lines(old)
+          new_lines = relevant_lines(new)
+          out.append('\n' + '=' * 120 + '\nRELEVANT LINE COUNTS\n')
+          out.append(f'2.7.1={len(old_lines)}\n2.7.2={len(new_lines)}\n')
+
+          old_text = '\n'.join(f'{i+1:06d}: {line}' for i, line in old_lines)
+          new_text = '\n'.join(f'{i+1:06d}: {line}' for i, line in new_lines)
+          out.extend(difflib.unified_diff(
+              old_text.splitlines(True),
+              new_text.splitlines(True),
+              fromfile='2.7.1 relevant',
+              tofile='2.7.2 relevant',
+              n=5,
+          ))
+
+          Path('analysis/version-diff/2.7.1-to-2.7.2-resolution.txt').write_text(''.join(out), encoding='utf-8')
           PY
 
       - name: Commit analysis result
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add analysis/exact/dimension-statements.txt
+          git add analysis/version-diff/2.7.1-to-2.7.2-resolution.txt
           git diff --cached --quiet && exit 0
-          git commit -m "chore: record dimension parsing statements [skip ci]"
+          git commit -m "chore: record 2.7.1 to 2.7.2 resolution diff [skip ci]"
           git push origin analysis-auto-resolution
