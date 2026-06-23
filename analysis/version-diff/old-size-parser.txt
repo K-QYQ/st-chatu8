@@ -1,0 +1,419 @@
+function convertNewXmlFormatToOld(_0x22fc88) {
+  if (!_0x22fc88 || typeof _0x22fc88 !== "string") {
+    return _0x22fc88;
+  }
+  const _0x5ade3b = [..._0x22fc88.matchAll(/<images>([\s\S]*?)<\/images>/gi)];
+  if (_0x5ade3b.length === 0) {
+    return _0x22fc88;
+  }
+  const _0x1c6391 = _0x5ade3b[_0x5ade3b.length - 1];
+  const _0x1de612 = _0x1c6391[1];
+  if (!/<prompts>|<title_styled>/i.test(_0x1de612)) {
+    return _0x22fc88;
+  }
+  const _0xd5db59 = _0x1de612.replace(/<image>([\s\S]*?)<\/image>/gi, (_0x6f8074, _0x3cb5d0) => {
+    const _0x480b0b = _0x3cb5d0.match(/<regex>([\s\S]*?)<\/regex>/i);
+    const _0x5a636e = _0x480b0b ? "regex:" + _0x480b0b[1].trim() : "";
+    const _0x244e08 = _0x3cb5d0.match(/<title_styled>([\s\S]*?)<\/title_styled>/i);
+    const _0x54b769 = _0x244e08 ? "<font color=\"steelblue\">[" + _0x244e08[1].trim() + "]</font>" : "";
+    const _0x1dcae3 = _0x3cb5d0.match(/<Tag_think>([\s\S]*?)<\/Tag_think>/i);
+    const _0x402e1d = _0x1dcae3 ? "<Tag_think>\n" + _0x1dcae3[1].trim() + "\n</Tag_think>" : "";
+    const _0x330459 = _0x3cb5d0.match(/<size>([\s\S]*?)<\/size>/i);
+    let _0x193b7a = "";
+    if (_0x330459) {
+      const _0x1a21f6 = _0x330459[1].trim().replace(/，/g, ",").split(",");
+      if (_0x1a21f6.length > 0) {
+        _0x193b7a = _0x1a21f6[_0x1a21f6.length - 1].trim();
+      }
+    }
+    const _0x2be69b = _0x3cb5d0.match(/<prompts>([\s\S]*?)<\/prompts>/i);
+    let _0x131da8 = "";
+    if (_0x2be69b) {
+      const _0x3311f7 = _0x2be69b[1];
+      const _0x41fe87 = _0x3311f7.match(/<scene_composition>([\s\S]*?)<\/scene_composition>/i);
+      const _0x406c47 = /<character_(\d+)>([\s\S]*?)<\/character_\1>/gi;
+      const _0x49a79a = [..._0x3311f7.matchAll(_0x406c47)];
+      if (_0x41fe87 || _0x49a79a.length > 0) {
+        let _0x267a8a = _0x41fe87 ? _0x41fe87[1].trim() : "";
+        if (_0x193b7a) {
+          if (_0x267a8a && !_0x267a8a.endsWith(",")) {
+            _0x267a8a += ",";
+          }
+          _0x267a8a += _0x193b7a;
+        }
+        const _0x6a581a = _0x267a8a ? "Scene Composition:" + _0x267a8a + ";" : "";
+        let _0x30dff1 = "";
+        for (const _0x50db42 of _0x49a79a) {
+          const _0x1f6a74 = _0x50db42[1];
+          const _0x58c415 = _0x50db42[2];
+          const _0x4801c9 = _0x58c415.match(/<prompt>([\s\S]*?)<\/prompt>/i);
+          const _0x273c4f = _0x4801c9 ? _0x4801c9[1].trim() : "";
+          const _0x1b3f25 = _0x58c415.match(/<centers>([\s\S]*?)<\/centers>/i);
+          const _0x25f2d8 = _0x1b3f25 ? _0x1b3f25[1].trim() : "";
+          const _0x42384c = _0x58c415.match(/<uc>([\s\S]*?)<\/uc>/i);
+          const _0x37587b = _0x42384c ? _0x42384c[1].trim() : "";
+          if (_0x273c4f || _0x25f2d8) {
+            _0x30dff1 += "Character " + _0x1f6a74 + " Prompt:" + _0x273c4f + "|centers:" + _0x25f2d8 + ";\n";
+          }
+          if (_0x37587b) {
+            _0x30dff1 += "Character " + _0x1f6a74 + " UC:" + _0x37587b + ";\n";
+          }
+        }
+        const _0x4e4d8a = [_0x6a581a, _0x30dff1].filter(_0x3d2d43 => _0x3d2d43.trim()).join("\n").trim();
+        if (_0x4e4d8a) {
+          _0x131da8 = "image###" + _0x4e4d8a + "###";
+        }
+      } else {
+        let _0x3ba448 = _0x3311f7.trim();
+        if (_0x193b7a) {
+          if (_0x3ba448 && !_0x3ba448.endsWith(",")) {
+            _0x3ba448 += ",";
+          }
+          _0x3ba448 += _0x193b7a;
+        }
+        if (_0x3ba448) {
+          _0x131da8 = "image###" + _0x3ba448 + "###";
+        }
+      }
+    }
+    const _0x387e9c = [_0x5a636e, _0x54b769, _0x402e1d, _0x131da8].filter(_0x2af371 => _0x2af371.trim()).join("\n");
+    return "<image>\n" + _0x387e9c + "\n</image>";
+  });
+  const _0x456074 = "<images>\n" + _0xd5db59 + "\n</images>";
+  const _0x3aa433 = _0x22fc88.substring(0, _0x1c6391.index);
+  const _0x5882bd = _0x22fc88.substring(_0x1c6391.index + _0x1c6391[0].length);
+  return _0x3aa433 + _0x456074 + _0x5882bd;
+}
+function parseImagesFromPrompt(_0x461382) {
+  const _0x2e989c = debugTimer("imageInserter.parseImagesFromPrompt", "解析 LLM 输出中的图片标签");
+  const _0x321b28 = [];
+  if (!_0x461382 || typeof _0x461382 !== "string") {
+    const _0x266620 = {
+      输入类型: typeof _0x461382,
+      是否为空: !_0x461382
+    };
+    debugBranch("parseImagesFromPrompt", "输入无效 - 跳过", true, _0x266620);
+    _0x2e989c.end("输入无效");
+    return _0x321b28;
+  }
+  const _0x1168bf = {
+    文本长度: _0x461382.length
+  };
+  debugLog("imageInserter.parseImagesFromPrompt", "开始解析", _0x1168bf);
+  debugContent("parseImagesFromPrompt", "LLM 原始输出", _0x461382, 500);
+  console.log("[parseImagesFromPrompt] 开始解析，文本长度:", _0x461382.length);
+  const _0x5b40fc = convertNewXmlFormatToOld(_0x461382);
+  if (_0x5b40fc !== _0x461382) {
+    _0x461382 = _0x5b40fc;
+    console.log("[parseImagesFromPrompt] 检测到新版 XML 格式并转换为旧版兼容格式，新长度:", _0x461382.length);
+    debugBranch("parseImagesFromPrompt", "格式转换", true, {
+      备注: "将新版 XML 图片格式转换为兼容格式"
+    });
+  }
+  const _0x1a9400 = normalizeImagesReply(_0x461382);
+  if (_0x1a9400.changed) {
+    _0x461382 = _0x1a9400.output;
+    console.log("[parseImagesFromPrompt] images 块已规范化，新长度:", _0x461382.length, _0x1a9400.warnings.length ? "warnings=" + JSON.stringify(_0x1a9400.warnings) : "");
+  }
+  let _0x48f48a = _0x461382;
+  const _0x2de9ca = /<images>([\s\S]*?)<\/images>/g;
+  const _0x4de5eb = [..._0x461382.matchAll(_0x2de9ca)];
+  if (_0x4de5eb.length > 0) {
+    _0x48f48a = _0x4de5eb.map(_0x50a3d0 => _0x50a3d0[1]).join("\n");
+    const _0x296908 = {
+      容器数量: _0x4de5eb.length,
+      合并后长度: _0x48f48a.length
+    };
+    debugBranch("parseImagesFromPrompt", "找到 <images> 容器", true, _0x296908);
+    console.log("[parseImagesFromPrompt] 找到", _0x4de5eb.length, "个 <images> 容器，已合并所有内容（总长度:", _0x48f48a.length, "）");
+  } else {
+    debugBranch("parseImagesFromPrompt", "未找到 <images> 容器 - 使用完整文本", true);
+    console.log("[parseImagesFromPrompt] 未找到 <images> 容器，使用完整文本");
+  }
+  const _0x1301db = /<image>([\s\S]*?)<\/image>/g;
+  const _0x2c0d99 = [];
+  let _0x45b7af;
+  while ((_0x45b7af = _0x1301db.exec(_0x48f48a)) !== null) {
+    const _0x1f61cc = {
+      fullMatch: _0x45b7af[0],
+      content: _0x45b7af[1],
+      startIndex: _0x45b7af.index
+    };
+    _0x2c0d99.push(_0x1f61cc);
+  }
+  const _0x3eb72b = {
+    块数量: _0x2c0d99.length
+  };
+  debugLog("imageInserter.parseImagesFromPrompt", "找到 <image> 块", _0x3eb72b);
+  console.log("[parseImagesFromPrompt] 找到", _0x2c0d99.length, "个 <image> 块");
+  for (let _0x36d9ed = 0; _0x36d9ed < _0x2c0d99.length; _0x36d9ed++) {
+    const _0x50c95a = _0x2c0d99[_0x36d9ed];
+    const _0x582dc2 = _0x50c95a.content;
+    console.log("[parseImagesFromPrompt] 解析第 " + (_0x36d9ed + 1) + " 个 <image> 块，内容长度: " + _0x582dc2.length);
+    let _0x21adab = "";
+    const _0x429f41 = /<imgthink>([\s\S]*?)<\/imgthink>/;
+    const _0x839e7 = _0x582dc2.match(_0x429f41);
+    if (_0x839e7) {
+      const _0x10172b = _0x839e7[1];
+      const _0xc6e574 = _0x10172b.match(/regex:(.*?)(?:\n|$)/);
+      if (_0xc6e574) {
+        _0x21adab = _0xc6e574[1].trim();
+      }
+    }
+    if (!_0x21adab) {
+      const _0x309fd8 = _0x582dc2.match(/regex:(.*?)(?:\n|$)/);
+      if (_0x309fd8) {
+        _0x21adab = _0x309fd8[1].trim();
+      }
+    }
+    const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+    const {
+      startTag: _0x3b41d5,
+      endTag: _0x47927e
+    } = getImageTags();
+    let _0x4d1137;
+    if (!_0x8e9509) {
+      const _0x5762ad = _0x3b41d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const _0x1ef849 = _0x47927e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const _0x560751 = new RegExp(_0x5762ad + "([\\s\\S]*?)" + _0x1ef849);
+      const _0x3e9843 = _0x582dc2.match(_0x560751);
+      const _0x1af955 = _0x3e9843 ? _0x3e9843[1].trim() : "";
+      _0x4d1137 = _0x1af955 ? "" + _0x3b41d5 + _0x1af955 + _0x47927e : "";
+      console.log("[parseImagesFromPrompt] tagthinkEcho=false, 仅提取纯 tag: \"" + _0x4d1137.substring(0, 50) + "...\"");
+    } else {
+      _0x4d1137 = _0x582dc2.replace(/regex:.*?(?:\n|$)/g, "").trim();
+      console.log("[parseImagesFromPrompt] tagthinkEcho=true, 保留完整内容: \"" + _0x4d1137.substring(0, 50) + "...\"");
+    }
+    console.log("[parseImagesFromPrompt] 块 " + (_0x36d9ed + 1) + " 结果: regex=\"" + _0x21adab.substring(0, 30) + "...\", tag=\"" + _0x4d1137.substring(0, 50) + "...\"");
+    debugLog("imageInserter.parseImagesFromPrompt", "块 " + (_0x36d9ed + 1) + " 解析结果", {
+      索引: _0x36d9ed + 1,
+      有regex: !!_0x21adab,
+      regex预览: _0x21adab ? _0x21adab.substring(0, 40) : "(无)",
+      有tag: !!_0x4d1137,
+      tag长度: _0x4d1137.length
+    });
+    if (_0x21adab && _0x4d1137) {
+      _0x4d1137 = _0x4d1137.replace(/，/g, ",").replace(/；/g, ";").replace(/：/g, ":");
+      const _0x1dde72 = {
+        regex: _0x21adab,
+        tag: _0x4d1137
+      };
+      _0x321b28.push(_0x1dde72);
+      debugBranch("parseImagesFromPrompt", "块 " + (_0x36d9ed + 1) + " 有效 - 已添加", true);
+    } else {
+      const _0x1e706a = {
+        原因: !_0x21adab ? "缺少regex" : "缺少tag"
+      };
+      debugBranch("parseImagesFromPrompt", "块 " + (_0x36d9ed + 1) + " 无效 - 跳过", true, _0x1e706a);
+    }
+  }
+  console.log("[parseImagesFromPrompt] 解析完成，共", _0x321b28.length, "个有效图片");
+  console.group("[parseImagesFromPrompt] 解析结果详情");
+  for (let _0x43247f = 0; _0x43247f < _0x321b28.length; _0x43247f++) {
+    console.group("图片 " + (_0x43247f + 1));
+    console.log("regex:", _0x321b28[_0x43247f].regex);
+    console.log("tag 完整内容:");
+    console.log(_0x321b28[_0x43247f].tag);
+    console.groupEnd();
+  }
+  console.groupEnd();
+  const _0x12e771 = {
+    总块数: _0x2c0d99.length,
+    有效图片数: _0x321b28.length
+  };
+  debugLog("imageInserter.parseImagesFromPrompt", "解析完成", _0x12e771);
+  _0x2e989c.end("解析到 " + _0x321b28.length + " 个有效图片");
+  if (_0x2c0d99.length > 0 && _0x321b28.length === 0) {
+    toastr.warning("LLM 输出解析失败：检测到 <image> 标签但未能解析出有效数据。请检查 LLM 输出格式是否包含 regex: 行。");
+  }
+  return _0x321b28;
+}
+async function insertImagesIntoElement(_0x5a170a, _0x8fefc3) {
+  const _0x4c4e1f = debugTimer("imageInserter.insertImagesIntoElement", "将图片标签插入到 DOM");
+  if (!_0x5a170a || !_0x8fefc3 || _0x8fefc3.length === 0) {
+    const _0x12364a = {
+      有rootElement: !!_0x5a170a,
+      有images: !!_0x8fefc3,
+      images数量: _0x8fefc3?.length || 0
+    };
+    debugBranch("insertImagesIntoElement", "输入无效 - 跳过", true, _0x12364a);
+    _0x4c4e1f.end("输入无效");
+    return;
+  }
+  const _0x2aad73 = {
+    待插入数量: _0x8fefc3.length
+  };
+  debugLog("imageInserter.insertImagesIntoElement", "开始插入图片标签", _0x2aad73);
+  debugElement("insertImagesIntoElement", "目标根元素", _0x5a170a);
+  const _0x3953cd = _0x5a170a.ownerDocument || document;
+  const _0x410805 = _0x5a170a.querySelectorAll(".image-tag-button, .st-chatu8-image-button");
+  _0x410805.forEach(_0x519607 => _0x519607.remove());
+  const _0x5e9cf0 = _0x5a170a.querySelectorAll(".st-chatu8-image-span");
+  _0x5e9cf0.forEach(_0x3626fd => _0x3626fd.remove());
+  const _0x4bb3c7 = _0x5a170a.querySelectorAll(".st-chatu8-image-container");
+  _0x4bb3c7.forEach(_0x28f95f => _0x28f95f.remove());
+  const _0x5c5277 = _0x5a170a.querySelectorAll(".st-chatu8-collapse-wrapper");
+  _0x5c5277.forEach(_0x3d48a8 => _0x3d48a8.remove());
+  const _0x16548c = {
+    清理按钮数: _0x410805.length,
+    清理容器数: _0x4bb3c7.length + _0x5e9cf0.length + _0x5c5277.length
+  };
+  debugLog("imageInserter.insertImagesIntoElement", "清理旧元素完成", _0x16548c);
+  console.log("[insertImagesIntoElement] Cleaned up existing image elements");
+  const _0x64ed37 = String(_0x2c4622[extensionName]?.insertOriginalText) === "true";
+  if (_0x64ed37) {
+    const _0x41245a = findMesTextFromElement(_0x5a170a);
+    if (_0x41245a) {
+      const _0x27218f = _0x41245a.closest(".mes");
+      const _0x2162ff = parseInt(_0x27218f?.getAttribute("mesid"), 10);
+      if (!isNaN(_0x2162ff) && chat[_0x2162ff] && chat[_0x2162ff].mes && chat[_0x2162ff].mes.length >= 100) {
+        console.log("[insertImagesIntoElement] insertOriginalText 快速路径 - 直接用原文匹配");
+        const _0x276145 = {
+          mesId: _0x2162ff,
+          mes长度: chat[_0x2162ff].mes.length
+        };
+        debugLog("imageInserter.insertImagesIntoElement", "insertOriginalText 快速路径", _0x276145);
+        await saveImageGroup(_0x8fefc3, "", _0x5a170a);
+        _0x4c4e1f.end("insertOriginalText 快速路径完成");
+        return;
+      } else {
+        console.log("[insertImagesIntoElement] insertOriginalText 条件不满足，退回 DOM 逻辑");
+      }
+    }
+  }
+  const _0x3dccd1 = !_0x64ed37 ? _0x5a170a.querySelector(":scope > div") : null;
+  if (_0x3dccd1) {
+    console.log("[insertImagesIntoElement] Will exclude first direct <div> from matching:", _0x3dccd1.textContent?.substring(0, 50));
+  }
+  const _0x1336e9 = [];
+  let _0x149529 = "";
+  let _0x5e1d6f = -1;
+  let _0x3f439d = -1;
+  const _0x552351 = _0x3953cd.createTreeWalker(_0x5a170a, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, {
+    acceptNode: function (_0x44d8fb) {
+      const _0x5d9057 = _0x44d8fb.parentElement?.tagName;
+      if (_0x44d8fb.nodeType === Node.ELEMENT_NODE && _0x44d8fb.tagName !== "BR") {
+        return NodeFilter.FILTER_SKIP;
+      }
+      if (_0x5d9057 === "SCRIPT" || _0x5d9057 === "STYLE" || _0x5d9057 === "BUTTON" || _0x44d8fb.parentElement?.classList.contains("image-tag-button") || _0x44d8fb.parentElement?.classList.contains("st-chatu8-image-span")) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  let _0x5df586;
+  while (_0x5df586 = _0x552351.nextNode()) {
+    const _0x4b6f19 = _0x149529.length;
+    let _0x5ec731 = "";
+    if (_0x5df586.nodeType === Node.TEXT_NODE) {
+      _0x5ec731 = _0x5df586.textContent;
+    } else if (_0x5df586.tagName === "BR") {
+      _0x5ec731 = "\n";
+    }
+    if (_0x3dccd1 && _0x5ec731.length > 0) {
+      const _0x1065be = _0x5df586 === _0x3dccd1 || _0x3dccd1.contains(_0x5df586);
+      if (_0x1065be) {
+        if (_0x5e1d6f === -1) {
+          _0x5e1d6f = _0x4b6f19;
+        }
+        _0x3f439d = _0x4b6f19 + _0x5ec731.length;
+      }
+    }
+    _0x149529 += _0x5ec731;
+    const _0x1ba292 = {
+      node: _0x5df586,
+      start: _0x4b6f19,
+      end: _0x149529.length
+    };
+    _0x1336e9.push(_0x1ba292);
+  }
+  if (_0x149529.length === 0) {
+    return;
+  }
+  if (_0x3dccd1 && _0x5e1d6f !== -1) {
+    console.log("[insertImagesIntoElement] First <div> text range in logicalText: [" + _0x5e1d6f + ", " + _0x3f439d + ")");
+  }
+  let _0x18dbc0 = _0x149529;
+  if (_0x3dccd1 && _0x5e1d6f !== -1 && _0x3f439d > _0x5e1d6f) {
+    const _0x2a9115 = _0x18dbc0.substring(0, _0x5e1d6f);
+    const _0x560e2e = _0x18dbc0.substring(_0x3f439d);
+    _0x18dbc0 = _0x2a9115 + _0x560e2e;
+    console.log("[insertImagesIntoElement] Excluded first <div> text from matching (removed " + (_0x3f439d - _0x5e1d6f) + " chars)");
+  }
+  _0x18dbc0 = removeThinkingTextOnly(_0x18dbc0);
+  let _0x233247 = 0;
+  {
+    let _0x19c846 = _0x149529;
+    _0x19c846 = _0x19c846.replace(/<think(?:ing)?[\s\S]*?<\/think(?:ing)?>/gi, "");
+    const _0x5bc8e0 = _0x19c846.match(/^[\s\S]*<\/think(?:ing)?>/i);
+    if (_0x5bc8e0) {
+      _0x233247 = _0x5bc8e0[0].length;
+    }
+    if (_0x233247 === 0) {
+      const _0x20587c = _0x149529.match(/^[\s\S]*<\/think(?:ing)?>/i);
+      if (_0x20587c) {
+        _0x233247 = _0x20587c[0].length;
+      }
+    }
+  }
+  const _0x560209 = generateElKey2(_0x149529);
+  if (_0x560209) {
+    try {
+      const _0x5ef3e2 = (await getcharData("image_groups")) || {};
+      const _0x3b675d = _0x5ef3e2[_0x560209] || [];
+      const _0x54bdf8 = _0x3b675d.filter(_0x5959cd => _0x5959cd.locked === true);
+      if (_0x54bdf8.length > 0) {
+        console.log("[insertImagesIntoElement] Found", _0x54bdf8.length, "locked images in image_groups, merging...");
+        const _0x333710 = new Set(_0x8fefc3.map(_0x3bf977 => _0x3bf977.tag?.trim()));
+        const _0x530bfa = _0x54bdf8.filter(_0x437f68 => !_0x333710.has(_0x437f68.tag?.trim()));
+        _0x8fefc3 = [..._0x530bfa, ..._0x8fefc3];
+        console.log("[insertImagesIntoElement] After merging locked images:", _0x8fefc3.length, "total");
+      }
+    } catch (_0x2b9eb2) {
+      console.warn("[insertImagesIntoElement] Error getting locked images from image_groups:", _0x2b9eb2);
+    }
+  }
+  const _0x3a973a = [];
+  for (const _0x42b609 of _0x8fefc3) {
+    if (!_0x42b609.regex || !_0x42b609.tag) {
+      debugBranch("insertImagesIntoElement", "跳过无效 image (缺少regex或tag)", true);
+      continue;
+    }
+    const _0x3a7da4 = fuzzyMatchLine(_0x18dbc0, _0x42b609.regex, 0.5);
+    if (_0x3a7da4) {
+      let _0x260014 = _0x3a7da4.endIndex;
+      const _0x517194 = _0x3a7da4.matchedLine;
+      const _0xd45f15 = Math.max(_0x233247, _0x3f439d > 0 ? _0x3f439d : 0);
+      let _0x565c93 = _0x149529.indexOf(_0x517194, _0xd45f15);
+      if (_0x565c93 === -1) {
+        _0x565c93 = _0x149529.indexOf(_0x517194);
+      }
+      if (_0x565c93 !== -1) {
+        _0x260014 = _0x565c93 + _0x517194.length;
+        console.log("[insertImagesIntoElement] Remapped endIndex: " + _0x3a7da4.endIndex + " -> " + _0x260014);
+      } else {
+        console.warn("[insertImagesIntoElement] Could not find matched line in original logicalText, using original endIndex");
+      }
+      const _0x53f917 = {
+        endIndex: _0x260014,
+        tag: _0x42b609.tag,
+        matchText: _0x3a7da4.matchedLine,
+        similarity: _0x3a7da4.similarity,
+        aiRegex: _0x42b609.regex
+      };
+      _0x3a973a.push(_0x53f917);
+      debugLog("imageInserter.insertImagesIntoElement", "模糊匹配成功", {
+        相似度: (_0x3a7da4.similarity * 100).toFixed(1) + "%",
+        AI_regex: _0x42b609.regex.substring(0, 40),
+        匹配行: _0x3a7da4.matchedLine.substring(0, 40),
+        位置: _0x260014
+      });
+      console.log("[insertImagesIntoElement] Fuzzy matched with " + (_0x3a7da4.similarity * 100).toFixed(1) + "% similarity");
+      console.log("  AI regex: \"" + _0x42b609.regex + "\"");
+      console.log("  Matched line: \"" + _0x3a7da4.matchedLine + "\"");
+    } else {
+      const _0x1fd70e = {
+        AI_regex: _0x42b609.regex
+      };
+      debugBranch("insertImagesIntoElement", "模糊匹配失败", true, _0x1fd70e);
+      console.warn("[insertImagesIntoElement] No fuzzy 

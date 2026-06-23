@@ -1,0 +1,228 @@
+0x489b73);
+                }
+              }
+              _0x9c8fa7.workers[_0x28b5b6] = _0x5d1a63;
+            }
+          }
+          _0x5c4d57();
+          alert("成功导入 " + Object.keys(_0x55ad77).length + " 个工作流，其中 " + _0x2b39be + " 个是全新的。");
+        }
+      } catch (_0x4be4c7) {
+        alert("导入失败，请确保文件是正确的JSON格式。");
+        console.error("Error importing workflows:", _0x4be4c7);
+      }
+    };
+    _0x1264bc.readAsText(_0x1dafa5);
+  };
+  _0x48145e.click();
+}
+function initWorkerControls(_0x2d03a5) {
+  _0x2d03a5.find("#eidtwork").on("click", eidtwork);
+  _0x2d03a5.find("#visualize_workflow").on("click", visualizeWorkflow);
+  _0x2d03a5.find("#workerid").on("change", worker_change);
+  _0x2d03a5.find("#worker_new").on("click", worker_new);
+  _0x2d03a5.find("#worker_rename").on("click", worker_rename);
+  _0x2d03a5.find("#worker_update_style").on("click", worker_update);
+  _0x2d03a5.find("#worker_save_style").on("click", worker_save);
+  _0x2d03a5.find("#worker_delete_style").on("click", worker_delete);
+  _0x2d03a5.find("#worker_export_current").on("click", worker_export_current);
+  _0x2d03a5.find("#worker_export_all").on("click", worker_export_all);
+  _0x2d03a5.find("#worker_import").on("click", worker_import);
+  _0x2d03a5.find("#editWorkerid").on("change", editWorker_change);
+  _0x2d03a5.find("#edit_worker_new").on("click", editWorker_new);
+  _0x2d03a5.find("#edit_worker_rename").on("click", editWorker_rename);
+  _0x2d03a5.find("#edit_worker_save_style").on("click", editWorker_save);
+  _0x2d03a5.find("#edit_worker_delete_style").on("click", editWorker_delete);
+  _0x2d03a5.find("#edit_worker_update_style").on("click", editWorker_update);
+  _0x2d03a5.find("#edit_worker_export_current").on("click", editWorker_export_current);
+  _0x2d03a5.find("#edit_worker_export_all").on("click", editWorker_export_all);
+  _0x2d03a5.find("#edit_worker_import").on("click", editWorker_import);
+  _0x2d03a5.find("#eidtEditWork").on("click", () => {
+    const _0x10b988 = document.getElementById("editWorker");
+    try {
+      let _0x591090 = JSON.parse(_0x10b988.value.trim());
+      _0x591090 = eidtJSON(_0x591090);
+      _0x10b988.value = JSON.stringify(_0x591090, null, 2);
+    } catch (_0x145304) {
+      alert("请输入正确的json: " + _0x145304);
+    }
+  });
+  _0x2d03a5.find("#visualize_edit_workflow").on("click", () => {
+    const _0x51a8bc = _0x49f1bd[extensionName];
+    const _0x3760b5 = _0x51a8bc.worker;
+    const _0x3c0d0c = _0x51a8bc.workerid;
+    _0x51a8bc.worker = _0x51a8bc.editWorker;
+    _0x51a8bc.workerid = _0x51a8bc.editWorkerid;
+    visualizeWorkflow();
+    setTimeout(() => {
+      _0x51a8bc.worker = _0x3760b5;
+      _0x51a8bc.workerid = _0x3c0d0c;
+    }, 100);
+  });
+}
+function getComfyUIHeaders(_0x2414c8 = null) {
+  const _0x52a469 = {};
+  if (_0x2414c8) {
+    _0x52a469["Content-Type"] = _0x2414c8;
+  }
+  return _0x52a469;
+}
+function stringifyJsonString(_0x1ee3e3) {
+  return JSON.stringify(_0x1ee3e3 == null ? "" : String(_0x1ee3e3));
+}
+function stringifyJsonNumber(_0x48c389, _0x3befc8 = 0) {
+  const _0x322df9 = Number(_0x48c389);
+  if (Number.isFinite(_0x322df9)) {
+    return String(_0x322df9);
+  } else {
+    return String(_0x3befc8);
+  }
+}
+function normalizeSettingString(_0x11f679) {
+  if (_0x11f679 == null) {
+    return "";
+  } else {
+    return String(_0x11f679).trim();
+  }
+}
+function normalizeBackslashPath(_0x5b415e) {
+  return normalizeSettingString(_0x5b415e).replace(/\\{2,}/g, "\\");
+}
+async function replacepro(_0x43c9ce, _0x53b145) {
+  console.log("payload222", _0x43c9ce);
+  _0x53b145 = _0x53b145.replaceAll("\"%seed%\"", stringifyJsonNumber(_0x43c9ce.seed));
+  _0x53b145 = _0x53b145.replaceAll("\"%steps%\"", stringifyJsonNumber(_0x43c9ce.steps));
+  _0x53b145 = _0x53b145.replaceAll("\"%cfg_scale%\"", stringifyJsonNumber(_0x43c9ce.cfg_scale));
+  _0x53b145 = _0x53b145.replaceAll("\"%sampler_name%\"", stringifyJsonString(_0x43c9ce.sampler_name));
+  _0x53b145 = _0x53b145.replaceAll("\"%width%\"", stringifyJsonNumber(_0x43c9ce.width));
+  _0x53b145 = _0x53b145.replaceAll("\"%height%\"", stringifyJsonNumber(_0x43c9ce.height));
+  _0x53b145 = _0x53b145.replaceAll("\"%negative_prompt%\"", stringifyJsonString(_0x43c9ce.negative_prompt));
+  _0x53b145 = _0x53b145.replaceAll("\"%prompt%\"", stringifyJsonString(_0x43c9ce.prompt));
+  _0x53b145 = _0x53b145.replaceAll("\"%MODEL_NAME%\"", stringifyJsonString(_0x43c9ce.MODEL_NAME));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_quanzhong%\"", stringifyJsonNumber(_0x43c9ce.c_quanzhong));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_idquanzhong%\"", stringifyJsonNumber(_0x43c9ce.c_idquanzhong));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_xijie%\"", stringifyJsonNumber(_0x43c9ce.c_xijie));
+  _0x53b145 = _0x53b145.replaceAll("\"%c_fenwei%\"", stringifyJsonNumber(_0x43c9ce.c_fenwei));
+  _0x53b145 = _0x53b145.replaceAll("\"%comfyuicankaotupian%\"", stringifyJsonString(_0x43c9ce.comfyuicankaotupian));
+  _0x53b145 = _0x53b145.replaceAll("\"%ipa%\"", stringifyJsonString(_0x43c9ce.ipa));
+  _0x53b145 = _0x53b145.replaceAll("\"%scheduler%\"", stringifyJsonString(_0x43c9ce.scheduler));
+  _0x53b145 = _0x53b145.replaceAll("\"%vae%\"", stringifyJsonString(_0x43c9ce.vae));
+  _0x53b145 = _0x53b145.replaceAll("\"%clip%\"", stringifyJsonString(_0x43c9ce.clip));
+  console.log(_0x53b145);
+  if (_0x43c9ce.inpaint_image) {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_image%\"", stringifyJsonString(_0x43c9ce.inpaint_image));
+  } else {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_image%\"", stringifyJsonString(""));
+  }
+  if (_0x43c9ce.inpaint_mask) {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_mask%\"", stringifyJsonString(_0x43c9ce.inpaint_mask));
+  } else {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_mask%\"", stringifyJsonString(""));
+  }
+  _0x53b145 = _0x53b145.replaceAll("\"%inpaint_denoise%\"", stringifyJsonNumber(_0x43c9ce.inpaint_denoise || 0.75, 0.75));
+  if (_0x43c9ce.inpaint_positive) {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_positive%\"", stringifyJsonString(_0x43c9ce.inpaint_positive));
+  } else {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_positive%\"", stringifyJsonString(""));
+  }
+  if (_0x43c9ce.inpaint_negative) {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_negative%\"", stringifyJsonString(_0x43c9ce.inpaint_negative));
+  } else {
+    _0x53b145 = _0x53b145.replaceAll("\"%inpaint_negative%\"", stringifyJsonString(""));
+  }
+  JSON.parse(_0x53b145);
+  return _0x53b145;
+}
+var currentTaskId = null;
+async function generateComfyUIImage({
+  prompt: _0x22e3b1,
+  width: _0x39096e,
+  height: _0x1925ea,
+  change: _0x5cf910,
+  extraNegativePrompt: _0x40b0c5
+}) {
+  clearLog();
+  const _0x2e44d7 = taskQueue.addTask({
+    name: (_0x22e3b1 || "").substring(0, 30) + (_0x22e3b1 && _0x22e3b1.length > 30 ? "..." : ""),
+    type: TaskType.COMFYUI,
+    prompt: _0x22e3b1
+  });
+  currentTaskId = _0x2e44d7;
+  _0x22e3b1 = typeof _0x22e3b1 === "string" ? _0x22e3b1 : "";
+  _0x5cf910 = typeof _0x5cf910 === "string" ? _0x5cf910 : "";
+  console.log("link", _0x22e3b1);
+  let _0xf21d3 = "";
+  if (_0x5cf910) {
+    _0xf21d3 = _0x5cf910.replaceAll("{ComfyUI局部重绘}", "").replaceAll("{局部重绘}", "");
+  } else {
+    _0xf21d3 = _0x22e3b1;
+  }
+  const _0x410880 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+  if (typeof _0x22e3b1 === "string") {
+    const _0x2ed71d = _0x22e3b1.match(_0x410880);
+    if (_0x2ed71d) {
+      _0x39096e = parseInt(_0x2ed71d[1], 10);
+      _0x1925ea = parseInt(_0x2ed71d[2], 10);
+    }
+    _0x22e3b1 = _0x22e3b1.replace(_0x410880, "");
+  }
+  if (typeof _0x5cf910 === "string") {
+    const _0x52608b = _0x5cf910.match(_0x410880);
+    if (_0x52608b) {
+      _0x39096e = parseInt(_0x52608b[1], 10);
+      _0x1925ea = parseInt(_0x52608b[2], 10);
+    }
+    _0x5cf910 = _0x5cf910.replace(_0x410880, "");
+  }
+  _0x22e3b1 = processCharacterPrompt(_0x22e3b1);
+  _0x22e3b1 = await stripChineseAnnotations(_0x22e3b1);
+  _0x5cf910 = processCharacterPrompt(_0x5cf910);
+  _0x5cf910 = await stripChineseAnnotations(_0x5cf910);
+  addLog("开始 ComfyUI 生图流程。客户端为" + _0x5aa6ff[extensionName].client);
+  addLog("请求工作流id - " + _0x5aa6ff[extensionName].workerid);
+  addLog("请求尺寸: 宽度 - " + (_0x39096e || "默认") + ", 高度 - " + (_0x1925ea || "默认"));
+  if (_0x5aa6ff[extensionName].MODEL_NAME.trim() === "连接后选择") {
+    addLog("请填写ComfyUI模型。");
+    toastr.error("请填写ComfyUI模型。");
+    taskQueue.completeTask(_0x2e44d7, false);
+    currentTaskId = null;
+    return;
+  }
+  const _0x489b85 = _0x5aa6ff[extensionName].comfyuiUrl.trim();
+  const _0xd59705 = _0x5cf910 && _0x5cf910.trim() !== "" ? _0x5cf910 : _0x22e3b1;
+  addLog("用于生成的Tag: " + _0xd59705);
+  let _0x38ed57 = false;
+  if (_0xd59705.includes("Scene Composition")) {
+    _0x38ed57 = true;
+  }
+  addLog("是否启用分角色模式 (Divide_roles): " + _0x38ed57);
+  let _0x202038 = {};
+  let _0x513b57 = "";
+  let _0x549f62 = "";
+  if (_0x38ed57) {
+    addLog("分角色模式: 解析带坐标的提示词字符串。");
+    _0x202038 = parsePromptStringWithCoordinates(_0xd59705);
+    _0x513b57 = _0x202038["Scene Composition"];
+    for (let _0x2e9b12 = 1; _0x2e9b12 <= 4; _0x2e9b12++) {
+      if (_0x202038["Character " + _0x2e9b12 + " Prompt"]) {
+        _0x549f62 = _0x549f62 + ", " + _0x202038["Character " + _0x2e9b12 + " Prompt"];
+      }
+    }
+  } else {
+    addLog("标准模式: 使用请求中的 prompt。");
+    _0x513b57 = deduplicateTags(_0xd59705);
+  }
+  let {
+    modifiedPrompt: _0x127218,
+    insertions: _0x4b5b1e
+  } = await prompt_replace(_0x513b57, _0x549f62);
+  if (_0x38ed57) {
+    for (let _0x208248 = 1; _0x208248 <= 4; _0x208248++) {
+      if (_0x202038["Character " + _0x208248 + " Prompt"]) {
+        _0x127218 = _0x127218 + " | " + prompt_replace_for_character(_0x202038["Character " + _0x208248 + " Prompt"], (_0x513b57 || "") + " " + (_0x549f62 || ""));
+      }
+    }
+  }
+  const _0x478bdc = getRandomYusheId("yusheid_comfyui");
+  let _0x126a1e = await zhengmian(_0x5aa6ff[extensionName].yushe[_0x478bdc].fixedPrompt, _0x127218, _0x5aa6ff[extensionName].yushe[_0x478bdc].fixedPrompt_end, _0x5aa6ff[extensionName].AQT_comfyui, _0x4b5b1e);
+  _0x126a1e = _0x209a42(_0x126a
