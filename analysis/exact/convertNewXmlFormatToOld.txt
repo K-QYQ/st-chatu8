@@ -1,0 +1,86 @@
+function convertNewXmlFormatToOld(_0x22fc88) {
+  if (!_0x22fc88 || typeof _0x22fc88 !== "string") {
+    return _0x22fc88;
+  }
+  const _0x5ade3b = [..._0x22fc88.matchAll(/<images>([\s\S]*?)<\/images>/gi)];
+  if (_0x5ade3b.length === 0) {
+    return _0x22fc88;
+  }
+  const _0x1c6391 = _0x5ade3b[_0x5ade3b.length - 1];
+  const _0x1de612 = _0x1c6391[1];
+  if (!/<prompts>|<title_styled>/i.test(_0x1de612)) {
+    return _0x22fc88;
+  }
+  const _0xd5db59 = _0x1de612.replace(/<image>([\s\S]*?)<\/image>/gi, (_0x6f8074, _0x3cb5d0) => {
+    const _0x480b0b = _0x3cb5d0.match(/<regex>([\s\S]*?)<\/regex>/i);
+    const _0x5a636e = _0x480b0b ? "regex:" + _0x480b0b[1].trim() : "";
+    const _0x244e08 = _0x3cb5d0.match(/<title_styled>([\s\S]*?)<\/title_styled>/i);
+    const _0x54b769 = _0x244e08 ? "<font color=\"steelblue\">[" + _0x244e08[1].trim() + "]</font>" : "";
+    const _0x1dcae3 = _0x3cb5d0.match(/<Tag_think>([\s\S]*?)<\/Tag_think>/i);
+    const _0x402e1d = _0x1dcae3 ? "<Tag_think>\n" + _0x1dcae3[1].trim() + "\n</Tag_think>" : "";
+    const _0x330459 = _0x3cb5d0.match(/<size>([\s\S]*?)<\/size>/i);
+    let _0x193b7a = "";
+    if (_0x330459) {
+      const _0x1a21f6 = _0x330459[1].trim().replace(/，/g, ",").split(",");
+      if (_0x1a21f6.length > 0) {
+        _0x193b7a = _0x1a21f6[_0x1a21f6.length - 1].trim();
+      }
+    }
+    const _0x2be69b = _0x3cb5d0.match(/<prompts>([\s\S]*?)<\/prompts>/i);
+    let _0x131da8 = "";
+    if (_0x2be69b) {
+      const _0x3311f7 = _0x2be69b[1];
+      const _0x41fe87 = _0x3311f7.match(/<scene_composition>([\s\S]*?)<\/scene_composition>/i);
+      const _0x406c47 = /<character_(\d+)>([\s\S]*?)<\/character_\1>/gi;
+      const _0x49a79a = [..._0x3311f7.matchAll(_0x406c47)];
+      if (_0x41fe87 || _0x49a79a.length > 0) {
+        let _0x267a8a = _0x41fe87 ? _0x41fe87[1].trim() : "";
+        if (_0x193b7a) {
+          if (_0x267a8a && !_0x267a8a.endsWith(",")) {
+            _0x267a8a += ",";
+          }
+          _0x267a8a += _0x193b7a;
+        }
+        const _0x6a581a = _0x267a8a ? "Scene Composition:" + _0x267a8a + ";" : "";
+        let _0x30dff1 = "";
+        for (const _0x50db42 of _0x49a79a) {
+          const _0x1f6a74 = _0x50db42[1];
+          const _0x58c415 = _0x50db42[2];
+          const _0x4801c9 = _0x58c415.match(/<prompt>([\s\S]*?)<\/prompt>/i);
+          const _0x273c4f = _0x4801c9 ? _0x4801c9[1].trim() : "";
+          const _0x1b3f25 = _0x58c415.match(/<centers>([\s\S]*?)<\/centers>/i);
+          const _0x25f2d8 = _0x1b3f25 ? _0x1b3f25[1].trim() : "";
+          const _0x42384c = _0x58c415.match(/<uc>([\s\S]*?)<\/uc>/i);
+          const _0x37587b = _0x42384c ? _0x42384c[1].trim() : "";
+          if (_0x273c4f || _0x25f2d8) {
+            _0x30dff1 += "Character " + _0x1f6a74 + " Prompt:" + _0x273c4f + "|centers:" + _0x25f2d8 + ";\n";
+          }
+          if (_0x37587b) {
+            _0x30dff1 += "Character " + _0x1f6a74 + " UC:" + _0x37587b + ";\n";
+          }
+        }
+        const _0x4e4d8a = [_0x6a581a, _0x30dff1].filter(_0x3d2d43 => _0x3d2d43.trim()).join("\n").trim();
+        if (_0x4e4d8a) {
+          _0x131da8 = "image###" + _0x4e4d8a + "###";
+        }
+      } else {
+        let _0x3ba448 = _0x3311f7.trim();
+        if (_0x193b7a) {
+          if (_0x3ba448 && !_0x3ba448.endsWith(",")) {
+            _0x3ba448 += ",";
+          }
+          _0x3ba448 += _0x193b7a;
+        }
+        if (_0x3ba448) {
+          _0x131da8 = "image###" + _0x3ba448 + "###";
+        }
+      }
+    }
+    const _0x387e9c = [_0x5a636e, _0x54b769, _0x402e1d, _0x131da8].filter(_0x2af371 => _0x2af371.trim()).join("\n");
+    return "<image>\n" + _0x387e9c + "\n</image>";
+  });
+  const _0x456074 = "<images>\n" + _0xd5db59 + "\n</images>";
+  const _0x3aa433 = _0x22fc88.substring(0, _0x1c6391.index);
+  const _0x5882bd = _0x22fc88.substring(_0x1c6391.index + _0x1c6391[0].length);
+  return _0x3aa433 + _0x456074 + _0x5882bd;
+}

@@ -1,0 +1,2392 @@
+
+==========================================================================================
+LINES 5401-5420
+005401: function deduplicateTags(_0x22ce69) {
+005402:   if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+005403:     return "";
+005404:   }
+005405:   const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+005406:   if (_0x5def9e.length === 0) {
+005407:     return "";
+005408:   }
+005409:   const _0x3832e8 = new Map();
+005410:   for (const _0x1c7c27 of _0x5def9e) {
+005411:     const _0x417922 = getBaseTag(_0x1c7c27);
+005412:     if (!_0x3832e8.has(_0x417922)) {
+005413:       _0x3832e8.set(_0x417922, _0x1c7c27);
+005414:     } else {
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+
+==========================================================================================
+LINES 5404-5423
+005404:   }
+005405:   const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+005406:   if (_0x5def9e.length === 0) {
+005407:     return "";
+005408:   }
+005409:   const _0x3832e8 = new Map();
+005410:   for (const _0x1c7c27 of _0x5def9e) {
+005411:     const _0x417922 = getBaseTag(_0x1c7c27);
+005412:     if (!_0x3832e8.has(_0x417922)) {
+005413:       _0x3832e8.set(_0x417922, _0x1c7c27);
+005414:     } else {
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+
+==========================================================================================
+LINES 5405-5424
+005405:   const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+005406:   if (_0x5def9e.length === 0) {
+005407:     return "";
+005408:   }
+005409:   const _0x3832e8 = new Map();
+005410:   for (const _0x1c7c27 of _0x5def9e) {
+005411:     const _0x417922 = getBaseTag(_0x1c7c27);
+005412:     if (!_0x3832e8.has(_0x417922)) {
+005413:       _0x3832e8.set(_0x417922, _0x1c7c27);
+005414:     } else {
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+
+==========================================================================================
+LINES 5407-5426
+005407:     return "";
+005408:   }
+005409:   const _0x3832e8 = new Map();
+005410:   for (const _0x1c7c27 of _0x5def9e) {
+005411:     const _0x417922 = getBaseTag(_0x1c7c27);
+005412:     if (!_0x3832e8.has(_0x417922)) {
+005413:       _0x3832e8.set(_0x417922, _0x1c7c27);
+005414:     } else {
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+005425:     addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+005426:   }
+
+==========================================================================================
+LINES 5411-5430
+005411:     const _0x417922 = getBaseTag(_0x1c7c27);
+005412:     if (!_0x3832e8.has(_0x417922)) {
+005413:       _0x3832e8.set(_0x417922, _0x1c7c27);
+005414:     } else {
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+005425:     addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+005426:   }
+005427:   return _0x173426;
+005428: }
+005429: function parsePromptStringWithCoordinates(_0x35d364) {
+005430:   addLog("解析场景构图字符串: " + _0x35d364);
+
+==========================================================================================
+LINES 5415-5434
+005415:       const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+005425:     addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+005426:   }
+005427:   return _0x173426;
+005428: }
+005429: function parsePromptStringWithCoordinates(_0x35d364) {
+005430:   addLog("解析场景构图字符串: " + _0x35d364);
+005431:   const _0x3d49cc = {
+005432:     "Scene Composition": "",
+005433:     "Character 1 Prompt": "",
+005434:     "Character 1 UC": "",
+
+==========================================================================================
+LINES 5416-5435
+005416:       const _0x3b34d7 = hasWeight(_0x1c7c27);
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+005425:     addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+005426:   }
+005427:   return _0x173426;
+005428: }
+005429: function parsePromptStringWithCoordinates(_0x35d364) {
+005430:   addLog("解析场景构图字符串: " + _0x35d364);
+005431:   const _0x3d49cc = {
+005432:     "Scene Composition": "",
+005433:     "Character 1 Prompt": "",
+005434:     "Character 1 UC": "",
+005435:     "Character 2 Prompt": "",
+
+==========================================================================================
+LINES 5417-5436
+005417:       const _0x1ac241 = hasWeight(_0x4fcfd1);
+005418:       if (!_0x1ac241 && _0x3b34d7) {
+005419:         _0x3832e8.set(_0x417922, _0x1c7c27);
+005420:       }
+005421:     }
+005422:   }
+005423:   const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+005424:   if (_0x5def9e.length !== _0x3832e8.size) {
+005425:     addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+005426:   }
+005427:   return _0x173426;
+005428: }
+005429: function parsePromptStringWithCoordinates(_0x35d364) {
+005430:   addLog("解析场景构图字符串: " + _0x35d364);
+005431:   const _0x3d49cc = {
+005432:     "Scene Composition": "",
+005433:     "Character 1 Prompt": "",
+005434:     "Character 1 UC": "",
+005435:     "Character 2 Prompt": "",
+005436:     "Character 2 UC": "",
+
+==========================================================================================
+LINES 6925-6944
+006925: function updateCanvasSize(_0x12154e, _0x37349e = true) {
+006926:   const _0x48d086 = _0x12154e.container;
+006927:   const _0x49b723 = _0x12154e.canvasElement;
+006928:   const _0x28e96b = _0x12154e.activeVideo;
+006929:   _0x48d086.offsetWidth;
+006930:   const _0x1378f2 = _0x48d086.offsetWidth;
+006931:   const _0x1bc34e = _0x48d086.offsetHeight;
+006932:   if (_0x1378f2 === 0 || _0x1bc34e === 0) {
+006933:     console.warn("[st-chatu8] Container size is 0 (width:", _0x1378f2, "height:", _0x1bc34e, ")");
+006934:     if (_0x37349e && !_0x12154e._sizeRetryScheduled) {
+006935:       _0x12154e._sizeRetryScheduled = true;
+006936:       _0x12154e._sizeRetryCount = (_0x12154e._sizeRetryCount || 0) + 1;
+006937:       if (_0x12154e._sizeRetryCount <= 20) {
+006938:         const _0x1782d7 = _0x12154e._sizeRetryCount <= 5 ? 50 : (_0x12154e._sizeRetryCount - 5) * 100;
+006939:         console.log("[st-chatu8] Scheduling retry #" + _0x12154e._sizeRetryCount + " in " + _0x1782d7 + "ms");
+006940:         setTimeout(() => {
+006941:           _0x12154e._sizeRetryScheduled = false;
+006942:           const _0x5be55f = updateCanvasSize(_0x12154e, true);
+006943:           if (_0x5be55f && _0x12154e.isLoaded && _0x12154e.activeVideo && _0x12154e.activeVideo.readyState >= 2) {
+006944:             console.log("[st-chatu8] Canvas size updated successfully after retry");
+
+==========================================================================================
+LINES 8160-8179
+008160:   const _0x8607c2 = _0x2dd2e7.enable_chatu8_fab_video === true || _0x2dd2e7.enable_chatu8_fab_video === "true";
+008161:   console.log("[updateFabSize] Video mode enabled:", _0x8607c2);
+008162:   console.log("[updateFabSize] Global video player exists:", !!globalVideoPlayer);
+008163:   const _0x297e8d = _0x9c0d27[0].style.transition;
+008164:   _0x9c0d27[0].style.transition = "none";
+008165:   _0x9c0d27.css("width", _0xac3f76 + "px");
+008166:   _0x9c0d27.css("height", _0xac3f76 + "px");
+008167:   _0x9c0d27[0].offsetWidth;
+008168:   console.log("[updateFabSize] FAB container size set to:", _0x9c0d27[0].offsetWidth, "x", _0x9c0d27[0].offsetHeight);
+008169:   if (_0x8607c2) {
+008170:     if (globalVideoPlayer) {
+008171:       console.log("[updateFabSize] Calling videoPlayer.updateSize...");
+008172:       globalVideoPlayer.updateSize(_0xac3f76);
+008173:     } else {
+008174:       console.warn("[updateFabSize] Video player not initialized!");
+008175:     }
+008176:     _0x9c0d27.find("i").hide();
+008177:   } else {
+008178:     console.log("[updateFabSize] Icon mode, updating icon display");
+008179:     _0x9c0d27.find("i").css("color", _0x2dd2e7.chatu8_fab_icon_color || "#FFFFFF");
+
+==========================================================================================
+LINES 13851-13870
+013851:         _0x113006(_0x2c6a34 + "\n正在处理外部请求，请稍候...");
+013852:       }
+013853:       await new Promise(_0x2d8119 => setTimeout(_0x2d8119, 2000));
+013854:     }
+013855:     const {
+013856:       api_url: _0x11b311,
+013857:       api_key: _0x56e794,
+013858:       model: _0x48c08b,
+013859:       temperature: _0x418322,
+013860:       top_p: _0x25e8d0,
+013861:       max_tokens: _0x37cac9,
+013862:       stream: _0x1bb123,
+013863:       bypass_proxy: _0x242990
+013864:     } = _0x3472b0;
+013865:     const _0xcce0db = _0x3472b0.send_images ?? false;
+013866:     try {
+013867:       const _0x42b9f9 = _0x1f7cf3[extensionName].current_llm_profile || "默认";
+013868:       const _0x4ea017 = countImageParts(_0x19cba5);
+013869:       console.warn("[发送图片诊断/默认请求] profile=\"" + _0x42b9f9 + "\" | send_images=" + _0xcce0db + " | prompt 中图片数=" + _0x4ea017 + " | 将" + (_0xcce0db ? "保留" : "剥离") + "图片");
+013870:     } catch (_0x2fc78e) {}
+
+==========================================================================================
+LINES 13894-13913
+013894:       const _0x1b9fb1 = {
+013895:         "Content-Type": "application/json",
+013896:         Authorization: "Bearer " + _0x56e794
+013897:       };
+013898:       _0x224c8f = _0x1b9fb1;
+013899:       const _0x4c5a4f = {
+013900:         model: _0x48c08b,
+013901:         messages: _0x478566,
+013902:         temperature: _0x418322,
+013903:         top_p: _0x25e8d0,
+013904:         max_tokens: _0x37cac9,
+013905:         stream: _0x1bb123 ?? false
+013906:       };
+013907:       _0xfbd7b3 = _0x4c5a4f;
+013908:     } else {
+013909:       let _0x4483c8 = _0x160a40;
+013910:       _0x525e5f = "/api/backends/chat-completions/generate";
+013911:       _0x224c8f = getRequestHeaders(window.token);
+013912:       const _0x30b674 = {
+013913:         chat_completion_source: "custom",
+
+==========================================================================================
+LINES 13910-13929
+013910:       _0x525e5f = "/api/backends/chat-completions/generate";
+013911:       _0x224c8f = getRequestHeaders(window.token);
+013912:       const _0x30b674 = {
+013913:         chat_completion_source: "custom",
+013914:         custom_url: _0x4483c8,
+013915:         custom_include_headers: "Authorization: \"Bearer " + _0x56e794 + "\"",
+013916:         model: _0x48c08b,
+013917:         messages: _0x478566,
+013918:         temperature: _0x418322,
+013919:         top_p: _0x25e8d0,
+013920:         max_tokens: _0x37cac9,
+013921:         stream: false
+013922:       };
+013923:       _0xfbd7b3 = _0x30b674;
+013924:     }
+013925:     if (_0x113006 && _0x406114 === 0) {
+013926:       console.log("[DEBUG-SVC] ✉ 调用 updateResultUI(\"正在处理外部请求，请稍候...\")");
+013927:       _0x113006("正在处理外部请求，请稍候...");
+013928:       console.log("[DEBUG-SVC]   updateResultUI 第1次调用完成");
+013929:     }
+
+==========================================================================================
+LINES 17493-17512
+017493:       _0xbc4a18.removeListener(eventNames.LLM_CHAR_MODIFY_RESPONSE, _0x3738de);
+017494:       if (_0x4c63ed.success) {
+017495:         _0x58d7cd(_0x4c63ed.result);
+017496:       } else {
+017497:         _0x39eb81(new Error(_0x4c63ed.result || "LLM 请求失败"));
+017498:       }
+017499:     };
+017500:     _0xbc4a18.on(eventNames.LLM_CHAR_MODIFY_RESPONSE, _0x3738de);
+017501:     const _0x483206 = {
+017502:       prompt: _0x5185c0,
+017503:       id: _0x9f1570
+017504:     };
+017505:     _0xbc4a18.emit(eventNames.LLM_CHAR_MODIFY_REQUEST, _0x483206);
+017506:     setTimeout(() => {
+017507:       _0xbc4a18.removeListener(eventNames.LLM_CHAR_MODIFY_RESPONSE, _0x3738de);
+017508:       _0x39eb81(new Error("服装修改 LLM 请求超时"));
+017509:     }, _0x3f7a90);
+017510:   });
+017511: }
+017512: function preprocessTagContent(_0xcb16ca) {
+
+==========================================================================================
+LINES 17497-17516
+017497:         _0x39eb81(new Error(_0x4c63ed.result || "LLM 请求失败"));
+017498:       }
+017499:     };
+017500:     _0xbc4a18.on(eventNames.LLM_CHAR_MODIFY_RESPONSE, _0x3738de);
+017501:     const _0x483206 = {
+017502:       prompt: _0x5185c0,
+017503:       id: _0x9f1570
+017504:     };
+017505:     _0xbc4a18.emit(eventNames.LLM_CHAR_MODIFY_REQUEST, _0x483206);
+017506:     setTimeout(() => {
+017507:       _0xbc4a18.removeListener(eventNames.LLM_CHAR_MODIFY_RESPONSE, _0x3738de);
+017508:       _0x39eb81(new Error("服装修改 LLM 请求超时"));
+017509:     }, _0x3f7a90);
+017510:   });
+017511: }
+017512: function preprocessTagContent(_0xcb16ca) {
+017513:   let _0x435ed0 = _0xcb16ca.replace(/:/g, ":").replace(/\(/g, "（").replace(/\)/g, "）").replace(/,/g, ",");
+017514:   return _0x435ed0;
+017515: }
+017516: function parseOutfitData(_0x36ed11) {
+
+==========================================================================================
+LINES 18340-18359
+018340:     const _0x55ecf7 = await tokenizer(_0x3bd865);
+018341:     const _0x343fc8 = Array.from(_0x55ecf7.input_ids.data);
+018342:     return _0x343fc8.length;
+018343:   } catch (_0x1d7305) {
+018344:     console.error("[st-chatu8] 计算 Token 时发生错误:", _0x1d7305);
+018345:     return 0;
+018346:   }
+018347: }
+018348: function getNovelAIQualityPresetsText(_0x13832d) {
+018349:   let _0x52cf2c = "";
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+
+==========================================================================================
+LINES 18342-18361
+018342:     return _0x343fc8.length;
+018343:   } catch (_0x1d7305) {
+018344:     console.error("[st-chatu8] 计算 Token 时发生错误:", _0x1d7305);
+018345:     return 0;
+018346:   }
+018347: }
+018348: function getNovelAIQualityPresetsText(_0x13832d) {
+018349:   let _0x52cf2c = "";
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+
+==========================================================================================
+LINES 18344-18363
+018344:     console.error("[st-chatu8] 计算 Token 时发生错误:", _0x1d7305);
+018345:     return 0;
+018346:   }
+018347: }
+018348: function getNovelAIQualityPresetsText(_0x13832d) {
+018349:   let _0x52cf2c = "";
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+
+==========================================================================================
+LINES 18346-18365
+018346:   }
+018347: }
+018348: function getNovelAIQualityPresetsText(_0x13832d) {
+018349:   let _0x52cf2c = "";
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+
+==========================================================================================
+LINES 18348-18367
+018348: function getNovelAIQualityPresetsText(_0x13832d) {
+018349:   let _0x52cf2c = "";
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+
+==========================================================================================
+LINES 18350-18369
+018350:   if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-curated-preview") {
+018351:     _0x52cf2c = "rating:general, best quality, very aesthetic, absurdres";
+018352:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-full") {
+018353:     _0x52cf2c = "no text, best quality, very aesthetic, absurdres";
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+
+==========================================================================================
+LINES 18354-18373
+018354:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-full") {
+018355:     _0x52cf2c = "very aesthetic, masterpiece, no text";
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+
+==========================================================================================
+LINES 18356-18375
+018356:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-4-5-curated") {
+018357:     _0x52cf2c = "very aesthetic, masterpiece, no text, -0.8::feet::, rating:general";
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+
+==========================================================================================
+LINES 18358-18377
+018358:   } else if (_0x13832d.AQT_novelai != "" && _0x13832d.novelaimode == "nai-diffusion-3") {
+018359:     _0x52cf2c = "best quality, amazing quality, very aesthetic, absurdres";
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+
+==========================================================================================
+LINES 18360-18379
+018360:   }
+018361:   let _0x58bf54 = "";
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+
+==========================================================================================
+LINES 18362-18381
+018362:   if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Heavy") {
+018363:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]";
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+
+==========================================================================================
+LINES 18364-18383
+018364:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Light") {
+018365:     _0x58bf54 = "lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing";
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+
+==========================================================================================
+LINES 18366-18385
+018366:   } else if (_0x13832d.novelaimode == "nai-diffusion-3" && _0x13832d.UCP_novelai == "Human Focus") {
+018367:     _0x58bf54 = "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes";
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+
+==========================================================================================
+LINES 18368-18387
+018368:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Heavy") {
+018369:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, multiple views, logo, too many watermarks, white blank page, blank page";
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+
+==========================================================================================
+LINES 18370-18389
+018370:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-full" && _0x13832d.UCP_novelai == "Light") {
+018371:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, white blank page, blank page";
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+
+==========================================================================================
+LINES 18372-18391
+018372:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Heavy") {
+018373:     _0x58bf54 = "blurry, lowres, error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, logo, dated, signature, multiple views, gigantic breasts, white blank page, blank page";
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+018390:   }
+018391:   const _0x39c3b4 = {
+
+==========================================================================================
+LINES 18374-18393
+018374:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-curated-preview" && _0x13832d.UCP_novelai == "Light") {
+018375:     _0x58bf54 = "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature, white blank page, blank page";
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+018390:   }
+018391:   const _0x39c3b4 = {
+018392:     aqt: _0x52cf2c,
+018393:     ucp: _0x58bf54
+
+==========================================================================================
+LINES 18376-18395
+018376:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Human Focus") {
+018377:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page";
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+018390:   }
+018391:   const _0x39c3b4 = {
+018392:     aqt: _0x52cf2c,
+018393:     ucp: _0x58bf54
+018394:   };
+018395:   return _0x39c3b4;
+
+==========================================================================================
+LINES 18378-18397
+018378:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Heavy") {
+018379:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+018390:   }
+018391:   const _0x39c3b4 = {
+018392:     aqt: _0x52cf2c,
+018393:     ucp: _0x58bf54
+018394:   };
+018395:   return _0x39c3b4;
+018396: }
+018397: var transformersLoadPromise;
+
+==========================================================================================
+LINES 18380-18399
+018380:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-curated" && _0x13832d.UCP_novelai == "Light") {
+018381:     _0x58bf54 = "blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page";
+018382:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Human Focus") {
+018383:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page, @_@, mismatched pupils, glowing eyes, bad anatomy";
+018384:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Heavy") {
+018385:     _0x58bf54 = "lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page";
+018386:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Light") {
+018387:     _0x58bf54 = "lowres, artistic error, scan artifacts, worst quality, bad quality, jpeg artifacts, multiple views, very displeasing, too many watermarks, negative space, blank page";
+018388:   } else if (_0x13832d.novelaimode == "nai-diffusion-4-5-full" && _0x13832d.UCP_novelai == "Furry Focus") {
+018389:     _0x58bf54 = "{worst quality}, distracting watermark, unfinished, bad quality, {widescreen}, upscale, {sequence}, {{grandfathered content}}, blurred foreground, chromatic aberration, sketch, everyone, [sketch background], simple, [flat colors], ych (character), outline, multiple scenes, [[horror (theme)]], comic";
+018390:   }
+018391:   const _0x39c3b4 = {
+018392:     aqt: _0x52cf2c,
+018393:     ucp: _0x58bf54
+018394:   };
+018395:   return _0x39c3b4;
+018396: }
+018397: var transformersLoadPromise;
+018398: var tokenizer;
+018399: var init_novelaiTokenCalculator = __esm({
+
+==========================================================================================
+LINES 18459-18478
+018459:   if (!_0x40cdb0) {
+018460:     return;
+018461:   }
+018462:   const _0x1f2c43 = _0x40cdb0.value;
+018463:   const _0x2cd392 = _0x148565.outfitPresetId;
+018464:   if (_0x2cd392 && _0x2cd392 !== _0x1f2c43) {
+018465:     const _0x159326 = _0x148565.outfitPresets[_0x2cd392] || {};
+018466:     const _0x33884e = ["nameCN", "nameEN", "upperBody", "fullBody"];
+018467:     let _0x283241 = false;
+018468:     for (const _0x596dcd of _0x33884e) {
+018469:       const _0x52a3c1 = document.getElementById("outfit_" + _0x596dcd);
+018470:       if (_0x52a3c1 && _0x52a3c1.value !== (_0x159326[_0x596dcd] || "")) {
+018471:         _0x283241 = true;
+018472:         break;
+018473:       }
+018474:     }
+018475:     if (_0x283241) {
+018476:       stylishConfirm("您有未保存的服装数据。要放弃这些更改并切换预设吗？").then(_0x5b48fb => {
+018477:         if (_0x5b48fb) {
+018478:           _0x148565.outfitPresetId = _0x1f2c43;
+
+==========================================================================================
+LINES 18463-18482
+018463:   const _0x2cd392 = _0x148565.outfitPresetId;
+018464:   if (_0x2cd392 && _0x2cd392 !== _0x1f2c43) {
+018465:     const _0x159326 = _0x148565.outfitPresets[_0x2cd392] || {};
+018466:     const _0x33884e = ["nameCN", "nameEN", "upperBody", "fullBody"];
+018467:     let _0x283241 = false;
+018468:     for (const _0x596dcd of _0x33884e) {
+018469:       const _0x52a3c1 = document.getElementById("outfit_" + _0x596dcd);
+018470:       if (_0x52a3c1 && _0x52a3c1.value !== (_0x159326[_0x596dcd] || "")) {
+018471:         _0x283241 = true;
+018472:         break;
+018473:       }
+018474:     }
+018475:     if (_0x283241) {
+018476:       stylishConfirm("您有未保存的服装数据。要放弃这些更改并切换预设吗？").then(_0x5b48fb => {
+018477:         if (_0x5b48fb) {
+018478:           _0x148565.outfitPresetId = _0x1f2c43;
+018479:           loadOutfitPresetData(_0x1f2c43);
+018480:           _0x5e4554();
+018481:         } else {
+018482:           _0x40cdb0.value = _0x2cd392;
+
+==========================================================================================
+LINES 18467-18486
+018467:     let _0x283241 = false;
+018468:     for (const _0x596dcd of _0x33884e) {
+018469:       const _0x52a3c1 = document.getElementById("outfit_" + _0x596dcd);
+018470:       if (_0x52a3c1 && _0x52a3c1.value !== (_0x159326[_0x596dcd] || "")) {
+018471:         _0x283241 = true;
+018472:         break;
+018473:       }
+018474:     }
+018475:     if (_0x283241) {
+018476:       stylishConfirm("您有未保存的服装数据。要放弃这些更改并切换预设吗？").then(_0x5b48fb => {
+018477:         if (_0x5b48fb) {
+018478:           _0x148565.outfitPresetId = _0x1f2c43;
+018479:           loadOutfitPresetData(_0x1f2c43);
+018480:           _0x5e4554();
+018481:         } else {
+018482:           _0x40cdb0.value = _0x2cd392;
+018483:         }
+018484:       });
+018485:       return;
+018486:     }
+
+==========================================================================================
+LINES 19377-19396
+019377:   _0x371f77.style.cssText = "\n        z-index: 10002;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 20px;\n        box-sizing: border-box;\n    ";
+019378:   const _0x599512 = document.createElement("div");
+019379:   _0x599512.style.cssText = "\n        position: relative;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        max-width: 95vw;\n        max-height: 95vh;\n        background: var(--SmartThemeBlurTintColor, rgba(0, 0, 0, 0.8));\n        border-radius: 12px;\n        padding: 20px;\n        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);\n    ";
+019380:   const _0x3935c0 = document.createElement("div");
+019381:   _0x3935c0.style.cssText = "\n        display: flex;\n        align-items: center;\n        gap: 15px;\n        position: relative;\n    ";
+019382:   const _0x3a005e = document.createElement("button");
+019383:   _0x3a005e.innerHTML = "<i class=\"fa-solid fa-chevron-left\"></i>";
+019384:   _0x3a005e.className = "st-chatu8-btn";
+019385:   _0x3a005e.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+019386:   _0x3935c0.appendChild(_0x3a005e);
+019387:   const _0x330ab1 = document.createElement("img");
+019388:   _0x330ab1.style.cssText = "\n        max-width: calc(95vw - 180px);\n        max-height: calc(95vh - 160px);\n        object-fit: contain;\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n    ";
+019389:   _0x3935c0.appendChild(_0x330ab1);
+019390:   const _0x5235fe = document.createElement("button");
+019391:   _0x5235fe.innerHTML = "<i class=\"fa-solid fa-chevron-right\"></i>";
+019392:   _0x5235fe.className = "st-chatu8-btn";
+019393:   _0x5235fe.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+019394:   _0x3935c0.appendChild(_0x5235fe);
+019395:   _0x599512.appendChild(_0x3935c0);
+019396:   const _0x59232a = document.createElement("div");
+
+==========================================================================================
+LINES 19385-19404
+019385:   _0x3a005e.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+019386:   _0x3935c0.appendChild(_0x3a005e);
+019387:   const _0x330ab1 = document.createElement("img");
+019388:   _0x330ab1.style.cssText = "\n        max-width: calc(95vw - 180px);\n        max-height: calc(95vh - 160px);\n        object-fit: contain;\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n    ";
+019389:   _0x3935c0.appendChild(_0x330ab1);
+019390:   const _0x5235fe = document.createElement("button");
+019391:   _0x5235fe.innerHTML = "<i class=\"fa-solid fa-chevron-right\"></i>";
+019392:   _0x5235fe.className = "st-chatu8-btn";
+019393:   _0x5235fe.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+019394:   _0x3935c0.appendChild(_0x5235fe);
+019395:   _0x599512.appendChild(_0x3935c0);
+019396:   const _0x59232a = document.createElement("div");
+019397:   _0x59232a.style.cssText = "\n        margin-top: 12px;\n        font-size: 14px;\n        color: inherit;\n        opacity: 0.8;\n    ";
+019398:   _0x599512.appendChild(_0x59232a);
+019399:   const _0x5b701d = document.createElement("div");
+019400:   _0x5b701d.style.cssText = "\n        display: flex;\n        gap: 15px;\n        margin-top: 20px;\n        justify-content: center;\n    ";
+019401:   const _0x562e3a = document.createElement("button");
+019402:   _0x562e3a.innerHTML = "<i class=\"fa-solid fa-download\"></i> 下载图片";
+019403:   _0x562e3a.className = "st-chatu8-btn";
+019404:   _0x562e3a.style.cssText = "\n        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);\n        padding: 10px 20px;\n        font-size: 14px;\n    ";
+
+==========================================================================================
+LINES 22485-22504
+022485:   _0x4ce2ef.style.cssText = "\n        z-index: 10002;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        padding: 20px;\n        box-sizing: border-box;\n    ";
+022486:   const _0x50dfd9 = document.createElement("div");
+022487:   _0x50dfd9.style.cssText = "\n        position: relative;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        max-width: 95vw;\n        max-height: 95vh;\n        background: var(--SmartThemeBlurTintColor, rgba(0, 0, 0, 0.8));\n        border-radius: 12px;\n        padding: 20px;\n        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);\n    ";
+022488:   const _0x45ce19 = document.createElement("div");
+022489:   _0x45ce19.style.cssText = "\n        display: flex;\n        align-items: center;\n        gap: 15px;\n        position: relative;\n    ";
+022490:   const _0x34fc86 = document.createElement("button");
+022491:   _0x34fc86.innerHTML = "<i class=\"fa-solid fa-chevron-left\"></i>";
+022492:   _0x34fc86.className = "st-chatu8-btn";
+022493:   _0x34fc86.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+022494:   _0x45ce19.appendChild(_0x34fc86);
+022495:   const _0x4ceabb = document.createElement("img");
+022496:   _0x4ceabb.style.cssText = "\n        max-width: calc(95vw - 180px);\n        max-height: calc(95vh - 160px);\n        object-fit: contain;\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n    ";
+022497:   _0x45ce19.appendChild(_0x4ceabb);
+022498:   const _0x32008a = document.createElement("button");
+022499:   _0x32008a.innerHTML = "<i class=\"fa-solid fa-chevron-right\"></i>";
+022500:   _0x32008a.className = "st-chatu8-btn";
+022501:   _0x32008a.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+022502:   _0x45ce19.appendChild(_0x32008a);
+022503:   _0x50dfd9.appendChild(_0x45ce19);
+022504:   const _0xdf9ee1 = document.createElement("div");
+
+==========================================================================================
+LINES 22493-22512
+022493:   _0x34fc86.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+022494:   _0x45ce19.appendChild(_0x34fc86);
+022495:   const _0x4ceabb = document.createElement("img");
+022496:   _0x4ceabb.style.cssText = "\n        max-width: calc(95vw - 180px);\n        max-height: calc(95vh - 160px);\n        object-fit: contain;\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n    ";
+022497:   _0x45ce19.appendChild(_0x4ceabb);
+022498:   const _0x32008a = document.createElement("button");
+022499:   _0x32008a.innerHTML = "<i class=\"fa-solid fa-chevron-right\"></i>";
+022500:   _0x32008a.className = "st-chatu8-btn";
+022501:   _0x32008a.style.cssText = "\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 20px;\n        background: rgba(255, 255, 255, 0.1);\n        transition: all 0.2s ease;\n    ";
+022502:   _0x45ce19.appendChild(_0x32008a);
+022503:   _0x50dfd9.appendChild(_0x45ce19);
+022504:   const _0xdf9ee1 = document.createElement("div");
+022505:   _0xdf9ee1.style.cssText = "\n        margin-top: 12px;\n        font-size: 14px;\n        color: inherit;\n        opacity: 0.8;\n    ";
+022506:   _0x50dfd9.appendChild(_0xdf9ee1);
+022507:   const _0x391628 = document.createElement("div");
+022508:   _0x391628.style.cssText = "\n        display: flex;\n        gap: 15px;\n        margin-top: 20px;\n        justify-content: center;\n    ";
+022509:   const _0x6ee237 = document.createElement("button");
+022510:   _0x6ee237.innerHTML = "<i class=\"fa-solid fa-download\"></i> 下载图片";
+022511:   _0x6ee237.className = "st-chatu8-btn";
+022512:   _0x6ee237.style.cssText = "\n        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);\n        padding: 10px 20px;\n        font-size: 14px;\n    ";
+
+==========================================================================================
+LINES 23835-23854
+023835:     _0x1542cd += "<div style=\"color: #dc3545;\"><strong>执行错误：</strong>" + escapeTestHtml(_0x224f97) + "</div>";
+023836:   } else if (_0x58b8ef) {
+023837:     const _0x4458df = _0x13ed35.filter(_0x1b5e85 => _0x1b5e85.result.matched).length;
+023838:     _0x1542cd += "<div style=\"margin-bottom: 10px;\">";
+023839:     _0x1542cd += "<strong>检测到片段：</strong>" + _0x13ed35.length + " 段";
+023840:     _0x1542cd += "<br><strong>命中：</strong>" + _0x4458df + " / " + _0x13ed35.length;
+023841:     _0x1542cd += "<br><strong>当前启用列表：</strong>" + _0x282950.length + " 个角色";
+023842:     _0x1542cd += "</div>";
+023843:     _0x1542cd += "<table style=\"width: 100%; border-collapse: collapse; font-size: 0.9em;\">";
+023844:     _0x1542cd += "<thead><tr><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">#</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">原文</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">格式</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">提取名称</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">命中</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">命中角色</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">命中预设</th><th style=\"text-align: left; border-bottom: 1px solid var(--SmartThemeBorderColor); padding: 4px;\">命中来源</th></tr></thead><tbody>";
+023845:     _0x13ed35.forEach((_0x164dcf, _0x546025) => {
+023846:       const _0x578c03 = _0x164dcf.result;
+023847:       const _0x2e8cd6 = _0x65e449[_0x578c03.format] || "未知";
+023848:       const _0x51131b = _0x578c03.matched ? "<span style=\"color: #28a745;\">✓</span>" : "<span style=\"color: #dc3545;\">✗</span>";
+023849:       _0x1542cd += "<tr><td style=\"padding: 4px; vertical-align: top;\">" + (_0x546025 + 1) + "</td><td style=\"padding: 4px; vertical-align: top; word-break: break-all;\">" + escapeTestHtml(_0x164dcf.segment) + "</td><td style=\"padding: 4px; vertical-align: top;\">" + escapeTestHtml(_0x2e8cd6) + "</td><td style=\"padding: 4px; vertical-align: top; word-break: break-all;\">" + escapeTestHtml(_0x578c03.extractedName || "（无）") + "</td><td style=\"padding: 4px; vertical-align: top;\">" + _0x51131b + "</td><td style=\"padding: 4px; vertical-align: top;\">" + escapeTestHtml(_0x578c03.matchedDisplayName || "（无）") + "</td><td style=\"padding: 4px; vertical-align: top; word-break: break-all;\">" + escapeTestHtml(_0x578c03.matchedPresetId || "（无）") + "</td><td style=\"padding: 4px; vertical-align: top;\">" + _0x248a86(_0x578c03) + "</td></tr>";
+023850:     });
+023851:     _0x1542cd += "</tbody></table>";
+023852:     _0x1542cd += "<div style=\"margin-top: 10px; color: var(--SmartThemeEmColor);\">这里只做名字匹配识别，不会执行完整的替换流程。</div>";
+023853:   } else {
+023854:     const _0x131252 = _0x228d3d || {
+
+==========================================================================================
+LINES 23935-23954
+023935:       _0x555e23 += " &nbsp;/&nbsp; <strong>缺失预设：</strong><span style=\"color: #f0ad4e;\">" + _0x41723f.length + "</span>";
+023936:     }
+023937:     _0x555e23 += "</div>";
+023938:     const _0x241412 = (_0x5953f3, _0x1f9727, _0x5a13b4) => {
+023939:       if (!_0x1f9727 || _0x1f9727.length === 0) {
+023940:         return "";
+023941:       }
+023942:       let _0x533227 = "<div style=\"margin-top: 10px;\"><strong style=\"color: " + _0x5a13b4 + ";\">" + _0x5953f3 + "（" + _0x1f9727.length + "）</strong>";
+023943:       _0x533227 += "<ul style=\"margin: 4px 0 0 0; padding-left: 20px; font-size: 0.9em; line-height: 1.5;\">";
+023944:       for (const _0x26c675 of _0x1f9727) {
+023945:         const _0x4262a4 = _0x26c675.nameCN ? "中文：" + _0x26c675.nameCN : "";
+023946:         const _0x134798 = _0x26c675.nameEN ? "英文：" + _0x26c675.nameEN : "";
+023947:         const _0x340181 = _0x26c675.triggeredBy ? " <span style=\"color: #28a745;\">（命中名字：" + escapeTestHtml(_0x26c675.triggeredBy) + "）</span>" : "";
+023948:         const _0x354040 = [_0x4262a4, _0x134798].filter(Boolean).join("、");
+023949:         _0x533227 += "<li><code>" + escapeTestHtml(_0x26c675.presetId || "") + "</code>" + (_0x354040 ? " · " + escapeTestHtml(_0x354040) : "") + _0x340181 + "</li>";
+023950:       }
+023951:       _0x533227 += "</ul></div>";
+023952:       return _0x533227;
+023953:     };
+023954:     _0x555e23 += _0x241412("✓ 被触发的角色", _0xd86b, "#28a745");
+
+==========================================================================================
+LINES 23950-23969
+023950:       }
+023951:       _0x533227 += "</ul></div>";
+023952:       return _0x533227;
+023953:     };
+023954:     _0x555e23 += _0x241412("✓ 被触发的角色", _0xd86b, "#28a745");
+023955:     _0x555e23 += _0x241412("✗ 未被触发的角色", _0x85b565, "#dc3545");
+023956:     if (_0x41723f.length > 0) {
+023957:       _0x555e23 += "<div style=\"margin-top: 10px;\"><strong style=\"color: #f0ad4e;\">⚠ 列表中不存在的角色预设 ID（" + _0x41723f.length + "）</strong>";
+023958:       _0x555e23 += "<ul style=\"margin: 4px 0 0 0; padding-left: 20px; font-size: 0.9em; line-height: 1.5;\">";
+023959:       for (const _0x504af5 of _0x41723f) {
+023960:         _0x555e23 += "<li><code>" + escapeTestHtml(_0x504af5) + "</code></li>";
+023961:       }
+023962:       _0x555e23 += "</ul></div>";
+023963:     }
+023964:     _0x555e23 += "<div style=\"margin-top: 10px; color: var(--SmartThemeEmColor); font-size: 0.85em;\">该测试仅反映 <code>{{角色启用列表}}</code> 的触发行为：大小写 / 空格已忽略，仅扫描启用列表中的角色。</div>";
+023965:   }
+023966:   _0xe71ee2.innerHTML = _0x555e23;
+023967:   $(_0x23d123).show();
+023968: }
+023969: function deleteCharacterEnablePreset() {
+
+==========================================================================================
+LINES 28831-28850
+028831:       _0x2e1de4.textContent = "上传中...";
+028832:       const _0x357cdf = await _0x194550.getOriginalBlob();
+028833:       const _0x89a85f = await _0x194550.getMaskBlob();
+028834:       addLog("[Inpaint] 准备上传图片和遮罩到ComfyUI...");
+028835:       const _0x50fe03 = _0x1cdf4d[extensionName]?.comfyuiUrl?.trim();
+028836:       if (!_0x50fe03) {
+028837:         throw new Error("请先在设置中配置ComfyUI地址");
+028838:       }
+028839:       const _0x17832d = await uploadToComfyUI(_0x357cdf, "inpaint_image.png", _0x50fe03);
+028840:       const _0x30d4db = await uploadToComfyUI(_0x89a85f, "inpaint_mask.png", _0x50fe03);
+028841:       addLog("[Inpaint] 上传成功: image=" + _0x17832d + ", mask=" + _0x30d4db);
+028842:       window.comfyuiInpaintImage = _0x17832d;
+028843:       window.comfyuiInpaintMask = _0x30d4db;
+028844:       window.comfyuiInpaintPositivePrompt = _0x412cc7;
+028845:       window.comfyuiInpaintNegativePrompt = _0x181e16;
+028846:       window.comfyuiInpaintDenoise = _0x37291f;
+028847:       if (_0x1cdf4d[extensionName]) {
+028848:         _0x1cdf4d[extensionName].inpaint_positive_prompt = _0x412cc7;
+028849:         _0x1cdf4d[extensionName].inpaint_negative_prompt = _0x181e16;
+028850:         _0x1cdf4d[extensionName].inpaint_denoise = _0x37291f.toString();
+
+==========================================================================================
+LINES 28833-28852
+028833:       const _0x89a85f = await _0x194550.getMaskBlob();
+028834:       addLog("[Inpaint] 准备上传图片和遮罩到ComfyUI...");
+028835:       const _0x50fe03 = _0x1cdf4d[extensionName]?.comfyuiUrl?.trim();
+028836:       if (!_0x50fe03) {
+028837:         throw new Error("请先在设置中配置ComfyUI地址");
+028838:       }
+028839:       const _0x17832d = await uploadToComfyUI(_0x357cdf, "inpaint_image.png", _0x50fe03);
+028840:       const _0x30d4db = await uploadToComfyUI(_0x89a85f, "inpaint_mask.png", _0x50fe03);
+028841:       addLog("[Inpaint] 上传成功: image=" + _0x17832d + ", mask=" + _0x30d4db);
+028842:       window.comfyuiInpaintImage = _0x17832d;
+028843:       window.comfyuiInpaintMask = _0x30d4db;
+028844:       window.comfyuiInpaintPositivePrompt = _0x412cc7;
+028845:       window.comfyuiInpaintNegativePrompt = _0x181e16;
+028846:       window.comfyuiInpaintDenoise = _0x37291f;
+028847:       if (_0x1cdf4d[extensionName]) {
+028848:         _0x1cdf4d[extensionName].inpaint_positive_prompt = _0x412cc7;
+028849:         _0x1cdf4d[extensionName].inpaint_negative_prompt = _0x181e16;
+028850:         _0x1cdf4d[extensionName].inpaint_denoise = _0x37291f.toString();
+028851:       }
+028852:       const _0x147377 = _0x3574d3.dataset.change || "";
+
+==========================================================================================
+LINES 28834-28853
+028834:       addLog("[Inpaint] 准备上传图片和遮罩到ComfyUI...");
+028835:       const _0x50fe03 = _0x1cdf4d[extensionName]?.comfyuiUrl?.trim();
+028836:       if (!_0x50fe03) {
+028837:         throw new Error("请先在设置中配置ComfyUI地址");
+028838:       }
+028839:       const _0x17832d = await uploadToComfyUI(_0x357cdf, "inpaint_image.png", _0x50fe03);
+028840:       const _0x30d4db = await uploadToComfyUI(_0x89a85f, "inpaint_mask.png", _0x50fe03);
+028841:       addLog("[Inpaint] 上传成功: image=" + _0x17832d + ", mask=" + _0x30d4db);
+028842:       window.comfyuiInpaintImage = _0x17832d;
+028843:       window.comfyuiInpaintMask = _0x30d4db;
+028844:       window.comfyuiInpaintPositivePrompt = _0x412cc7;
+028845:       window.comfyuiInpaintNegativePrompt = _0x181e16;
+028846:       window.comfyuiInpaintDenoise = _0x37291f;
+028847:       if (_0x1cdf4d[extensionName]) {
+028848:         _0x1cdf4d[extensionName].inpaint_positive_prompt = _0x412cc7;
+028849:         _0x1cdf4d[extensionName].inpaint_negative_prompt = _0x181e16;
+028850:         _0x1cdf4d[extensionName].inpaint_denoise = _0x37291f.toString();
+028851:       }
+028852:       const _0x147377 = _0x3574d3.dataset.change || "";
+028853:       if (!_0x147377.includes("{ComfyUI局部重绘}")) {
+
+==========================================================================================
+LINES 28989-29008
+028989:         this.maskCtx.fillStyle = this.mode === "draw" ? "#FFFFFF" : "#000000";
+028990:         this.maskCtx.fill();
+028991:       }
+028992:       drawLine(_0x516d91, _0x120cdb) {
+028993:         this.maskCtx.beginPath();
+028994:         this.maskCtx.moveTo(_0x516d91.x, _0x516d91.y);
+028995:         this.maskCtx.lineTo(_0x120cdb.x, _0x120cdb.y);
+028996:         this.maskCtx.strokeStyle = this.mode === "draw" ? "#FFFFFF" : "#000000";
+028997:         this.maskCtx.lineWidth = this.brushSize;
+028998:         this.maskCtx.lineCap = "round";
+028999:         this.maskCtx.lineJoin = "round";
+029000:         this.maskCtx.stroke();
+029001:       }
+029002:       saveState() {
+029003:         this.history = this.history.slice(0, this.historyIndex + 1);
+029004:         this.history.push(this.maskCanvas.toDataURL());
+029005:         if (this.history.length > this.maxHistory) {
+029006:           this.history.shift();
+029007:         }
+029008:         this.historyIndex = this.history.length - 1;
+
+==========================================================================================
+LINES 29190-29209
+029190:     window.novelaiInpaintImage = _0x5b2a0c;
+029191:     window.novelaiInpaintMask = _0x80d81b;
+029192:     window.novelaiInpaintPrompt = _0xc73ade;
+029193:     window.novelaiInpaintNegativePrompt = _0x311f62;
+029194:     window.novelaiInpaintStrength = _0x2b9f5b.strength;
+029195:     window.novelaiInpaintWidth = _0x2b9f5b.originalImage.width;
+029196:     window.novelaiInpaintHeight = _0x2b9f5b.originalImage.height;
+029197:     const _0x44c210 = {
+029198:       imageSize: _0x2b9f5b.originalImage.width + "x" + _0x2b9f5b.originalImage.height,
+029199:       maskSize: _0x9eed4.width + "x" + _0x9eed4.height,
+029200:       prompt: _0xc73ade,
+029201:       negativePrompt: _0x311f62,
+029202:       strength: _0x2b9f5b.strength
+029203:     };
+029204:     console.log("[NovelAI Inpaint] 存储参数:", _0x44c210);
+029205:     const _0x435a8f = _0x3fc5e4.dataset.change || "";
+029206:     if (!_0x435a8f.includes("{NovelAI局部重绘}")) {
+029207:       _0x3fc5e4.dataset.change = _0x435a8f + " {NovelAI局部重绘}";
+029208:     }
+029209:     _0x3fc5e4.click();
+
+==========================================================================================
+LINES 29191-29210
+029191:     window.novelaiInpaintMask = _0x80d81b;
+029192:     window.novelaiInpaintPrompt = _0xc73ade;
+029193:     window.novelaiInpaintNegativePrompt = _0x311f62;
+029194:     window.novelaiInpaintStrength = _0x2b9f5b.strength;
+029195:     window.novelaiInpaintWidth = _0x2b9f5b.originalImage.width;
+029196:     window.novelaiInpaintHeight = _0x2b9f5b.originalImage.height;
+029197:     const _0x44c210 = {
+029198:       imageSize: _0x2b9f5b.originalImage.width + "x" + _0x2b9f5b.originalImage.height,
+029199:       maskSize: _0x9eed4.width + "x" + _0x9eed4.height,
+029200:       prompt: _0xc73ade,
+029201:       negativePrompt: _0x311f62,
+029202:       strength: _0x2b9f5b.strength
+029203:     };
+029204:     console.log("[NovelAI Inpaint] 存储参数:", _0x44c210);
+029205:     const _0x435a8f = _0x3fc5e4.dataset.change || "";
+029206:     if (!_0x435a8f.includes("{NovelAI局部重绘}")) {
+029207:       _0x3fc5e4.dataset.change = _0x435a8f + " {NovelAI局部重绘}";
+029208:     }
+029209:     _0x3fc5e4.click();
+029210:     _0x11dba1();
+
+==========================================================================================
+LINES 30281-30300
+030281:   _0x21a4af.textContent = "Tag操作 ▼";
+030282:   _0x21a4af.type = "button";
+030283:   const _0x1945f9 = _0x10b143.createElement("div");
+030284:   _0x1945f9.className = "st-chatu8-tag-actions-menu";
+030285:   _0x1945f9.style.cssText = "\n        display: none;\n        position: absolute;\n        bottom: 100%;\n        left: 50%;\n        transform: translateX(-50%);\n        margin-bottom: 8px;\n        background-color: var(--st-chatu8-bg-primary, #2a2a2a);\n        border: 1px solid var(--st-chatu8-border-color, #444);\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n        padding: 8px;\n        z-index: 100;\n        min-width: 120px;\n        flex-direction: column;\n        gap: 6px;\n    ";
+030286:   const _0x117b22 = _0x10b143.createElement("button");
+030287:   _0x117b22.className = "st-chatu8-tag-action-item";
+030288:   _0x117b22.innerHTML = "🔄 重置tag";
+030289:   _0x117b22.style.cssText = "\n        display: flex;\n        align-items: center;\n        gap: 8px;\n        width: 100%;\n        padding: 8px 12px;\n        background: transparent;\n        border: none;\n        border-radius: 6px;\n        color: var(--st-chatu8-text-primary, #fff);\n        cursor: pointer;\n        font-size: 0.9em;\n        text-align: left;\n        transition: background-color 0.2s ease;\n    ";
+030290:   _0x117b22.onmouseenter = () => {
+030291:     _0x117b22.style.backgroundColor = "var(--st-chatu8-accent-secondary, #3a3a3a)";
+030292:   };
+030293:   _0x117b22.onmouseleave = () => {
+030294:     _0x117b22.style.backgroundColor = "transparent";
+030295:   };
+030296:   _0x117b22.onclick = () => {
+030297:     _0x4333f5.value = _0x52f567.dataset.link;
+030298:     _0x1a3781();
+030299:     _0x1945f9.style.display = "none";
+030300:     toastr.success("Tag已重置");
+
+==========================================================================================
+LINES 30664-30683
+030664:   _0x23ca10.style.cssText = "position: relative; display: inline-block;";
+030665:   const _0x4b3784 = _0x10b143.createElement("button");
+030666:   _0x4b3784.className = "st-chatu8-edit-button send";
+030667:   _0x4b3784.textContent = "图像处理 ▼";
+030668:   _0x4b3784.type = "button";
+030669:   const _0x110b12 = _0x10b143.createElement("div");
+030670:   _0x110b12.className = "st-chatu8-image-process-menu";
+030671:   _0x110b12.style.cssText = "\n        display: none;\n        position: absolute;\n        bottom: 100%;\n        left: 50%;\n        transform: translateX(-50%);\n        margin-bottom: 8px;\n        background-color: var(--st-chatu8-bg-primary, #2a2a2a);\n        border: 1px solid var(--st-chatu8-border-color, #444);\n        border-radius: 8px;\n        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);\n        padding: 8px;\n        z-index: 100;\n        min-width: 140px;\n        flex-direction: column;\n        gap: 6px;\n    ";
+030672:   const _0x148fd9 = "\n        display: flex;\n        align-items: center;\n        gap: 8px;\n        width: 100%;\n        padding: 8px 12px;\n        background: transparent;\n        border: none;\n        border-radius: 6px;\n        color: var(--st-chatu8-text-primary, #fff);\n        cursor: pointer;\n        font-size: 0.9em;\n        text-align: left;\n        transition: background-color 0.2s ease;\n        white-space: nowrap;\n    ";
+030673:   const _0x4543fe = _0x10b143.createElement("button");
+030674:   _0x4543fe.className = "st-chatu8-image-process-item";
+030675:   _0x4543fe.innerHTML = "🍌 Banana修图";
+030676:   _0x4543fe.style.cssText = _0x148fd9;
+030677:   _0x4543fe.onmouseenter = () => {
+030678:     _0x4543fe.style.backgroundColor = "var(--st-chatu8-accent-secondary, #3a3a3a)";
+030679:   };
+030680:   _0x4543fe.onmouseleave = () => {
+030681:     _0x4543fe.style.backgroundColor = "transparent";
+030682:   };
+030683:   _0x4543fe.onclick = () => {
+
+==========================================================================================
+LINES 32381-32400
+032381:   _0x1f4f4a.style.cssText = "\n        display: flex;\n        width: 300%;\n        height: 100%;\n        will-change: transform;\n        transform: translate3d(-33.3333%, 0, 0);\n    ";
+032382:   _0x30b8cd.appendChild(_0x1f4f4a);
+032383:   _0x36b820.appendChild(_0x30b8cd);
+032384:   const _0x19d25e = _0x4fed1e.createElement("div");
+032385:   _0x19d25e.className = "st-chatu8-preview-counter";
+032386:   _0x19d25e.style.cssText = "\n        position: absolute;\n        top: 8px;\n        left: 50%;\n        transform: translateX(-50%);\n        background: rgba(0, 0, 0, 0.7);\n        color: #fff;\n        padding: 5px 14px;\n        border-radius: 15px;\n        font-size: 12px;\n        font-weight: 500;\n        z-index: 10;\n        backdrop-filter: blur(10px);\n        border: 1px solid rgba(255, 255, 255, 0.1);\n    ";
+032387:   _0x19d25e.textContent = "0 / 0";
+032388:   _0x36b820.appendChild(_0x19d25e);
+032389:   const _0x46fa27 = "\n        position: absolute;\n        top: 50%;\n        transform: translateY(-50%);\n        width: 36px;\n        height: 36px;\n        background: linear-gradient(135deg, rgba(74, 144, 226, 0.8) 0%, rgba(123, 97, 255, 0.8) 100%);\n        color: white;\n        font-size: 14px;\n        font-weight: bold;\n        border-radius: 50%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        cursor: pointer;\n        z-index: 10;\n        transition: all 0.3s ease;\n        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n        border: 1px solid rgba(255, 255, 255, 0.2);\n        user-select: none;\n    ";
+032390:   const _0x63957c = _0x4fed1e.createElement("div");
+032391:   _0x63957c.className = "st-chatu8-preview-nav prev";
+032392:   _0x63957c.innerHTML = "&#10094;";
+032393:   _0x63957c.style.cssText = _0x46fa27 + "left: 10px;";
+032394:   _0x63957c.onmouseenter = () => {
+032395:     _0x63957c.style.transform = "translateY(-50%) scale(1.1)";
+032396:   };
+032397:   _0x63957c.onmouseleave = () => {
+032398:     _0x63957c.style.transform = "translateY(-50%)";
+032399:   };
+032400:   _0x63957c.onclick = () => {
+
+==========================================================================================
+LINES 36336-36355
+036336:   managementPageImages.forEach((_0x1bf2e5, _0x16c3ce) => {
+036337:     const _0x342618 = document.createElement("div");
+036338:     _0x342618.style.cssText = "display:inline-block;margin:4px;position:relative;";
+036339:     const _0x2c7fc9 = document.createElement("img");
+036340:     _0x2c7fc9.src = _0x1bf2e5.base64;
+036341:     _0x2c7fc9.style.cssText = "width:60px;height:60px;object-fit:cover;border-radius:4px;";
+036342:     const _0x342bed = document.createElement("button");
+036343:     _0x342bed.textContent = "×";
+036344:     _0x342bed.style.cssText = "position:absolute;top:-4px;right:-4px;background:red;color:white;border:none;border-radius:50%;width:16px;height:16px;font-size:10px;cursor:pointer;line-height:16px;padding:0;";
+036345:     _0x342bed.addEventListener("click", () => {
+036346:       managementPageImages.splice(_0x16c3ce, 1);
+036347:       updateManagementImagePreview(_0x2c500e);
+036348:     });
+036349:     _0x342618.appendChild(_0x2c7fc9);
+036350:     _0x342618.appendChild(_0x342bed);
+036351:     _0x2c500e.appendChild(_0x342618);
+036352:   });
+036353: }
+036354: function showTypeSelectionPopup() {
+036355:   return new Promise(_0x178899 => {
+
+==========================================================================================
+LINES 36448-36467
+036448:     _0x370fbd.appendChild(_0xd13c26);
+036449:     const _0x127718 = document.createElement("div");
+036450:     _0x127718.className = "st-chatu8-popup-hint";
+036451:     _0x127718.textContent = _0x109db4 === "user" ? "请输入 User 人设生成需求（可选），留空则根据上下文自动生成" : "请输入角色人设生成需求（可选），留空则根据角色卡信息自动生成";
+036452:     _0x370fbd.appendChild(_0x127718);
+036453:     if (_0x4cff80) {
+036454:       const _0xf2ea9c = document.createElement("div");
+036455:       _0xf2ea9c.className = "st-chatu8-popup-hint";
+036456:       _0xf2ea9c.style.cssText = "font-size:12px;opacity:0.6;margin-bottom:8px;max-height:60px;overflow:hidden;text-overflow:ellipsis;";
+036457:       _0xf2ea9c.textContent = "📝 参考消息: " + _0x4cff80.substring(0, 100) + (_0x4cff80.length > 100 ? "..." : "");
+036458:       _0x370fbd.appendChild(_0xf2ea9c);
+036459:     }
+036460:     const _0x42f5db = document.createElement("textarea");
+036461:     _0x42f5db.className = "st-chatu8-popup-textarea";
+036462:     _0x42f5db.placeholder = "例如：生成一个温柔的猫娘角色人设，性格害羞但内心善良...";
+036463:     _0x42f5db.style.minHeight = "100px";
+036464:     _0x370fbd.appendChild(_0x42f5db);
+036465:     const _0x35d957 = document.createElement("div");
+036466:     _0x35d957.className = "st-chatu8-popup-upload-section";
+036467:     const _0x443516 = document.createElement("div");
+
+==========================================================================================
+LINES 36923-36942
+036923:   } = _0x5e1061;
+036924:   const _0x2bfdbf = Object.entries(_0xc12412).filter(([, _0x2342bf]) => _0x2342bf).map(([_0x93c59b]) => _0x93c59b);
+036925:   if (_0x2bfdbf.length === 0) {
+036926:     return "资料库中没有启用任何世界书。";
+036927:   }
+036928:   const _0x45c1cd = [];
+036929:   const _0xfd613 = _0x39f559.toLowerCase();
+036930:   for (const _0x2b0626 of _0x2bfdbf) {
+036931:     const _0x283287 = _0x5161d8[_0x2b0626] || {};
+036932:     let _0x167b21 = [];
+036933:     try {
+036934:       await refreshWorldBookCache(_0x2b0626);
+036935:       const _0xb69de8 = await getWorldEntries(_0x2b0626);
+036936:       if (_0xb69de8) {
+036937:         _0x167b21 = Array.isArray(_0xb69de8) ? _0xb69de8 : Object.values(_0xb69de8);
+036938:       }
+036939:     } catch (_0x280246) {
+036940:       continue;
+036941:     }
+036942:     const _0x6fdba8 = _0x167b21.filter(_0x5830f3 => {
+
+==========================================================================================
+LINES 36935-36954
+036935:       const _0xb69de8 = await getWorldEntries(_0x2b0626);
+036936:       if (_0xb69de8) {
+036937:         _0x167b21 = Array.isArray(_0xb69de8) ? _0xb69de8 : Object.values(_0xb69de8);
+036938:       }
+036939:     } catch (_0x280246) {
+036940:       continue;
+036941:     }
+036942:     const _0x6fdba8 = _0x167b21.filter(_0x5830f3 => {
+036943:       const _0x44b2df = _0x283287[_0x5830f3.uid];
+036944:       return _0x44b2df === true || _0x44b2df === "force";
+036945:     });
+036946:     const _0x4226b1 = _0x6fdba8.filter(_0x41dc53 => {
+036947:       const _0x51df5e = (_0x41dc53.comment || "").toLowerCase();
+036948:       const _0x436b27 = (Array.isArray(_0x41dc53.key) ? _0x41dc53.key.join(" ") : String(_0x41dc53.key || "")).toLowerCase();
+036949:       const _0x12256c = (_0x41dc53.content || "").toLowerCase();
+036950:       return _0x51df5e.includes(_0xfd613) || _0x436b27.includes(_0xfd613) || _0x12256c.includes(_0xfd613);
+036951:     });
+036952:     if (_0x4226b1.length > 0) {
+036953:       _0x45c1cd.push("\n📚 世界书: " + _0x2b0626);
+036954:       _0x4226b1.forEach(_0x2c36ff => {
+
+==========================================================================================
+LINES 41420-41439
+041420:   }) => {
+041421:     const _0x1e2aa4 = document.getElementById(_0x442fe5);
+041422:     if (!_0x1e2aa4) {
+041423:       return;
+041424:     }
+041425:     const _0x42be13 = _0x1e2aa4.value;
+041426:     _0x1e2aa4.innerHTML = "";
+041427:     for (const _0x15ac2d in _0x43d5c4.prompt_replace) {
+041428:       const _0x3ec832 = new Option(_0x15ac2d, _0x15ac2d);
+041429:       _0x3ec832.title = _0x15ac2d;
+041430:       _0x1e2aa4.add(_0x3ec832);
+041431:     }
+041432:     const _0x845056 = _0x43d5c4[_0x23c45e];
+041433:     if (_0x845056 && _0x43d5c4.prompt_replace[_0x845056]) {
+041434:       _0x1e2aa4.value = _0x845056;
+041435:     } else if (_0x43d5c4.prompt_replace[_0x42be13]) {
+041436:       _0x1e2aa4.value = _0x42be13;
+041437:     }
+041438:   });
+041439:   console.log("[AI Config Helper] 提示词替换选择器已刷新");
+
+==========================================================================================
+LINES 41421-41440
+041421:     const _0x1e2aa4 = document.getElementById(_0x442fe5);
+041422:     if (!_0x1e2aa4) {
+041423:       return;
+041424:     }
+041425:     const _0x42be13 = _0x1e2aa4.value;
+041426:     _0x1e2aa4.innerHTML = "";
+041427:     for (const _0x15ac2d in _0x43d5c4.prompt_replace) {
+041428:       const _0x3ec832 = new Option(_0x15ac2d, _0x15ac2d);
+041429:       _0x3ec832.title = _0x15ac2d;
+041430:       _0x1e2aa4.add(_0x3ec832);
+041431:     }
+041432:     const _0x845056 = _0x43d5c4[_0x23c45e];
+041433:     if (_0x845056 && _0x43d5c4.prompt_replace[_0x845056]) {
+041434:       _0x1e2aa4.value = _0x845056;
+041435:     } else if (_0x43d5c4.prompt_replace[_0x42be13]) {
+041436:       _0x1e2aa4.value = _0x42be13;
+041437:     }
+041438:   });
+041439:   console.log("[AI Config Helper] 提示词替换选择器已刷新");
+041440: }
+
+==========================================================================================
+LINES 41422-41441
+041422:     if (!_0x1e2aa4) {
+041423:       return;
+041424:     }
+041425:     const _0x42be13 = _0x1e2aa4.value;
+041426:     _0x1e2aa4.innerHTML = "";
+041427:     for (const _0x15ac2d in _0x43d5c4.prompt_replace) {
+041428:       const _0x3ec832 = new Option(_0x15ac2d, _0x15ac2d);
+041429:       _0x3ec832.title = _0x15ac2d;
+041430:       _0x1e2aa4.add(_0x3ec832);
+041431:     }
+041432:     const _0x845056 = _0x43d5c4[_0x23c45e];
+041433:     if (_0x845056 && _0x43d5c4.prompt_replace[_0x845056]) {
+041434:       _0x1e2aa4.value = _0x845056;
+041435:     } else if (_0x43d5c4.prompt_replace[_0x42be13]) {
+041436:       _0x1e2aa4.value = _0x42be13;
+041437:     }
+041438:   });
+041439:   console.log("[AI Config Helper] 提示词替换选择器已刷新");
+041440: }
+041441: function refreshRegexProfileSelector(_0x2d0ab2) {
+
+==========================================================================================
+LINES 44599-44618
+044599:       ..._0x2bf786
+044600:     };
+044601:     _0xdb07d6.emit(eventNames.TTS_REQUEST, _0x30b4d1);
+044602:   }
+044603: }
+044604: function setupTTSEventListeners() {
+044605:   _0xdb07d6.on(eventNames.TTS_STATE_CHANGED, _0x1c585a => {
+044606:     const {
+044607:       state: _0x405832
+044608:     } = _0x1c585a;
+044609:     if (_0x405832 === "idle") {
+044610:       if (ttsActiveMessageIndex >= 0) {
+044611:         const _0x4f2958 = ttsCollectingBlobUrls.filter(Boolean).length;
+044612:         if (_0x4f2958 > 0 && ttsActiveMessageIndex >= 0) {
+044613:           if (activeChat && activeChat.messages[ttsActiveMessageIndex]) {
+044614:             const _0x31221c = activeChat.messages[ttsActiveMessageIndex].content;
+044615:             const _0x365154 = typeof _0x31221c === "string" ? _0x31221c : "";
+044616:             const _0x22e34a = _0x539b2c[extensionName]?.chatu8_ai_assistant || {};
+044617:             const _0x28733e = _0x22e34a.tts_scope || "dialogue";
+044618:             const _0x16efff = extractDialogueForTTS(_0x365154, _0x28733e);
+
+==========================================================================================
+LINES 44601-44620
+044601:     _0xdb07d6.emit(eventNames.TTS_REQUEST, _0x30b4d1);
+044602:   }
+044603: }
+044604: function setupTTSEventListeners() {
+044605:   _0xdb07d6.on(eventNames.TTS_STATE_CHANGED, _0x1c585a => {
+044606:     const {
+044607:       state: _0x405832
+044608:     } = _0x1c585a;
+044609:     if (_0x405832 === "idle") {
+044610:       if (ttsActiveMessageIndex >= 0) {
+044611:         const _0x4f2958 = ttsCollectingBlobUrls.filter(Boolean).length;
+044612:         if (_0x4f2958 > 0 && ttsActiveMessageIndex >= 0) {
+044613:           if (activeChat && activeChat.messages[ttsActiveMessageIndex]) {
+044614:             const _0x31221c = activeChat.messages[ttsActiveMessageIndex].content;
+044615:             const _0x365154 = typeof _0x31221c === "string" ? _0x31221c : "";
+044616:             const _0x22e34a = _0x539b2c[extensionName]?.chatu8_ai_assistant || {};
+044617:             const _0x28733e = _0x22e34a.tts_scope || "dialogue";
+044618:             const _0x16efff = extractDialogueForTTS(_0x365154, _0x28733e);
+044619:             if (_0x16efff && _0x16efff.text) {
+044620:               const _0x4bcbae = ttsCollectingTotalSegments > 0 && _0x4f2958 >= ttsCollectingTotalSegments;
+
+==========================================================================================
+LINES 44634-44653
+044634:         const _0x4dbd92 = ttsActiveMessageIndex;
+044635:         setTtsActiveMessageIndex(-1);
+044636:         setTtsButtonState("idle");
+044637:         setTtsCurrentRequestId("");
+044638:         setTtsCollectingBlobUrls([]);
+044639:         setTtsCollectingTotalSegments(0);
+044640:         updateTTSButtonIcon(_0x4dbd92, "idle");
+044641:       }
+044642:     } else if (_0x405832 === "active") {}
+044643:   });
+044644:   _0xdb07d6.on(eventNames.TTS_RESPONSE, _0x3eb960 => {
+044645:     const {
+044646:       status: _0x482d01,
+044647:       blobUrl: _0x3baa1d,
+044648:       totalSegments: _0x5dd3ef,
+044649:       segIndex: _0x1014c5
+044650:     } = _0x3eb960;
+044651:     if (_0x5dd3ef > 0 && ttsActiveMessageIndex >= 0) {
+044652:       setTtsCollectingTotalSegments(_0x5dd3ef);
+044653:     }
+
+==========================================================================================
+LINES 49937-49956
+049937:       prompt: _0x52f8d1
+049938:     } = _0x54c54a.detail;
+049939:     if (!_0x58c455) {
+049940:       console.warn("[AI Assistant] 图片URL为空");
+049941:       return;
+049942:     }
+049943:     const _0x21c074 = dom.chatBody;
+049944:     const _0x1c523d = "<img src=\"/scripts/extensions/third-party/st-chatu8/html/settings/智绘姬头像.png\" alt=\"智绘姬\" style=\"width: 100%; height: 100%; object-fit: cover; border-radius: 50%; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;\">";
+049945:     const _0xb27d90 = "\n            <div class=\"st-chatu8-ai-msg system-msg\">\n                <div class=\"msg-avatar\">" + _0x1c523d + "</div>\n                <div class=\"msg-content\">\n                    <div class=\"st-chatu8-ai-generated-image\" style=\"margin-top: 10px;\">\n                        <img src=\"" + _0x58c455 + "\" alt=\"AI生成的图片\" style=\"max-width: 100%; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1);\" />\n                        <div style=\"margin-top: 5px; font-size: 12px; color: #666;\">提示词: " + escapeHTML(_0x52f8d1) + "</div>\n                    </div>\n                </div>\n            </div>\n        ";
+049946:     const _0x3b75cf = $(_0xb27d90);
+049947:     _0x3b75cf.find("img").on("click", function () {
+049948:       showImageFullscreen(_0x58c455);
+049949:     });
+049950:     _0x21c074.append(_0x3b75cf);
+049951:     _0x21c074.scrollTop(_0x21c074[0].scrollHeight);
+049952:     console.log("[AI Assistant] 已添加图片消息到聊天");
+049953:     if (activeChat) {
+049954:       try {
+049955:         const _0x1d5036 = _0x58c455.match(/^data:(image\/[^;]+);base64,/);
+049956:         const _0x595d13 = _0x1d5036 ? _0x1d5036[1] : "image/png";
+
+==========================================================================================
+LINES 52142-52161
+052142:     inpaint_mask: window.comfyuiInpaintMask || null,
+052143:     inpaint_denoise: _0x5ade62[extensionName].inpaint_denoise || "0.75",
+052144:     inpaint_positive: window.comfyuiInpaintPositivePrompt || "",
+052145:     inpaint_negative: window.comfyuiInpaintNegativePrompt || ""
+052146:   };
+052147:   if (!_0x4dbdf4.MODEL_NAME) {
+052148:     throw new Error("ComfyUI 模型名为空或只包含空白字符。");
+052149:   }
+052150:   const _0x1b73e1 = "\n-- - 生图参数报告-- -\n正面提示词: " + _0x4dbdf4.prompt + " \n负面提示词: " + _0x4dbdf4.negative_prompt + " \n模型: " + _0x4dbdf4.MODEL_NAME + " \n采样器: " + _0x4dbdf4.sampler_name + " \n步数: " + _0x4dbdf4.steps + " \nCFG Scale: " + _0x4dbdf4.cfg_scale + " \n种子: " + _0x4dbdf4.seed + " \n尺寸: " + _0x4dbdf4.width + "x" + _0x4dbdf4.height + " \nVAE: " + _0x4dbdf4.vae + " \nScheduler: " + _0x4dbdf4.scheduler + " \n--------------------\n";
+052151:   addLog(_0x1b73e1);
+052152:   const _0x4fbcb3 = "533ef3a3-39c0-4e39-9ced-37d290f371f8";
+052153:   let _0x80fd17 = _0x5ade62[extensionName].worker;
+052154:   if (_0x4ead2b.includes("{ComfyUI局部重绘}") || _0x4ead2b.includes("{局部重绘}")) {
+052155:     _0x80fd17 = _0x5ade62[extensionName].editWorker;
+052156:   }
+052157:   try {
+052158:     const _0x359cb0 = JSON.parse(_0x80fd17);
+052159:     const _0x55f408 = Object.values(_0x359cb0).filter(_0x58e9a6 => _0x58e9a6 && _0x58e9a6._skip).length;
+052160:     if (_0x55f408 > 0) {
+052161:       addLog("检测到 " + _0x55f408 + " 个跳过的节点，正在处理连接重映射...");
+
+==========================================================================================
+LINES 52564-52583
+052564:       return JSON.parse(_0x19280e);
+052565:     } catch (_0x3aeb3e) {
+052566:       throw new Error("无法解析响应 JSON: " + _0x3aeb3e.message + "; 原始响应: " + _0x19280e.slice(0, 500));
+052567:     }
+052568:   }
+052569:   addLog("[Banana] 检测到 SSE 流式响应，开始聚合 chunk");
+052570:   let _0x5a5a26 = "";
+052571:   const _0x985f2c = [];
+052572:   let _0x583224 = "";
+052573:   const _0x72adb7 = [];
+052574:   let _0x25a256 = null;
+052575:   let _0x4c4f2a = null;
+052576:   let _0x56309a = null;
+052577:   let _0x32cc33 = null;
+052578:   const _0x15b76a = _0x19280e.split(/\r?\n/);
+052579:   for (const _0x4d3ee1 of _0x15b76a) {
+052580:     const _0x3d1dd2 = _0x4d3ee1.trim();
+052581:     if (!_0x3d1dd2 || _0x3d1dd2.startsWith(":")) {
+052582:       continue;
+052583:     }
+
+==========================================================================================
+LINES 52616-52635
+052616:         if (_0xdf02f4 && _0xdf02f4.type === "text" && typeof _0xdf02f4.text === "string") {
+052617:           _0x5a5a26 += _0xdf02f4.text;
+052618:         } else {
+052619:           _0x985f2c.push(_0xdf02f4);
+052620:         }
+052621:       }
+052622:     }
+052623:     if (typeof _0x410555.reasoning_content === "string") {
+052624:       _0x583224 += _0x410555.reasoning_content;
+052625:     }
+052626:     const _0x57bee6 = _0x410555.reasoning_details;
+052627:     if (_0x57bee6 && Array.isArray(_0x57bee6.images)) {
+052628:       for (const _0x4f93bb of _0x57bee6.images) {
+052629:         _0x72adb7.push(_0x4f93bb);
+052630:       }
+052631:     }
+052632:     if (_0x406002.finish_reason) {
+052633:       _0x25a256 = _0x406002.finish_reason;
+052634:     }
+052635:   }
+
+==========================================================================================
+LINES 52646-52665
+052646:   } else {
+052647:     _0x26d26f = _0x5a5a26;
+052648:   }
+052649:   const _0x3db7b6 = {
+052650:     role: "assistant",
+052651:     content: _0x26d26f
+052652:   };
+052653:   const _0x46f240 = _0x3db7b6;
+052654:   if (_0x583224) {
+052655:     _0x46f240.reasoning_content = _0x583224;
+052656:   }
+052657:   if (_0x72adb7.length > 0) {
+052658:     _0x46f240.reasoning_details = {
+052659:       images: _0x72adb7
+052660:     };
+052661:   }
+052662:   addLog("[Banana] SSE 聚合完成：text=" + _0x5a5a26.length + " 字符，images=" + _0x72adb7.length + "，reasoning=" + _0x583224.length + " 字符");
+052663:   const _0x269441 = {
+052664:     index: 0,
+052665:     message: _0x46f240,
+
+==========================================================================================
+LINES 52647-52666
+052647:     _0x26d26f = _0x5a5a26;
+052648:   }
+052649:   const _0x3db7b6 = {
+052650:     role: "assistant",
+052651:     content: _0x26d26f
+052652:   };
+052653:   const _0x46f240 = _0x3db7b6;
+052654:   if (_0x583224) {
+052655:     _0x46f240.reasoning_content = _0x583224;
+052656:   }
+052657:   if (_0x72adb7.length > 0) {
+052658:     _0x46f240.reasoning_details = {
+052659:       images: _0x72adb7
+052660:     };
+052661:   }
+052662:   addLog("[Banana] SSE 聚合完成：text=" + _0x5a5a26.length + " 字符，images=" + _0x72adb7.length + "，reasoning=" + _0x583224.length + " 字符");
+052663:   const _0x269441 = {
+052664:     index: 0,
+052665:     message: _0x46f240,
+052666:     finish_reason: _0x25a256 || "stop"
+
+==========================================================================================
+LINES 52654-52673
+052654:   if (_0x583224) {
+052655:     _0x46f240.reasoning_content = _0x583224;
+052656:   }
+052657:   if (_0x72adb7.length > 0) {
+052658:     _0x46f240.reasoning_details = {
+052659:       images: _0x72adb7
+052660:     };
+052661:   }
+052662:   addLog("[Banana] SSE 聚合完成：text=" + _0x5a5a26.length + " 字符，images=" + _0x72adb7.length + "，reasoning=" + _0x583224.length + " 字符");
+052663:   const _0x269441 = {
+052664:     index: 0,
+052665:     message: _0x46f240,
+052666:     finish_reason: _0x25a256 || "stop"
+052667:   };
+052668:   return {
+052669:     id: _0x32cc33,
+052670:     object: "chat.completion",
+052671:     model: _0x56309a,
+052672:     choices: [_0x269441],
+052673:     usage: _0x4c4f2a || undefined
+
+==========================================================================================
+LINES 52963-52982
+052963:     addLog("[Banana] 启用 Grok 原生 images/generations 格式");
+052964:     const _0x1097ef = _0x3fcfc0[_0x5d347b] || {
+052965:       fixedPrompt: "",
+052966:       postfixPrompt: ""
+052967:     };
+052968:     const _0x2fe3f7 = [_0x1097ef.fixedPrompt, _0x29d070.前置前, _0x29d070.前置后, _0x4446a4, _0x29d070.后置前, _0x29d070.后置后, _0x1097ef.postfixPrompt, _0x29d070.最后置].filter(Boolean).join(", ");
+052969:     addLog("[Banana] Grok prompt: " + _0x2fe3f7);
+052970:     const _0x1a2325 = "/v1/images/generations";
+052971:     let _0x931832 = _0x32a5e2.replace(/\/$/, "");
+052972:     let _0x445c82 = _0x931832 + "/images/generations";
+052973:     const _0x117e0d = {
+052974:       model: _0x74885e,
+052975:       prompt: _0x2fe3f7,
+052976:       n: 1,
+052977:       response_format: "b64_json"
+052978:     };
+052979:     const _0x16221a = _0x117e0d;
+052980:     const _0x20fc74 = _0x445c82;
+052981:     const _0x1588cb = getDirectHeaders("application/json", "Bearer " + _0x27642a);
+052982:     addLog("[Banana] Grok 模式发送请求到: " + _0x20fc74);
+
+==========================================================================================
+LINES 52964-52983
+052964:     const _0x1097ef = _0x3fcfc0[_0x5d347b] || {
+052965:       fixedPrompt: "",
+052966:       postfixPrompt: ""
+052967:     };
+052968:     const _0x2fe3f7 = [_0x1097ef.fixedPrompt, _0x29d070.前置前, _0x29d070.前置后, _0x4446a4, _0x29d070.后置前, _0x29d070.后置后, _0x1097ef.postfixPrompt, _0x29d070.最后置].filter(Boolean).join(", ");
+052969:     addLog("[Banana] Grok prompt: " + _0x2fe3f7);
+052970:     const _0x1a2325 = "/v1/images/generations";
+052971:     let _0x931832 = _0x32a5e2.replace(/\/$/, "");
+052972:     let _0x445c82 = _0x931832 + "/images/generations";
+052973:     const _0x117e0d = {
+052974:       model: _0x74885e,
+052975:       prompt: _0x2fe3f7,
+052976:       n: 1,
+052977:       response_format: "b64_json"
+052978:     };
+052979:     const _0x16221a = _0x117e0d;
+052980:     const _0x20fc74 = _0x445c82;
+052981:     const _0x1588cb = getDirectHeaders("application/json", "Bearer " + _0x27642a);
+052982:     addLog("[Banana] Grok 模式发送请求到: " + _0x20fc74);
+052983:     addLog("[Banana] Grok payload: " + JSON.stringify(_0x16221a));
+
+==========================================================================================
+LINES 53880-53899
+053880:         ADetailer: {
+053881:           args: [true, true, {
+053882:             ad_model: "face_yolov8n.pt"
+053883:           }]
+053884:         }
+053885:       }
+053886:     });
+053887:   }
+053888:   const _0x35d835 = "\n---\n### 生图参数报告\n- **正面提示 (Prompt):** " + _0x41c84b + "\n- **负面提示 (Negative Prompt):** " + _0x2cf015 + "\n- **采样方法 (Sampler):** " + _0x59f535.sampler_name + "\n- **步数 (Steps):** " + _0x59f535.steps + "\n- **CFG Scale:** " + _0x59f535.cfg_scale + "\n- **尺寸 (Size):** " + _0x59f535.width + "x" + _0x59f535.height + "\n- **种子 (Seed):** " + (_0x59f535.seed === -1 ? "随机(-1)" : _0x59f535.seed) + "\n- **模型 (Model):** " + _0x131e4f.sd_cchatu_8_model + "\n- **VAE:** " + _0x59f535.override_settings.sd_vae + "\n- **Clip Skip:** " + _0x59f535.override_settings.CLIP_stop_at_last_layers + "\n- **高清修复 (Hires Fix):** " + _0x59f535.enable_hr + "\n- **放大倍率 (Upscale Factor):** " + _0x59f535.hr_scale + "\n- **重绘幅度 (Denoising Strength):** " + _0x59f535.denoising_strength + "\n- **脸部修复 (Restore Faces):** " + _0x59f535.restore_faces + "\n- **ADetailer:** " + (_0x131e4f.sd_cadetailer == "true") + "\n---\n    ";
+053889:   addLog(_0x35d835);
+053890:   addLog("sdwebui生图参数为" + JSON.stringify(_0x59f535));
+053891:   console.log("payload", _0x59f535);
+053892:   while (!window.xiancheng) {
+053893:     await sleep(1000);
+053894:   }
+053895:   ;
+053896:   try {
+053897:     window.xiancheng = false;
+053898:     taskQueue.updateStatus(_0x37ff45, "running");
+053899:     if (_0x131e4f.client === "jiuguan") {
+
+==========================================================================================
+LINES 58802-58821
+058802:         }
+058803:       } catch (_0x1629a9) {
+058804:         console.warn("Failed to refresh UI after creating preset:", _0x1629a9);
+058805:       }
+058806:     }
+058807:   });
+058808: }
+058809: function prompt_replace_rename(_0x434fa2) {
+058810:   const _0x295832 = _0x931ba6[extensionName];
+058811:   const _0x362324 = _0x295832.prompt_replace_id;
+058812:   if (_0x362324 === "默认" || !_0x295832.prompt_replace[_0x362324]) {
+058813:     alert("默认配置或不存在的配置不能重命名。");
+058814:     return;
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+
+==========================================================================================
+LINES 58803-58822
+058803:       } catch (_0x1629a9) {
+058804:         console.warn("Failed to refresh UI after creating preset:", _0x1629a9);
+058805:       }
+058806:     }
+058807:   });
+058808: }
+058809: function prompt_replace_rename(_0x434fa2) {
+058810:   const _0x295832 = _0x931ba6[extensionName];
+058811:   const _0x362324 = _0x295832.prompt_replace_id;
+058812:   if (_0x362324 === "默认" || !_0x295832.prompt_replace[_0x362324]) {
+058813:     alert("默认配置或不存在的配置不能重命名。");
+058814:     return;
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+
+==========================================================================================
+LINES 58804-58823
+058804:         console.warn("Failed to refresh UI after creating preset:", _0x1629a9);
+058805:       }
+058806:     }
+058807:   });
+058808: }
+058809: function prompt_replace_rename(_0x434fa2) {
+058810:   const _0x295832 = _0x931ba6[extensionName];
+058811:   const _0x362324 = _0x295832.prompt_replace_id;
+058812:   if (_0x362324 === "默认" || !_0x295832.prompt_replace[_0x362324]) {
+058813:     alert("默认配置或不存在的配置不能重命名。");
+058814:     return;
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+058823:       delete _0x295832.prompt_replace[_0x362324];
+
+==========================================================================================
+LINES 58810-58829
+058810:   const _0x295832 = _0x931ba6[extensionName];
+058811:   const _0x362324 = _0x295832.prompt_replace_id;
+058812:   if (_0x362324 === "默认" || !_0x295832.prompt_replace[_0x362324]) {
+058813:     alert("默认配置或不存在的配置不能重命名。");
+058814:     return;
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+058823:       delete _0x295832.prompt_replace[_0x362324];
+058824:       _0x295832.prompt_replace_id = _0x18cd8a;
+058825:       _0x556669();
+058826:       try {
+058827:         if (typeof window.loadSilterTavernChatu8Settings === "function") {
+058828:           window.loadSilterTavernChatu8Settings();
+058829:         }
+
+==========================================================================================
+LINES 58814-58833
+058814:     return;
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+058823:       delete _0x295832.prompt_replace[_0x362324];
+058824:       _0x295832.prompt_replace_id = _0x18cd8a;
+058825:       _0x556669();
+058826:       try {
+058827:         if (typeof window.loadSilterTavernChatu8Settings === "function") {
+058828:           window.loadSilterTavernChatu8Settings();
+058829:         }
+058830:       } catch (_0x410026) {
+058831:         console.warn("Failed to refresh UI after renaming preset:", _0x410026);
+058832:       }
+058833:     }
+
+==========================================================================================
+LINES 58815-58834
+058815:   }
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+058823:       delete _0x295832.prompt_replace[_0x362324];
+058824:       _0x295832.prompt_replace_id = _0x18cd8a;
+058825:       _0x556669();
+058826:       try {
+058827:         if (typeof window.loadSilterTavernChatu8Settings === "function") {
+058828:           window.loadSilterTavernChatu8Settings();
+058829:         }
+058830:       } catch (_0x410026) {
+058831:         console.warn("Failed to refresh UI after renaming preset:", _0x410026);
+058832:       }
+058833:     }
+058834:   });
+
+==========================================================================================
+LINES 58816-58835
+058816:   stylInput2("请输入新的配置名称", _0x362324).then(_0x18cd8a => {
+058817:     if (_0x18cd8a && _0x18cd8a.trim() !== "" && _0x18cd8a !== _0x362324) {
+058818:       if (_0x295832.prompt_replace[_0x18cd8a]) {
+058819:         alert("该名称已存在，请换一个名称。");
+058820:         return;
+058821:       }
+058822:       _0x295832.prompt_replace[_0x18cd8a] = _0x295832.prompt_replace[_0x362324];
+058823:       delete _0x295832.prompt_replace[_0x362324];
+058824:       _0x295832.prompt_replace_id = _0x18cd8a;
+058825:       _0x556669();
+058826:       try {
+058827:         if (typeof window.loadSilterTavernChatu8Settings === "function") {
+058828:           window.loadSilterTavernChatu8Settings();
+058829:         }
+058830:       } catch (_0x410026) {
+058831:         console.warn("Failed to refresh UI after renaming preset:", _0x410026);
+058832:       }
+058833:     }
+058834:   });
+058835: }
+
+==========================================================================================
+LINES 59337-59356
+059337:   const _0x54ed62 = {
+059338:     val: _0x3f9dab + "%",
+059339:     label: "成功率",
+059340:     color: _0x141965
+059341:   };
+059342:   const _0x4b1658 = [_0x494540, _0x54ed62];
+059343:   if (_0x553a34.firstGenTime) {
+059344:     const _0x517a98 = Math.max(1, Math.ceil((Date.now() - _0x553a34.firstGenTime) / 86400000));
+059345:     const _0x5832b5 = {
+059346:       val: _0x517a98,
+059347:       unit: "天",
+059348:       label: "创作天数",
+059349:       color: "#64B5F6"
+059350:     };
+059351:     _0x4b1658.push(_0x5832b5);
+059352:     _0x4b1658.push({
+059353:       val: (_0x553a34.total.success / _0x517a98).toFixed(1),
+059354:       label: "日均张数",
+059355:       color: "#FFB74D"
+059356:     });
+
+==========================================================================================
+LINES 59343-59362
+059343:   if (_0x553a34.firstGenTime) {
+059344:     const _0x517a98 = Math.max(1, Math.ceil((Date.now() - _0x553a34.firstGenTime) / 86400000));
+059345:     const _0x5832b5 = {
+059346:       val: _0x517a98,
+059347:       unit: "天",
+059348:       label: "创作天数",
+059349:       color: "#64B5F6"
+059350:     };
+059351:     _0x4b1658.push(_0x5832b5);
+059352:     _0x4b1658.push({
+059353:       val: (_0x553a34.total.success / _0x517a98).toFixed(1),
+059354:       label: "日均张数",
+059355:       color: "#FFB74D"
+059356:     });
+059357:   }
+059358:   if (_0x553a34.total.fail > 0) {
+059359:     const _0x187e72 = {
+059360:       val: _0x553a34.total.fail,
+059361:       label: "失败次数",
+059362:       color: "#ef5350"
+
+==========================================================================================
+LINES 59550-59569
+059550:       success: 0,
+059551:       fail: 0
+059552:     };
+059553:     if (_0x4a215b.success + _0x4a215b.fail === 0) {
+059554:       continue;
+059555:     }
+059556:     const _0x5bd4ce = _0x525adf > 0 ? _0x4a215b.success / _0x525adf * 100 : 0;
+059557:     _0x28e2d9 += "<div style=\"display:flex; align-items:center; gap:8px;\">";
+059558:     _0x28e2d9 += "<span style=\"width:120px; font-size:12px; white-space:nowrap;\">" + _0x2b7dd9.icon + " " + _0x2b7dd9.name + "</span>";
+059559:     _0x28e2d9 += "<div style=\"flex:1; height:14px; background:rgba(128,128,128,0.15); border-radius:7px; overflow:hidden;\">";
+059560:     _0x28e2d9 += "<div style=\"height:100%; width:" + _0x5bd4ce + "%; background:" + _0x2b7dd9.color + "; border-radius:7px; transition:width 0.3s;\"></div></div>";
+059561:     _0x28e2d9 += "<span style=\"width:76px; text-align:right; font-size:12px;\"><strong>" + _0x4a215b.success + "</strong>";
+059562:     if (_0x4a215b.fail > 0) {
+059563:       _0x28e2d9 += " <span style=\"color:#ef5350; font-size:11px;\">(" + _0x4a215b.fail + "✗)</span>";
+059564:     }
+059565:     _0x28e2d9 += "</span></div>";
+059566:   }
+059567:   for (const [_0x4de77b, _0x102570] of Object.entries(_0x2bfead.backends)) {
+059568:     if (BACKEND_LABELS[_0x4de77b] || _0x102570.success + _0x102570.fail === 0) {
+059569:       continue;
+
+==========================================================================================
+LINES 59553-59572
+059553:     if (_0x4a215b.success + _0x4a215b.fail === 0) {
+059554:       continue;
+059555:     }
+059556:     const _0x5bd4ce = _0x525adf > 0 ? _0x4a215b.success / _0x525adf * 100 : 0;
+059557:     _0x28e2d9 += "<div style=\"display:flex; align-items:center; gap:8px;\">";
+059558:     _0x28e2d9 += "<span style=\"width:120px; font-size:12px; white-space:nowrap;\">" + _0x2b7dd9.icon + " " + _0x2b7dd9.name + "</span>";
+059559:     _0x28e2d9 += "<div style=\"flex:1; height:14px; background:rgba(128,128,128,0.15); border-radius:7px; overflow:hidden;\">";
+059560:     _0x28e2d9 += "<div style=\"height:100%; width:" + _0x5bd4ce + "%; background:" + _0x2b7dd9.color + "; border-radius:7px; transition:width 0.3s;\"></div></div>";
+059561:     _0x28e2d9 += "<span style=\"width:76px; text-align:right; font-size:12px;\"><strong>" + _0x4a215b.success + "</strong>";
+059562:     if (_0x4a215b.fail > 0) {
+059563:       _0x28e2d9 += " <span style=\"color:#ef5350; font-size:11px;\">(" + _0x4a215b.fail + "✗)</span>";
+059564:     }
+059565:     _0x28e2d9 += "</span></div>";
+059566:   }
+059567:   for (const [_0x4de77b, _0x102570] of Object.entries(_0x2bfead.backends)) {
+059568:     if (BACKEND_LABELS[_0x4de77b] || _0x102570.success + _0x102570.fail === 0) {
+059569:       continue;
+059570:     }
+059571:     _0x28e2d9 += "<div style=\"font-size:12px; opacity:0.6;\">🔹 " + _0x4de77b + ": " + _0x102570.success + " 成功 / " + _0x102570.fail + " 失败</div>";
+059572:   }
+
+==========================================================================================
+LINES 59703-59722
+059703:     alert("暂无错误记录。");
+059704:     return;
+059705:   }
+059706:   const _0x4f7a55 = document.createElement("div");
+059707:   _0x4f7a55.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: flex; align-items: center; justify-content: center;";
+059708:   const _0x4b6bc9 = document.createElement("div");
+059709:   _0x4b6bc9.style.cssText = "background: white; border-radius: 8px; padding: 20px; max-width: 800px; max-height: 80vh; overflow-y: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3);";
+059710:   let _0x1aded7 = "<h3 style=\"margin-top: 0;\">错误详情</h3>";
+059711:   _0x1aded7 += "<div style=\"font-family: monospace; font-size: 12px; line-height: 1.6;\">";
+059712:   const _0x452a0f = _0x2100fd.slice(-20).reverse();
+059713:   for (const _0x41a7bb of _0x452a0f) {
+059714:     const _0x469283 = new Date(_0x41a7bb.lastSeen || _0x41a7bb.timestamp).toLocaleString();
+059715:     const _0x1a1dc7 = new Date(_0x41a7bb.firstSeen || _0x41a7bb.timestamp).toLocaleString();
+059716:     const _0x31db65 = _0x41a7bb.sourceScope === "plugin" ? "本插件相关" : _0x41a7bb.sourceScope === "external" ? "外部来源" : "未知来源";
+059717:     _0x1aded7 += "<div style=\"border-bottom: 1px solid #eee; padding: 10px 0;\">";
+059718:     _0x1aded7 += "<div style=\"color: #f44336; font-weight: bold;\">[" + _0x469283 + "] " + _0x41a7bb.type.toUpperCase() + " <span style=\"color:#666; font-weight:normal;\">(" + _0x31db65 + ")</span></div>";
+059719:     _0x1aded7 += "<div style=\"margin: 5px 0;\"><strong>类型:</strong> " + escapeHtml2(_0x41a7bb.message) + "</div>";
+059720:     _0x1aded7 += "<div style=\"margin: 5px 0;\"><strong>次数:</strong> " + (_0x41a7bb.count || 1) + "</div>";
+059721:     _0x1aded7 += "<div style=\"margin: 5px 0;\"><strong>首次出现:</strong> " + escapeHtml2(_0x1a1dc7) + "</div>";
+059722:     if (_0x41a7bb.source) {
+
+==========================================================================================
+LINES 61115-61134
+061115:     updateNovelaiImagePreview(_0x298373);
+061116:   } catch (_0x4ef3c2) {
+061117:     console.error("Error processing NovelAI image:", _0x4ef3c2);
+061118:     alert("图片处理失败: " + _0x4ef3c2.message);
+061119:   }
+061120: }
+061121: function updateNovelaiCharRefImagePreview(_0x2702bb) {
+061122:   const _0x2f0589 = document.getElementById("previewImage_nai_char_ref");
+061123:   const _0x3d2832 = document.querySelector("#novelai-char-ref-image-preview-container .st-chatu8-image-placeholder");
+061124:   const _0x15aaac = document.getElementById("novelai-remove-char-ref-image-btn");
+061125:   if (!_0x2f0589 || !_0x3d2832 || !_0x15aaac) {
+061126:     console.log("[CharRef] Old character reference UI elements not found - using new system");
+061127:     return;
+061128:   }
+061129:   if (_0x2702bb && _0x2702bb.startsWith("data:image")) {
+061130:     _0x2f0589.src = _0x2702bb;
+061131:     _0x2f0589.style.display = "block";
+061132:     _0x3d2832.style.display = "none";
+061133:     _0x15aaac.style.display = "inline-flex";
+061134:     const _0x143039 = _0x2702bb.split(",");
+
+==========================================================================================
+LINES 61117-61136
+061117:     console.error("Error processing NovelAI image:", _0x4ef3c2);
+061118:     alert("图片处理失败: " + _0x4ef3c2.message);
+061119:   }
+061120: }
+061121: function updateNovelaiCharRefImagePreview(_0x2702bb) {
+061122:   const _0x2f0589 = document.getElementById("previewImage_nai_char_ref");
+061123:   const _0x3d2832 = document.querySelector("#novelai-char-ref-image-preview-container .st-chatu8-image-placeholder");
+061124:   const _0x15aaac = document.getElementById("novelai-remove-char-ref-image-btn");
+061125:   if (!_0x2f0589 || !_0x3d2832 || !_0x15aaac) {
+061126:     console.log("[CharRef] Old character reference UI elements not found - using new system");
+061127:     return;
+061128:   }
+061129:   if (_0x2702bb && _0x2702bb.startsWith("data:image")) {
+061130:     _0x2f0589.src = _0x2702bb;
+061131:     _0x2f0589.style.display = "block";
+061132:     _0x3d2832.style.display = "none";
+061133:     _0x15aaac.style.display = "inline-flex";
+061134:     const _0x143039 = _0x2702bb.split(",");
+061135:     const _0xe8d5d5 = _0x143039[0].split(":")[1].split(";")[0];
+061136:     nai3CharRefImageMimeType = _0xe8d5d5;
+
+==========================================================================================
+LINES 61124-61143
+061124:   const _0x15aaac = document.getElementById("novelai-remove-char-ref-image-btn");
+061125:   if (!_0x2f0589 || !_0x3d2832 || !_0x15aaac) {
+061126:     console.log("[CharRef] Old character reference UI elements not found - using new system");
+061127:     return;
+061128:   }
+061129:   if (_0x2702bb && _0x2702bb.startsWith("data:image")) {
+061130:     _0x2f0589.src = _0x2702bb;
+061131:     _0x2f0589.style.display = "block";
+061132:     _0x3d2832.style.display = "none";
+061133:     _0x15aaac.style.display = "inline-flex";
+061134:     const _0x143039 = _0x2702bb.split(",");
+061135:     const _0xe8d5d5 = _0x143039[0].split(":")[1].split(";")[0];
+061136:     nai3CharRefImageMimeType = _0xe8d5d5;
+061137:     window.nai3CharRefImage = _0x143039[1];
+061138:     const _0x52b014 = {
+061139:       id: NAI_CHAR_REF_CACHE_KEY,
+061140:       data: _0x2702bb
+061141:     };
+061142:     dbs.storeReadWrite(_0x52b014);
+061143:   } else {
+
+==========================================================================================
+LINES 61138-61157
+061138:     const _0x52b014 = {
+061139:       id: NAI_CHAR_REF_CACHE_KEY,
+061140:       data: _0x2702bb
+061141:     };
+061142:     dbs.storeReadWrite(_0x52b014);
+061143:   } else {
+061144:     _0x2f0589.src = "";
+061145:     _0x2f0589.style.display = "none";
+061146:     _0x3d2832.style.display = "flex";
+061147:     _0x15aaac.style.display = "none";
+061148:     window.nai3CharRefImage = null;
+061149:   }
+061150: }
+061151: function removeNovelaiCharRefImage() {
+061152:   updateNovelaiCharRefImagePreview(null);
+061153:   dbs.storeDelete(NAI_CHAR_REF_CACHE_KEY);
+061154: }
+061155: async function handleNovelaiCharRefImageUpload(_0x1d8f3c) {
+061156:   const _0x4422bc = _0x1d8f3c.target.files[0];
+061157:   if (!_0x4422bc) {
+
+==========================================================================================
+LINES 61818-61837
+061818:     if (_0x973276 && _0x973276.src && _0x973276.src.startsWith("blob:")) {
+061819:       URL.revokeObjectURL(_0x973276.src);
+061820:     }
+061821:     _0x3812df.remove();
+061822:   };
+061823:   const _0x2e3cc0 = _0x1eb1a0.createElement("div");
+061824:   _0x2e3cc0.className = "st-chatu8-preview-image-container";
+061825:   _0x2e3cc0.style.cssText = "\n        position: relative;\n        flex: 1;\n        min-height: 0;\n        overflow: hidden;\n    ";
+061826:   const _0x1dbc8e = "\n        position: absolute;\n        top: 50%;\n        transform: translateY(-50%);\n        width: 36px;\n        height: 36px;\n        background: linear-gradient(135deg, rgba(74, 144, 226, 0.8) 0%, rgba(123, 97, 255, 0.8) 100%);\n        color: white;\n        font-size: 14px;\n        font-weight: bold;\n        border-radius: 50%;\n        border: 1px solid rgba(255, 255, 255, 0.2);\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        cursor: pointer;\n        z-index: 10;\n        transition: all 0.3s ease;\n        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n        user-select: none;\n    ";
+061827:   const _0x2cb70c = _0x1eb1a0.createElement("div");
+061828:   _0x2cb70c.className = "st-chatu8-preview-nav prev";
+061829:   _0x2cb70c.innerHTML = "&#10094;";
+061830:   _0x2cb70c.style.cssText = _0x1dbc8e + "left: 10px;";
+061831:   _0x2cb70c.title = "上一张 (←)";
+061832:   _0x2cb70c.onmouseenter = () => {
+061833:     _0x2cb70c.style.transform = "translateY(-50%) scale(1.1)";
+061834:   };
+061835:   _0x2cb70c.onmouseleave = () => {
+061836:     _0x2cb70c.style.transform = "translateY(-50%)";
+061837:   };
+
+==========================================================================================
+LINES 64777-64796
+064777:           const _0x156e4d = document.createElement("li");
+064778:           _0x156e4d.className = "st-chatu8-tree-item";
+064779:           const _0x554c96 = document.createElement("span");
+064780:           _0x554c96.className = "st-chatu8-tree-toggle";
+064781:           _0x554c96.textContent = "▶ ";
+064782:           const _0x2b515b = document.createElement("span");
+064783:           _0x2b515b.textContent = _0x5e251d.name;
+064784:           _0x2b515b.className = "st-chatu8-tree-subgroup";
+064785:           const _0x2832d4 = document.createElement("div");
+064786:           _0x2832d4.className = "st-chatu8-tree-content";
+064787:           _0x2832d4.appendChild(_0x554c96);
+064788:           _0x2832d4.appendChild(_0x2b515b);
+064789:           _0x156e4d.appendChild(_0x2832d4);
+064790:           const _0x1a5b67 = document.createElement("ul");
+064791:           _0x1a5b67.className = "st-chatu8-tree-taglist";
+064792:           _0x1a5b67.style.display = "none";
+064793:           const _0x2c70c3 = _0x38da1d[_0x5e251d.id_index] || [];
+064794:           _0x2c70c3.forEach(_0x49801c => {
+064795:             const _0x22ec6b = document.createElement("li");
+064796:             _0x22ec6b.className = "st-chatu8-tree-tag";
+
+==========================================================================================
+LINES 64778-64797
+064778:           _0x156e4d.className = "st-chatu8-tree-item";
+064779:           const _0x554c96 = document.createElement("span");
+064780:           _0x554c96.className = "st-chatu8-tree-toggle";
+064781:           _0x554c96.textContent = "▶ ";
+064782:           const _0x2b515b = document.createElement("span");
+064783:           _0x2b515b.textContent = _0x5e251d.name;
+064784:           _0x2b515b.className = "st-chatu8-tree-subgroup";
+064785:           const _0x2832d4 = document.createElement("div");
+064786:           _0x2832d4.className = "st-chatu8-tree-content";
+064787:           _0x2832d4.appendChild(_0x554c96);
+064788:           _0x2832d4.appendChild(_0x2b515b);
+064789:           _0x156e4d.appendChild(_0x2832d4);
+064790:           const _0x1a5b67 = document.createElement("ul");
+064791:           _0x1a5b67.className = "st-chatu8-tree-taglist";
+064792:           _0x1a5b67.style.display = "none";
+064793:           const _0x2c70c3 = _0x38da1d[_0x5e251d.id_index] || [];
+064794:           _0x2c70c3.forEach(_0x49801c => {
+064795:             const _0x22ec6b = document.createElement("li");
+064796:             _0x22ec6b.className = "st-chatu8-tree-tag";
+064797:             _0x22ec6b.textContent = _0x49801c.text + " (" + _0x49801c.desc + ")";
+
+==========================================================================================
+LINES 64779-64798
+064779:           const _0x554c96 = document.createElement("span");
+064780:           _0x554c96.className = "st-chatu8-tree-toggle";
+064781:           _0x554c96.textContent = "▶ ";
+064782:           const _0x2b515b = document.createElement("span");
+064783:           _0x2b515b.textContent = _0x5e251d.name;
+064784:           _0x2b515b.className = "st-chatu8-tree-subgroup";
+064785:           const _0x2832d4 = document.createElement("div");
+064786:           _0x2832d4.className = "st-chatu8-tree-content";
+064787:           _0x2832d4.appendChild(_0x554c96);
+064788:           _0x2832d4.appendChild(_0x2b515b);
+064789:           _0x156e4d.appendChild(_0x2832d4);
+064790:           const _0x1a5b67 = document.createElement("ul");
+064791:           _0x1a5b67.className = "st-chatu8-tree-taglist";
+064792:           _0x1a5b67.style.display = "none";
+064793:           const _0x2c70c3 = _0x38da1d[_0x5e251d.id_index] || [];
+064794:           _0x2c70c3.forEach(_0x49801c => {
+064795:             const _0x22ec6b = document.createElement("li");
+064796:             _0x22ec6b.className = "st-chatu8-tree-tag";
+064797:             _0x22ec6b.textContent = _0x49801c.text + " (" + _0x49801c.desc + ")";
+064798:             _0x22ec6b.onclick = () => {
+
+==========================================================================================
+LINES 64780-64799
+064780:           _0x554c96.className = "st-chatu8-tree-toggle";
+064781:           _0x554c96.textContent = "▶ ";
+064782:           const _0x2b515b = document.createElement("span");
+064783:           _0x2b515b.textContent = _0x5e251d.name;
+064784:           _0x2b515b.className = "st-chatu8-tree-subgroup";
+064785:           const _0x2832d4 = document.createElement("div");
+064786:           _0x2832d4.className = "st-chatu8-tree-content";
+064787:           _0x2832d4.appendChild(_0x554c96);
+064788:           _0x2832d4.appendChild(_0x2b515b);
+064789:           _0x156e4d.appendChild(_0x2832d4);
+064790:           const _0x1a5b67 = document.createElement("ul");
+064791:           _0x1a5b67.className = "st-chatu8-tree-taglist";
+064792:           _0x1a5b67.style.display = "none";
+064793:           const _0x2c70c3 = _0x38da1d[_0x5e251d.id_index] || [];
+064794:           _0x2c70c3.forEach(_0x49801c => {
+064795:             const _0x22ec6b = document.createElement("li");
+064796:             _0x22ec6b.className = "st-chatu8-tree-tag";
+064797:             _0x22ec6b.textContent = _0x49801c.text + " (" + _0x49801c.desc + ")";
+064798:             _0x22ec6b.onclick = () => {
+064799:               const _0x157af8 = VOCABULARY_SELECTED_TAGS.value.trim();
+
+==========================================================================================
+LINES 64781-64800
+064781:           _0x554c96.textContent = "▶ ";
+064782:           const _0x2b515b = document.createElement("span");
+064783:           _0x2b515b.textContent = _0x5e251d.name;
+064784:           _0x2b515b.className = "st-chatu8-tree-subgroup";
+064785:           const _0x2832d4 = document.createElement("div");
+064786:           _0x2832d4.className = "st-chatu8-tree-content";
+064787:           _0x2832d4.appendChild(_0x554c96);
+064788:           _0x2832d4.appendChild(_0x2b515b);
+064789:           _0x156e4d.appendChild(_0x2832d4);
+064790:           const _0x1a5b67 = document.createElement("ul");
+064791:           _0x1a5b67.className = "st-chatu8-tree-taglist";
+064792:           _0x1a5b67.style.display = "none";
+064793:           const _0x2c70c3 = _0x38da1d[_0x5e251d.id_index] || [];
+064794:           _0x2c70c3.forEach(_0x49801c => {
+064795:             const _0x22ec6b = document.createElement("li");
+064796:             _0x22ec6b.className = "st-chatu8-tree-tag";
+064797:             _0x22ec6b.textContent = _0x49801c.text + " (" + _0x49801c.desc + ")";
+064798:             _0x22ec6b.onclick = () => {
+064799:               const _0x157af8 = VOCABULARY_SELECTED_TAGS.value.trim();
+064800:               const _0x3c5c37 = _0x49801c.text + "(" + _0x49801c.desc + ")";
+
+==========================================================================================
+LINES 64803-64822
+064803:               } else {
+064804:                 VOCABULARY_SELECTED_TAGS.value = _0x3c5c37;
+064805:               }
+064806:             };
+064807:             _0x1a5b67.appendChild(_0x22ec6b);
+064808:           });
+064809:           if (_0x2c70c3.length > 0) {
+064810:             _0x156e4d.appendChild(_0x1a5b67);
+064811:             _0x2832d4.onclick = () => {
+064812:               const _0x56b9d1 = _0x1a5b67.style.display === "block";
+064813:               _0x1a5b67.style.display = _0x56b9d1 ? "none" : "block";
+064814:               _0x554c96.textContent = _0x56b9d1 ? "▶ " : "▼ ";
+064815:             };
+064816:           } else {
+064817:             _0x554c96.style.visibility = "hidden";
+064818:           }
+064819:           _0x4758d5.appendChild(_0x156e4d);
+064820:         });
+064821:       }
+064822:       _0x4f6b20.appendChild(_0x4758d5);
+
+==========================================================================================
+LINES 64894-64913
+064894:     return;
+064895:   }
+064896:   try {
+064897:     showToast("正在安装 " + _0x3fedd7 + "...", "info");
+064898:     const _0x287812 = await fetch("" + TAG_DATA_PATH + _0x3fedd7);
+064899:     if (!_0x287812.ok) {
+064900:       throw new Error("HTTP error! status: " + _0x287812.status);
+064901:     }
+064902:     const _0x283222 = await _0x287812.text();
+064903:     const _0x590aa3 = CryptoJS.AES.decrypt(_0x283222, encryptionKey);
+064904:     const _0x151564 = _0x590aa3.toString(CryptoJS.enc.Utf8);
+064905:     if (!_0x151564) {
+064906:       throw new Error("解密失败，内容为空。可能是密钥不匹配或文件已损坏。");
+064907:     }
+064908:     const _0x51f38d = JSON.parse(_0x151564);
+064909:     await dbs.installVocabulary(_0x3fedd7, _0x51f38d);
+064910:     const _0x48aaa6 = await dbs.getInstalledVocabularies();
+064911:     const _0x5e973c = _0x48aaa6.find(_0x434029 => _0x434029.fileName === _0x3fedd7);
+064912:     const _0x559769 = _0x5e973c ? _0x5e973c.tagCount : 0;
+064913:     showToast(_0x3fedd7 + " 安装成功，包含 " + _0x559769 + " 个标签", "success");
+
+==========================================================================================
+LINES 64895-64914
+064895:   }
+064896:   try {
+064897:     showToast("正在安装 " + _0x3fedd7 + "...", "info");
+064898:     const _0x287812 = await fetch("" + TAG_DATA_PATH + _0x3fedd7);
+064899:     if (!_0x287812.ok) {
+064900:       throw new Error("HTTP error! status: " + _0x287812.status);
+064901:     }
+064902:     const _0x283222 = await _0x287812.text();
+064903:     const _0x590aa3 = CryptoJS.AES.decrypt(_0x283222, encryptionKey);
+064904:     const _0x151564 = _0x590aa3.toString(CryptoJS.enc.Utf8);
+064905:     if (!_0x151564) {
+064906:       throw new Error("解密失败，内容为空。可能是密钥不匹配或文件已损坏。");
+064907:     }
+064908:     const _0x51f38d = JSON.parse(_0x151564);
+064909:     await dbs.installVocabulary(_0x3fedd7, _0x51f38d);
+064910:     const _0x48aaa6 = await dbs.getInstalledVocabularies();
+064911:     const _0x5e973c = _0x48aaa6.find(_0x434029 => _0x434029.fileName === _0x3fedd7);
+064912:     const _0x559769 = _0x5e973c ? _0x5e973c.tagCount : 0;
+064913:     showToast(_0x3fedd7 + " 安装成功，包含 " + _0x559769 + " 个标签", "success");
+064914:     await renderVocabularyList();
+
+==========================================================================================
+LINES 66599-66618
+066599:   if (isMobile()) {
+066600:     const _0x15e7e1 = _0x169b48.querySelector("#top-settings-holder");
+066601:     if (_0x15e7e1) {
+066602:       const _0x3fc99b = _0x15e7e1.getBoundingClientRect();
+066603:       _0x3137b7 = _0x3fc99b.bottom + 10 + "px";
+066604:       _0xf1089d = "translateX(-50%)";
+066605:     }
+066606:   }
+066607:   _0x25646c.style.cssText = "\n        position: fixed;\n        top: " + _0x3137b7 + ";\n        left: 50%;\n        transform: " + _0xf1089d + ";\n        background: rgba(0, 0, 0, 0.95);\n        color: #fff;\n        padding: 20px;\n        border-radius: 16px;\n        font-size: 14px;\n        z-index: 100000;\n        text-align: center;\n        width: min(90vw, 340px);\n        box-sizing: border-box;\n        box-shadow: 0 8px 32px rgba(0,0,0,0.5);\n        border: 2px solid " + (_0x3ea29f ? "#00ff00" : "#ff6600") + ";\n        font-family: monospace;\n    ";
+066608:   const _0x1c76a9 = _0x23d34d.allResults.map((_0xa435b1, _0x7e971) => "<span style=\"color: " + (_0x7e971 === 0 ? "#0f0" : "#666") + "\">" + (_0x7e971 + 1) + ". " + _0xa435b1.name + " (" + Math.round(_0xa435b1.score * 100) + "%)</span>").join("<br>");
+066609:   const _0x454b18 = {
+066610:     pattern: _0x1521e0[extensionName].gesture1
+066611:   };
+066612:   const _0x674bac = {
+066613:     pattern: _0x1521e0[extensionName].gesture2
+066614:   };
+066615:   const _0x336150 = {
+066616:     gesture1: _0x454b18,
+066617:     gesture2: _0x674bac
+066618:   };
+
+==========================================================================================
+LINES 67950-67969
+067950:   if (!_0x1e24ae) {
+067951:     return "";
+067952:   }
+067953:   const _0x1178df = document.createElement("div");
+067954:   _0x1178df.textContent = _0x1e24ae;
+067955:   return _0x1178df.innerHTML.replace(/"/g, "&quot;");
+067956: }
+067957: function renderRegexEntries(_0x430bd9 = []) {
+067958:   const _0x28323e = regexEntriesContainer && $.contains(document, regexEntriesContainer[0]);
+067959:   if (!_0x28323e) {
+067960:     regexEntriesContainer = $("#ch-regex-entries-container");
+067961:     console.log("[st-chatu8] renderRegexEntries: 刷新容器引用");
+067962:   }
+067963:   if (!regexEntriesContainer || regexEntriesContainer.length === 0) {
+067964:     console.warn("[st-chatu8] renderRegexEntries: 容器不存在，无法渲染");
+067965:     return;
+067966:   }
+067967:   regexEntriesContainer.empty();
+067968:   if (_0x430bd9.length === 0) {
+067969:     regexEntriesContainer.html("\n            <div class=\"st-chatu8-entries-empty\">\n                <i class=\"fa-solid fa-inbox\"></i>\n                <p>暂无正则条目，点击上方按钮添加</p>\n            </div>\n        ");
+
+==========================================================================================
+LINES 67951-67970
+067951:     return "";
+067952:   }
+067953:   const _0x1178df = document.createElement("div");
+067954:   _0x1178df.textContent = _0x1e24ae;
+067955:   return _0x1178df.innerHTML.replace(/"/g, "&quot;");
+067956: }
+067957: function renderRegexEntries(_0x430bd9 = []) {
+067958:   const _0x28323e = regexEntriesContainer && $.contains(document, regexEntriesContainer[0]);
+067959:   if (!_0x28323e) {
+067960:     regexEntriesContainer = $("#ch-regex-entries-container");
+067961:     console.log("[st-chatu8] renderRegexEntries: 刷新容器引用");
+067962:   }
+067963:   if (!regexEntriesContainer || regexEntriesContainer.length === 0) {
+067964:     console.warn("[st-chatu8] renderRegexEntries: 容器不存在，无法渲染");
+067965:     return;
+067966:   }
+067967:   regexEntriesContainer.empty();
+067968:   if (_0x430bd9.length === 0) {
+067969:     regexEntriesContainer.html("\n            <div class=\"st-chatu8-entries-empty\">\n                <i class=\"fa-solid fa-inbox\"></i>\n                <p>暂无正则条目，点击上方按钮添加</p>\n            </div>\n        ");
+067970:     return;
+
+==========================================================================================
+LINES 70495-70514
+070495:   _0x52041c.style.cssText = "\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n        align-items: center;\n        background: linear-gradient(135deg, rgba(135, 206, 235, 0.85) 0%, rgba(176, 224, 230, 0.85) 50%, rgba(224, 246, 255, 0.85) 100%);\n        z-index: 100002;\n        animation: fadeIn 0.5s ease-in;\n        padding: 20px;\n        box-sizing: border-box;\n    ";
+070496:   const _0xe06bbd = document.createElement("div");
+070497:   _0xe06bbd.textContent = "🎨 初次见面，让我们建立连接吧 ✨";
+070498:   _0xe06bbd.style.cssText = "\n        font-size: " + (_0x1ba9f5 ? "18px" : "24px") + ";\n        font-weight: bold;\n        color: #2C5F8D;\n        margin-bottom: " + (_0x1ba9f5 ? "10px" : "15px") + ";\n        text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);\n        font-family: \"Microsoft YaHei\", \"PingFang SC\", sans-serif;\n        animation: pulse 1.5s ease-in-out infinite;\n        text-align: center;\n    ";
+070499:   const _0x2b2aab = document.createElement("div");
+070500:   _0x2b2aab.textContent = "每个构筑师都有专属的智绘姬编号哦~";
+070501:   _0x2b2aab.style.cssText = "\n        font-size: " + (_0x1ba9f5 ? "14px" : "16px") + ";\n        color: #4A90C8;\n        margin-bottom: " + (_0x1ba9f5 ? "20px" : "30px") + ";\n        font-family: \"Microsoft YaHei\", \"PingFang SC\", sans-serif;\n        text-align: center;\n    ";
+070502:   const _0x5a6339 = document.createElement("div");
+070503:   _0x5a6339.style.cssText = "\n        font-size: " + (_0x1ba9f5 ? "48px" : "72px") + ";\n        font-weight: bold;\n        color: #4A90E2;\n        letter-spacing: " + (_0x1ba9f5 ? "10px" : "15px") + ";\n        text-shadow: 0 0 20px rgba(74, 144, 226, 0.6),\n                     0 0 40px rgba(74, 144, 226, 0.3),\n                     0 4px 8px rgba(255, 255, 255, 0.8);\n        font-family: \"Courier New\", monospace;\n        margin-bottom: " + (_0x1ba9f5 ? "30px" : "40px") + ";\n        min-width: " + (_0x1ba9f5 ? "200px" : "300px") + ";\n        text-align: center;\n        animation: glow 1s ease-in-out infinite alternate;\n    ";
+070504:   _0x5a6339.textContent = "????";
+070505:   const _0x3848b2 = document.createElement("button");
+070506:   _0x3848b2.innerHTML = "<i class=\"fa-solid fa-wand-magic-sparkles\"></i> 生成专属智绘姬编号";
+070507:   _0x3848b2.style.cssText = "\n        padding: " + (_0x1ba9f5 ? "12px 30px" : "15px 40px") + ";\n        font-size: " + (_0x1ba9f5 ? "16px" : "20px") + ";\n        font-weight: bold;\n        color: white;\n        background: linear-gradient(45deg, #5DADE2, #3498DB);\n        border: none;\n        border-radius: 50px;\n        cursor: pointer;\n        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);\n        transition: all 0.3s ease;\n        font-family: \"Microsoft YaHei\", \"PingFang SC\", sans-serif;\n        animation: bounce 2s ease-in-out infinite;\n        text-align: center;\n    ";
+070508:   _0x3848b2.onmouseover = () => {
+070509:     _0x3848b2.style.transform = "scale(1.1)";
+070510:     _0x3848b2.style.boxShadow = "0 12px 30px rgba(52, 152, 219, 0.6)";
+070511:   };
+070512:   _0x3848b2.onmouseout = () => {
+070513:     _0x3848b2.style.transform = "scale(1)";
+070514:     _0x3848b2.style.boxShadow = "0 8px 20px rgba(52, 152, 219, 0.4)";
+
+==========================================================================================
+LINES 70531-70550
+070531:           _0x329759();
+070532:           addLog("[OpeningVideo] 智绘姬编号兜底保存: " + _0xd81d07);
+070533:         }
+070534:         _0x5a6339.textContent = _0xd81d07;
+070535:         _0x5a6339.style.animation = "flash 0.5s ease-in-out 3";
+070536:         addLog("[OpeningVideo] 揭晓智绘姬编号: " + _0xd81d07);
+070537:         setTimeout(() => {
+070538:           const _0x3a2da7 = document.createElement("div");
+070539:           _0x3a2da7.innerHTML = "\n                        <div style=\"font-size: " + (_0x1ba9f5 ? "18px" : "24px") + "; color: #2C5F8D; margin-top: 20px; animation: fadeIn 0.5s ease-in; text-align: center; font-weight: bold;\">\n                            ✨ 你的专属智绘姬编号是：<span style=\"color: #4A90E2; font-weight: bold; text-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);\">" + _0xd81d07 + "</span>\n                        </div>\n                        <div style=\"font-size: " + (_0x1ba9f5 ? "14px" : "16px") + "; color: #5DADE2; margin-top: 15px; text-align: center; line-height: 1.6;\">\n                            从现在开始，我会陪伴你使用这个插件！<br>\n                            有任何疑问都可以问我哦~ 💖\n                        </div>\n                    ";
+070540:           _0x52041c.appendChild(_0x3a2da7);
+070541:           setTimeout(() => {
+070542:             const _0x24cc9d = document.createElement("button");
+070543:             _0x24cc9d.innerHTML = "<i class=\"fa-solid fa-comments\"></i> 开始与智绘姬对话";
+070544:             _0x24cc9d.style.cssText = "\n                            margin-top: 30px;\n                            padding: " + (_0x1ba9f5 ? "12px 35px" : "15px 45px") + ";\n                            font-size: " + (_0x1ba9f5 ? "16px" : "20px") + ";\n                            font-weight: bold;\n                            color: white;\n                            background: linear-gradient(45deg, #5DADE2, #3498DB);\n                            border: 2px solid rgba(255, 255, 255, 0.5);\n                            border-radius: 50px;\n                            cursor: pointer;\n                            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);\n                            transition: all 0.3s ease;\n                            font-family: \"Microsoft YaHei\", \"PingFang SC\", sans-serif;\n                            animation: fadeIn 0.5s ease-in, glow 2s ease-in-out infinite alternate;\n                        ";
+070545:             _0x24cc9d.onmouseover = () => {
+070546:               _0x24cc9d.style.transform = "scale(1.05) translateY(-2px)";
+070547:               _0x24cc9d.style.boxShadow = "0 12px 35px rgba(52, 152, 219, 0.7)";
+070548:             };
+070549:             _0x24cc9d.onmouseout = () => {
+070550:               _0x24cc9d.style.transform = "scale(1) translateY(0)";
