@@ -35,96 +35,55 @@ jobs:
           npx --yes webcrack old-index.js > old-deob.js
           npx --yes webcrack new-index.js > new-deob.js
 
-      - name: Extract focused diff
+      - name: Extract compact snippets
         run: |
           mkdir -p analysis/version-diff
           python - <<'PY'
-          import difflib
           import re
           from pathlib import Path
 
-          old = Path('old-deob.js').read_text(encoding='utf-8', errors='replace')
-          new = Path('new-deob.js').read_text(encoding='utf-8', errors='replace')
+          def read(path):
+              return Path(path).read_text(encoding='utf-8', errors='replace')
 
-          def function_from_marker(text, marker, max_len=30000):
+          def window(text, marker, before=3500, after=6500):
               pos = text.find(marker)
               if pos < 0:
                   return f'NOT FOUND: {marker}\n'
-              starts = list(re.finditer(r'(?:^|\n)(?:async\s+)?function\s+[A-Za-z_$][\w$]*\s*\(', text[:pos]))
-              if starts:
-                  start = starts[-1].start()
-              else:
-                  start = max(0, pos - 4000)
-              nxt = re.search(r'\n(?:async\s+)?function\s+[A-Za-z_$][\w$]*\s*\(', text[pos + 1:])
-              end = pos + 1 + nxt.start() if nxt else min(len(text), start + max_len)
-              return text[start:min(end, start + max_len)]
+              return text[max(0, pos-before):min(len(text), pos+after)]
 
-          markers = [
-              'function convertNewXmlFormatToOld',
-              'payload222',
-              '<size>',
-              'generate-image-request',
-          ]
+          def regex_windows(text):
+              pats = [
+                  re.compile(r'<size>'),
+                  re.compile(r'payload222'),
+                  re.compile(r'\(\?:\^\|,.*?\\d.*?[x×].*?\\d', re.I),
+                  re.compile(r'\.match\(/[^\n]{0,220}[x×][^\n]{0,220}/[gimyus]*\)', re.I),
+                  re.compile(r'width\s*:\s*[^,\n]+'),
+                  re.compile(r'height\s*:\s*[^,\n]+'),
+              ]
+              out=[]; seen=[]
+              for p in pats:
+                  for m in p.finditer(text):
+                      a=max(0,m.start()-1200); b=min(len(text),m.end()+1800)
+                      key=(a//500,b//500)
+                      if key in seen: continue
+                      seen.append(key)
+                      out.append('\n'+'='*100+f'\nPATTERN={p.pattern} OFFSET={m.start()}\n'+text[a:b]+'\n')
+                      if len(out)>=30: return ''.join(out)
+              return ''.join(out)
 
-          out = []
-          for marker in markers:
-              old_block = function_from_marker(old, marker)
-              new_block = function_from_marker(new, marker)
-              out.append('\n' + '=' * 120 + '\n')
-              out.append(f'MARKER: {marker}\n')
-              out.extend(difflib.unified_diff(
-                  old_block.splitlines(True),
-                  new_block.splitlines(True),
-                  fromfile='2.7.1',
-                  tofile='2.7.2',
-                  n=8,
-              ))
-
-          # Extract all compact lines likely related to dimension parsing or payload assignment.
-          patterns = [
-              re.compile(r'payload222', re.I),
-              re.compile(r'<\/?size>', re.I),
-              re.compile(r'\d+\s*[x×]\s*\d+', re.I),
-              re.compile(r'\\d[^\n]{0,120}[x×][^\n]{0,120}\\d', re.I),
-              re.compile(r'(?:width|height)\s*[:=]', re.I),
-              re.compile(r'%width%|%height%', re.I),
-              re.compile(r'parse.*(?:width|height|size)', re.I),
-              re.compile(r'(?:width|height|size).*match\(', re.I),
-          ]
-
-          def relevant_lines(text):
-              lines = text.splitlines()
-              selected = []
-              for i, line in enumerate(lines):
-                  if len(line) > 1600:
-                      continue
-                  if any(p.search(line) for p in patterns):
-                      selected.append((i, line))
-              return selected
-
-          old_lines = relevant_lines(old)
-          new_lines = relevant_lines(new)
-          out.append('\n' + '=' * 120 + '\nRELEVANT LINE COUNTS\n')
-          out.append(f'2.7.1={len(old_lines)}\n2.7.2={len(new_lines)}\n')
-
-          old_text = '\n'.join(f'{i+1:06d}: {line}' for i, line in old_lines)
-          new_text = '\n'.join(f'{i+1:06d}: {line}' for i, line in new_lines)
-          out.extend(difflib.unified_diff(
-              old_text.splitlines(True),
-              new_text.splitlines(True),
-              fromfile='2.7.1 relevant',
-              tofile='2.7.2 relevant',
-              n=5,
-          ))
-
-          Path('analysis/version-diff/2.7.1-to-2.7.2-resolution.txt').write_text(''.join(out), encoding='utf-8')
+          old=read('old-deob.js'); new=read('new-deob.js')
+          Path('analysis/version-diff/old-payload222.txt').write_text(window(old,'payload222'),encoding='utf-8')
+          Path('analysis/version-diff/new-payload222.txt').write_text(window(new,'payload222'),encoding='utf-8')
+          Path('analysis/version-diff/old-size-parser.txt').write_text(window(old,'function convertNewXmlFormatToOld',0,18000),encoding='utf-8')
+          Path('analysis/version-diff/new-size-parser.txt').write_text(window(new,'function convertNewXmlFormatToOld',0,18000),encoding='utf-8')
+          Path('analysis/version-diff/new-dimension-windows.txt').write_text(regex_windows(new),encoding='utf-8')
           PY
 
       - name: Commit analysis result
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add analysis/version-diff/2.7.1-to-2.7.2-resolution.txt
+          git add analysis/version-diff
           git diff --cached --quiet && exit 0
-          git commit -m "chore: record 2.7.1 to 2.7.2 resolution diff [skip ci]"
+          git commit -m "chore: record compact 2.7.2 resolution snippets [skip ci]"
           git push origin analysis-auto-resolution
