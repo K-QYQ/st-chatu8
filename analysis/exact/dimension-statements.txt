@@ -1,0 +1,2739 @@
+
+====================================================================================================
+LINES 5443-5472
+005443:     "Character 3 centers": "",
+005444:     "Character 4 centers": "",
+005445:     "Character 1 coordinates": {},
+005446:     "Character 2 coordinates": {},
+005447:     "Character 3 coordinates": {},
+005448:     "Character 4 coordinates": {}
+005449:   };
+005450:   const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+005451:   if (_0x484e8b) {
+005452:     _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+005453:   }
+005454:   for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+005455:     const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+005456:     if (_0x5e0114) {
+005457:       _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+005458:       if (_0x5e0114[2]) {
+005459:         _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+005460:         _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+005461:       } else {
+005462:         _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+005463:       }
+005464:     }
+005465:     const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+005466:     if (_0x1b9234) {
+005467:       _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+005468:     }
+005469:   }
+005470:   addLog("解析结果: " + JSON.stringify(_0x3d49cc, null, 2));
+005471:   return _0x3d49cc;
+005472: }
+
+====================================================================================================
+LINES 5453-5482
+005453:   }
+005454:   for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+005455:     const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+005456:     if (_0x5e0114) {
+005457:       _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+005458:       if (_0x5e0114[2]) {
+005459:         _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+005460:         _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+005461:       } else {
+005462:         _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+005463:       }
+005464:     }
+005465:     const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+005466:     if (_0x1b9234) {
+005467:       _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+005468:     }
+005469:   }
+005470:   addLog("解析结果: " + JSON.stringify(_0x3d49cc, null, 2));
+005471:   return _0x3d49cc;
+005472: }
+005473: function centersToCoordinates(_0x2a260c) {
+005474:   if (!_0x2a260c) {
+005475:     return {};
+005476:   }
+005477:   const _0x51577d = _0x2a260c.match(/([a-e])([1-5])/i);
+005478:   if (!_0x51577d) {
+005479:     return {};
+005480:   }
+005481:   const _0x369eef = _0x51577d[1].toLowerCase();
+005482:   const _0x59a27d = parseInt(_0x51577d[2]);
+
+====================================================================================================
+LINES 5804-5833
+005804:       condition: _0x995f67
+005805:     } = extractIfCondition(_0x1e09e7);
+005806:     if (_0x2be3a8.toLowerCase().includes(_0x5de9df.toLowerCase())) {
+005807:       if (_0x995f67 && !safeEvaluateIf(_0x995f67, _0x2be3a8, "")) {
+005808:         addLog("@if 未通过，跳过规则: \"" + _0x5de9df + "\" 条件=\"" + _0x995f67 + "\"");
+005809:         continue;
+005810:       }
+005811:       if (_0x995f67) {
+005812:         addLog("@if 通过: \"" + _0x5de9df + "\" 条件=\"" + _0x995f67 + "\"");
+005813:       }
+005814:       if (_0x3fd646 === "替换") {
+005815:         addLog("Prompt 替换: \"" + _0x5de9df + "\" -> \"" + _0x1b0fbc + "\"");
+005816:         const _0x5cda70 = new RegExp(_0x5de9df.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+005817:         _0x21c7a3 = _0x21c7a3.replace(_0x5cda70, _0x1b0fbc);
+005818:       } else if (_0x6514e2.hasOwnProperty(_0x3fd646)) {
+005819:         addLog("发现插入: 类型=\"" + _0x3fd646 + "\", 触发词=\"" + _0x5de9df + "\", 内容=\"" + _0x1b0fbc + "\"");
+005820:         _0x6514e2[_0x3fd646].push(_0x1b0fbc);
+005821:       }
+005822:     }
+005823:   }
+005824:   const _0xa6cce1 = {};
+005825:   for (const _0x437560 in _0x6514e2) {
+005826:     _0xa6cce1[_0x437560] = _0x6514e2[_0x437560].join(", ");
+005827:   }
+005828:   addLog("替换/删除后的 Prompt: " + _0x21c7a3);
+005829:   addLog("解析出的插入内容: " + JSON.stringify(_0xa6cce1));
+005830:   const _0x40ce0f = {
+005831:     modifiedPrompt: _0x21c7a3,
+005832:     insertions: _0xa6cce1
+005833:   };
+
+====================================================================================================
+LINES 5888-5917
+005888:       condition: _0x3f2f12
+005889:     } = extractIfCondition(_0x3a7d58);
+005890:     if (_0x529246.toLowerCase().includes(_0x197004.toLowerCase())) {
+005891:       if (_0x3f2f12 && !safeEvaluateIf(_0x3f2f12, _0x529246, "[Banana] ")) {
+005892:         addLog("[Banana] @if 未通过，跳过规则: \"" + _0x197004 + "\" 条件=\"" + _0x3f2f12 + "\"");
+005893:         continue;
+005894:       }
+005895:       if (_0x3f2f12) {
+005896:         addLog("[Banana] @if 通过: \"" + _0x197004 + "\" 条件=\"" + _0x3f2f12 + "\"");
+005897:       }
+005898:       if (_0xb46084 === "替换") {
+005899:         addLog("[Banana] Prompt 替换: \"" + _0x197004 + "\" -> \"" + _0x5bafa0 + "\"");
+005900:         const _0x548d42 = new RegExp(_0x197004.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+005901:         _0x314bca = _0x314bca.replace(_0x548d42, _0x5bafa0);
+005902:       } else if (_0x2634b9.hasOwnProperty(_0xb46084)) {
+005903:         addLog("[Banana] 发现插入: 类型=\"" + _0xb46084 + "\", 触发词=\"" + _0x197004 + "\", 内容=\"" + _0x5bafa0 + "\"");
+005904:         _0x2634b9[_0xb46084].push(_0x5bafa0);
+005905:       }
+005906:     }
+005907:   }
+005908:   const _0x3c8949 = {};
+005909:   for (const _0x409c5b in _0x2634b9) {
+005910:     _0x3c8949[_0x409c5b] = _0x2634b9[_0x409c5b].join(", ");
+005911:   }
+005912:   addLog("[Banana] 替换/删除后的 Prompt: " + _0x314bca);
+005913:   addLog("[Banana] 解析出的插入内容: " + JSON.stringify(_0x3c8949));
+005914:   const _0x404d44 = {
+005915:     modifiedPrompt: _0x314bca,
+005916:     insertions: _0x3c8949
+005917:   };
+
+====================================================================================================
+LINES 5950-5979
+005950:     const _0x4ac00d = _0x971310.substring(_0x4aa134 + 1);
+005951:     const {
+005952:       value: _0x2e7c8f,
+005953:       condition: _0x5afa0a
+005954:     } = extractIfCondition(_0x4ac00d);
+005955:     if ((_0x2a7578 === "替换分角色" || _0x2a7578 === "替换") && _0x3dfd9f.toLowerCase().includes(_0xfc787d.toLowerCase())) {
+005956:       const _0x61b73e = typeof _0xd1a139 === "string" && _0xd1a139.length > 0 ? _0xd1a139 : _0x3dfd9f;
+005957:       if (_0x5afa0a && !safeEvaluateIf(_0x5afa0a, _0x61b73e, "[Banana] 分角色 ")) {
+005958:         addLog("[Banana] 分角色 @if 未通过，跳过规则: \"" + _0xfc787d + "\" 条件=\"" + _0x5afa0a + "\"");
+005959:         continue;
+005960:       }
+005961:       addLog("[Banana] 分角色 Prompt 替换: \"" + _0xfc787d + "\" -> \"" + _0x2e7c8f + "\"");
+005962:       const _0x3ea9c8 = new RegExp(_0xfc787d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+005963:       _0x3dfd9f = _0x3dfd9f.replace(_0x3ea9c8, _0x2e7c8f);
+005964:     }
+005965:   }
+005966:   addLog("[Banana] 分角色替换后的 Prompt: " + _0x3dfd9f);
+005967:   return _0x3dfd9f;
+005968: }
+005969: function prompt_replace_for_character(_0x124ec6, _0x2819f3) {
+005970:   const _0x1be2c3 = _0x132210[extensionName].prompt_replace_id;
+005971:   const _0x5429c2 = _0x132210[extensionName].prompt_replace;
+005972:   const _0x20729e = _0x5429c2?.[_0x1be2c3]?.text ?? "";
+005973:   addLog("原始角色 Prompt (用于分角色替换): " + _0x124ec6);
+005974:   if (_0x20729e.trim() === "" || !_0x124ec6) {
+005975:     addLog("无有效替换规则或空Prompt，返回原始Prompt。");
+005976:     return _0x124ec6;
+005977:   }
+005978:   addLog("使用的替换规则内容 (分角色):\n" + _0x20729e);
+005979:   let _0x53a692 = _0x124ec6;
+
+====================================================================================================
+LINES 5999-6028
+005999:     const _0x4fe28b = _0x14f189.substring(_0x35f1b5 + 1);
+006000:     const {
+006001:       value: _0x548dab,
+006002:       condition: _0x66f78e
+006003:     } = extractIfCondition(_0x4fe28b);
+006004:     if ((_0x3ec6fd === "替换分角色" || _0x3ec6fd === "替换") && _0x53a692.toLowerCase().includes(_0xc97b17.toLowerCase())) {
+006005:       const _0x2ef89c = typeof _0x2819f3 === "string" && _0x2819f3.length > 0 ? _0x2819f3 : _0x53a692;
+006006:       if (_0x66f78e && !safeEvaluateIf(_0x66f78e, _0x2ef89c, "分角色 ")) {
+006007:         addLog("分角色 @if 未通过，跳过规则: \"" + _0xc97b17 + "\" 条件=\"" + _0x66f78e + "\"");
+006008:         continue;
+006009:       }
+006010:       addLog("分角色 Prompt 替换: \"" + _0xc97b17 + "\" -> \"" + _0x548dab + "\"");
+006011:       const _0x213d9d = new RegExp(_0xc97b17.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+006012:       _0x53a692 = _0x53a692.replace(_0x213d9d, _0x548dab);
+006013:     }
+006014:   }
+006015:   addLog("分角色替换后的 Prompt: " + _0x53a692);
+006016:   return _0x53a692;
+006017: }
+006018: function getRequestHeaders(_0x1d7405) {
+006019:   const _0x1239ab = {
+006020:     "Content-Type": "application/json",
+006021:     "X-CSRF-Token": _0x1d7405
+006022:   };
+006023:   return _0x1239ab;
+006024: }
+006025: async function countTokens(_0x141fa1, _0x2b07c5) {
+006026:   try {
+006027:     if (!_0x2b07c5) {
+006028:       const {
+
+====================================================================================================
+LINES 7789-7818
+007789:   _0x48d46f.classList.toggle("invalid", !_0x3fa813);
+007790: }
+007791: function size_change(_0x51606a) {
+007792:   if (_0x51606a == "sd") {
+007793:     _0x51606a = "sd_c";
+007794:   } else {
+007795:     _0x51606a = _0x51606a + "_";
+007796:   }
+007797:   const _0x5612e2 = document.getElementById(_0x51606a + "width");
+007798:   const _0x319e9a = document.getElementById(_0x51606a + "height");
+007799:   const _0x5edc66 = document.getElementById(_0x51606a + "size");
+007800:   if (_0x5612e2 && _0x319e9a && _0x5edc66) {
+007801:     const [_0x2e1f6d, _0x3333b8] = _0x5edc66.value.split("x");
+007802:     _0x5612e2.value = _0x2e1f6d;
+007803:     _0x319e9a.value = _0x3333b8;
+007804:     $(_0x5612e2).trigger("input");
+007805:     $(_0x319e9a).trigger("input");
+007806:   }
+007807: }
+007808: function stylInput2(_0x35ac0b, _0x36245f = "") {
+007809:   return new Promise(_0x3b3860 => {
+007810:     const _0x121295 = document.getElementById("st-chatu8-settings") || document.body;
+007811:     const _0x7bd358 = document.createElement("div");
+007812:     _0x7bd358.className = "st-chatu8-confirm-backdrop";
+007813:     const _0x25bda4 = document.createElement("div");
+007814:     _0x25bda4.className = "st-chatu8-confirm-box";
+007815:     const _0x33fdd4 = document.createElement("p");
+007816:     _0x33fdd4.textContent = _0x35ac0b;
+007817:     _0x33fdd4.className = "st-chatu8-confirm-message";
+007818:     _0x25bda4.appendChild(_0x33fdd4);
+
+====================================================================================================
+LINES 9754-9783
+009754:   }
+009755:   const _0x110975 = _0x27dc18;
+009756:   _0x27dc18 = _0x27dc18.replace(/(?:<font[^>]*>\[[^\]]*\]<\/font>\s*)?(?:<Tag_think>[\s\S]*?<\/Tag_think>\s*)?<image>[\s\S]*?<\/image>/g, "");
+009757:   if (_0x27dc18 !== _0x110975) {
+009758:     console.log("[imageInserter] Removed <image> blocks (with font/Tag_think), length:", _0x110975.length, "-> new length:", _0x27dc18.length);
+009759:   }
+009760:   const {
+009761:     startTag: _0x574d99,
+009762:     endTag: _0x3f52cb
+009763:   } = getImageTags();
+009764:   const _0x1bb0d8 = _0x574d99.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+009765:   const _0x36b505 = _0x3f52cb.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+009766:   const _0x1b2ab0 = new RegExp(_0x1bb0d8 + "[\\s\\S]*?" + _0x36b505, "g");
+009767:   const _0x302939 = _0x27dc18;
+009768:   _0x27dc18 = _0x27dc18.replace(_0x1b2ab0, "");
+009769:   if (_0x27dc18 !== _0x302939) {
+009770:     console.log("[imageInserter] Removed existing image### tags, length:", _0x302939.length, "-> new length:", _0x27dc18.length);
+009771:   }
+009772:   return _0x27dc18;
+009773: }
+009774: function removeThinkingTextOnly(_0x4d97dd) {
+009775:   if (!_0x4d97dd || typeof _0x4d97dd !== "string") {
+009776:     return _0x4d97dd;
+009777:   }
+009778:   let _0x16198e = _0x4d97dd;
+009779:   const _0x52f4d5 = /<think(?:ing)?[\s\S]*?<\/think(?:ing)?>/gi;
+009780:   _0x16198e = _0x16198e.replace(_0x52f4d5, "");
+009781:   const _0xcb3e43 = /^[\s\S]*<\/think(?:ing)?>/i;
+009782:   const _0x2bd9d1 = _0x16198e;
+009783:   _0x16198e = _0x16198e.replace(_0xcb3e43, "");
+
+====================================================================================================
+LINES 10102-10131
+010102:     return _0x22fc88;
+010103:   }
+010104:   const _0x5ade3b = [..._0x22fc88.matchAll(/<images>([\s\S]*?)<\/images>/gi)];
+010105:   if (_0x5ade3b.length === 0) {
+010106:     return _0x22fc88;
+010107:   }
+010108:   const _0x1c6391 = _0x5ade3b[_0x5ade3b.length - 1];
+010109:   const _0x1de612 = _0x1c6391[1];
+010110:   if (!/<prompts>|<title_styled>/i.test(_0x1de612)) {
+010111:     return _0x22fc88;
+010112:   }
+010113:   const _0xd5db59 = _0x1de612.replace(/<image>([\s\S]*?)<\/image>/gi, (_0x6f8074, _0x3cb5d0) => {
+010114:     const _0x480b0b = _0x3cb5d0.match(/<regex>([\s\S]*?)<\/regex>/i);
+010115:     const _0x5a636e = _0x480b0b ? "regex:" + _0x480b0b[1].trim() : "";
+010116:     const _0x244e08 = _0x3cb5d0.match(/<title_styled>([\s\S]*?)<\/title_styled>/i);
+010117:     const _0x54b769 = _0x244e08 ? "<font color=\"steelblue\">[" + _0x244e08[1].trim() + "]</font>" : "";
+010118:     const _0x1dcae3 = _0x3cb5d0.match(/<Tag_think>([\s\S]*?)<\/Tag_think>/i);
+010119:     const _0x402e1d = _0x1dcae3 ? "<Tag_think>\n" + _0x1dcae3[1].trim() + "\n</Tag_think>" : "";
+010120:     const _0x330459 = _0x3cb5d0.match(/<size>([\s\S]*?)<\/size>/i);
+010121:     let _0x193b7a = "";
+010122:     if (_0x330459) {
+010123:       const _0x1a21f6 = _0x330459[1].trim().replace(/，/g, ",").split(",");
+010124:       if (_0x1a21f6.length > 0) {
+010125:         _0x193b7a = _0x1a21f6[_0x1a21f6.length - 1].trim();
+010126:       }
+010127:     }
+010128:     const _0x2be69b = _0x3cb5d0.match(/<prompts>([\s\S]*?)<\/prompts>/i);
+010129:     let _0x131da8 = "";
+010130:     if (_0x2be69b) {
+010131:       const _0x3311f7 = _0x2be69b[1];
+
+====================================================================================================
+LINES 10242-10271
+010242:   }
+010243:   const _0x3eb72b = {
+010244:     块数量: _0x2c0d99.length
+010245:   };
+010246:   debugLog("imageInserter.parseImagesFromPrompt", "找到 <image> 块", _0x3eb72b);
+010247:   console.log("[parseImagesFromPrompt] 找到", _0x2c0d99.length, "个 <image> 块");
+010248:   for (let _0x36d9ed = 0; _0x36d9ed < _0x2c0d99.length; _0x36d9ed++) {
+010249:     const _0x50c95a = _0x2c0d99[_0x36d9ed];
+010250:     const _0x582dc2 = _0x50c95a.content;
+010251:     console.log("[parseImagesFromPrompt] 解析第 " + (_0x36d9ed + 1) + " 个 <image> 块，内容长度: " + _0x582dc2.length);
+010252:     let _0x21adab = "";
+010253:     const _0x429f41 = /<imgthink>([\s\S]*?)<\/imgthink>/;
+010254:     const _0x839e7 = _0x582dc2.match(_0x429f41);
+010255:     if (_0x839e7) {
+010256:       const _0x10172b = _0x839e7[1];
+010257:       const _0xc6e574 = _0x10172b.match(/regex:(.*?)(?:\n|$)/);
+010258:       if (_0xc6e574) {
+010259:         _0x21adab = _0xc6e574[1].trim();
+010260:       }
+010261:     }
+010262:     if (!_0x21adab) {
+010263:       const _0x309fd8 = _0x582dc2.match(/regex:(.*?)(?:\n|$)/);
+010264:       if (_0x309fd8) {
+010265:         _0x21adab = _0x309fd8[1].trim();
+010266:       }
+010267:     }
+010268:     const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+010269:     const {
+010270:       startTag: _0x3b41d5,
+010271:       endTag: _0x47927e
+
+====================================================================================================
+LINES 10245-10274
+010245:   };
+010246:   debugLog("imageInserter.parseImagesFromPrompt", "找到 <image> 块", _0x3eb72b);
+010247:   console.log("[parseImagesFromPrompt] 找到", _0x2c0d99.length, "个 <image> 块");
+010248:   for (let _0x36d9ed = 0; _0x36d9ed < _0x2c0d99.length; _0x36d9ed++) {
+010249:     const _0x50c95a = _0x2c0d99[_0x36d9ed];
+010250:     const _0x582dc2 = _0x50c95a.content;
+010251:     console.log("[parseImagesFromPrompt] 解析第 " + (_0x36d9ed + 1) + " 个 <image> 块，内容长度: " + _0x582dc2.length);
+010252:     let _0x21adab = "";
+010253:     const _0x429f41 = /<imgthink>([\s\S]*?)<\/imgthink>/;
+010254:     const _0x839e7 = _0x582dc2.match(_0x429f41);
+010255:     if (_0x839e7) {
+010256:       const _0x10172b = _0x839e7[1];
+010257:       const _0xc6e574 = _0x10172b.match(/regex:(.*?)(?:\n|$)/);
+010258:       if (_0xc6e574) {
+010259:         _0x21adab = _0xc6e574[1].trim();
+010260:       }
+010261:     }
+010262:     if (!_0x21adab) {
+010263:       const _0x309fd8 = _0x582dc2.match(/regex:(.*?)(?:\n|$)/);
+010264:       if (_0x309fd8) {
+010265:         _0x21adab = _0x309fd8[1].trim();
+010266:       }
+010267:     }
+010268:     const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+010269:     const {
+010270:       startTag: _0x3b41d5,
+010271:       endTag: _0x47927e
+010272:     } = getImageTags();
+010273:     let _0x4d1137;
+010274:     if (!_0x8e9509) {
+
+====================================================================================================
+LINES 10251-10280
+010251:     console.log("[parseImagesFromPrompt] 解析第 " + (_0x36d9ed + 1) + " 个 <image> 块，内容长度: " + _0x582dc2.length);
+010252:     let _0x21adab = "";
+010253:     const _0x429f41 = /<imgthink>([\s\S]*?)<\/imgthink>/;
+010254:     const _0x839e7 = _0x582dc2.match(_0x429f41);
+010255:     if (_0x839e7) {
+010256:       const _0x10172b = _0x839e7[1];
+010257:       const _0xc6e574 = _0x10172b.match(/regex:(.*?)(?:\n|$)/);
+010258:       if (_0xc6e574) {
+010259:         _0x21adab = _0xc6e574[1].trim();
+010260:       }
+010261:     }
+010262:     if (!_0x21adab) {
+010263:       const _0x309fd8 = _0x582dc2.match(/regex:(.*?)(?:\n|$)/);
+010264:       if (_0x309fd8) {
+010265:         _0x21adab = _0x309fd8[1].trim();
+010266:       }
+010267:     }
+010268:     const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+010269:     const {
+010270:       startTag: _0x3b41d5,
+010271:       endTag: _0x47927e
+010272:     } = getImageTags();
+010273:     let _0x4d1137;
+010274:     if (!_0x8e9509) {
+010275:       const _0x5762ad = _0x3b41d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010276:       const _0x1ef849 = _0x47927e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010277:       const _0x560751 = new RegExp(_0x5762ad + "([\\s\\S]*?)" + _0x1ef849);
+010278:       const _0x3e9843 = _0x582dc2.match(_0x560751);
+010279:       const _0x1af955 = _0x3e9843 ? _0x3e9843[1].trim() : "";
+010280:       _0x4d1137 = _0x1af955 ? "" + _0x3b41d5 + _0x1af955 + _0x47927e : "";
+
+====================================================================================================
+LINES 10265-10294
+010265:         _0x21adab = _0x309fd8[1].trim();
+010266:       }
+010267:     }
+010268:     const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+010269:     const {
+010270:       startTag: _0x3b41d5,
+010271:       endTag: _0x47927e
+010272:     } = getImageTags();
+010273:     let _0x4d1137;
+010274:     if (!_0x8e9509) {
+010275:       const _0x5762ad = _0x3b41d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010276:       const _0x1ef849 = _0x47927e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010277:       const _0x560751 = new RegExp(_0x5762ad + "([\\s\\S]*?)" + _0x1ef849);
+010278:       const _0x3e9843 = _0x582dc2.match(_0x560751);
+010279:       const _0x1af955 = _0x3e9843 ? _0x3e9843[1].trim() : "";
+010280:       _0x4d1137 = _0x1af955 ? "" + _0x3b41d5 + _0x1af955 + _0x47927e : "";
+010281:       console.log("[parseImagesFromPrompt] tagthinkEcho=false, 仅提取纯 tag: \"" + _0x4d1137.substring(0, 50) + "...\"");
+010282:     } else {
+010283:       _0x4d1137 = _0x582dc2.replace(/regex:.*?(?:\n|$)/g, "").trim();
+010284:       console.log("[parseImagesFromPrompt] tagthinkEcho=true, 保留完整内容: \"" + _0x4d1137.substring(0, 50) + "...\"");
+010285:     }
+010286:     console.log("[parseImagesFromPrompt] 块 " + (_0x36d9ed + 1) + " 结果: regex=\"" + _0x21adab.substring(0, 30) + "...\", tag=\"" + _0x4d1137.substring(0, 50) + "...\"");
+010287:     debugLog("imageInserter.parseImagesFromPrompt", "块 " + (_0x36d9ed + 1) + " 解析结果", {
+010288:       索引: _0x36d9ed + 1,
+010289:       有regex: !!_0x21adab,
+010290:       regex预览: _0x21adab ? _0x21adab.substring(0, 40) : "(无)",
+010291:       有tag: !!_0x4d1137,
+010292:       tag长度: _0x4d1137.length
+010293:     });
+010294:     if (_0x21adab && _0x4d1137) {
+
+====================================================================================================
+LINES 10266-10295
+010266:       }
+010267:     }
+010268:     const _0x8e9509 = String(_0x2c4622[extensionName]?.tagthinkEcho) === "true";
+010269:     const {
+010270:       startTag: _0x3b41d5,
+010271:       endTag: _0x47927e
+010272:     } = getImageTags();
+010273:     let _0x4d1137;
+010274:     if (!_0x8e9509) {
+010275:       const _0x5762ad = _0x3b41d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010276:       const _0x1ef849 = _0x47927e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010277:       const _0x560751 = new RegExp(_0x5762ad + "([\\s\\S]*?)" + _0x1ef849);
+010278:       const _0x3e9843 = _0x582dc2.match(_0x560751);
+010279:       const _0x1af955 = _0x3e9843 ? _0x3e9843[1].trim() : "";
+010280:       _0x4d1137 = _0x1af955 ? "" + _0x3b41d5 + _0x1af955 + _0x47927e : "";
+010281:       console.log("[parseImagesFromPrompt] tagthinkEcho=false, 仅提取纯 tag: \"" + _0x4d1137.substring(0, 50) + "...\"");
+010282:     } else {
+010283:       _0x4d1137 = _0x582dc2.replace(/regex:.*?(?:\n|$)/g, "").trim();
+010284:       console.log("[parseImagesFromPrompt] tagthinkEcho=true, 保留完整内容: \"" + _0x4d1137.substring(0, 50) + "...\"");
+010285:     }
+010286:     console.log("[parseImagesFromPrompt] 块 " + (_0x36d9ed + 1) + " 结果: regex=\"" + _0x21adab.substring(0, 30) + "...\", tag=\"" + _0x4d1137.substring(0, 50) + "...\"");
+010287:     debugLog("imageInserter.parseImagesFromPrompt", "块 " + (_0x36d9ed + 1) + " 解析结果", {
+010288:       索引: _0x36d9ed + 1,
+010289:       有regex: !!_0x21adab,
+010290:       regex预览: _0x21adab ? _0x21adab.substring(0, 40) : "(无)",
+010291:       有tag: !!_0x4d1137,
+010292:       tag长度: _0x4d1137.length
+010293:     });
+010294:     if (_0x21adab && _0x4d1137) {
+010295:       _0x4d1137 = _0x4d1137.replace(/，/g, ",").replace(/；/g, ";").replace(/：/g, ":");
+
+====================================================================================================
+LINES 10824-10853
+010824:             储存位置: "chat[mesId].mes"
+010825:           };
+010826:           debugBranch("saveImageGroup", "insertOriginalText 模式执行", true, _0x44c6c4);
+010827:           console.log("[imageInserter] insertOriginalText mode - mesId:", _0x1a3498, "mes.length:", _0x2066af.length);
+010828:           const _0xe825d6 = new Set(chat[_0x1a3498].extra?.lockedTags || []);
+010829:           console.log("[imageInserter] Locked tags:", Array.from(_0xe825d6));
+010830:           const {
+010831:             startTag: _0x5ec857,
+010832:             endTag: _0x125f99
+010833:           } = getImageTags();
+010834:           const _0x455d34 = _0x5ec857.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010835:           const _0x27c59a = _0x125f99.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010836:           const _0x52c0f6 = new RegExp(_0x455d34 + "([\\s\\S]*?)" + _0x27c59a);
+010837:           if (_0xe825d6.size === 0) {
+010838:             _0x2066af = _0x2066af.replace(/<image>[\s\S]*?<\/image>/g, "");
+010839:           } else {
+010840:             _0x2066af = _0x2066af.replace(/<image>([\s\S]*?)<\/image>/g, (_0x1e6989, _0x5b09dc) => {
+010841:               const _0x5b9b18 = _0x5b09dc.match(_0x52c0f6);
+010842:               console.log("[imageInserter] <image> content preview:", _0x5b09dc.substring(0, 150));
+010843:               console.log("[imageInserter] pureTagRegex:", _0x52c0f6);
+010844:               console.log("[imageInserter] pureTagMatch:", _0x5b9b18 ? "found" : "null");
+010845:               if (_0x5b9b18) {
+010846:                 const _0x2d4fd0 = _0x5b9b18[1].trim();
+010847:                 const _0x5692bc = _0x2d4fd0.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+010848:                 console.log("[imageInserter] Extracted pureTag:", _0x5692bc.substring(0, 150));
+010849:                 const _0x1c887c = _0x5692bc.substring(0, 100);
+010850:                 for (const _0x5364cf of _0xe825d6) {
+010851:                   const _0x4001d1 = _0x5364cf.substring(0, 100);
+010852:                   console.log("[imageInserter] Comparing pureTagPrefix:", _0x1c887c.substring(0, 80));
+010853:                   console.log("[imageInserter] With lockedTagPrefix:", _0x4001d1.substring(0, 80));
+
+====================================================================================================
+LINES 10829-10858
+010829:           console.log("[imageInserter] Locked tags:", Array.from(_0xe825d6));
+010830:           const {
+010831:             startTag: _0x5ec857,
+010832:             endTag: _0x125f99
+010833:           } = getImageTags();
+010834:           const _0x455d34 = _0x5ec857.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010835:           const _0x27c59a = _0x125f99.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+010836:           const _0x52c0f6 = new RegExp(_0x455d34 + "([\\s\\S]*?)" + _0x27c59a);
+010837:           if (_0xe825d6.size === 0) {
+010838:             _0x2066af = _0x2066af.replace(/<image>[\s\S]*?<\/image>/g, "");
+010839:           } else {
+010840:             _0x2066af = _0x2066af.replace(/<image>([\s\S]*?)<\/image>/g, (_0x1e6989, _0x5b09dc) => {
+010841:               const _0x5b9b18 = _0x5b09dc.match(_0x52c0f6);
+010842:               console.log("[imageInserter] <image> content preview:", _0x5b09dc.substring(0, 150));
+010843:               console.log("[imageInserter] pureTagRegex:", _0x52c0f6);
+010844:               console.log("[imageInserter] pureTagMatch:", _0x5b9b18 ? "found" : "null");
+010845:               if (_0x5b9b18) {
+010846:                 const _0x2d4fd0 = _0x5b9b18[1].trim();
+010847:                 const _0x5692bc = _0x2d4fd0.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+010848:                 console.log("[imageInserter] Extracted pureTag:", _0x5692bc.substring(0, 150));
+010849:                 const _0x1c887c = _0x5692bc.substring(0, 100);
+010850:                 for (const _0x5364cf of _0xe825d6) {
+010851:                   const _0x4001d1 = _0x5364cf.substring(0, 100);
+010852:                   console.log("[imageInserter] Comparing pureTagPrefix:", _0x1c887c.substring(0, 80));
+010853:                   console.log("[imageInserter] With lockedTagPrefix:", _0x4001d1.substring(0, 80));
+010854:                   if (_0x1c887c === _0x4001d1 || _0x5692bc.startsWith(_0x4001d1) || _0x5364cf.startsWith(_0x1c887c)) {
+010855:                     console.log("[imageInserter] Keeping locked <image>, matched pureTag with:", _0x5364cf.substring(0, 50));
+010856:                     return _0x1e6989;
+010857:                   }
+010858:                 }
+
+====================================================================================================
+LINES 10893-10922
+010893:               const _0x59a87d = _0x4928ad.substring(0, 50);
+010894:               const _0x1c62ad = {
+010895:                 regex: _0x59a87d,
+010896:                 tag: _0x4928ad
+010897:               };
+010898:               _0x29dc54.push(_0x1c62ad);
+010899:               console.log("[imageInserter] Extracted locked image with fallback regex:", _0x59a87d.substring(0, 30));
+010900:             } else {
+010901:               console.warn("[imageInserter] Skipped locked image: tag is empty");
+010902:             }
+010903:           }
+010904:           _0x2066af = _0x2066af.replace(/<image>[\s\S]*?<\/image>/g, "");
+010905:           _0x2066af = _0x2066af.replace(new RegExp(_0x455d34 + "[\\s\\S]*?" + _0x27c59a, "g"), "");
+010906:           const _0x297cec = [];
+010907:           _0x2066af = _0x2066af.replace(/<!--[\s\S]*?-->/g, _0x539305 => {
+010908:             const _0x140456 = "___HTML_COMMENT_" + _0x297cec.length + "___";
+010909:             _0x297cec.push(_0x539305);
+010910:             return _0x140456;
+010911:           });
+010912:           _0x2066af = _0x2066af.replace(/\n{3,}/g, "\n\n");
+010913:           const _0x3260c7 = [..._0x29dc54, ..._0x3bf021];
+010914:           console.log("[imageInserter] Total images to insert:", _0x3260c7.length, "(locked:", _0x29dc54.length, ", new:", _0x3bf021.length, ")");
+010915:           const _0x4e0fd1 = removeThinkingText(_0x2066af);
+010916:           let _0x21a703 = 0;
+010917:           {
+010918:             let _0x4e3cde = _0x2066af;
+010919:             _0x4e3cde = _0x4e3cde.replace(/<think(?:ing)?[\s\S]*?<\/think(?:ing)?>/gi, "");
+010920:             const _0x5e490d = _0x4e3cde.match(/^[\s\S]*<\/think(?:ing)?>/i);
+010921:             if (_0x5e490d) {
+010922:               _0x21a703 = _0x5e490d[0].length;
+
+====================================================================================================
+LINES 11132-11161
+011132:           _0xe4c0fc.add(_0x13fb53.tag);
+011133:         });
+011134:       }
+011135:       const _0x442994 = _0x2e8392.chat[_0x1e8343].extra?.lockedTags || [];
+011136:       _0x442994.forEach(_0x3ceb02 => _0xe4c0fc.add(_0x3ceb02));
+011137:       if (_0x2e8392.chat[_0x1e8343].mes) {
+011138:         const {
+011139:           startTag: _0x10da98,
+011140:           endTag: _0x4d5396
+011141:         } = getImageTags();
+011142:         const _0x120899 = _0x10da98.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011143:         const _0x52f322 = _0x4d5396.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011144:         const _0x35bd5c = new RegExp(_0x120899 + "([\\s\\S]*?)" + _0x52f322, "g");
+011145:         let _0x162518;
+011146:         while ((_0x162518 = _0x35bd5c.exec(_0x2e8392.chat[_0x1e8343].mes)) !== null) {
+011147:           const _0x22a419 = _0x162518[1].trim();
+011148:           if (_0x442994.includes(_0x22a419)) {
+011149:             _0xe4c0fc.add(_0x22a419);
+011150:             console.log("[imageInserter] Found locked tag in mes:", _0x22a419.substring(0, 30));
+011151:           }
+011152:         }
+011153:       }
+011154:       console.log("[imageInserter] Total locked tags:", _0xe4c0fc.size, "from extra.lockedTags:", _0x442994.length);
+011155:     }
+011156:   }
+011157:   _0x561779 = _0xe4c0fc.size;
+011158:   console.log("[imageInserter] Locked tags for deletion check:", Array.from(_0xe4c0fc));
+011159:   const _0x25280e = _0x5026fb => {
+011160:     const _0x260dd9 = _0x551298 => {
+011161:       if (!_0x551298) {
+
+====================================================================================================
+LINES 11349-11378
+011349:       }
+011350:       const {
+011351:         startTag: _0x43d4ad,
+011352:         endTag: _0x3c1c05
+011353:       } = getImageTags();
+011354:       const _0x2ec440 = _0x43d4ad.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011355:       const _0x582e08 = _0x3c1c05.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011356:       if (_0x407905.chat[_0x58d122].mes) {
+011357:         let _0x1ac201 = _0x407905.chat[_0x58d122].mes;
+011358:         const _0x4918bc = _0x1ac201.length;
+011359:         const _0x619954 = new RegExp("(?:<font[^>]*>\\[[^\\]]*\\]<\\/font>\\s*)?(?:<Tag_think>[\\s\\S]*?<\\/Tag_think>\\s*)?<image>([\\s\\S]*?)<\\/image>", "g");
+011360:         _0x1ac201 = _0x1ac201.replace(_0x619954, (_0x1f0b9b, _0x3e11cc) => {
+011361:           const _0x3c1493 = new RegExp(_0x2ec440 + "([\\s\\S]*?)" + _0x582e08);
+011362:           const _0x310845 = _0x3e11cc.match(_0x3c1493);
+011363:           const _0x12d6af = _0x310845 ? _0x310845[1].trim() : "";
+011364:           if (_0x12d6af && _0xe4c0fc.size > 0) {
+011365:             let _0x2cc71f = _0xe4c0fc.has(_0x12d6af);
+011366:             if (!_0x2cc71f) {
+011367:               for (const _0x4e8467 of _0xe4c0fc) {
+011368:                 if (_0x4e8467.trim() === _0x12d6af || _0x12d6af.includes(_0x4e8467.trim()) || _0x4e8467.trim().includes(_0x12d6af)) {
+011369:                   _0x2cc71f = true;
+011370:                   break;
+011371:                 }
+011372:               }
+011373:             }
+011374:             if (_0x2cc71f) {
+011375:               console.log("[imageInserter] Keeping locked <image> block, tag:", _0x12d6af.substring(0, 50));
+011376:               return _0x1f0b9b;
+011377:             }
+011378:           }
+
+====================================================================================================
+LINES 11350-11379
+011350:       const {
+011351:         startTag: _0x43d4ad,
+011352:         endTag: _0x3c1c05
+011353:       } = getImageTags();
+011354:       const _0x2ec440 = _0x43d4ad.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011355:       const _0x582e08 = _0x3c1c05.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011356:       if (_0x407905.chat[_0x58d122].mes) {
+011357:         let _0x1ac201 = _0x407905.chat[_0x58d122].mes;
+011358:         const _0x4918bc = _0x1ac201.length;
+011359:         const _0x619954 = new RegExp("(?:<font[^>]*>\\[[^\\]]*\\]<\\/font>\\s*)?(?:<Tag_think>[\\s\\S]*?<\\/Tag_think>\\s*)?<image>([\\s\\S]*?)<\\/image>", "g");
+011360:         _0x1ac201 = _0x1ac201.replace(_0x619954, (_0x1f0b9b, _0x3e11cc) => {
+011361:           const _0x3c1493 = new RegExp(_0x2ec440 + "([\\s\\S]*?)" + _0x582e08);
+011362:           const _0x310845 = _0x3e11cc.match(_0x3c1493);
+011363:           const _0x12d6af = _0x310845 ? _0x310845[1].trim() : "";
+011364:           if (_0x12d6af && _0xe4c0fc.size > 0) {
+011365:             let _0x2cc71f = _0xe4c0fc.has(_0x12d6af);
+011366:             if (!_0x2cc71f) {
+011367:               for (const _0x4e8467 of _0xe4c0fc) {
+011368:                 if (_0x4e8467.trim() === _0x12d6af || _0x12d6af.includes(_0x4e8467.trim()) || _0x4e8467.trim().includes(_0x12d6af)) {
+011369:                   _0x2cc71f = true;
+011370:                   break;
+011371:                 }
+011372:               }
+011373:             }
+011374:             if (_0x2cc71f) {
+011375:               console.log("[imageInserter] Keeping locked <image> block, tag:", _0x12d6af.substring(0, 50));
+011376:               return _0x1f0b9b;
+011377:             }
+011378:           }
+011379:           console.log("[imageInserter] Deleting unlocked <image> block with associated content, tag:", _0x12d6af.substring(0, 50));
+
+====================================================================================================
+LINES 11370-11399
+011370:                   break;
+011371:                 }
+011372:               }
+011373:             }
+011374:             if (_0x2cc71f) {
+011375:               console.log("[imageInserter] Keeping locked <image> block, tag:", _0x12d6af.substring(0, 50));
+011376:               return _0x1f0b9b;
+011377:             }
+011378:           }
+011379:           console.log("[imageInserter] Deleting unlocked <image> block with associated content, tag:", _0x12d6af.substring(0, 50));
+011380:           return "";
+011381:         });
+011382:         _0x1ac201 = _0x1ac201.replace(new RegExp(_0x2ec440 + "([\\s\\S]*?)" + _0x582e08, "g"), (_0x38ce1c, _0x4ba085) => {
+011383:           if (_0xe4c0fc.size > 0) {
+011384:             const _0x234228 = _0x4ba085.trim();
+011385:             let _0x5e3dd6 = _0xe4c0fc.has(_0x234228);
+011386:             if (!_0x5e3dd6) {
+011387:               for (const _0xfd6782 of _0xe4c0fc) {
+011388:                 if (_0xfd6782.trim() === _0x234228 || _0x234228.includes(_0xfd6782.trim()) || _0xfd6782.trim().includes(_0x234228)) {
+011389:                   _0x5e3dd6 = true;
+011390:                   break;
+011391:                 }
+011392:               }
+011393:             }
+011394:             if (_0x5e3dd6) {
+011395:               return _0x38ce1c;
+011396:             }
+011397:           }
+011398:           return "";
+011399:         });
+
+====================================================================================================
+LINES 11707-11736
+011707:           if (_0x57f4db.tag === _0x1a10f4) {
+011708:             return _0x57f4db.locked === true;
+011709:           }
+011710:         }
+011711:       }
+011712:       if (_0x3aabe5.chat[_0x238004].extra?.lockedTags) {
+011713:         const {
+011714:           startTag: _0x33a613,
+011715:           endTag: _0x4609fb
+011716:         } = getImageTags();
+011717:         const _0x239616 = _0x33a613.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011718:         const _0x128407 = _0x4609fb.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011719:         const _0x48fa85 = new RegExp(_0x239616 + "([\\s\\S]*?)" + _0x128407);
+011720:         const _0x19f0a4 = _0x1a10f4.match(_0x48fa85);
+011721:         let _0xf12985;
+011722:         if (_0x19f0a4) {
+011723:           _0xf12985 = _0x19f0a4[1].trim().replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+011724:         } else {
+011725:           _0xf12985 = _0x1a10f4.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+011726:         }
+011727:         const _0x31c773 = _0xf12985.substring(0, 100);
+011728:         for (const _0x42f074 of _0x3aabe5.chat[_0x238004].extra.lockedTags) {
+011729:           const _0x139a66 = _0x42f074.substring(0, 100);
+011730:           if (_0x31c773 === _0x139a66 || _0xf12985.startsWith(_0x139a66) || _0x42f074.startsWith(_0x31c773)) {
+011731:             return true;
+011732:           }
+011733:         }
+011734:       }
+011735:       const _0x18da3f = await findTagInImageGroups(_0x1a10f4);
+011736:       if (_0x18da3f) {
+
+====================================================================================================
+LINES 11708-11737
+011708:             return _0x57f4db.locked === true;
+011709:           }
+011710:         }
+011711:       }
+011712:       if (_0x3aabe5.chat[_0x238004].extra?.lockedTags) {
+011713:         const {
+011714:           startTag: _0x33a613,
+011715:           endTag: _0x4609fb
+011716:         } = getImageTags();
+011717:         const _0x239616 = _0x33a613.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011718:         const _0x128407 = _0x4609fb.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+011719:         const _0x48fa85 = new RegExp(_0x239616 + "([\\s\\S]*?)" + _0x128407);
+011720:         const _0x19f0a4 = _0x1a10f4.match(_0x48fa85);
+011721:         let _0xf12985;
+011722:         if (_0x19f0a4) {
+011723:           _0xf12985 = _0x19f0a4[1].trim().replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+011724:         } else {
+011725:           _0xf12985 = _0x1a10f4.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+011726:         }
+011727:         const _0x31c773 = _0xf12985.substring(0, 100);
+011728:         for (const _0x42f074 of _0x3aabe5.chat[_0x238004].extra.lockedTags) {
+011729:           const _0x139a66 = _0x42f074.substring(0, 100);
+011730:           if (_0x31c773 === _0x139a66 || _0xf12985.startsWith(_0x139a66) || _0x42f074.startsWith(_0x31c773)) {
+011731:             return true;
+011732:           }
+011733:         }
+011734:       }
+011735:       const _0x18da3f = await findTagInImageGroups(_0x1a10f4);
+011736:       if (_0x18da3f) {
+011737:         return _0x18da3f.images[_0x18da3f.index]?.locked === true;
+
+====================================================================================================
+LINES 11978-12007
+011978:         if (_0x40b64f.chat[_0x50d771].extra.lockedTags.length < _0x34fece) {
+011979:           _0x23ab8a = true;
+011980:           console.log("[imageInserter] Deleted tag from extra.lockedTags");
+011981:         }
+011982:       }
+011983:       if (_0x40b64f.chat[_0x50d771].mes) {
+011984:         const {
+011985:           startTag: _0x674106,
+011986:           endTag: _0x402141
+011987:         } = getImageTags();
+011988:         const _0x36aded = escapeRegExp(_0x674106);
+011989:         const _0x337b32 = escapeRegExp(_0x402141);
+011990:         const _0x3d6513 = new RegExp("\\n*<image>" + _0x36aded + escapeRegExp(_0xb5e21a) + _0x337b32 + "<\\/image>", "g");
+011991:         const _0x1437ad = new RegExp("\\n*" + _0x36aded + escapeRegExp(_0xb5e21a) + _0x337b32, "g");
+011992:         const _0x34721b = _0x40b64f.chat[_0x50d771].mes;
+011993:         let _0x2fd727 = _0x34721b.replace(_0x3d6513, "");
+011994:         _0x2fd727 = _0x2fd727.replace(_0x1437ad, "");
+011995:         if (_0x2fd727 !== _0x34721b) {
+011996:           _0x40b64f.chat[_0x50d771].mes = _0x2fd727;
+011997:           _0x23ab8a = true;
+011998:           console.log("[imageInserter] Deleted tag from mes content");
+011999:         }
+012000:       }
+012001:       if (_0x23ab8a) {
+012002:         await saveChatConditional();
+012003:         await renderMessage(_0x50d771);
+012004:       }
+012005:       if (!_0x23ab8a) {
+012006:         const _0x56bbbf = await findTagInImageGroups(_0xb5e21a);
+012007:         if (_0x56bbbf) {
+
+====================================================================================================
+LINES 11979-12008
+011979:           _0x23ab8a = true;
+011980:           console.log("[imageInserter] Deleted tag from extra.lockedTags");
+011981:         }
+011982:       }
+011983:       if (_0x40b64f.chat[_0x50d771].mes) {
+011984:         const {
+011985:           startTag: _0x674106,
+011986:           endTag: _0x402141
+011987:         } = getImageTags();
+011988:         const _0x36aded = escapeRegExp(_0x674106);
+011989:         const _0x337b32 = escapeRegExp(_0x402141);
+011990:         const _0x3d6513 = new RegExp("\\n*<image>" + _0x36aded + escapeRegExp(_0xb5e21a) + _0x337b32 + "<\\/image>", "g");
+011991:         const _0x1437ad = new RegExp("\\n*" + _0x36aded + escapeRegExp(_0xb5e21a) + _0x337b32, "g");
+011992:         const _0x34721b = _0x40b64f.chat[_0x50d771].mes;
+011993:         let _0x2fd727 = _0x34721b.replace(_0x3d6513, "");
+011994:         _0x2fd727 = _0x2fd727.replace(_0x1437ad, "");
+011995:         if (_0x2fd727 !== _0x34721b) {
+011996:           _0x40b64f.chat[_0x50d771].mes = _0x2fd727;
+011997:           _0x23ab8a = true;
+011998:           console.log("[imageInserter] Deleted tag from mes content");
+011999:         }
+012000:       }
+012001:       if (_0x23ab8a) {
+012002:         await saveChatConditional();
+012003:         await renderMessage(_0x50d771);
+012004:       }
+012005:       if (!_0x23ab8a) {
+012006:         const _0x56bbbf = await findTagInImageGroups(_0xb5e21a);
+012007:         if (_0x56bbbf) {
+012008:           const _0x3837a3 = (await getcharData("image_groups")) || {};
+
+====================================================================================================
+LINES 12593-12622
+012593: function checkKeywords(_0x42c900, _0x2ab3f2, _0x3a5383, _0x3a19b2, _0x5548bd = "any") {
+012594:   if (!_0x42c900 || _0x42c900.length === 0) {
+012595:     return false;
+012596:   }
+012597:   const _0x4b8f11 = Array.isArray(_0x42c900) ? _0x42c900 : [_0x42c900];
+012598:   const _0x204f0a = _0x3a5383 ? _0x2ab3f2 : _0x2ab3f2.toLowerCase();
+012599:   const _0x6e9d34 = _0x4b8f11.map(_0x400587 => {
+012600:     if (!_0x400587) {
+012601:       return false;
+012602:     }
+012603:     const _0x35e58d = _0x3a5383 ? _0x400587 : _0x400587.toLowerCase();
+012604:     if (_0x3a19b2) {
+012605:       const _0x33bf88 = new RegExp("\\b" + escapeRegex(_0x35e58d) + "\\b", _0x3a5383 ? "" : "i");
+012606:       return _0x33bf88.test(_0x2ab3f2);
+012607:     } else {
+012608:       return _0x204f0a.includes(_0x35e58d);
+012609:     }
+012610:   });
+012611:   if (_0x5548bd === "all") {
+012612:     return _0x6e9d34.every(_0x4ca0f4 => _0x4ca0f4);
+012613:   } else {
+012614:     return _0x6e9d34.some(_0x5ee0f9 => _0x5ee0f9);
+012615:   }
+012616: }
+012617: function escapeRegex(_0x42e249) {
+012618:   return _0x42e249.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+012619: }
+012620: var worldVars;
+012621: var init_worldbookProcessor = __esm({
+012622:   "utils/worldbookProcessor.js"() {
+
+====================================================================================================
+LINES 16956-16985
+016956:   return _0x2933ad;
+016957: }
+016958: function extractImagePrompt(_0x189681) {
+016959:   if (!_0x189681 || typeof _0x189681 !== "string") {
+016960:     return "";
+016961:   }
+016962:   const {
+016963:     startTag: _0x317b14,
+016964:     endTag: _0x3c5b7e
+016965:   } = getImageTags2();
+016966:   _0x189681 = _0x189681.replace(/<thinking>[\s\S]*?<\/thinking>/gi, "").trim();
+016967:   const _0xff4217 = /<images>([\s\S]*?)<\/images>/i;
+016968:   const _0x1af138 = _0x189681.match(_0xff4217);
+016969:   if (_0x1af138 && _0x1af138[1]) {
+016970:     const _0x4c3d72 = _0x1af138[1];
+016971:     console.log("[outfitImagePromptGen] Found <images> block:", _0x4c3d72.substring(0, 100) + "...");
+016972:     const _0x492d64 = /<image>([\s\S]*?)<\/image>/gi;
+016973:     const _0x25e7e5 = [..._0x4c3d72.matchAll(_0x492d64)];
+016974:     if (_0x25e7e5.length > 0) {
+016975:       const _0x267642 = _0x25e7e5[_0x25e7e5.length - 1][1];
+016976:       console.log("[outfitImagePromptGen] Using last <image> tag (index " + (_0x25e7e5.length - 1) + ")");
+016977:       const _0x1e28ee = _0x317b14.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+016978:       const _0xaf8a4a = _0x3c5b7e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+016979:       const _0x2b56d2 = new RegExp(_0x1e28ee + "([\\s\\S]*?)" + _0xaf8a4a, "g");
+016980:       const _0x2bde4d = [..._0x267642.matchAll(_0x2b56d2)];
+016981:       if (_0x2bde4d && _0x2bde4d.length > 0) {
+016982:         const _0x35627f = _0x2bde4d[_0x2bde4d.length - 1][1].trim();
+016983:         if (_0x35627f) {
+016984:           console.log("[outfitImagePromptGen] Extracted " + _0x317b14 + "..." + _0x3c5b7e + " from last <image> (last match):", _0x35627f.substring(0, 50) + "...");
+016985:           return _0x35627f;
+
+====================================================================================================
+LINES 16967-16996
+016967:   const _0xff4217 = /<images>([\s\S]*?)<\/images>/i;
+016968:   const _0x1af138 = _0x189681.match(_0xff4217);
+016969:   if (_0x1af138 && _0x1af138[1]) {
+016970:     const _0x4c3d72 = _0x1af138[1];
+016971:     console.log("[outfitImagePromptGen] Found <images> block:", _0x4c3d72.substring(0, 100) + "...");
+016972:     const _0x492d64 = /<image>([\s\S]*?)<\/image>/gi;
+016973:     const _0x25e7e5 = [..._0x4c3d72.matchAll(_0x492d64)];
+016974:     if (_0x25e7e5.length > 0) {
+016975:       const _0x267642 = _0x25e7e5[_0x25e7e5.length - 1][1];
+016976:       console.log("[outfitImagePromptGen] Using last <image> tag (index " + (_0x25e7e5.length - 1) + ")");
+016977:       const _0x1e28ee = _0x317b14.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+016978:       const _0xaf8a4a = _0x3c5b7e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+016979:       const _0x2b56d2 = new RegExp(_0x1e28ee + "([\\s\\S]*?)" + _0xaf8a4a, "g");
+016980:       const _0x2bde4d = [..._0x267642.matchAll(_0x2b56d2)];
+016981:       if (_0x2bde4d && _0x2bde4d.length > 0) {
+016982:         const _0x35627f = _0x2bde4d[_0x2bde4d.length - 1][1].trim();
+016983:         if (_0x35627f) {
+016984:           console.log("[outfitImagePromptGen] Extracted " + _0x317b14 + "..." + _0x3c5b7e + " from last <image> (last match):", _0x35627f.substring(0, 50) + "...");
+016985:           return _0x35627f;
+016986:         }
+016987:       }
+016988:       const _0x213402 = _0x267642.trim();
+016989:       if (_0x213402) {
+016990:         console.log("[outfitImagePromptGen] Using last <image> content directly:", _0x213402.substring(0, 50) + "...");
+016991:         return _0x213402;
+016992:       }
+016993:     }
+016994:     const _0x359d71 = _0x4c3d72.trim();
+016995:     if (_0x359d71) {
+016996:       console.log("[outfitImagePromptGen] No <image> tags found, using <images> block content directly");
+
+====================================================================================================
+LINES 16990-17019
+016990:         console.log("[outfitImagePromptGen] Using last <image> content directly:", _0x213402.substring(0, 50) + "...");
+016991:         return _0x213402;
+016992:       }
+016993:     }
+016994:     const _0x359d71 = _0x4c3d72.trim();
+016995:     if (_0x359d71) {
+016996:       console.log("[outfitImagePromptGen] No <image> tags found, using <images> block content directly");
+016997:       return _0x359d71;
+016998:     }
+016999:   }
+017000:   const _0x4ad4b1 = _0x317b14.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+017001:   const _0x502829 = _0x3c5b7e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+017002:   const _0x4e04ce = new RegExp(_0x4ad4b1 + "([\\s\\S]*?)" + _0x502829, "g");
+017003:   const _0x14b28b = [..._0x189681.matchAll(_0x4e04ce)];
+017004:   if (_0x14b28b && _0x14b28b.length > 0) {
+017005:     console.log("[outfitImagePromptGen] Using legacy " + _0x317b14 + "..." + _0x3c5b7e + " format (last match)");
+017006:     return _0x14b28b[_0x14b28b.length - 1][1].trim();
+017007:   }
+017008:   return "";
+017009: }
+017010: function readFileAsBase64(_0x3a21ec) {
+017011:   return new Promise((_0x31eb1d, _0x4b8c2a) => {
+017012:     const _0x5573fb = new FileReader();
+017013:     _0x5573fb.onload = () => _0x31eb1d(_0x5573fb.result);
+017014:     _0x5573fb.onerror = _0x4b8c2a;
+017015:     _0x5573fb.readAsDataURL(_0x3a21ec);
+017016:   });
+017017: }
+017018: function attachImagesToMessage(_0x29b6e5, _0x5ba12f, _0x2ec49e, _0x285107 = "参考图片") {
+017019:   if (!_0x2ec49e || _0x2ec49e.length === 0 || _0x5ba12f < 0 || _0x5ba12f >= _0x29b6e5.length) {
+
+====================================================================================================
+LINES 20785-20814
+020785:   return _0x30685e;
+020786: }
+020787: function extractImagePrompt2(_0x45b7a8) {
+020788:   if (!_0x45b7a8 || typeof _0x45b7a8 !== "string") {
+020789:     return "";
+020790:   }
+020791:   const {
+020792:     startTag: _0x28f887,
+020793:     endTag: _0x16860f
+020794:   } = getImageTags3();
+020795:   _0x45b7a8 = _0x45b7a8.replace(/<thinking>[\s\S]*?<\/thinking>/gi, "").trim();
+020796:   const _0x2131ef = /<images>([\s\S]*?)<\/images>/i;
+020797:   const _0x1239fc = _0x45b7a8.match(_0x2131ef);
+020798:   if (_0x1239fc && _0x1239fc[1]) {
+020799:     const _0x2fcc66 = _0x1239fc[1];
+020800:     console.log("[imagePromptGen] Found <images> block:", _0x2fcc66.substring(0, 100) + "...");
+020801:     const _0x1d5e35 = /<image>([\s\S]*?)<\/image>/gi;
+020802:     const _0x2d9189 = [..._0x2fcc66.matchAll(_0x1d5e35)];
+020803:     if (_0x2d9189.length > 0) {
+020804:       const _0x4dc883 = _0x2d9189[_0x2d9189.length - 1][1];
+020805:       console.log("[imagePromptGen] Using last <image> tag (index " + (_0x2d9189.length - 1) + ")");
+020806:       const _0xf65ae = _0x28f887.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020807:       const _0x5aee7f = _0x16860f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020808:       const _0xf11171 = new RegExp(_0xf65ae + "([\\s\\S]*?)" + _0x5aee7f, "g");
+020809:       const _0x59ce83 = [..._0x4dc883.matchAll(_0xf11171)];
+020810:       if (_0x59ce83 && _0x59ce83.length > 0) {
+020811:         const _0x371b93 = _0x59ce83[_0x59ce83.length - 1][1].trim();
+020812:         if (_0x371b93) {
+020813:           console.log("[imagePromptGen] Extracted " + _0x28f887 + "..." + _0x16860f + " from last <image> (last match):", _0x371b93.substring(0, 50) + "...");
+020814:           return _0x371b93;
+
+====================================================================================================
+LINES 20796-20825
+020796:   const _0x2131ef = /<images>([\s\S]*?)<\/images>/i;
+020797:   const _0x1239fc = _0x45b7a8.match(_0x2131ef);
+020798:   if (_0x1239fc && _0x1239fc[1]) {
+020799:     const _0x2fcc66 = _0x1239fc[1];
+020800:     console.log("[imagePromptGen] Found <images> block:", _0x2fcc66.substring(0, 100) + "...");
+020801:     const _0x1d5e35 = /<image>([\s\S]*?)<\/image>/gi;
+020802:     const _0x2d9189 = [..._0x2fcc66.matchAll(_0x1d5e35)];
+020803:     if (_0x2d9189.length > 0) {
+020804:       const _0x4dc883 = _0x2d9189[_0x2d9189.length - 1][1];
+020805:       console.log("[imagePromptGen] Using last <image> tag (index " + (_0x2d9189.length - 1) + ")");
+020806:       const _0xf65ae = _0x28f887.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020807:       const _0x5aee7f = _0x16860f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020808:       const _0xf11171 = new RegExp(_0xf65ae + "([\\s\\S]*?)" + _0x5aee7f, "g");
+020809:       const _0x59ce83 = [..._0x4dc883.matchAll(_0xf11171)];
+020810:       if (_0x59ce83 && _0x59ce83.length > 0) {
+020811:         const _0x371b93 = _0x59ce83[_0x59ce83.length - 1][1].trim();
+020812:         if (_0x371b93) {
+020813:           console.log("[imagePromptGen] Extracted " + _0x28f887 + "..." + _0x16860f + " from last <image> (last match):", _0x371b93.substring(0, 50) + "...");
+020814:           return _0x371b93;
+020815:         }
+020816:       }
+020817:       const _0x2f1f52 = _0x4dc883.trim();
+020818:       if (_0x2f1f52) {
+020819:         console.log("[imagePromptGen] Using last <image> content directly:", _0x2f1f52.substring(0, 50) + "...");
+020820:         return _0x2f1f52;
+020821:       }
+020822:     }
+020823:     const _0x1321e4 = _0x2fcc66.trim();
+020824:     if (_0x1321e4) {
+020825:       console.log("[imagePromptGen] No <image> tags found, using <images> block content directly");
+
+====================================================================================================
+LINES 20819-20848
+020819:         console.log("[imagePromptGen] Using last <image> content directly:", _0x2f1f52.substring(0, 50) + "...");
+020820:         return _0x2f1f52;
+020821:       }
+020822:     }
+020823:     const _0x1321e4 = _0x2fcc66.trim();
+020824:     if (_0x1321e4) {
+020825:       console.log("[imagePromptGen] No <image> tags found, using <images> block content directly");
+020826:       return _0x1321e4;
+020827:     }
+020828:   }
+020829:   const _0x597484 = _0x28f887.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020830:   const _0x16dfb9 = _0x16860f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+020831:   const _0x418926 = new RegExp(_0x597484 + "([\\s\\S]*?)" + _0x16dfb9, "g");
+020832:   const _0x1a9c92 = [..._0x45b7a8.matchAll(_0x418926)];
+020833:   if (_0x1a9c92 && _0x1a9c92.length > 0) {
+020834:     console.log("[imagePromptGen] Using legacy " + _0x28f887 + "..." + _0x16860f + " format (last match)");
+020835:     return _0x1a9c92[_0x1a9c92.length - 1][1].trim();
+020836:   }
+020837:   return "";
+020838: }
+020839: function readFileAsBase642(_0x78df1c) {
+020840:   return new Promise((_0x1f952d, _0x5edc97) => {
+020841:     const _0x20af53 = new FileReader();
+020842:     _0x20af53.onload = () => _0x1f952d(_0x20af53.result);
+020843:     _0x20af53.onerror = _0x5edc97;
+020844:     _0x20af53.readAsDataURL(_0x78df1c);
+020845:   });
+020846: }
+020847: function attachImagesToMessage4(_0xf77f11, _0x30f349, _0x21fcca, _0x30529c = "参考图片") {
+020848:   if (!_0x21fcca || _0x21fcca.length === 0 || _0x30f349 < 0 || _0x30f349 >= _0xf77f11.length) {
+
+====================================================================================================
+LINES 25918-25947
+025918:       return;
+025919:     }
+025920:     if (!_0x5dfb85[_0x13f716] || typeof _0x5dfb85[_0x13f716].mes !== "string") {
+025921:       return;
+025922:     }
+025923:     const _0x421dd3 = _0x5dfb85[_0x13f716].mes;
+025924:     let _0x79faa1 = _0x421dd3.replaceAll("\n###", "###");
+025925:     _0x79faa1 = _0x79faa1.replace(/<image>\n*###\n*/g, "<image>image###");
+025926:     const _0x44dc29 = _0x381bef[extensionName];
+025927:     const _0x5092a0 = _0x44dc29?.startTag || "image###";
+025928:     const _0x9d1886 = _0x44dc29?.endTag || "###";
+025929:     const _0xb82891 = _0x47a98e => _0x47a98e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+025930:     const _0x5e230e = new RegExp(_0xb82891(_0x5092a0) + "([\\s\\S]*?)" + _0xb82891(_0x9d1886), "g");
+025931:     _0x79faa1 = _0x79faa1.replace(_0x5e230e, (_0x36910a, _0x232d42) => {
+025932:       const _0x3a8039 = _0x232d42.replace(/，/g, ",").replace(/；/g, ";").replace(/：/g, ":");
+025933:       return "" + _0x5092a0 + _0x3a8039 + _0x9d1886;
+025934:     });
+025935:     if (_0x421dd3 !== _0x79faa1) {
+025936:       console.log("ChatU8: Fixed newlines & symbols for message ID: " + _0x13f716);
+025937:       _0x5dfb85[_0x13f716].mes = _0x79faa1;
+025938:       await _0x519875();
+025939:       render(_0x13f716);
+025940:     }
+025941:   });
+025942:   _0x2004c1.on(_0x477f92.MESSAGE_RECEIVED, async function (_0x43f268) {
+025943:     console.log("ChatU8: Extracting character and outfit tags for message ID: " + _0x43f268);
+025944:     if (!_0x5dfb85[_0x43f268] || typeof _0x5dfb85[_0x43f268].mes !== "string") {
+025945:       return;
+025946:     }
+025947:     const _0x449cd5 = _0x5dfb85[_0x43f268].mes;
+
+====================================================================================================
+LINES 28285-28314
+028285: }
+028286: function parseImageTagFromResponse(_0x14a93d) {
+028287:   if (!_0x14a93d || typeof _0x14a93d !== "string") {
+028288:     return null;
+028289:   }
+028290:   let _0x44cc0d = _0x14a93d.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+028291:   const _0x1c4916 = _0x266cad[extensionName];
+028292:   const _0x57cdc7 = _0x1c4916?.startTag || "image###";
+028293:   const _0x4b84d5 = _0x1c4916?.endTag || "###";
+028294:   const _0x5620ed = _0x57cdc7.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+028295:   const _0x43b68d = _0x4b84d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+028296:   const _0x4a33be = /<images>([\s\S]*?)<\/images>/i;
+028297:   const _0x4ad616 = _0x44cc0d.match(_0x4a33be);
+028298:   if (_0x4ad616 && _0x4ad616[1]) {
+028299:     const _0x17f845 = _0x4ad616[1];
+028300:     const _0x466314 = /<image>([\s\S]*?)<\/image>/gi;
+028301:     const _0x4706ea = [..._0x17f845.matchAll(_0x466314)];
+028302:     if (_0x4706ea.length > 0) {
+028303:       const _0x5cd6e5 = _0x4706ea[_0x4706ea.length - 1][1];
+028304:       console.log("[parseImageTagFromResponse] Using last <image> tag in <images> block");
+028305:       const _0x1b79f = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028306:       const _0x246ddd = [..._0x5cd6e5.matchAll(_0x1b79f)];
+028307:       if (_0x246ddd.length > 0) {
+028308:         return _0x246ddd[_0x246ddd.length - 1][1].trim();
+028309:       }
+028310:       const _0x2464f8 = _0x5cd6e5.trim();
+028311:       if (_0x2464f8) {
+028312:         return _0x2464f8;
+028313:       }
+028314:     }
+
+====================================================================================================
+LINES 28293-28322
+028293:   const _0x4b84d5 = _0x1c4916?.endTag || "###";
+028294:   const _0x5620ed = _0x57cdc7.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+028295:   const _0x43b68d = _0x4b84d5.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+028296:   const _0x4a33be = /<images>([\s\S]*?)<\/images>/i;
+028297:   const _0x4ad616 = _0x44cc0d.match(_0x4a33be);
+028298:   if (_0x4ad616 && _0x4ad616[1]) {
+028299:     const _0x17f845 = _0x4ad616[1];
+028300:     const _0x466314 = /<image>([\s\S]*?)<\/image>/gi;
+028301:     const _0x4706ea = [..._0x17f845.matchAll(_0x466314)];
+028302:     if (_0x4706ea.length > 0) {
+028303:       const _0x5cd6e5 = _0x4706ea[_0x4706ea.length - 1][1];
+028304:       console.log("[parseImageTagFromResponse] Using last <image> tag in <images> block");
+028305:       const _0x1b79f = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028306:       const _0x246ddd = [..._0x5cd6e5.matchAll(_0x1b79f)];
+028307:       if (_0x246ddd.length > 0) {
+028308:         return _0x246ddd[_0x246ddd.length - 1][1].trim();
+028309:       }
+028310:       const _0x2464f8 = _0x5cd6e5.trim();
+028311:       if (_0x2464f8) {
+028312:         return _0x2464f8;
+028313:       }
+028314:     }
+028315:   }
+028316:   const _0xdb0892 = /<image>([\s\S]*?)<\/image>/gi;
+028317:   const _0x51ae78 = [..._0x44cc0d.matchAll(_0xdb0892)];
+028318:   if (_0x51ae78.length > 0) {
+028319:     const _0x479579 = _0x51ae78[_0x51ae78.length - 1][1];
+028320:     console.log("[parseImageTagFromResponse] Using last standalone <image> tag");
+028321:     const _0x57ffda = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028322:     const _0x1d0a8a = [..._0x479579.matchAll(_0x57ffda)];
+
+====================================================================================================
+LINES 28309-28338
+028309:       }
+028310:       const _0x2464f8 = _0x5cd6e5.trim();
+028311:       if (_0x2464f8) {
+028312:         return _0x2464f8;
+028313:       }
+028314:     }
+028315:   }
+028316:   const _0xdb0892 = /<image>([\s\S]*?)<\/image>/gi;
+028317:   const _0x51ae78 = [..._0x44cc0d.matchAll(_0xdb0892)];
+028318:   if (_0x51ae78.length > 0) {
+028319:     const _0x479579 = _0x51ae78[_0x51ae78.length - 1][1];
+028320:     console.log("[parseImageTagFromResponse] Using last standalone <image> tag");
+028321:     const _0x57ffda = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028322:     const _0x1d0a8a = [..._0x479579.matchAll(_0x57ffda)];
+028323:     if (_0x1d0a8a.length > 0) {
+028324:       return _0x1d0a8a[_0x1d0a8a.length - 1][1].trim();
+028325:     }
+028326:     const _0x5897fa = _0x479579.trim();
+028327:     if (_0x5897fa) {
+028328:       return _0x5897fa;
+028329:     }
+028330:   }
+028331:   const _0x5cfc13 = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028332:   const _0x3e9c44 = [..._0x44cc0d.matchAll(_0x5cfc13)];
+028333:   if (_0x3e9c44.length > 0) {
+028334:     console.log("[parseImageTagFromResponse] Using last image### in full text");
+028335:     return _0x3e9c44[_0x3e9c44.length - 1][1].trim();
+028336:   }
+028337:   const _0x44a1be = /image\s*#{2,}\s*([\s\S]*?)\s*#{2,}/gi;
+028338:   const _0x14f805 = [..._0x44cc0d.matchAll(_0x44a1be)];
+
+====================================================================================================
+LINES 28319-28348
+028319:     const _0x479579 = _0x51ae78[_0x51ae78.length - 1][1];
+028320:     console.log("[parseImageTagFromResponse] Using last standalone <image> tag");
+028321:     const _0x57ffda = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028322:     const _0x1d0a8a = [..._0x479579.matchAll(_0x57ffda)];
+028323:     if (_0x1d0a8a.length > 0) {
+028324:       return _0x1d0a8a[_0x1d0a8a.length - 1][1].trim();
+028325:     }
+028326:     const _0x5897fa = _0x479579.trim();
+028327:     if (_0x5897fa) {
+028328:       return _0x5897fa;
+028329:     }
+028330:   }
+028331:   const _0x5cfc13 = new RegExp("(?:" + _0x5620ed + "|image\\s*###)\\s*([\\s\\S]*?)\\s*(?:" + _0x43b68d + "|###)", "gi");
+028332:   const _0x3e9c44 = [..._0x44cc0d.matchAll(_0x5cfc13)];
+028333:   if (_0x3e9c44.length > 0) {
+028334:     console.log("[parseImageTagFromResponse] Using last image### in full text");
+028335:     return _0x3e9c44[_0x3e9c44.length - 1][1].trim();
+028336:   }
+028337:   const _0x44a1be = /image\s*#{2,}\s*([\s\S]*?)\s*#{2,}/gi;
+028338:   const _0x14f805 = [..._0x44cc0d.matchAll(_0x44a1be)];
+028339:   if (_0x14f805.length > 0) {
+028340:     return _0x14f805[_0x14f805.length - 1][1].trim();
+028341:   }
+028342:   console.warn("[parseImageTagFromResponse] No match found in text:", _0x44cc0d.substring(0, 300));
+028343:   return null;
+028344: }
+028345: function attachImagesToMessage6(_0x4d877b, _0x17cf2a, _0x31a830, _0x1158a2 = "参考图片") {
+028346:   if (!_0x31a830 || _0x31a830.length === 0 || _0x17cf2a < 0 || _0x17cf2a >= _0x4d877b.length) {
+028347:     return _0x4d877b;
+028348:   }
+
+====================================================================================================
+LINES 28906-28935
+028906:       async init() {
+028907:         this.container.style.cssText = "position: relative; display: flex; flex-direction: column; align-items: center;";
+028908:         this.originalImage = new Image();
+028909:         this.originalImage.crossOrigin = "anonymous";
+028910:         await new Promise((_0x36cc38, _0x2d5798) => {
+028911:           this.originalImage.onload = _0x36cc38;
+028912:           this.originalImage.onerror = _0x2d5798;
+028913:           this.originalImage.src = this.imageUrl;
+028914:         });
+028915:         const _0x283b11 = window.top.innerWidth <= 768;
+028916:         const _0x2689f5 = _0x283b11 ? Math.min(this.originalImage.width, window.top.innerWidth - 60) : Math.min(this.originalImage.width, 800);
+028917:         const _0x12c234 = _0x2689f5 / this.originalImage.width;
+028918:         this.displayWidth = Math.floor(this.originalImage.width * _0x12c234);
+028919:         this.displayHeight = Math.floor(this.originalImage.height * _0x12c234);
+028920:         this.canvasContainer = document.createElement("div");
+028921:         this.canvasContainer.style.cssText = "position: relative; width: " + this.displayWidth + "px; height: " + this.displayHeight + "px;";
+028922:         this.imageCanvas = document.createElement("canvas");
+028923:         this.imageCanvas.width = this.displayWidth;
+028924:         this.imageCanvas.height = this.displayHeight;
+028925:         this.imageCanvas.style.cssText = "position: absolute; top: 0; left: 0;";
+028926:         const _0x140be8 = this.imageCanvas.getContext("2d");
+028927:         _0x140be8.drawImage(this.originalImage, 0, 0, this.displayWidth, this.displayHeight);
+028928:         this.maskCanvas = document.createElement("canvas");
+028929:         this.maskCanvas.width = this.displayWidth;
+028930:         this.maskCanvas.height = this.displayHeight;
+028931:         this.maskCanvas.style.cssText = "position: absolute; top: 0; left: 0; cursor: crosshair; opacity: 0.6;";
+028932:         this.maskCtx = this.maskCanvas.getContext("2d");
+028933:         this.maskCtx.fillStyle = "#000000";
+028934:         this.maskCtx.fillRect(0, 0, this.displayWidth, this.displayHeight);
+028935:         this.canvasContainer.appendChild(this.imageCanvas);
+
+====================================================================================================
+LINES 28907-28936
+028907:         this.container.style.cssText = "position: relative; display: flex; flex-direction: column; align-items: center;";
+028908:         this.originalImage = new Image();
+028909:         this.originalImage.crossOrigin = "anonymous";
+028910:         await new Promise((_0x36cc38, _0x2d5798) => {
+028911:           this.originalImage.onload = _0x36cc38;
+028912:           this.originalImage.onerror = _0x2d5798;
+028913:           this.originalImage.src = this.imageUrl;
+028914:         });
+028915:         const _0x283b11 = window.top.innerWidth <= 768;
+028916:         const _0x2689f5 = _0x283b11 ? Math.min(this.originalImage.width, window.top.innerWidth - 60) : Math.min(this.originalImage.width, 800);
+028917:         const _0x12c234 = _0x2689f5 / this.originalImage.width;
+028918:         this.displayWidth = Math.floor(this.originalImage.width * _0x12c234);
+028919:         this.displayHeight = Math.floor(this.originalImage.height * _0x12c234);
+028920:         this.canvasContainer = document.createElement("div");
+028921:         this.canvasContainer.style.cssText = "position: relative; width: " + this.displayWidth + "px; height: " + this.displayHeight + "px;";
+028922:         this.imageCanvas = document.createElement("canvas");
+028923:         this.imageCanvas.width = this.displayWidth;
+028924:         this.imageCanvas.height = this.displayHeight;
+028925:         this.imageCanvas.style.cssText = "position: absolute; top: 0; left: 0;";
+028926:         const _0x140be8 = this.imageCanvas.getContext("2d");
+028927:         _0x140be8.drawImage(this.originalImage, 0, 0, this.displayWidth, this.displayHeight);
+028928:         this.maskCanvas = document.createElement("canvas");
+028929:         this.maskCanvas.width = this.displayWidth;
+028930:         this.maskCanvas.height = this.displayHeight;
+028931:         this.maskCanvas.style.cssText = "position: absolute; top: 0; left: 0; cursor: crosshair; opacity: 0.6;";
+028932:         this.maskCtx = this.maskCanvas.getContext("2d");
+028933:         this.maskCtx.fillStyle = "#000000";
+028934:         this.maskCtx.fillRect(0, 0, this.displayWidth, this.displayHeight);
+028935:         this.canvasContainer.appendChild(this.imageCanvas);
+028936:         this.canvasContainer.appendChild(this.maskCanvas);
+
+====================================================================================================
+LINES 29251-29280
+029251:   if (!_0x5f556b) {
+029252:     const _0x389da5 = parseInt(_0x38383b.dataset.displayWidth);
+029253:     if (_0x389da5) {
+029254:       const _0x1362f6 = _0x389da5 + 60;
+029255:       _0x2a5492.style.width = _0x1362f6 + "px";
+029256:       _0x2a5492.style.maxWidth = "95vw";
+029257:     }
+029258:   }
+029259:   const _0x54a2e7 = document.createElement("style");
+029260:   _0x54a2e7.textContent = "\n        /* Toolbar container base styles */\n        .st-chatu8-inpaint-toolbar-container {\n            display: flex;\n            flex-direction: column;\n            gap: 10px;\n            padding: 10px;\n            background-color: var(--st-chatu8-bg-secondary, #2a2a4a);\n            border-radius: 8px;\n            margin-bottom: 15px;\n        }\n        \n        /* Mobile-specific styles - no separate scrollbar */\n        .st-chatu8-inpaint-toolbar-container.mobile {\n            overflow: visible;\n            /* Let the dialog handle scrolling */\n        }\n        \n        /* Desktop-specific styles */\n        .st-chatu8-inpaint-toolbar-container.desktop {\n            overflow: visible;\n            max-height: none;\n        }\n        \n        /* Toolbar styles */\n        .st-chatu8-inpaint-toolbar {\n            display: flex;\n            gap: 10px;\n            align-items: center;\n            flex-wrap: wrap;\n        }\n        \n        .st-chatu8-inpaint-brush-label {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n        }\n        \n        .st-chatu8-inpaint-brush-slider {\n            width: 100px;\n        }\n        \n        .st-chatu8-tool-btn {\n            padding: 8px 12px;\n            border: 1px solid var(--st-chatu8-border-color, #444);\n            border-radius: 6px;\n            background: var(--st-chatu8-bg-secondary, #2a2a4a);\n            color: var(--st-chatu8-text-primary, #fff);\n            cursor: pointer;\n            transition: all 0.2s;\n        }\n        .st-chatu8-tool-btn:hover {\n            background: var(--st-chatu8-accent-secondary, #3a3a5a);\n        }\n        .st-chatu8-tool-btn.active {\n            background: var(--st-chatu8-accent-primary, #4a4a8a);\n            border-color: var(--st-chatu8-accent-primary, #6a6aaa);\n        }\n        \n        /* Denoise/Strength slider styles (matching ComfyUI) */\n        .st-chatu8-inpaint-denoise-group {\n            display: flex;\n            align-items: center;\n            gap: 10px;\n        }\n        \n        .st-chatu8-inpaint-denoise-label {\n            flex-shrink: 0;\n        }\n        \n        .st-chatu8-inpaint-denoise-slider {\n            flex: 1;\n            min-width: 100px;\n        }\n        \n        .st-chatu8-inpaint-denoise-value {\n            min-width: 40px;\n            text-align: right;\n        }\n        \n        /* Autocomplete styles for inpaint dialog */\n        .st-chatu8-edit-backdrop .ch-autocomplete-results {\n            display: none;\n            position: absolute;\n            background-color: var(--st-chatu8-dropdown-list-bg, #2a2a4a);\n            border: 1px solid var(--st-chatu8-border-color, #444);\n            border-radius: 6px;\n            max-height: 150px;\n            overflow-y: auto;\n            z-index: 10;\n            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n            max-width: 100%;\n        }\n        .st-chatu8-edit-backdrop .ch-autocomplete-item {\n            padding: 8px 12px;\n            cursor: pointer;\n            color: var(--st-chatu8-dropdown-text, #fff);\n            font-size: 0.9em;\n        }\n        .st-chatu8-edit-backdrop .ch-autocomplete-item:hover {\n            background-color: var(--st-chatu8-accent-secondary, #3a3a5a);\n            color: var(--st-chatu8-text-highlight, #fff);\n        }\n        \n        /* Prompt section styles */\n        .st-chatu8-inpaint-prompt-section {\n            display: flex;\n            flex-direction: column;\n            gap: 10px;\n            position: relative;\n        }\n        \n        .st-chatu8-inpaint-prompt-group {\n            display: flex;\n            flex-direction: column;\n            gap: 5px;\n            position: relative;\n        }\n    ";
+029261:   _0x2a5492.appendChild(_0x54a2e7);
+029262:   const _0x842012 = new MaskEditorState();
+029263:   _0x842012.displayWidth = parseInt(_0x38383b.dataset.displayWidth);
+029264:   _0x842012.displayHeight = parseInt(_0x38383b.dataset.displayHeight);
+029265:   _0x842012.imageCanvas = _0x38383b._imageCanvas;
+029266:   _0x842012.displayMaskCanvas = _0x38383b._displayMaskCanvas;
+029267:   _0x842012.dataMaskCanvas = _0x38383b._dataMaskCanvas;
+029268:   _0x842012.displayMaskCtx = _0x842012.displayMaskCanvas.getContext("2d", {
+029269:     willReadFrequently: true
+029270:   });
+029271:   _0x842012.dataMaskCtx = _0x842012.dataMaskCanvas.getContext("2d", {
+029272:     willReadFrequently: true
+029273:   });
+029274:   const _0x47768f = new Image();
+029275:   _0x47768f.crossOrigin = "anonymous";
+029276:   await new Promise(_0x5ba592 => {
+029277:     _0x47768f.onload = _0x5ba592;
+029278:     _0x47768f.src = _0x2f2fd2.src;
+029279:   });
+029280:   _0x842012.originalImage = _0x47768f;
+
+====================================================================================================
+LINES 29252-29281
+029252:     const _0x389da5 = parseInt(_0x38383b.dataset.displayWidth);
+029253:     if (_0x389da5) {
+029254:       const _0x1362f6 = _0x389da5 + 60;
+029255:       _0x2a5492.style.width = _0x1362f6 + "px";
+029256:       _0x2a5492.style.maxWidth = "95vw";
+029257:     }
+029258:   }
+029259:   const _0x54a2e7 = document.createElement("style");
+029260:   _0x54a2e7.textContent = "\n        /* Toolbar container base styles */\n        .st-chatu8-inpaint-toolbar-container {\n            display: flex;\n            flex-direction: column;\n            gap: 10px;\n            padding: 10px;\n            background-color: var(--st-chatu8-bg-secondary, #2a2a4a);\n            border-radius: 8px;\n            margin-bottom: 15px;\n        }\n        \n        /* Mobile-specific styles - no separate scrollbar */\n        .st-chatu8-inpaint-toolbar-container.mobile {\n            overflow: visible;\n            /* Let the dialog handle scrolling */\n        }\n        \n        /* Desktop-specific styles */\n        .st-chatu8-inpaint-toolbar-container.desktop {\n            overflow: visible;\n            max-height: none;\n        }\n        \n        /* Toolbar styles */\n        .st-chatu8-inpaint-toolbar {\n            display: flex;\n            gap: 10px;\n            align-items: center;\n            flex-wrap: wrap;\n        }\n        \n        .st-chatu8-inpaint-brush-label {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n        }\n        \n        .st-chatu8-inpaint-brush-slider {\n            width: 100px;\n        }\n        \n        .st-chatu8-tool-btn {\n            padding: 8px 12px;\n            border: 1px solid var(--st-chatu8-border-color, #444);\n            border-radius: 6px;\n            background: var(--st-chatu8-bg-secondary, #2a2a4a);\n            color: var(--st-chatu8-text-primary, #fff);\n            cursor: pointer;\n            transition: all 0.2s;\n        }\n        .st-chatu8-tool-btn:hover {\n            background: var(--st-chatu8-accent-secondary, #3a3a5a);\n        }\n        .st-chatu8-tool-btn.active {\n            background: var(--st-chatu8-accent-primary, #4a4a8a);\n            border-color: var(--st-chatu8-accent-primary, #6a6aaa);\n        }\n        \n        /* Denoise/Strength slider styles (matching ComfyUI) */\n        .st-chatu8-inpaint-denoise-group {\n            display: flex;\n            align-items: center;\n            gap: 10px;\n        }\n        \n        .st-chatu8-inpaint-denoise-label {\n            flex-shrink: 0;\n        }\n        \n        .st-chatu8-inpaint-denoise-slider {\n            flex: 1;\n            min-width: 100px;\n        }\n        \n        .st-chatu8-inpaint-denoise-value {\n            min-width: 40px;\n            text-align: right;\n        }\n        \n        /* Autocomplete styles for inpaint dialog */\n        .st-chatu8-edit-backdrop .ch-autocomplete-results {\n            display: none;\n            position: absolute;\n            background-color: var(--st-chatu8-dropdown-list-bg, #2a2a4a);\n            border: 1px solid var(--st-chatu8-border-color, #444);\n            border-radius: 6px;\n            max-height: 150px;\n            overflow-y: auto;\n            z-index: 10;\n            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n            max-width: 100%;\n        }\n        .st-chatu8-edit-backdrop .ch-autocomplete-item {\n            padding: 8px 12px;\n            cursor: pointer;\n            color: var(--st-chatu8-dropdown-text, #fff);\n            font-size: 0.9em;\n        }\n        .st-chatu8-edit-backdrop .ch-autocomplete-item:hover {\n            background-color: var(--st-chatu8-accent-secondary, #3a3a5a);\n            color: var(--st-chatu8-text-highlight, #fff);\n        }\n        \n        /* Prompt section styles */\n        .st-chatu8-inpaint-prompt-section {\n            display: flex;\n            flex-direction: column;\n            gap: 10px;\n            position: relative;\n        }\n        \n        .st-chatu8-inpaint-prompt-group {\n            display: flex;\n            flex-direction: column;\n            gap: 5px;\n            position: relative;\n        }\n    ";
+029261:   _0x2a5492.appendChild(_0x54a2e7);
+029262:   const _0x842012 = new MaskEditorState();
+029263:   _0x842012.displayWidth = parseInt(_0x38383b.dataset.displayWidth);
+029264:   _0x842012.displayHeight = parseInt(_0x38383b.dataset.displayHeight);
+029265:   _0x842012.imageCanvas = _0x38383b._imageCanvas;
+029266:   _0x842012.displayMaskCanvas = _0x38383b._displayMaskCanvas;
+029267:   _0x842012.dataMaskCanvas = _0x38383b._dataMaskCanvas;
+029268:   _0x842012.displayMaskCtx = _0x842012.displayMaskCanvas.getContext("2d", {
+029269:     willReadFrequently: true
+029270:   });
+029271:   _0x842012.dataMaskCtx = _0x842012.dataMaskCanvas.getContext("2d", {
+029272:     willReadFrequently: true
+029273:   });
+029274:   const _0x47768f = new Image();
+029275:   _0x47768f.crossOrigin = "anonymous";
+029276:   await new Promise(_0x5ba592 => {
+029277:     _0x47768f.onload = _0x5ba592;
+029278:     _0x47768f.src = _0x2f2fd2.src;
+029279:   });
+029280:   _0x842012.originalImage = _0x47768f;
+029281:   _0x842012.brushSize = 32;
+
+====================================================================================================
+LINES 29888-29917
+029888:     let _0x24e853;
+029889:     let _0x191892;
+029890:     if (_0x3aa0fb === "banana") {
+029891:       const _0x1f7391 = _0x4cd6cf.dataset.aspectRatio || _0x3ef78e.banana?.aspectRatio || "1:1";
+029892:       _0x24e853 = _0x1f7391;
+029893:       _0x191892 = "";
+029894:     } else {
+029895:       _0x24e853 = _0x4cd6cf.dataset.width;
+029896:       _0x191892 = _0x4cd6cf.dataset.height;
+029897:       if (!_0x24e853 || !_0x191892) {
+029898:         const _0x1f5d0d = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+029899:         const _0x56182d = _0x4cd6cf.dataset.change || _0x4cd6cf.dataset.link || "";
+029900:         const _0x100b2f = _0x56182d.match(_0x1f5d0d);
+029901:         if (_0x100b2f) {
+029902:           _0x24e853 = _0x100b2f[1];
+029903:           _0x191892 = _0x100b2f[2];
+029904:         }
+029905:       }
+029906:       _0x24e853 = _0x24e853 || _0x3ef78e[_0x119bd5] || "1024";
+029907:       _0x191892 = _0x191892 || _0x3ef78e[_0x271647] || "1024";
+029908:       const _0x34796c = {
+029909:         mode: _0x3aa0fb,
+029910:         widthKey: _0x119bd5,
+029911:         heightKey: _0x271647,
+029912:         buttonWidth: _0x4cd6cf.dataset.width,
+029913:         buttonHeight: _0x4cd6cf.dataset.height,
+029914:         configWidth: _0x3ef78e[_0x119bd5],
+029915:         configHeight: _0x3ef78e[_0x271647],
+029916:         currentWidth: _0x24e853,
+029917:         currentHeight: _0x191892
+
+====================================================================================================
+LINES 30576-30605
+030576:             console.log("[翻译调试] 未匹配:", _0x58680e, "(清理后:", _0xefcb74, ")");
+030577:             _0x201358 = "" + _0x58680e + _0x1261af;
+030578:           }
+030579:         }
+030580:         _0x144b3b += _0x201358 + (_0x450ab7.sep === "," ? ", " : _0x450ab7.sep);
+030581:       });
+030582:       console.log("[翻译调试] annotated:", _0x144b3b);
+030583:       const _0x5a6684 = ["Scene Composition:", "Character 1 Prompt:", "Character 1 UC:", "Character 1 coordinates:", "Character 2 Prompt:", "Character 2 UC:", "Character 2 coordinates:", "Character 3 Prompt:", "Character 3 UC:", "Character 3 coordinates:", "Character 4 Prompt:", "Character 4 UC:", "Character 4 coordinates:"];
+030584:       const _0x419aaa = _0x5a6684.some(_0x34089b => _0x144b3b.includes(_0x34089b));
+030585:       if (_0x419aaa) {
+030586:         for (const _0x4b42f8 of _0x5a6684) {
+030587:           const _0x1d0a87 = _0x4b42f8.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+030588:           _0x144b3b = _0x144b3b.replace(new RegExp("\\s*" + _0x1d0a87, "g"), (_0xc55d96, _0x67c1b) => _0x67c1b === 0 ? _0xc55d96 : "\n\n" + _0x4b42f8);
+030589:         }
+030590:         _0x144b3b = _0x144b3b.replace(/^\s+/, "").replace(/\n{3,}/g, "\n\n");
+030591:       }
+030592:       _0x4333f5.value = _0x144b3b;
+030593:       _0x1a3781();
+030594:       toastr.success("翻译完成");
+030595:       if (typeof _0x3ba52a === "function") {
+030596:         _0x3ba52a();
+030597:       }
+030598:     } catch (_0x4fac8c) {
+030599:       console.error("编辑标签翻译失败:", _0x4fac8c);
+030600:       alert("翻译失败：" + (_0x4fac8c.message || _0x4fac8c));
+030601:     } finally {
+030602:       _0x558869.disabled = false;
+030603:     }
+030604:   };
+030605:   const _0x1b5934 = _0x10b143.createElement("button");
+
+====================================================================================================
+LINES 30772-30801
+030772:   _0x1ab333.className = "st-chatu8-edit-button send";
+030773:   _0x1ab333.textContent = "展开预设";
+030774:   _0x1ab333.onclick = () => {
+030775:     const _0x49d8f5 = _0x4333f5.value;
+030776:     let _0x1dfa19 = processCharacterPrompt(_0x49d8f5);
+030777:     let _0x451d31 = _0x1dfa19;
+030778:     const _0x5adfdc = ["Scene Composition:", "Character 1 Prompt:", "Character 1 UC:", "Character 1 coordinates:", "Character 2 Prompt:", "Character 2 UC:", "Character 2 coordinates:", "Character 3 Prompt:", "Character 3 UC:", "Character 3 coordinates:", "Character 4 Prompt:", "Character 4 UC:", "Character 4 coordinates:"];
+030779:     const _0x3e2ea8 = _0x5adfdc.some(_0x2db599 => _0x451d31.includes(_0x2db599));
+030780:     if (_0x3e2ea8) {
+030781:       _0x451d31 = _0x451d31.replace(/;\s*/g, ";\n");
+030782:       for (const _0x34f1a2 of _0x5adfdc) {
+030783:         const _0x3dcad2 = _0x34f1a2.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+030784:         _0x451d31 = _0x451d31.replace(new RegExp("\\s*" + _0x3dcad2, "g"), (_0x1544a9, _0x12700c) => _0x12700c === 0 ? _0x1544a9 : "\n\n" + _0x34f1a2);
+030785:       }
+030786:       _0x451d31 = _0x451d31.replace(/^\s+/, "").replace(/\n{3,}/g, "\n\n");
+030787:     }
+030788:     if (_0x451d31 !== _0x49d8f5) {
+030789:       _0x4333f5.value = _0x451d31;
+030790:       _0x1a3781();
+030791:       if (_0x1dfa19 !== _0x49d8f5) {
+030792:         toastr.success("预设已展开并优化排版");
+030793:       } else {
+030794:         toastr.success("已优化排版");
+030795:       }
+030796:       if (typeof _0x3ba52a === "function") {
+030797:         _0x3ba52a();
+030798:       }
+030799:       setTimeout(() => {
+030800:         _0x4333f5.style.height = "auto";
+030801:         _0x4333f5.style.height = _0x4333f5.scrollHeight + 5 + "px";
+
+====================================================================================================
+LINES 31352-31381
+031352:         if (!_0x558a06) {
+031353:           _0x5c08b1.setAttribute("data-loading", "true");
+031354:           _0x5c08b1.textContent = "加载中...";
+031355:           startGenerating(_0x157886);
+031356:           const _0x5c7fca = _0x5c08b1.dataset.change;
+031357:           let _0x422532 = _0x157886;
+031358:           let _0x47a449 = _0x5c7fca;
+031359:           let _0x3291ff = _0x5c08b1.dataset.width || null;
+031360:           let _0x53022b = _0x5c08b1.dataset.height || null;
+031361:           let _0x26dc2 = !!_0x5c08b1.dataset.width;
+031362:           const _0x15ae41 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+031363:           if (_0x47a449) {
+031364:             const _0x555330 = _0x47a449.match(_0x15ae41);
+031365:             if (_0x555330) {
+031366:               _0x3291ff = _0x555330[1];
+031367:               _0x53022b = _0x555330[2];
+031368:               _0x26dc2 = true;
+031369:             }
+031370:           }
+031371:           const _0x478f1a = _0x422532.match(_0x15ae41);
+031372:           if (_0x478f1a) {
+031373:             if (!_0x26dc2) {
+031374:               _0x3291ff = _0x478f1a[1];
+031375:               _0x53022b = _0x478f1a[2];
+031376:             }
+031377:           }
+031378:           const _0xcdb6c7 = {
+031379:             id: _0x58eed1,
+031380:             prompt: _0x422532,
+031381:             width: _0x3291ff,
+
+====================================================================================================
+LINES 31359-31388
+031359:           let _0x3291ff = _0x5c08b1.dataset.width || null;
+031360:           let _0x53022b = _0x5c08b1.dataset.height || null;
+031361:           let _0x26dc2 = !!_0x5c08b1.dataset.width;
+031362:           const _0x15ae41 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+031363:           if (_0x47a449) {
+031364:             const _0x555330 = _0x47a449.match(_0x15ae41);
+031365:             if (_0x555330) {
+031366:               _0x3291ff = _0x555330[1];
+031367:               _0x53022b = _0x555330[2];
+031368:               _0x26dc2 = true;
+031369:             }
+031370:           }
+031371:           const _0x478f1a = _0x422532.match(_0x15ae41);
+031372:           if (_0x478f1a) {
+031373:             if (!_0x26dc2) {
+031374:               _0x3291ff = _0x478f1a[1];
+031375:               _0x53022b = _0x478f1a[2];
+031376:             }
+031377:           }
+031378:           const _0xcdb6c7 = {
+031379:             id: _0x58eed1,
+031380:             prompt: _0x422532,
+031381:             width: _0x3291ff,
+031382:             height: _0x53022b
+031383:           };
+031384:           const _0xb090c8 = _0xcdb6c7;
+031385:           if (_0x47a449) {
+031386:             _0xb090c8.change = _0x47a449;
+031387:             if (_0x47a449.includes("{修图}")) {
+031388:               _0xb090c8.retouchPrompt = _0x5c08b1.dataset.retouchPrompt || "";
+
+====================================================================================================
+LINES 31456-31485
+031456:   const _0xb1b739 = {
+031457:     startTag: _0x1b2461,
+031458:     endTag: _0x36b2fb
+031459:   };
+031460:   return _0xb1b739;
+031461: }
+031462: function extractPureTag(_0x58167d, _0x32cbb7, _0x30cc80) {
+031463:   if (!_0x58167d) {
+031464:     return _0x58167d;
+031465:   }
+031466:   const _0x41e593 = _0x32cbb7.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031467:   const _0x3f78dc = _0x30cc80.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031468:   const _0x64e371 = new RegExp(_0x41e593 + "([\\s\\S]*?)" + _0x3f78dc);
+031469:   const _0xdf140d = _0x58167d.match(_0x64e371);
+031470:   if (_0xdf140d) {
+031471:     return _0xdf140d[1].trim();
+031472:   }
+031473:   return _0x58167d;
+031474: }
+031475: async function getSavedImageMatches(_0x4bb942, _0x529060, _0x38cd42, _0x445ffa = 0) {
+031476:   const _0xda784f = [];
+031477:   try {
+031478:     const _0x830a28 = _0x529060.querySelector(".st-chatu8-image-container");
+031479:     if (_0x830a28) {
+031480:       return _0xda784f;
+031481:     }
+031482:     const _0x43f362 = _0x445ffa > 0 ? _0x445ffa : 0;
+031483:     const _0x381e43 = removeThinkingTextOnly(_0x38cd42 || _0x4bb942);
+031484:     if (_0x529060?.classList?.contains("mes_text")) {
+031485:       let _0x3583c5 = _0x529060.getAttribute("data-mesid");
+
+====================================================================================================
+LINES 31457-31486
+031457:     startTag: _0x1b2461,
+031458:     endTag: _0x36b2fb
+031459:   };
+031460:   return _0xb1b739;
+031461: }
+031462: function extractPureTag(_0x58167d, _0x32cbb7, _0x30cc80) {
+031463:   if (!_0x58167d) {
+031464:     return _0x58167d;
+031465:   }
+031466:   const _0x41e593 = _0x32cbb7.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031467:   const _0x3f78dc = _0x30cc80.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031468:   const _0x64e371 = new RegExp(_0x41e593 + "([\\s\\S]*?)" + _0x3f78dc);
+031469:   const _0xdf140d = _0x58167d.match(_0x64e371);
+031470:   if (_0xdf140d) {
+031471:     return _0xdf140d[1].trim();
+031472:   }
+031473:   return _0x58167d;
+031474: }
+031475: async function getSavedImageMatches(_0x4bb942, _0x529060, _0x38cd42, _0x445ffa = 0) {
+031476:   const _0xda784f = [];
+031477:   try {
+031478:     const _0x830a28 = _0x529060.querySelector(".st-chatu8-image-container");
+031479:     if (_0x830a28) {
+031480:       return _0xda784f;
+031481:     }
+031482:     const _0x43f362 = _0x445ffa > 0 ? _0x445ffa : 0;
+031483:     const _0x381e43 = removeThinkingTextOnly(_0x38cd42 || _0x4bb942);
+031484:     if (_0x529060?.classList?.contains("mes_text")) {
+031485:       let _0x3583c5 = _0x529060.getAttribute("data-mesid");
+031486:       if (!_0x3583c5) {
+
+====================================================================================================
+LINES 31496-31525
+031496:           if (Array.isArray(_0x562d) && _0x562d.length > 0) {
+031497:             const {
+031498:               startTag: _0x1d3c0a,
+031499:               endTag: _0xfbe289
+031500:             } = getImageTags4();
+031501:             for (const _0x22b6f9 of _0x562d) {
+031502:               const _0x550de0 = _0x22b6f9.tag.includes(_0x1d3c0a) && _0x22b6f9.tag.includes(_0xfbe289);
+031503:               const _0x3f4586 = _0x550de0 ? _0x22b6f9.tag : "" + _0x1d3c0a + _0x22b6f9.tag + _0xfbe289;
+031504:               const _0x130592 = _0x550de0 ? _0x4bb942.includes(_0x3f4586) : _0x381e43.includes(_0x3f4586);
+031505:               const _0x345d50 = _0x550de0 ? (() => {
+031506:                 const _0x3b235f = _0x1d3c0a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031507:                 const _0x4c4992 = _0xfbe289.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031508:                 const _0x458b9b = new RegExp(_0x3b235f + "([\\s\\S]*?)" + _0x4c4992);
+031509:                 const _0x274894 = _0x22b6f9.tag.match(_0x458b9b);
+031510:                 if (_0x274894) {
+031511:                   return _0x274894[1].trim();
+031512:                 } else {
+031513:                   return _0x22b6f9.tag;
+031514:                 }
+031515:               })() : _0x22b6f9.tag;
+031516:               const _0x5ca290 = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x345d50) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x345d50) + "\"]");
+031517:               if (!_0x5ca290 && !_0x130592) {
+031518:                 const _0x10a396 = fuzzyMatchLine(_0x381e43, _0x22b6f9.regex, 0.5);
+031519:                 if (_0x10a396) {
+031520:                   let _0x28ba54 = _0x10a396.endIndex;
+031521:                   const _0x5bb625 = _0x10a396.matchedLine;
+031522:                   let _0x50276b = _0x4bb942.indexOf(_0x5bb625, _0x43f362);
+031523:                   if (_0x50276b === -1) {
+031524:                     _0x50276b = _0x4bb942.indexOf(_0x5bb625);
+031525:                   }
+
+====================================================================================================
+LINES 31497-31526
+031497:             const {
+031498:               startTag: _0x1d3c0a,
+031499:               endTag: _0xfbe289
+031500:             } = getImageTags4();
+031501:             for (const _0x22b6f9 of _0x562d) {
+031502:               const _0x550de0 = _0x22b6f9.tag.includes(_0x1d3c0a) && _0x22b6f9.tag.includes(_0xfbe289);
+031503:               const _0x3f4586 = _0x550de0 ? _0x22b6f9.tag : "" + _0x1d3c0a + _0x22b6f9.tag + _0xfbe289;
+031504:               const _0x130592 = _0x550de0 ? _0x4bb942.includes(_0x3f4586) : _0x381e43.includes(_0x3f4586);
+031505:               const _0x345d50 = _0x550de0 ? (() => {
+031506:                 const _0x3b235f = _0x1d3c0a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031507:                 const _0x4c4992 = _0xfbe289.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031508:                 const _0x458b9b = new RegExp(_0x3b235f + "([\\s\\S]*?)" + _0x4c4992);
+031509:                 const _0x274894 = _0x22b6f9.tag.match(_0x458b9b);
+031510:                 if (_0x274894) {
+031511:                   return _0x274894[1].trim();
+031512:                 } else {
+031513:                   return _0x22b6f9.tag;
+031514:                 }
+031515:               })() : _0x22b6f9.tag;
+031516:               const _0x5ca290 = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x345d50) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x345d50) + "\"]");
+031517:               if (!_0x5ca290 && !_0x130592) {
+031518:                 const _0x10a396 = fuzzyMatchLine(_0x381e43, _0x22b6f9.regex, 0.5);
+031519:                 if (_0x10a396) {
+031520:                   let _0x28ba54 = _0x10a396.endIndex;
+031521:                   const _0x5bb625 = _0x10a396.matchedLine;
+031522:                   let _0x50276b = _0x4bb942.indexOf(_0x5bb625, _0x43f362);
+031523:                   if (_0x50276b === -1) {
+031524:                     _0x50276b = _0x4bb942.indexOf(_0x5bb625);
+031525:                   }
+031526:                   if (_0x50276b !== -1) {
+
+====================================================================================================
+LINES 31562-31591
+031562:             console.log("[iframe] Migrated image group from elKey:", _0x2258b5, "to chat[" + _0x103a12 + "].extra.images[" + _0x93f131 + "]");
+031563:             const {
+031564:               startTag: _0x5b6f2d,
+031565:               endTag: _0x1ebe67
+031566:             } = getImageTags4();
+031567:             for (const _0x55141b of _0x21afb8) {
+031568:               const _0x3c7891 = _0x55141b.tag.includes(_0x5b6f2d) && _0x55141b.tag.includes(_0x1ebe67);
+031569:               const _0x71bffd = _0x3c7891 ? _0x55141b.tag : "" + _0x5b6f2d + _0x55141b.tag + _0x1ebe67;
+031570:               const _0x56ace6 = _0x3c7891 ? _0x4bb942.includes(_0x71bffd) : _0x381e43.includes(_0x71bffd);
+031571:               const _0x37c99a = _0x3c7891 ? (() => {
+031572:                 const _0x33a28c = _0x5b6f2d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031573:                 const _0x2a42b3 = _0x1ebe67.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031574:                 const _0x48ef0b = new RegExp(_0x33a28c + "([\\s\\S]*?)" + _0x2a42b3);
+031575:                 const _0x153458 = _0x55141b.tag.match(_0x48ef0b);
+031576:                 if (_0x153458) {
+031577:                   return _0x153458[1].trim();
+031578:                 } else {
+031579:                   return _0x55141b.tag;
+031580:                 }
+031581:               })() : _0x55141b.tag;
+031582:               const _0x39034c = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x37c99a) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x37c99a) + "\"]");
+031583:               if (!_0x39034c && !_0x56ace6) {
+031584:                 const _0x2eaf8b = fuzzyMatchLine(_0x381e43, _0x55141b.regex, 0.5);
+031585:                 if (_0x2eaf8b) {
+031586:                   let _0x3b29c8 = _0x2eaf8b.endIndex;
+031587:                   const _0x36613a = _0x2eaf8b.matchedLine;
+031588:                   let _0x232f4d = _0x4bb942.indexOf(_0x36613a, _0x43f362);
+031589:                   if (_0x232f4d === -1) {
+031590:                     _0x232f4d = _0x4bb942.indexOf(_0x36613a);
+031591:                   }
+
+====================================================================================================
+LINES 31563-31592
+031563:             const {
+031564:               startTag: _0x5b6f2d,
+031565:               endTag: _0x1ebe67
+031566:             } = getImageTags4();
+031567:             for (const _0x55141b of _0x21afb8) {
+031568:               const _0x3c7891 = _0x55141b.tag.includes(_0x5b6f2d) && _0x55141b.tag.includes(_0x1ebe67);
+031569:               const _0x71bffd = _0x3c7891 ? _0x55141b.tag : "" + _0x5b6f2d + _0x55141b.tag + _0x1ebe67;
+031570:               const _0x56ace6 = _0x3c7891 ? _0x4bb942.includes(_0x71bffd) : _0x381e43.includes(_0x71bffd);
+031571:               const _0x37c99a = _0x3c7891 ? (() => {
+031572:                 const _0x33a28c = _0x5b6f2d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031573:                 const _0x2a42b3 = _0x1ebe67.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031574:                 const _0x48ef0b = new RegExp(_0x33a28c + "([\\s\\S]*?)" + _0x2a42b3);
+031575:                 const _0x153458 = _0x55141b.tag.match(_0x48ef0b);
+031576:                 if (_0x153458) {
+031577:                   return _0x153458[1].trim();
+031578:                 } else {
+031579:                   return _0x55141b.tag;
+031580:                 }
+031581:               })() : _0x55141b.tag;
+031582:               const _0x39034c = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x37c99a) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x37c99a) + "\"]");
+031583:               if (!_0x39034c && !_0x56ace6) {
+031584:                 const _0x2eaf8b = fuzzyMatchLine(_0x381e43, _0x55141b.regex, 0.5);
+031585:                 if (_0x2eaf8b) {
+031586:                   let _0x3b29c8 = _0x2eaf8b.endIndex;
+031587:                   const _0x36613a = _0x2eaf8b.matchedLine;
+031588:                   let _0x232f4d = _0x4bb942.indexOf(_0x36613a, _0x43f362);
+031589:                   if (_0x232f4d === -1) {
+031590:                     _0x232f4d = _0x4bb942.indexOf(_0x36613a);
+031591:                   }
+031592:                   if (_0x232f4d !== -1) {
+
+====================================================================================================
+LINES 31626-31655
+031626:     }
+031627:     const {
+031628:       startTag: _0x3d8449,
+031629:       endTag: _0x330029
+031630:     } = getImageTags4();
+031631:     for (const _0x54512c of _0x1aa867) {
+031632:       const _0x59b8c9 = _0x54512c.tag.includes(_0x3d8449) && _0x54512c.tag.includes(_0x330029);
+031633:       const _0x3070c2 = _0x59b8c9 ? _0x54512c.tag : "" + _0x3d8449 + _0x54512c.tag + _0x330029;
+031634:       const _0x3235b1 = _0x59b8c9 ? _0x4bb942.includes(_0x3070c2) : _0x381e43.includes(_0x3070c2);
+031635:       const _0x3bd6ee = _0x59b8c9 ? (() => {
+031636:         const _0x1303e0 = _0x3d8449.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031637:         const _0x47b6bc = _0x330029.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031638:         const _0x294055 = new RegExp(_0x1303e0 + "([\\s\\S]*?)" + _0x47b6bc);
+031639:         const _0x2fea80 = _0x54512c.tag.match(_0x294055);
+031640:         if (_0x2fea80) {
+031641:           return _0x2fea80[1].trim();
+031642:         } else {
+031643:           return _0x54512c.tag;
+031644:         }
+031645:       })() : _0x54512c.tag;
+031646:       const _0x3ff865 = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x3bd6ee) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x3bd6ee) + "\"]");
+031647:       if (!_0x3ff865 && !_0x3235b1) {
+031648:         const _0x51b100 = {
+031649:           content: _0x54512c.tag,
+031650:           insertPosition: _0x54512c.endIndex
+031651:         };
+031652:         _0xda784f.push(_0x51b100);
+031653:       }
+031654:     }
+031655:     if (_0xda784f.length > 0) {
+
+====================================================================================================
+LINES 31627-31656
+031627:     const {
+031628:       startTag: _0x3d8449,
+031629:       endTag: _0x330029
+031630:     } = getImageTags4();
+031631:     for (const _0x54512c of _0x1aa867) {
+031632:       const _0x59b8c9 = _0x54512c.tag.includes(_0x3d8449) && _0x54512c.tag.includes(_0x330029);
+031633:       const _0x3070c2 = _0x59b8c9 ? _0x54512c.tag : "" + _0x3d8449 + _0x54512c.tag + _0x330029;
+031634:       const _0x3235b1 = _0x59b8c9 ? _0x4bb942.includes(_0x3070c2) : _0x381e43.includes(_0x3070c2);
+031635:       const _0x3bd6ee = _0x59b8c9 ? (() => {
+031636:         const _0x1303e0 = _0x3d8449.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031637:         const _0x47b6bc = _0x330029.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031638:         const _0x294055 = new RegExp(_0x1303e0 + "([\\s\\S]*?)" + _0x47b6bc);
+031639:         const _0x2fea80 = _0x54512c.tag.match(_0x294055);
+031640:         if (_0x2fea80) {
+031641:           return _0x2fea80[1].trim();
+031642:         } else {
+031643:           return _0x54512c.tag;
+031644:         }
+031645:       })() : _0x54512c.tag;
+031646:       const _0x3ff865 = _0x529060.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x3bd6ee) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x3bd6ee) + "\"]");
+031647:       if (!_0x3ff865 && !_0x3235b1) {
+031648:         const _0x51b100 = {
+031649:           content: _0x54512c.tag,
+031650:           insertPosition: _0x54512c.endIndex
+031651:         };
+031652:         _0xda784f.push(_0x51b100);
+031653:       }
+031654:     }
+031655:     if (_0xda784f.length > 0) {
+031656:       console.log("[iframe] Matched image group by key:", _0x16771b, "tags:", _0xda784f.length);
+
+====================================================================================================
+LINES 31662-31691
+031662: }
+031663: async function createButtonAtPosition(_0x3e5c09, _0xe929fc, _0x4925ec, _0x582ae4, _0x6e1768, _0x5ed860, _0x5108a2, _0xa6312d = "Generated Image") {
+031664:   const {
+031665:     startTag: _0x287217,
+031666:     endTag: _0xa680f8
+031667:   } = getImageTags4();
+031668:   const _0x295555 = _0xe929fc.includes(_0x287217) && _0xe929fc.includes(_0xa680f8);
+031669:   const _0x38ec22 = extractPureTag(_0xe929fc, _0x287217, _0xa680f8);
+031670:   let _0x49a8b4 = "";
+031671:   if (_0x295555 && _0x38ec22 !== _0xe929fc) {
+031672:     const _0x517a5c = _0x287217.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031673:     const _0x278b38 = _0xa680f8.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031674:     const _0x54659a = new RegExp(_0x517a5c + "[\\s\\S]*?" + _0x278b38);
+031675:     const _0x34a4d5 = _0xe929fc.match(_0x54659a);
+031676:     if (_0x34a4d5) {
+031677:       const _0x217db4 = _0xe929fc.indexOf(_0x34a4d5[0]);
+031678:       if (_0x217db4 > 0) {
+031679:         _0x49a8b4 = _0xe929fc.substring(0, _0x217db4);
+031680:       }
+031681:     }
+031682:   }
+031683:   const _0x830337 = _0x38ec22.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+031684:   const _0x1bfa65 = generateStableId(_0x830337);
+031685:   const _0x3f3be9 = "tag-inserted-" + _0x1bfa65;
+031686:   const _0x13d407 = "data-" + _0x3f3be9;
+031687:   if (_0x6e1768.hasAttribute && _0x6e1768.hasAttribute(_0x13d407)) {
+031688:     const _0x3b70fd = _0x6e1768.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x830337) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x830337) + "\"]");
+031689:     if (_0x3b70fd) {
+031690:       console.log("[iframe] Tag already inserted with button, skipping:", _0xe929fc.substring(0, 50));
+031691:       return null;
+
+====================================================================================================
+LINES 31663-31692
+031663: async function createButtonAtPosition(_0x3e5c09, _0xe929fc, _0x4925ec, _0x582ae4, _0x6e1768, _0x5ed860, _0x5108a2, _0xa6312d = "Generated Image") {
+031664:   const {
+031665:     startTag: _0x287217,
+031666:     endTag: _0xa680f8
+031667:   } = getImageTags4();
+031668:   const _0x295555 = _0xe929fc.includes(_0x287217) && _0xe929fc.includes(_0xa680f8);
+031669:   const _0x38ec22 = extractPureTag(_0xe929fc, _0x287217, _0xa680f8);
+031670:   let _0x49a8b4 = "";
+031671:   if (_0x295555 && _0x38ec22 !== _0xe929fc) {
+031672:     const _0x517a5c = _0x287217.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031673:     const _0x278b38 = _0xa680f8.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031674:     const _0x54659a = new RegExp(_0x517a5c + "[\\s\\S]*?" + _0x278b38);
+031675:     const _0x34a4d5 = _0xe929fc.match(_0x54659a);
+031676:     if (_0x34a4d5) {
+031677:       const _0x217db4 = _0xe929fc.indexOf(_0x34a4d5[0]);
+031678:       if (_0x217db4 > 0) {
+031679:         _0x49a8b4 = _0xe929fc.substring(0, _0x217db4);
+031680:       }
+031681:     }
+031682:   }
+031683:   const _0x830337 = _0x38ec22.replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", "");
+031684:   const _0x1bfa65 = generateStableId(_0x830337);
+031685:   const _0x3f3be9 = "tag-inserted-" + _0x1bfa65;
+031686:   const _0x13d407 = "data-" + _0x3f3be9;
+031687:   if (_0x6e1768.hasAttribute && _0x6e1768.hasAttribute(_0x13d407)) {
+031688:     const _0x3b70fd = _0x6e1768.querySelector("button.image-tag-button[data-link=\"" + CSS.escape(_0x830337) + "\"], button.image-tag-button[data-image-tag=\"" + CSS.escape(_0x830337) + "\"]");
+031689:     if (_0x3b70fd) {
+031690:       console.log("[iframe] Tag already inserted with button, skipping:", _0xe929fc.substring(0, 50));
+031691:       return null;
+031692:     } else {
+
+====================================================================================================
+LINES 31826-31855
+031826:     console.log("[iframe] Element has loading button, skipping processing");
+031827:     return;
+031828:   }
+031829:   const _0x40b1fa = _0x1a0866[extensionName];
+031830:   if (!_0x40b1fa.startTag || !_0x40b1fa.endTag) {
+031831:     console.warn("[iframe] startTag or endTag is empty, skipping placeholder processing");
+031832:     return;
+031833:   }
+031834:   const _0x5adc72 = _0x40b1fa.zidongdianji === "true" && window.zidongdianji;
+031835:   const _0x12061e = _0xa55c5c => {
+031836:     return _0xa55c5c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+031837:   };
+031838:   const _0xf247dc = new RegExp(_0x12061e(_0x40b1fa.startTag) + "([\\s\\S]*?)" + _0x12061e(_0x40b1fa.endTag), "g");
+031839:   const _0x4a9808 = _0x20cd41.ownerDocument || _0x20cd41;
+031840:   const _0x30a97a = _0x20cd41.querySelector(":scope > div");
+031841:   if (_0x30a97a) {}
+031842:   let _0x11590b = -1;
+031843:   let _0x5d3ba2 = -1;
+031844:   const _0x4a5461 = [];
+031845:   let _0x1f5d19 = "";
+031846:   const _0x240465 = new Set(["SCRIPT", "STYLE", "BUTTON", "PRE", "CODE", "TEXTAREA", "KBD", "SAMP", "VAR"]);
+031847:   const _0x1ccf85 = ["hljs", "highlight", "prism", "language-", "CodeMirror", "ace_"];
+031848:   const _0x139feb = _0x4a9808.createTreeWalker(_0x20cd41, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, {
+031849:     acceptNode: function (_0x2b9d8b) {
+031850:       const _0x569c80 = _0x2b9d8b.parentElement;
+031851:       const _0x3da950 = _0x569c80?.tagName;
+031852:       if (_0x2b9d8b.nodeType === Node.ELEMENT_NODE && _0x2b9d8b.tagName !== "BR") {
+031853:         return NodeFilter.FILTER_SKIP;
+031854:       }
+031855:       if (_0x240465.has(_0x3da950)) {
+
+====================================================================================================
+LINES 43052-43081
+043052:   }
+043053:   const _0x4af852 = _0x2e21f9.replace(/%/g, "");
+043054:   const _0x3dc215 = "\"%" + _0x4af852 + "%\"";
+043055:   if (!_0x38db1.includes(_0x3dc215)) {
+043056:     return "❌ 工作流 \"" + _0x314de6 + "\" 中未找到变量 " + _0x3dc215 + "。请先用 workflow_variables 确认。";
+043057:   }
+043058:   let _0x3a7632;
+043059:   if (typeof _0x54f2da === "number" || !isNaN(Number(_0x54f2da))) {
+043060:     _0x3a7632 = String(Number(_0x54f2da));
+043061:   } else {
+043062:     _0x3a7632 = "\"" + String(_0x54f2da).replace(/"/g, "\\\"") + "\"";
+043063:   }
+043064:   const _0x467af1 = (_0x38db1.match(new RegExp(_0x3dc215.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []).length;
+043065:   _0x38db1 = _0x38db1.replaceAll(_0x3dc215, _0x3a7632);
+043066:   _0xb789ae.workers[_0x314de6] = _0x38db1;
+043067:   if (_0xb789ae.workerid === _0x314de6) {
+043068:     _0xb789ae.worker = _0x38db1;
+043069:   }
+043070:   _0x4061d4();
+043071:   return "✅ 已在工作流 \"" + _0x314de6 + "\" 中替换 " + _0x3dc215 + " → " + _0x3a7632 + " (" + _0x467af1 + " 处)";
+043072: }
+043073: function saveWorkflow(_0x2e01b4, _0x41ab4) {
+043074:   const _0x274268 = _0x207fd2[extensionName];
+043075:   if (!_0x274268) {
+043076:     return "❌ 插件配置尚未初始化。";
+043077:   }
+043078:   if (!_0x2e01b4) {
+043079:     return "❌ 请指定工作流名称。";
+043080:   }
+043081:   if (!_0x41ab4) {
+
+====================================================================================================
+LINES 46932-46961
+046932:         }
+046933:       } catch (_0x1bfb00) {
+046934:         console.warn("[AI Assistant] 楼层信息触发世界书失败:", _0x1bfb00);
+046935:         _0x2d76c6 = _0x3455db;
+046936:       }
+046937:     }
+046938:     _0x2e5ded = _0x2e5ded.replace(/\{\{楼层信息\}\}/g, _0x2d76c6);
+046939:   }
+046940:   for (const _0x5be0eb of PERSONA_FIELDS) {
+046941:     const _0x51f01f = "{{人设." + _0x5be0eb + "}}";
+046942:     if (_0x2e5ded.includes(_0x51f01f)) {
+046943:       const _0x4f9998 = getPersonaFieldValue(_0x5be0eb);
+046944:       _0x2e5ded = _0x2e5ded.replace(new RegExp("\\{\\{人设\\." + _0x5be0eb + "\\}\\}", "g"), _0x4f9998 || "");
+046945:     }
+046946:   }
+046947:   for (const _0xccf06e of PERSONA_FIELDS) {
+046948:     const _0x5623e4 = "{{用户." + _0xccf06e + "}}";
+046949:     if (_0x2e5ded.includes(_0x5623e4)) {
+046950:       const _0x19a5fb = getUserFieldValue(_0xccf06e);
+046951:       _0x2e5ded = _0x2e5ded.replace(new RegExp("\\{\\{用户\\." + _0xccf06e + "\\}\\}", "g"), _0x19a5fb || "");
+046952:     }
+046953:   }
+046954:   _0x2e5ded = _0x2e5ded.replace(/^[^\n]*[：:]\s*$/gm, "");
+046955:   _0x2e5ded = _0x2e5ded.replace(/\n{3,}/g, "\n\n");
+046956:   return _0x2e5ded;
+046957: }
+046958: async function buildCustomPrefillMessages(_0x1b2004 = {}) {
+046959:   const _0x2711fb = getEffectiveConfigForRequestType(LLMRequestTypes.AI_ASSISTANT);
+046960:   const _0x1d5d84 = _0x2711fb.context || {};
+046961:   const _0x312465 = [];
+
+====================================================================================================
+LINES 46939-46968
+046939:   }
+046940:   for (const _0x5be0eb of PERSONA_FIELDS) {
+046941:     const _0x51f01f = "{{人设." + _0x5be0eb + "}}";
+046942:     if (_0x2e5ded.includes(_0x51f01f)) {
+046943:       const _0x4f9998 = getPersonaFieldValue(_0x5be0eb);
+046944:       _0x2e5ded = _0x2e5ded.replace(new RegExp("\\{\\{人设\\." + _0x5be0eb + "\\}\\}", "g"), _0x4f9998 || "");
+046945:     }
+046946:   }
+046947:   for (const _0xccf06e of PERSONA_FIELDS) {
+046948:     const _0x5623e4 = "{{用户." + _0xccf06e + "}}";
+046949:     if (_0x2e5ded.includes(_0x5623e4)) {
+046950:       const _0x19a5fb = getUserFieldValue(_0xccf06e);
+046951:       _0x2e5ded = _0x2e5ded.replace(new RegExp("\\{\\{用户\\." + _0xccf06e + "\\}\\}", "g"), _0x19a5fb || "");
+046952:     }
+046953:   }
+046954:   _0x2e5ded = _0x2e5ded.replace(/^[^\n]*[：:]\s*$/gm, "");
+046955:   _0x2e5ded = _0x2e5ded.replace(/\n{3,}/g, "\n\n");
+046956:   return _0x2e5ded;
+046957: }
+046958: async function buildCustomPrefillMessages(_0x1b2004 = {}) {
+046959:   const _0x2711fb = getEffectiveConfigForRequestType(LLMRequestTypes.AI_ASSISTANT);
+046960:   const _0x1d5d84 = _0x2711fb.context || {};
+046961:   const _0x312465 = [];
+046962:   let _0x185f1f = -1;
+046963:   if (_0x1d5d84.entries && Array.isArray(_0x1d5d84.entries)) {
+046964:     const _0x590af7 = _0x1b2004.lastUserImages && Object.keys(_0x1b2004.lastUserImages).length > 0;
+046965:     let _0xda3346 = -1;
+046966:     if (_0x590af7) {
+046967:       for (let _0x5d21bf = 0; _0x5d21bf < _0x1d5d84.entries.length; _0x5d21bf++) {
+046968:         const _0x2db249 = _0x1d5d84.entries[_0x5d21bf];
+
+====================================================================================================
+LINES 50164-50193
+050164:           _0x14092c[_0x275c] = "%seed%";
+050165:         }
+050166:         if (_0x275c == "steps") {
+050167:           _0x14092c[_0x275c] = "%steps%";
+050168:         }
+050169:         if (_0x275c == "cfg") {
+050170:           _0x14092c[_0x275c] = "%cfg_scale%";
+050171:         }
+050172:         if (_0x275c == "sampler_name") {
+050173:           _0x14092c[_0x275c] = "%sampler_name%";
+050174:         }
+050175:         if (_0x275c == "width") {
+050176:           _0x14092c[_0x275c] = "%width%";
+050177:         }
+050178:         if (_0x275c == "height") {
+050179:           _0x14092c[_0x275c] = "%height%";
+050180:         }
+050181:         if (_0x275c == "ckpt_name") {
+050182:           _0x14092c[_0x275c] = "%MODEL_NAME%";
+050183:         }
+050184:         if (_0x275c == "positive") {
+050185:           _0x14092c[_0x275c] = "%prompt%";
+050186:         }
+050187:         if (_0x275c == "negative") {
+050188:           _0x14092c[_0x275c] = "%negative_prompt%";
+050189:         }
+050190:         if (_0x275c == "text" && _0x14092c[_0x275c] == "正面") {
+050191:           _0x14092c[_0x275c] = "%prompt%";
+050192:         }
+050193:         if (_0x275c == "text" && _0x14092c[_0x275c] == "负面") {
+
+====================================================================================================
+LINES 50167-50196
+050167:           _0x14092c[_0x275c] = "%steps%";
+050168:         }
+050169:         if (_0x275c == "cfg") {
+050170:           _0x14092c[_0x275c] = "%cfg_scale%";
+050171:         }
+050172:         if (_0x275c == "sampler_name") {
+050173:           _0x14092c[_0x275c] = "%sampler_name%";
+050174:         }
+050175:         if (_0x275c == "width") {
+050176:           _0x14092c[_0x275c] = "%width%";
+050177:         }
+050178:         if (_0x275c == "height") {
+050179:           _0x14092c[_0x275c] = "%height%";
+050180:         }
+050181:         if (_0x275c == "ckpt_name") {
+050182:           _0x14092c[_0x275c] = "%MODEL_NAME%";
+050183:         }
+050184:         if (_0x275c == "positive") {
+050185:           _0x14092c[_0x275c] = "%prompt%";
+050186:         }
+050187:         if (_0x275c == "negative") {
+050188:           _0x14092c[_0x275c] = "%negative_prompt%";
+050189:         }
+050190:         if (_0x275c == "text" && _0x14092c[_0x275c] == "正面") {
+050191:           _0x14092c[_0x275c] = "%prompt%";
+050192:         }
+050193:         if (_0x275c == "text" && _0x14092c[_0x275c] == "负面") {
+050194:           _0x14092c[_0x275c] = "%negative_prompt%";
+050195:         }
+050196:       }
+
+====================================================================================================
+LINES 50226-50255
+050226:   type: "number"
+050227: }, {
+050228:   placeholder: "%sampler_name%",
+050229:   label: "采样器 (sampler)",
+050230:   matchKeys: ["sampler_name", "sampler"],
+050231:   type: "string"
+050232: }, {
+050233:   placeholder: "%scheduler%",
+050234:   label: "调度器 (scheduler)",
+050235:   matchKeys: ["scheduler"],
+050236:   type: "string"
+050237: }, {
+050238:   placeholder: "%width%",
+050239:   label: "宽度 (width)",
+050240:   matchKeys: ["width"],
+050241:   type: "number"
+050242: }, {
+050243:   placeholder: "%height%",
+050244:   label: "高度 (height)",
+050245:   matchKeys: ["height"],
+050246:   type: "number"
+050247: }, {
+050248:   placeholder: "%prompt%",
+050249:   label: "正面提示词 (prompt)",
+050250:   matchKeys: ["positive", "text"],
+050251:   type: "string"
+050252: }, {
+050253:   placeholder: "%negative_prompt%",
+050254:   label: "负面提示词 (negative)",
+050255:   matchKeys: ["negative"],
+
+====================================================================================================
+LINES 50231-50260
+050231:   type: "string"
+050232: }, {
+050233:   placeholder: "%scheduler%",
+050234:   label: "调度器 (scheduler)",
+050235:   matchKeys: ["scheduler"],
+050236:   type: "string"
+050237: }, {
+050238:   placeholder: "%width%",
+050239:   label: "宽度 (width)",
+050240:   matchKeys: ["width"],
+050241:   type: "number"
+050242: }, {
+050243:   placeholder: "%height%",
+050244:   label: "高度 (height)",
+050245:   matchKeys: ["height"],
+050246:   type: "number"
+050247: }, {
+050248:   placeholder: "%prompt%",
+050249:   label: "正面提示词 (prompt)",
+050250:   matchKeys: ["positive", "text"],
+050251:   type: "string"
+050252: }, {
+050253:   placeholder: "%negative_prompt%",
+050254:   label: "负面提示词 (negative)",
+050255:   matchKeys: ["negative"],
+050256:   type: "string"
+050257: }, {
+050258:   placeholder: "%MODEL_NAME%",
+050259:   label: "模型 (ckpt_name)",
+050260:   matchKeys: ["ckpt_name"],
+
+====================================================================================================
+LINES 51917-51946
+051917:     return String(_0xb566f6).trim();
+051918:   }
+051919: }
+051920: function normalizeBackslashPath(_0x3bed2f) {
+051921:   return normalizeSettingString(_0x3bed2f).replace(/\\{2,}/g, "\\");
+051922: }
+051923: async function replacepro(_0x36cf39, _0x2b6144) {
+051924:   console.log("payload222", _0x36cf39);
+051925:   _0x2b6144 = _0x2b6144.replaceAll("\"%seed%\"", stringifyJsonNumber(_0x36cf39.seed));
+051926:   _0x2b6144 = _0x2b6144.replaceAll("\"%steps%\"", stringifyJsonNumber(_0x36cf39.steps));
+051927:   _0x2b6144 = _0x2b6144.replaceAll("\"%cfg_scale%\"", stringifyJsonNumber(_0x36cf39.cfg_scale));
+051928:   _0x2b6144 = _0x2b6144.replaceAll("\"%sampler_name%\"", stringifyJsonString(_0x36cf39.sampler_name));
+051929:   _0x2b6144 = _0x2b6144.replaceAll("\"%width%\"", stringifyJsonNumber(_0x36cf39.width));
+051930:   _0x2b6144 = _0x2b6144.replaceAll("\"%height%\"", stringifyJsonNumber(_0x36cf39.height));
+051931:   _0x2b6144 = _0x2b6144.replaceAll("\"%negative_prompt%\"", stringifyJsonString(_0x36cf39.negative_prompt));
+051932:   _0x2b6144 = _0x2b6144.replaceAll("\"%prompt%\"", stringifyJsonString(_0x36cf39.prompt));
+051933:   _0x2b6144 = _0x2b6144.replaceAll("\"%MODEL_NAME%\"", stringifyJsonString(_0x36cf39.MODEL_NAME));
+051934:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_quanzhong%\"", stringifyJsonNumber(_0x36cf39.c_quanzhong));
+051935:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_idquanzhong%\"", stringifyJsonNumber(_0x36cf39.c_idquanzhong));
+051936:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_xijie%\"", stringifyJsonNumber(_0x36cf39.c_xijie));
+051937:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_fenwei%\"", stringifyJsonNumber(_0x36cf39.c_fenwei));
+051938:   _0x2b6144 = _0x2b6144.replaceAll("\"%comfyuicankaotupian%\"", stringifyJsonString(_0x36cf39.comfyuicankaotupian));
+051939:   _0x2b6144 = _0x2b6144.replaceAll("\"%ipa%\"", stringifyJsonString(_0x36cf39.ipa));
+051940:   _0x2b6144 = _0x2b6144.replaceAll("\"%scheduler%\"", stringifyJsonString(_0x36cf39.scheduler));
+051941:   _0x2b6144 = _0x2b6144.replaceAll("\"%vae%\"", stringifyJsonString(_0x36cf39.vae));
+051942:   _0x2b6144 = _0x2b6144.replaceAll("\"%clip%\"", stringifyJsonString(_0x36cf39.clip));
+051943:   console.log(_0x2b6144);
+051944:   if (_0x36cf39.inpaint_image) {
+051945:     _0x2b6144 = _0x2b6144.replaceAll("\"%inpaint_image%\"", stringifyJsonString(_0x36cf39.inpaint_image));
+051946:   } else {
+
+====================================================================================================
+LINES 51918-51947
+051918:   }
+051919: }
+051920: function normalizeBackslashPath(_0x3bed2f) {
+051921:   return normalizeSettingString(_0x3bed2f).replace(/\\{2,}/g, "\\");
+051922: }
+051923: async function replacepro(_0x36cf39, _0x2b6144) {
+051924:   console.log("payload222", _0x36cf39);
+051925:   _0x2b6144 = _0x2b6144.replaceAll("\"%seed%\"", stringifyJsonNumber(_0x36cf39.seed));
+051926:   _0x2b6144 = _0x2b6144.replaceAll("\"%steps%\"", stringifyJsonNumber(_0x36cf39.steps));
+051927:   _0x2b6144 = _0x2b6144.replaceAll("\"%cfg_scale%\"", stringifyJsonNumber(_0x36cf39.cfg_scale));
+051928:   _0x2b6144 = _0x2b6144.replaceAll("\"%sampler_name%\"", stringifyJsonString(_0x36cf39.sampler_name));
+051929:   _0x2b6144 = _0x2b6144.replaceAll("\"%width%\"", stringifyJsonNumber(_0x36cf39.width));
+051930:   _0x2b6144 = _0x2b6144.replaceAll("\"%height%\"", stringifyJsonNumber(_0x36cf39.height));
+051931:   _0x2b6144 = _0x2b6144.replaceAll("\"%negative_prompt%\"", stringifyJsonString(_0x36cf39.negative_prompt));
+051932:   _0x2b6144 = _0x2b6144.replaceAll("\"%prompt%\"", stringifyJsonString(_0x36cf39.prompt));
+051933:   _0x2b6144 = _0x2b6144.replaceAll("\"%MODEL_NAME%\"", stringifyJsonString(_0x36cf39.MODEL_NAME));
+051934:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_quanzhong%\"", stringifyJsonNumber(_0x36cf39.c_quanzhong));
+051935:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_idquanzhong%\"", stringifyJsonNumber(_0x36cf39.c_idquanzhong));
+051936:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_xijie%\"", stringifyJsonNumber(_0x36cf39.c_xijie));
+051937:   _0x2b6144 = _0x2b6144.replaceAll("\"%c_fenwei%\"", stringifyJsonNumber(_0x36cf39.c_fenwei));
+051938:   _0x2b6144 = _0x2b6144.replaceAll("\"%comfyuicankaotupian%\"", stringifyJsonString(_0x36cf39.comfyuicankaotupian));
+051939:   _0x2b6144 = _0x2b6144.replaceAll("\"%ipa%\"", stringifyJsonString(_0x36cf39.ipa));
+051940:   _0x2b6144 = _0x2b6144.replaceAll("\"%scheduler%\"", stringifyJsonString(_0x36cf39.scheduler));
+051941:   _0x2b6144 = _0x2b6144.replaceAll("\"%vae%\"", stringifyJsonString(_0x36cf39.vae));
+051942:   _0x2b6144 = _0x2b6144.replaceAll("\"%clip%\"", stringifyJsonString(_0x36cf39.clip));
+051943:   console.log(_0x2b6144);
+051944:   if (_0x36cf39.inpaint_image) {
+051945:     _0x2b6144 = _0x2b6144.replaceAll("\"%inpaint_image%\"", stringifyJsonString(_0x36cf39.inpaint_image));
+051946:   } else {
+051947:     _0x2b6144 = _0x2b6144.replaceAll("\"%inpaint_image%\"", stringifyJsonString(""));
+
+====================================================================================================
+LINES 51982-52011
+051982:   currentTaskId = _0x4dcae5;
+051983:   _0x3b15a3 = typeof _0x3b15a3 === "string" ? _0x3b15a3 : "";
+051984:   _0x4ead2b = typeof _0x4ead2b === "string" ? _0x4ead2b : "";
+051985:   console.log("link", _0x3b15a3);
+051986:   let _0x2752e6 = "";
+051987:   if (_0x4ead2b) {
+051988:     _0x2752e6 = _0x4ead2b.replaceAll("{ComfyUI局部重绘}", "").replaceAll("{局部重绘}", "");
+051989:   } else {
+051990:     _0x2752e6 = _0x3b15a3;
+051991:   }
+051992:   const _0x3fd0f2 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+051993:   if (typeof _0x3b15a3 === "string") {
+051994:     const _0x2ab245 = _0x3b15a3.match(_0x3fd0f2);
+051995:     if (_0x2ab245) {
+051996:       _0x53be27 = parseInt(_0x2ab245[1], 10);
+051997:       _0x5645a8 = parseInt(_0x2ab245[2], 10);
+051998:     }
+051999:     _0x3b15a3 = _0x3b15a3.replace(_0x3fd0f2, "");
+052000:   }
+052001:   if (typeof _0x4ead2b === "string") {
+052002:     const _0x6dc43e = _0x4ead2b.match(_0x3fd0f2);
+052003:     if (_0x6dc43e) {
+052004:       _0x53be27 = parseInt(_0x6dc43e[1], 10);
+052005:       _0x5645a8 = parseInt(_0x6dc43e[2], 10);
+052006:     }
+052007:     _0x4ead2b = _0x4ead2b.replace(_0x3fd0f2, "");
+052008:   }
+052009:   _0x3b15a3 = processCharacterPrompt(_0x3b15a3);
+052010:   _0x3b15a3 = await stripChineseAnnotations(_0x3b15a3);
+052011:   _0x4ead2b = processCharacterPrompt(_0x4ead2b);
+
+====================================================================================================
+LINES 51990-52019
+051990:     _0x2752e6 = _0x3b15a3;
+051991:   }
+051992:   const _0x3fd0f2 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+051993:   if (typeof _0x3b15a3 === "string") {
+051994:     const _0x2ab245 = _0x3b15a3.match(_0x3fd0f2);
+051995:     if (_0x2ab245) {
+051996:       _0x53be27 = parseInt(_0x2ab245[1], 10);
+051997:       _0x5645a8 = parseInt(_0x2ab245[2], 10);
+051998:     }
+051999:     _0x3b15a3 = _0x3b15a3.replace(_0x3fd0f2, "");
+052000:   }
+052001:   if (typeof _0x4ead2b === "string") {
+052002:     const _0x6dc43e = _0x4ead2b.match(_0x3fd0f2);
+052003:     if (_0x6dc43e) {
+052004:       _0x53be27 = parseInt(_0x6dc43e[1], 10);
+052005:       _0x5645a8 = parseInt(_0x6dc43e[2], 10);
+052006:     }
+052007:     _0x4ead2b = _0x4ead2b.replace(_0x3fd0f2, "");
+052008:   }
+052009:   _0x3b15a3 = processCharacterPrompt(_0x3b15a3);
+052010:   _0x3b15a3 = await stripChineseAnnotations(_0x3b15a3);
+052011:   _0x4ead2b = processCharacterPrompt(_0x4ead2b);
+052012:   _0x4ead2b = await stripChineseAnnotations(_0x4ead2b);
+052013:   addLog("开始 ComfyUI 生图流程。客户端为" + _0x5ade62[extensionName].client);
+052014:   addLog("请求工作流id - " + _0x5ade62[extensionName].workerid);
+052015:   addLog("请求尺寸: 宽度 - " + (_0x53be27 || "默认") + ", 高度 - " + (_0x5645a8 || "默认"));
+052016:   if (_0x5ade62[extensionName].MODEL_NAME.trim() === "连接后选择") {
+052017:     addLog("请填写ComfyUI模型。");
+052018:     toastr.error("请填写ComfyUI模型。");
+052019:     taskQueue.completeTask(_0x4dcae5, false);
+
+====================================================================================================
+LINES 52877-52906
+052877:       currentTaskId2 = null;
+052878:       throw _0x128223;
+052879:     }
+052880:   }
+052881:   let _0x2db891 = _0x1eb524;
+052882:   if (_0x1eb524) {
+052883:     _0x2db891 = _0x1eb524.replaceAll("{ComfyUI局部重绘}", "").replaceAll("{局部重绘}", "");
+052884:   } else {
+052885:     _0x2db891 = link;
+052886:   }
+052887:   const _0x28554e = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s]*$)/i;
+052888:   if (typeof _0x50b6c6 === "string") {
+052889:     const _0x2c766d = _0x50b6c6.match(_0x28554e);
+052890:     if (_0x2c766d) {
+052891:       _0x3cae9b = parseInt(_0x2c766d[1], 10);
+052892:       _0x2090d8 = parseInt(_0x2c766d[2], 10);
+052893:     }
+052894:     _0x50b6c6 = _0x50b6c6.replace(_0x28554e, "");
+052895:   }
+052896:   if (typeof _0x1eb524 === "string") {
+052897:     const _0x27df54 = _0x1eb524.match(_0x28554e);
+052898:     if (_0x27df54) {
+052899:       _0x3cae9b = parseInt(_0x27df54[1], 10);
+052900:       _0x2090d8 = parseInt(_0x27df54[2], 10);
+052901:     }
+052902:     _0x1eb524 = _0x1eb524.replace(_0x28554e, "");
+052903:   }
+052904:   _0x50b6c6 = processCharacterPrompt(_0x50b6c6);
+052905:   _0x50b6c6 = await stripChineseAnnotations(_0x50b6c6);
+052906:   _0x1eb524 = processCharacterPrompt(_0x1eb524);
+
+====================================================================================================
+LINES 52885-52914
+052885:     _0x2db891 = link;
+052886:   }
+052887:   const _0x28554e = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s]*$)/i;
+052888:   if (typeof _0x50b6c6 === "string") {
+052889:     const _0x2c766d = _0x50b6c6.match(_0x28554e);
+052890:     if (_0x2c766d) {
+052891:       _0x3cae9b = parseInt(_0x2c766d[1], 10);
+052892:       _0x2090d8 = parseInt(_0x2c766d[2], 10);
+052893:     }
+052894:     _0x50b6c6 = _0x50b6c6.replace(_0x28554e, "");
+052895:   }
+052896:   if (typeof _0x1eb524 === "string") {
+052897:     const _0x27df54 = _0x1eb524.match(_0x28554e);
+052898:     if (_0x27df54) {
+052899:       _0x3cae9b = parseInt(_0x27df54[1], 10);
+052900:       _0x2090d8 = parseInt(_0x27df54[2], 10);
+052901:     }
+052902:     _0x1eb524 = _0x1eb524.replace(_0x28554e, "");
+052903:   }
+052904:   _0x50b6c6 = processCharacterPrompt(_0x50b6c6);
+052905:   _0x50b6c6 = await stripChineseAnnotations(_0x50b6c6);
+052906:   _0x1eb524 = processCharacterPrompt(_0x1eb524);
+052907:   _0x1eb524 = await stripChineseAnnotations(_0x1eb524);
+052908:   addLog("开始 Banana生图流程。客户端为" + _0x1cf012[extensionName].client);
+052909:   addLog("请求尺寸: 宽度 - " + (_0x3cae9b || "默认") + ", 高度 - " + (_0x2090d8 || "默认"));
+052910:   _0x50b6c6 = _0x1eb524 && _0x1eb524.trim() !== "" ? _0x1eb524 : _0x50b6c6;
+052911:   addLog("用于生成的Tag: " + _0x50b6c6);
+052912:   let _0x4c379e = false;
+052913:   if (_0x50b6c6.includes("Scene Composition")) {
+052914:     _0x4c379e = true;
+
+====================================================================================================
+LINES 53376-53405
+053376:           addLog("[Banana] Extracted image from reasoning_details.images array.");
+053377:         }
+053378:       }
+053379:       if (!_0x17f7d3 && Array.isArray(_0xe46e42)) {
+053380:         for (const _0x5d0f8f of _0xe46e42) {
+053381:           if (_0x5d0f8f.type === "image_url" && _0x5d0f8f.image_url) {
+053382:             _0x17f7d3 = typeof _0x5d0f8f.image_url === "string" ? _0x5d0f8f.image_url : _0x5d0f8f.image_url.url;
+053383:             break;
+053384:           }
+053385:         }
+053386:       } else if (!_0x17f7d3 && typeof _0xe46e42 === "string") {
+053387:         const _0x509f35 = /!\[.*?\]\(((?:https?:\/\/|data:image\/[^;]+;base64,)[^\s\)]+)\)/;
+053388:         const _0x3bfa5c = _0xe46e42.match(_0x509f35);
+053389:         if (_0x3bfa5c && _0x3bfa5c[1]) {
+053390:           const _0xb635d6 = _0x3bfa5c[1];
+053391:           if (_0xb635d6.startsWith("data:image/")) {
+053392:             addLog("[Banana] Detected Markdown embedded base64 image.");
+053393:             _0x17f7d3 = _0xb635d6;
+053394:             addLog("[Banana] Successfully extracted base64 image from Markdown.");
+053395:           } else {
+053396:             addLog("[Banana] Detected Markdown image URL, extracting...");
+053397:             addLog("[Banana] Markdown image URL: " + _0xb635d6);
+053398:             try {
+053399:               const _0x267bb1 = await fetch(_0xb635d6, {
+053400:                 headers: getDirectHeaders()
+053401:               });
+053402:               if (!_0x267bb1.ok) {
+053403:                 throw new Error("Failed to fetch image: " + _0x267bb1.status);
+053404:               }
+053405:               const _0x916ec5 = await _0x267bb1.blob();
+
+====================================================================================================
+LINES 53700-53729
+053700:     type: TaskType.SD,
+053701:     prompt: _0x5358d1
+053702:   });
+053703:   currentTaskId3 = _0x37ff45;
+053704:   let _0x461abc = _0x6e3d1e;
+053705:   if (_0x6e3d1e) {
+053706:     _0x461abc = _0x6e3d1e;
+053707:   } else {
+053708:     _0x461abc = _0x5358d1;
+053709:   }
+053710:   const _0x5b362f = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+053711:   if (typeof _0x5358d1 === "string") {
+053712:     const _0x564023 = _0x5358d1.match(_0x5b362f);
+053713:     if (_0x564023) {
+053714:       _0x2234f9 = parseInt(_0x564023[1], 10);
+053715:       _0x564332 = parseInt(_0x564023[2], 10);
+053716:     }
+053717:     _0x5358d1 = _0x5358d1.replace(_0x5b362f, "");
+053718:   }
+053719:   if (typeof _0x6e3d1e === "string") {
+053720:     const _0x1211e7 = _0x6e3d1e.match(_0x5b362f);
+053721:     if (_0x1211e7) {
+053722:       _0x2234f9 = parseInt(_0x1211e7[1], 10);
+053723:       _0x564332 = parseInt(_0x1211e7[2], 10);
+053724:     }
+053725:     _0x6e3d1e = _0x6e3d1e.replace(_0x5b362f, "");
+053726:   }
+053727:   _0x5358d1 = processCharacterPrompt(_0x5358d1);
+053728:   _0x6e3d1e = processCharacterPrompt(_0x6e3d1e);
+053729:   _0x5358d1 = await stripChineseAnnotations(_0x5358d1);
+
+====================================================================================================
+LINES 53708-53737
+053708:     _0x461abc = _0x5358d1;
+053709:   }
+053710:   const _0x5b362f = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+053711:   if (typeof _0x5358d1 === "string") {
+053712:     const _0x564023 = _0x5358d1.match(_0x5b362f);
+053713:     if (_0x564023) {
+053714:       _0x2234f9 = parseInt(_0x564023[1], 10);
+053715:       _0x564332 = parseInt(_0x564023[2], 10);
+053716:     }
+053717:     _0x5358d1 = _0x5358d1.replace(_0x5b362f, "");
+053718:   }
+053719:   if (typeof _0x6e3d1e === "string") {
+053720:     const _0x1211e7 = _0x6e3d1e.match(_0x5b362f);
+053721:     if (_0x1211e7) {
+053722:       _0x2234f9 = parseInt(_0x1211e7[1], 10);
+053723:       _0x564332 = parseInt(_0x1211e7[2], 10);
+053724:     }
+053725:     _0x6e3d1e = _0x6e3d1e.replace(_0x5b362f, "");
+053726:   }
+053727:   _0x5358d1 = processCharacterPrompt(_0x5358d1);
+053728:   _0x6e3d1e = processCharacterPrompt(_0x6e3d1e);
+053729:   _0x5358d1 = await stripChineseAnnotations(_0x5358d1);
+053730:   _0x6e3d1e = await stripChineseAnnotations(_0x6e3d1e);
+053731:   const _0x45a368 = _0x296b1a[extensionName].sdUrl.trim();
+053732:   const _0x131e4f = _0x296b1a[extensionName];
+053733:   addLog("正在通过sdwebui生成图片...客户端为" + _0x131e4f.client + ",模型为" + _0x131e4f.sd_cchatu_8_model);
+053734:   const _0x39553b = _0x6e3d1e && _0x6e3d1e.trim() !== "" ? _0x6e3d1e : _0x5358d1;
+053735:   addLog("用于生成的Tag: " + _0x39553b);
+053736:   let _0xea1623 = false;
+053737:   if (_0x39553b.includes("Scene Composition")) {
+
+====================================================================================================
+LINES 57481-57510
+057481:   addLog("开始 NovelAI 生图流程...客户端为" + _0x2267e5[extensionName].client);
+057482:   addLog("请求尺寸: 宽度 - " + (_0x1eff0c || "默认") + ", 高度 - " + (_0xeb6894 || "默认"));
+057483:   console.log("正在处理中文注释...", _0x55b9d3);
+057484:   let _0x575ce6 = _0x28276c;
+057485:   if (_0x28276c) {
+057486:     _0x575ce6 = _0x28276c;
+057487:   } else {
+057488:     _0x575ce6 = _0x55b9d3;
+057489:   }
+057490:   currentAbortController = new AbortController();
+057491:   const _0x14e507 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+057492:   if (typeof _0x55b9d3 === "string") {
+057493:     const _0x227827 = _0x55b9d3.match(_0x14e507);
+057494:     if (_0x227827) {
+057495:       _0x1eff0c = parseInt(_0x227827[1], 10);
+057496:       _0xeb6894 = parseInt(_0x227827[2], 10);
+057497:     }
+057498:     _0x55b9d3 = _0x55b9d3.replace(_0x14e507, "");
+057499:   }
+057500:   if (typeof _0x28276c === "string") {
+057501:     const _0xad99aa = _0x28276c.match(_0x14e507);
+057502:     if (_0xad99aa) {
+057503:       _0x1eff0c = parseInt(_0xad99aa[1], 10);
+057504:       _0xeb6894 = parseInt(_0xad99aa[2], 10);
+057505:     }
+057506:     _0x28276c = _0x28276c.replace(_0x14e507, "");
+057507:   }
+057508:   _0x55b9d3 = processCharacterPrompt(_0x55b9d3);
+057509:   _0x28276c = processCharacterPrompt(_0x28276c);
+057510:   console.log("11111122" + JSON.stringify(_0x55b9d3));
+
+====================================================================================================
+LINES 57489-57518
+057489:   }
+057490:   currentAbortController = new AbortController();
+057491:   const _0x14e507 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s])/i;
+057492:   if (typeof _0x55b9d3 === "string") {
+057493:     const _0x227827 = _0x55b9d3.match(_0x14e507);
+057494:     if (_0x227827) {
+057495:       _0x1eff0c = parseInt(_0x227827[1], 10);
+057496:       _0xeb6894 = parseInt(_0x227827[2], 10);
+057497:     }
+057498:     _0x55b9d3 = _0x55b9d3.replace(_0x14e507, "");
+057499:   }
+057500:   if (typeof _0x28276c === "string") {
+057501:     const _0xad99aa = _0x28276c.match(_0x14e507);
+057502:     if (_0xad99aa) {
+057503:       _0x1eff0c = parseInt(_0xad99aa[1], 10);
+057504:       _0xeb6894 = parseInt(_0xad99aa[2], 10);
+057505:     }
+057506:     _0x28276c = _0x28276c.replace(_0x14e507, "");
+057507:   }
+057508:   _0x55b9d3 = processCharacterPrompt(_0x55b9d3);
+057509:   _0x28276c = processCharacterPrompt(_0x28276c);
+057510:   console.log("11111122" + JSON.stringify(_0x55b9d3));
+057511:   _0x55b9d3 = await stripChineseAnnotations(_0x55b9d3);
+057512:   _0x28276c = await stripChineseAnnotations(_0x28276c);
+057513:   console.log("正在处理中文注释完成...", _0x55b9d3);
+057514:   if (_0x2267e5[extensionName].novelaiApi == "000000") {
+057515:     addLog("请填写 NovelAI API Key");
+057516:     toastr.error("请填写 NovelAI API Key");
+057517:     taskQueue.completeTask(_0x33b44a, false);
+057518:     currentTaskId4 = null;
+
+====================================================================================================
+LINES 58218-58247
+058218:     throw _0x2007d9;
+058219:   }
+058220: }
+058221: async function generateNovelAIInpaint({
+058222:   prompt: _0x58a010,
+058223:   width: _0x34d119,
+058224:   height: _0x500489,
+058225:   change: _0x36b7ed
+058226: }) {
+058227:   clearLog();
+058228:   const _0x2d13d1 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s]*$)/i;
+058229:   if (typeof _0x58a010 === "string") {
+058230:     const _0x1593d8 = _0x58a010.match(_0x2d13d1);
+058231:     if (_0x1593d8) {
+058232:       _0x34d119 = parseInt(_0x1593d8[1], 10);
+058233:       _0x500489 = parseInt(_0x1593d8[2], 10);
+058234:     }
+058235:     _0x58a010 = _0x58a010.replace(_0x2d13d1, "");
+058236:   }
+058237:   if (typeof _0x36b7ed === "string") {
+058238:     const _0x43e04a = _0x36b7ed.match(_0x2d13d1);
+058239:     if (_0x43e04a) {
+058240:       _0x34d119 = parseInt(_0x43e04a[1], 10);
+058241:       _0x500489 = parseInt(_0x43e04a[2], 10);
+058242:     }
+058243:     _0x36b7ed = _0x36b7ed.replace(_0x2d13d1, "");
+058244:   }
+058245:   addLog("[NovelAI Inpaint] 开始局部重绘流程...");
+058246:   if (!window.novelaiInpaintImage) {
+058247:     const _0x21f569 = "缺少原始图像数据，请重新打开重绘对话框";
+
+====================================================================================================
+LINES 58226-58255
+058226: }) {
+058227:   clearLog();
+058228:   const _0x2d13d1 = /,?\s*(\d{2,4})x(\d{2,4})(?=[;\s]*$)/i;
+058229:   if (typeof _0x58a010 === "string") {
+058230:     const _0x1593d8 = _0x58a010.match(_0x2d13d1);
+058231:     if (_0x1593d8) {
+058232:       _0x34d119 = parseInt(_0x1593d8[1], 10);
+058233:       _0x500489 = parseInt(_0x1593d8[2], 10);
+058234:     }
+058235:     _0x58a010 = _0x58a010.replace(_0x2d13d1, "");
+058236:   }
+058237:   if (typeof _0x36b7ed === "string") {
+058238:     const _0x43e04a = _0x36b7ed.match(_0x2d13d1);
+058239:     if (_0x43e04a) {
+058240:       _0x34d119 = parseInt(_0x43e04a[1], 10);
+058241:       _0x500489 = parseInt(_0x43e04a[2], 10);
+058242:     }
+058243:     _0x36b7ed = _0x36b7ed.replace(_0x2d13d1, "");
+058244:   }
+058245:   addLog("[NovelAI Inpaint] 开始局部重绘流程...");
+058246:   if (!window.novelaiInpaintImage) {
+058247:     const _0x21f569 = "缺少原始图像数据，请重新打开重绘对话框";
+058248:     addLog("[NovelAI Inpaint] 错误: " + _0x21f569);
+058249:     throw new Error(_0x21f569);
+058250:   }
+058251:   if (!window.novelaiInpaintMask) {
+058252:     const _0x50e943 = "缺少遮罩数据，请重新打开重绘对话框";
+058253:     addLog("[NovelAI Inpaint] 错误: " + _0x50e943);
+058254:     throw new Error(_0x50e943);
+058255:   }
+
+====================================================================================================
+LINES 60531-60560
+060531:       }
+060532:       if (_0x2f8f44[_0xe5e468]) {
+060533:         return _0xe5e468 + "（" + _0x2f8f44[_0xe5e468] + "）";
+060534:       }
+060535:       return _0xe5e468;
+060536:     });
+060537:     let _0x2570e7 = _0x44ddb1.join(", ");
+060538:     const _0x26e08e = ["Scene Composition:", "Character 1 Prompt:", "Character 1 UC:", "Character 1 coordinates:", "Character 2 Prompt:", "Character 2 UC:", "Character 2 coordinates:", "Character 3 Prompt:", "Character 3 UC:", "Character 3 coordinates:", "Character 4 Prompt:", "Character 4 UC:", "Character 4 coordinates:"];
+060539:     const _0x15d34d = _0x26e08e.some(_0x3d890d => _0x2570e7.includes(_0x3d890d));
+060540:     if (_0x15d34d) {
+060541:       for (const _0x1633e3 of _0x26e08e) {
+060542:         const _0x284c14 = _0x1633e3.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+060543:         _0x2570e7 = _0x2570e7.replace(new RegExp("\\s*" + _0x284c14, "g"), (_0x2c5f8e, _0x3d7e38) => _0x3d7e38 === 0 ? _0x2c5f8e : "\n\n" + _0x1633e3);
+060544:       }
+060545:       _0x2570e7 = _0x2570e7.replace(/^\s+/, "").replace(/\n{3,}/g, "\n\n");
+060546:     }
+060547:     _0x5aff29.value = _0x2570e7;
+060548:     $(_0x5aff29).trigger("input");
+060549:     toastr.success("翻译完成");
+060550:   } catch (_0x36ee0b) {
+060551:     console.error("Tag translation failed:", _0x36ee0b);
+060552:     alert("翻译失败：" + (_0x36ee0b.message || _0x36ee0b));
+060553:   } finally {
+060554:     if (_0x105333) {
+060555:       _0x105333.disabled = false;
+060556:       const _0x186891 = _0x105333.querySelector("i");
+060557:       if (_0x186891) {
+060558:         _0x186891.classList.remove("fa-spinner", "fa-spin");
+060559:         _0x186891.classList.add("fa-language");
+060560:       }
+
+====================================================================================================
+LINES 67728-67757
+067728:   } else {
+067729:     _0x1d0b8e();
+067730:   }
+067731: }
+067732: startClickTriggerMonitor();
+067733: init_utils();
+067734: init_debugLogger();
+067735: var REGEX_TIMEOUT_MS = 1000;
+067736: var sharedRegexWorker = null;
+067737: var sharedRegexWorkerUrl = null;
+067738: var regexRequestIdCounter = 0;
+067739: var pendingRegexRequests = new Map();
+067740: var REGEX_WORKER_CODE = "\n    self.onmessage = function(e) {\n        const { requestId, operation, text, pattern, flags, replacement } = e.data;\n        // 发送 ready 信号，通知主线程开始计时\n        self.postMessage({ requestId, ready: true });\n        try {\n            const regex = new RegExp(pattern, flags);\n            let result;\n            switch(operation) {\n                case 'test':\n                    result = regex.test(text);\n                    break;\n                case 'match':\n                    // 保留 index 和 input 属性，避免序列化丢失\n                    const m = text.match(regex);\n                    if (m) {\n                        result = {\n                            matches: Array.from(m),\n                            index: m.index,\n                            input: m.input\n                        };\n                    } else {\n                        result = null;\n                    }\n                    break;\n                case 'replace':\n                    result = text.replace(regex, replacement);\n                    break;\n                case 'matchAll':\n                    result = [...text.matchAll(regex)].map(m => ({\n                        match: m[0],\n                        index: m.index,\n                        groups: m.groups || null\n                    }));\n                    break;\n                default:\n                    throw new Error('Unknown operation: ' + operation);\n            }\n            self.postMessage({ requestId, success: true, result });\n        } catch (err) {\n            self.postMessage({ requestId, success: false, error: err.message });\n        }\n    };\n";
+067741: function getSharedRegexWorker() {
+067742:   if (!sharedRegexWorker) {
+067743:     const _0x2b9010 = new Blob([REGEX_WORKER_CODE], {
+067744:       type: "application/javascript"
+067745:     });
+067746:     sharedRegexWorkerUrl = URL.createObjectURL(_0x2b9010);
+067747:     sharedRegexWorker = new Worker(sharedRegexWorkerUrl);
+067748:     sharedRegexWorker.onmessage = _0x200dde => {
+067749:       const {
+067750:         requestId: _0x2533cd,
+067751:         ready: _0x12c2ad,
+067752:         success: _0x268be6,
+067753:         result: _0x5d1f95,
+067754:         error: _0x3295c3
+067755:       } = _0x200dde.data;
+067756:       const _0x3846eb = pendingRegexRequests.get(_0x2533cd);
+067757:       if (!_0x3846eb) {
+
+====================================================================================================
+LINES 68856-68885
+068856:           timeOut: 5000,
+068857:           escapeHtml: false
+068858:         });
+068859:         continue;
+068860:       }
+068861:       const _0x48e0b6 = _0x4874e5.length;
+068862:       try {
+068863:         const _0x3e69d2 = _0x3ab320.findRegex.trim();
+068864:         let _0x10df7b;
+068865:         let _0x4d1419;
+068866:         if (isRegexLiteral(_0x3e69d2)) {
+068867:           const _0x59c6c4 = /^\/(.+)\/([gimsuy]*)$/;
+068868:           const _0x4ae139 = _0x3e69d2.match(_0x59c6c4);
+068869:           if (!_0x4ae139) {
+068870:             const _0x5ef283 = {
+068871:               findRegex: _0x3e69d2
+068872:             };
+068873:             debugLog("regex.onTestRegexClick", "条目 \"" + _0x3ab320.scriptName + "\" 正则解析失败", _0x5ef283);
+068874:             console.warn("正则条目 \"" + _0x3ab320.scriptName + "\" 的 findRegex 解析失败: " + _0x3e69d2);
+068875:             continue;
+068876:           }
+068877:           _0x10df7b = _0x4ae139[1];
+068878:           _0x4d1419 = _0x4ae139[2] || "";
+068879:           if (!_0x4d1419.includes("g")) {
+068880:             _0x4d1419 += "g";
+068881:           }
+068882:         } else {
+068883:           _0x10df7b = _0x3e69d2;
+068884:           _0x4d1419 = "g";
+068885:         }
+
+====================================================================================================
+LINES 69055-69084
+069055:     } else {
+069056:       debugBranch("onTestRegexClick", "前后正则为空，跳过", true);
+069057:     }
+069058:     const _0x249cb3 = _0x13e480[extensionName];
+069059:     const _0x2e0180 = _0x249cb3?.startTag || "image###";
+069060:     const _0x2a27a1 = _0x249cb3?.endTag || "###";
+069061:     const _0x25cd25 = _0x2e0180.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+069062:     const _0x279934 = _0x2a27a1.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+069063:     const _0x3bd8a5 = [...(_0x47f4cb ? [] : [{
+069064:       pattern: /<image>[\s\S]*?<\/image>/g,
+069065:       desc: "过滤 <image> 标签"
+069066:     }]), {
+069067:       pattern: new RegExp(_0x25cd25 + "[\\s\\S]*?" + _0x279934, "g"),
+069068:       desc: "过滤 " + _0x2e0180 + " 标记"
+069069:     }, {
+069070:       pattern: /<!--[\s\S]*?-->/g,
+069071:       desc: "过滤 HTML 注释 <!-- -->"
+069072:     }];
+069073:     if (_0x2e0180 !== "image###") {
+069074:       _0x3bd8a5.push({
+069075:         pattern: /image###[\s\S]*?###/g,
+069076:         desc: "过滤旧的 image### 标记"
+069077:       });
+069078:     }
+069079:     for (const _0x3c564f of _0x3bd8a5) {
+069080:       _0x4874e5 = executeRegexWithWarning(() => _0x4874e5.replace(_0x3c564f.pattern, ""), _0x3c564f.desc);
+069081:     }
+069082:     let _0x4bc913 = [];
+069083:     if (_0x587904.trim()) {
+069084:       const _0x146665 = _0x587904.split("\n");
+
+====================================================================================================
+LINES 69082-69111
+069082:     let _0x4bc913 = [];
+069083:     if (_0x587904.trim()) {
+069084:       const _0x146665 = _0x587904.split("\n");
+069085:       for (const _0x247841 of _0x146665) {
+069086:         const _0x1fcc3d = _0x247841.trim();
+069087:         if (!_0x1fcc3d) {
+069088:           continue;
+069089:         }
+069090:         let _0x43dbe2;
+069091:         let _0x491a11;
+069092:         if (isRegexLiteral(_0x1fcc3d)) {
+069093:           const _0x4d11cf = /^\/(.+)\/([gimsuy]*)$/;
+069094:           const _0x597cf8 = _0x1fcc3d.match(_0x4d11cf);
+069095:           if (!_0x597cf8) {
+069096:             console.warn("Failed to parse regex literal: " + _0x1fcc3d);
+069097:             continue;
+069098:           }
+069099:           _0x43dbe2 = _0x597cf8[1];
+069100:           _0x491a11 = _0x597cf8[2] || "";
+069101:           if (!_0x491a11.includes("g")) {
+069102:             _0x491a11 += "g";
+069103:           }
+069104:         } else if (_0x1fcc3d.includes("|")) {
+069105:           const _0x495e4e = _0x1fcc3d.split("|");
+069106:           if (_0x495e4e.length === 2) {
+069107:             const _0x2fbbfd = _0x495e4e[0] === "^" ? "^" : escapeRegex2(_0x495e4e[0]);
+069108:             const _0x4c1562 = _0x495e4e[1] === "$" ? "$" : escapeRegex2(_0x495e4e[1]);
+069109:             _0x43dbe2 = _0x2fbbfd + "[\\s\\S]*?" + _0x4c1562;
+069110:             _0x491a11 = "g";
+069111:           } else {
+
+====================================================================================================
+LINES 73201-73230
+073201: };
+073202: var pregenManager = _0x4c38f8;
+073203: function parsePrompts(_0x59f5d7) {
+073204:   const _0x233890 = _0x1676cf[extensionName];
+073205:   if (!_0x233890.startTag || !_0x233890.endTag) {
+073206:     return [];
+073207:   }
+073208:   const _0x3cef7f = _0x43ad3f => {
+073209:     return _0x43ad3f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+073210:   };
+073211:   const _0x21ce13 = _0x3cef7f(_0x233890.startTag);
+073212:   const _0x3412f0 = _0x3cef7f(_0x233890.endTag);
+073213:   const _0x315bde = new RegExp(_0x21ce13 + "([\\s\\S]*?)" + _0x3412f0, "g");
+073214:   const _0x5a5b07 = [..._0x59f5d7.matchAll(_0x315bde)];
+073215:   return _0x5a5b07.map(_0x17e177 => _0x17e177[1].trim().replaceAll("《", "<").replaceAll("》", ">").replaceAll("\n", ""));
+073216: }
+073217: _0x33f8bb.on(_0x4998fa.generation_started, () => {
+073218:   if (String(_0x1676cf[extensionName].enablePregen) !== "true") {
+073219:     return;
+073220:   }
+073221:   pregenManager.clear();
+073222: });
+073223: _0x33f8bb.on(_0x4998fa.STREAM_TOKEN_RECEIVED, _0x2e3378 => {
+073224:   if (String(_0x1676cf[extensionName].enablePregen) !== "true" || !_0x2e3378) {
+073225:     return;
+073226:   }
+073227:   const _0x223b1a = parsePrompts(_0x2e3378);
+073228:   if (_0x223b1a.length > 0) {
+073229:     pregenManager.add(_0x223b1a);
+073230:   }
