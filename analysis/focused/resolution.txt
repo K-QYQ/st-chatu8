@@ -1,0 +1,179 @@
+GROUP=resolution
+TOTAL_MATCHES=3
+
+====================================================================================================
+MATCH='resolution' OFFSET=281236
+Size(_0x12154e, true);
+          if (_0x5be55f && _0x12154e.isLoaded && _0x12154e.activeVideo && _0x12154e.activeVideo.readyState >= 2) {
+            console.log("[st-chatu8] Canvas size updated successfully after retry");
+            renderFrame(_0x12154e);
+            updateAlphaCache(_0x12154e);
+            _0x12154e.alphaCacheDirty = false;
+            _0x12154e.lastAlphaCacheTime = performance.now();
+          }
+        }, _0x1782d7);
+      } else {
+        console.error("[st-chatu8] Max retry count reached for updateCanvasSize, giving up");
+      }
+    }
+    return false;
+  }
+  _0x12154e._sizeRetryCount = 0;
+  _0x12154e._sizeRetryScheduled = false;
+  const _0x1a1c5b = _0x28e96b.videoWidth || 1;
+  const _0x2d213b = (_0x28e96b.videoHeight || 1) / 2;
+  const _0x202e1f = _0x1a1c5b / _0x2d213b;
+  const _0x55a70e = _0x1378f2 / _0x1bc34e;
+  let _0x18fd66;
+  let _0x4ef025;
+  if (_0x202e1f > _0x55a70e) {
+    _0x18fd66 = _0x1378f2;
+    _0x4ef025 = _0x1378f2 / _0x202e1f;
+  } else {
+    _0x4ef025 = _0x1bc34e;
+    _0x18fd66 = _0x1bc34e * _0x202e1f;
+  }
+  _0x49b723.style.width = _0x18fd66 + "px";
+  _0x49b723.style.height = _0x4ef025 + "px";
+  _0x49b723.width = _0x1a1c5b;
+  _0x49b723.height = _0x2d213b;
+  _0x12154e.gl.viewport(0, 0, _0x49b723.width, _0x49b723.height);
+  const _0x3f15a1 = {
+    containerSize: _0x1378f2 + "x" + _0x1bc34e,
+    displaySize: _0x18fd66 + "x" + _0x4ef025,
+    resolution: _0x49b723.width + "x" + _0x49b723.height
+  };
+  console.log("[st-chatu8] Canvas size updated:", _0x3f15a1);
+  return true;
+}
+function stopRenderLoop(_0x52f6f4) {
+  if (_0x52f6f4.rafId) {
+    cancelAnimationFrame(_0x52f6f4.rafId);
+    _0x52f6f4.rafId = null;
+  }
+  _0x52f6f4.renderGeneration = (_0x52f6f4.renderGeneration || 0) + 1;
+}
+function startRenderLoop(_0x537743) {
+  stopRenderLoop(_0x537743);
+  if (_0x537743.activeVideo && typeof _0x537743.activeVideo.requestVideoFrameCallback === "function") {
+    _0x537743._usingRVFC = true;
+    startVideoFrameLoop(_0x537743);
+  } else {
+    _0x537743._usingRVFC = false;
+    startRafLoop(_0x537743);
+  }
+}
+function startVideoFrameLoop(_0x280386) {
+  if (_0x280386.hasError || !_0x280386.isPlaying) {
+    return;
+  }
+  const _0x14b287 = _0x280386.renderGeneration || 0;
+  const _0x5e9dd8 = (_0x8695e7, _0x2e08a3) => {
+    if (_0x280386.renderGeneration !== _0x14b287) {
+      return;
+    }
+    if (_0x280386.hasError || !_0x280386.isPlaying) {
+      return;
+    }
+    renderFrame(_0x280386);
+    if (_0x280386.activeVideo && !_0x280386.activeVideo.paused && typeof _0x280386.activeVideo.requestVideoFrameCallback === "function") {
+      _0x280386.activeVideo.requestVideoFrameCallback(_0x5e9dd8);
+    }
+  };
+  if (_0x280386.activeVideo && !_0x280386.activeVideo.paused) {
+    _0x280386.activeVideo.requestVideoFrameCallback(_0x5e9dd8);
+  }
+}
+function startRafLoop(_0x661ac0) {
+  const _0x562bbb = () => {
+    if (_0x661ac0.hasError || !_0x661ac0.isPlaying) {
+      return;
+    }
+    renderFrame(_0x661ac0);
+    _0x661ac0.rafId = requestAnimationFrame(_0x562bbb);
+  };
+  _0x562bbb();
+}
+function renderFrame(_0x5e4038) {
+  const {
+    gl: _0x32b220,
+    texture: _0x1f8e69,
+    activeVideo: _0x540235
+  } = _0x5e4038;
+  if (_0x32b220.isContextLost()) {
+
+
+====================================================================================================
+MATCH='resolution' OFFSET=1818506
+换角色提示词，不能插入\n".trim(),
+      workflow: "\n【提示词替换配置流程】\n\n■ 基础配置流程\n1. 确定需求\n   - 想要触发什么效果？\n   - 需要替换还是插入？\n   - 触发词是什么？\n\n2. 编写规则\n   - 按照格式：触发词=类型|内容\n   - 选择合适的操作类型\n\n3. 添加到配置\n   - 打开设置界面\n   - 添加规则\n   - 保存配置\n\n4. 测试验证\n   - 开启日志功能\n   - 生成测试图片\n   - 查看日志中的最终提示词\n   - 根据效果调整\n\n\n■ 高级配置流程\n1. 组合多个规则\n   - 可以设置多个触发词\n   - 不同触发词可以有不同的操作\n\n2. 优化触发时机\n   - 根据位置关系选择合适的类型\n   - 考虑与固定提示词的配合\n\n3. 调试优化\n   - 通过日志查看实际效果\n   - 微调插入位置和内容\n   - 测试不同场景下的表现\n".trim(),
+      examples: "\n【实用配置示例集】\n\n■ Lora 触发配置\n# 色色场景触发\nnsfw=前置前|<lora:hentai:1>\nnude=前置前|<lora:nude:0.9>\n\n# 画风 Lora 触发\nanime=前置前|<lora:anime_style:0.8>\nrealistic=前置前|<lora:realistic:1>\n\n# 姿势 Lora 触发\nsitting=前置前|<lora:sitting_pose:0.8>\nlying=前置前|<lora:lying_pose:0.7>\n\n\n■ 画师串触发配置\n# 女孩画师\n1girl=前置前|artist:wlop, artist:guweiz, artist:sakimichan\n\n# 男孩画师\n1boy=前置前|artist:ilya_kuvshinov\n\n# 风景画师\nlandscape=前置前|artist:makoto_shinkai, artist:studio_ghibli\n\n\n■ 表情情绪替换配置\n# 替换负面情绪\nsad=替换|smile, happy\nangry=替换|calm, peaceful\ncrying=替换|laughing, joyful\n\n# 增强正面情绪\nhappy=前置前|very happy, cheerful\nsmile=前置前|bright smile, joyful\n\n\n■ 场景增强配置\n# 户外场景\noutdoor=前置后|nature, blue sky, sunlight\nforest=前置后|trees, green, natural lighting\n\n# 室内场景\nindoor=前置后|room, furniture, indoor lighting\nbedroom=前置后|bed, cozy, warm lighting\n\n\n■ 质量增强配置\n# 高质量触发\nmasterpiece=最后置|best quality, ultra detailed, 8k\nhighres=最后置|high resolution, detailed\n\n\n■ 组合配置示例\n# 完整的色色场景配置\nnsfw=前置前|<lora:hentai:1>, <lora:detailed_body:0.8>\nnude=前置前|nsfw, explicit\n1girl=前置前|artist:sakimichan, artist:wlop\nbedroom=前置后|bed, dim lighting, intimate atmosphere\n".trim()
+    };
+  }
+});
+var sendDataSettingsModule;
+var init_sendDataSettingsModule = __esm({
+  "utils/aiModules/sendDataSettingsModule.js"() {
+    sendDataSettingsModule = {
+      name: "发送数据设置助手",
+      summary: "帮助用户管理世界书（World Book）和条目，包括启用/禁用世界书、管理条目开关状态、批量操作、搜索过滤等。当用户提到世界书、条目管理、发送数据等需求时加载此模块。",
+      commands: "\n【发送数据模块可用命令】\n\n■ 基础操作命令\n\n切换到发送数据设置页面：\n<SystemQuery>{\"type\": \"ui_action\", \"action\": \"switch_tab_send_data\"}</SystemQuery>\n\n■ 世界书配置查询命令\n\n查询所有世界书配置：\n<SystemQuery>{\"type\": \"read\", \"path\": \"worldBookConfig\"}</SystemQuery>\n\n查询世界书开启状态：\n<SystemQuery>{\"type\": \"read\", \"path\": \"worldBookConfig.worldBookSelections\"}</SystemQuery>\n\n查询条目开启信息：\n<SystemQuery>{\"type\": \"read\", \"path\": \"worldBookConfig.worldEntrySelections\"}</SystemQuery>\n\n查询特定世界书的开启状态：\n<SystemQuery>{\"type\": \"read\", \"path\": \"worldBookConfig.worldBookSelections.世界书名称\"}</SystemQuery>\n\n查询特定世界书的所有条目状态：\n<SystemQuery>{\"type\": \"read\", \"path\": \"worldBookConfig.worldEntrySelections.世界书名称\"}</SystemQuery>\n\n■ 世界书管理命令\n\n启用特定世界书：\n<SystemQuery>{\"type\": \"write\", \"path\": \"worldBookConfig.worldBookSelections.世界书名称\", \"value\": true}</SystemQuery>\n\n禁用特定世界书：\n<SystemQuery>{\"type\": \"write\", \"path\": \"worldBookConfig.worldBookSelections.世界书名称\", \"value\": false}</SystemQuery>\n\n■ 条目管理命令\n\n启用特定条目（普通启用）：\n<SystemQuery>{\"type\": \"write\", \"path\": \"worldBookConfig.worldEntrySelections.世界书名称.条目UID\", \"value\": true}</SystemQuery>\n\n禁用特定条目：\n<SystemQuery>{\"type\": \"write\", \"path\": \"worldBookConfig.worldEntrySelections.世界书名称.条目
+
+====================================================================================================
+MATCH='resolution' OFFSET=2683361
+"nai-diffusion-3" || _0x3b3438 === "nai-diffusion-4-5-full") {
+    _0x58561e["Human Focus"] = "Human Focus";
+  }
+  if (_0x3b3438 === "nai-diffusion-4-5-full") {
+    _0x58561e["Furry Focus"] = "Furry Focus";
+  }
+  _0x58561e.作者预设 = "bad proportions, out of focus, username, text, bad anatomy, lowres, worstquality, watermark, cropped, bad body, deformed, mutated, disfigured, poorly drawn face, malformed hands, extra arms, extra limb, missing limb, too many fingers, extra legs, bad feet, missing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap";
+  _0x58561e["作者预set 2"] = "negativeXL_D, negativeXL, source_furry, extra limbs, deformations, long fingers, fused fingers, inaccurate_anatomy, bad proportions, poorly drawn hands, bad hands, extra_fingers, extra_hand, extra_arm, distorted fingers, ugly hands, creepy hands, six fingers, malformed fingers, long_fingers, interlocked fingers:1.2, ugly, deformed, uneven, asymmetrical, unnatural, missing fingers, extra digit, fewer digits, opaque eyes, small eyes, ugly eyes, blurred eyes, bad face, (bad anatomy, ugly face:1.2), (worst quality, low quality, not detailed, low resolution:1.2), motion_blur, blur, blur_censor, blurry, simple_background, text, error, cropped, normal quality, jpeg artifacts, watermark, logo, signature, username, artist name";
+  for (const [_0x4c87b9, _0x542588] of Object.entries(_0x58561e)) {
+    const _0xbc7be0 = new Option(_0x4c87b9, _0x542588);
+    _0x2445ea.add(_0xbc7be0);
+  }
+  _0x2445ea.value = _0x5ce387;
+  if (_0x2445ea.selectedIndex === -1) {
+    _0x2445ea.value = "Heavy";
+    _0x4517b4.UCP_novelai = "Heavy";
+    _0x3ee710();
+  }
+}
+function updateNovelaiModelSchedule() {
+  const _0x2c9fed = _0xeea7b6[extensionName];
+  const _0x243816 = document.getElementById("novelaimode");
+  const _0x3a2a7f = document.getElementById("Schedule");
+  const _0x59373e = document.getElementById("novelai_sampler");
+  if (!_0x243816 || !_0x3a2a7f || !_0x59373e) {
+    return;
+  }
+  updateNai3OptionsVisibility();
+  updateNovelaiUcpOptions();
+  updateNovelaiReferenceSectionsVisibility();
+  const _0x15644f = _0x243816.value;
+  const _0x2236aa = [..._0x3a2a7f.options].find(_0x12b8fb => _0x12b8fb.value === "native");
+  const _0x2aa671 = [..._0x59373e.options].find(_0x1805a5 => _0x1805a5.value === "ddim_v3");
+  if (_0x15644f === "nai-diffusion-3") {
+    if (_0x2aa671) {
+      _0x2aa671.style.display = "";
+    }
+    if (!_0x2236aa) {
+      const _0x4db67c = new Option("native", "native");
+      _0x3a2a7f.insertBefore(_0x4db67c, _0x3a2a7f.firstChild);
+      if (_0x2c9fed.Schedule === "native") {
+        _0x3a2a7f.value = "native";
+      }
+    }
+  } else {
+    if (_0x2aa671) {
+      _0x2aa671.style.display = "none";
+      if (_0x59373e.value === "ddim_v3") {
+        _0x59373e.value = "k_euler";
+        $(_0x59373e).trigger("change");
+      }
+    }
+    if (_0x2236aa) {
+      if (_0x3a2a7f.value === "native") {
+        _0x3a2a7f.value = "karras";
+  

@@ -1,0 +1,1092 @@
+GROUP=dimensions
+TOTAL_MATCHES=120
+
+====================================================================================================
+MATCH='832' OFFSET=224521
+g_above_sigma... 宽度: " + _0x5a712e + ", 高度: " + _0x3e83d9 + ", 模型: " + _0x27ee06);
+  const _0x253ecc = _0x27ee06?.includes("nai-diffusion-4-5") ? SIGMA_MAGIC_NUMBER_V4_5 : SIGMA_MAGIC_NUMBER;
+  addLog("使用的 magicConstant: " + _0x253ecc);
+  const _0x528ab5 = _0x5a712e * _0x3e83d9;
+  const _0x1ad849 = _0x528ab5 / REFERENCE_PIXEL_COUNT;
+  addLog("像素: " + _0x528ab5 + ", 比例: " + _0x1ad849.toFixed(4));
+  const _0x54b486 = Math.pow(_0x1ad849, 0.5) * _0x253ecc;
+  addLog("计算结果 skip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].tri
+
+====================================================================================================
+MATCH='832' OFFSET=224637
+cludes("nai-diffusion-4-5") ? SIGMA_MAGIC_NUMBER_V4_5 : SIGMA_MAGIC_NUMBER;
+  addLog("使用的 magicConstant: " + _0x253ecc);
+  const _0x528ab5 = _0x5a712e * _0x3e83d9;
+  const _0x1ad849 = _0x528ab5 / REFERENCE_PIXEL_COUNT;
+  addLog("像素: " + _0x528ab5 + ", 比例: " + _0x1ad849.toFixed(4));
+  const _0x54b486 = Math.pow(_0x1ad849, 0.5) * _0x253ecc;
+  addLog("计算结果 skip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+    
+
+====================================================================================================
+MATCH='832' OFFSET=224671
+A_MAGIC_NUMBER_V4_5 : SIGMA_MAGIC_NUMBER;
+  addLog("使用的 magicConstant: " + _0x253ecc);
+  const _0x528ab5 = _0x5a712e * _0x3e83d9;
+  const _0x1ad849 = _0x528ab5 / REFERENCE_PIXEL_COUNT;
+  addLog("像素: " + _0x528ab5 + ", 比例: " + _0x1ad849.toFixed(4));
+  const _0x54b486 = Math.pow(_0x1ad849, 0.5) * _0x253ecc;
+  addLog("计算结果 skip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3e
+
+====================================================================================================
+MATCH='832' OFFSET=224745
+ _0x253ecc);
+  const _0x528ab5 = _0x5a712e * _0x3e83d9;
+  const _0x1ad849 = _0x528ab5 / REFERENCE_PIXEL_COUNT;
+  addLog("像素: " + _0x528ab5 + ", 比例: " + _0x1ad849.toFixed(4));
+  const _0x54b486 = Math.pow(_0x1ad849, 0.5) * _0x253ecc;
+  addLog("计算结果 skip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      
+
+====================================================================================================
+MATCH='832' OFFSET=224908
+oFixed(4));
+  const _0x54b486 = Math.pow(_0x1ad849, 0.5) * _0x253ecc;
+  addLog("计算结果 skip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3
+
+====================================================================================================
+MATCH='832' OFFSET=224994
+kip_cfg_above_sigma: " + _0x54b486);
+  return _0x54b486;
+}
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+    if (_0x1b9234) {
+      _0x3d49cc["Character " + _0x3efbd3 + "
+
+====================================================================================================
+MATCH='832' OFFSET=225053
+function getBaseTag(_0x66761f) {
+  let _0x236fa3 = _0x66761f.toLowerCase();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+    if (_0x1b9234) {
+      _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+    }
+  }
+  addLog("解析结果: " + 
+
+====================================================================================================
+MATCH='832' OFFSET=225123
+se();
+  let _0x40e064;
+  do {
+    _0x40e064 = _0x236fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+    if (_0x1b9234) {
+      _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+    }
+  }
+  addLog("解析结果: " + JSON.stringify(_0x3d49cc, null, 2));
+  return _0x3d49cc;
+}
+function ce
+
+====================================================================================================
+MATCH='832' OFFSET=225174
+6fa3;
+    _0x236fa3 = _0x236fa3.replace(/^[([{<]+/, "");
+    _0x236fa3 = _0x236fa3.replace(/[)\]}>]+$/, "");
+    _0x236fa3 = _0x236fa3.replace(/^[\d.]+::/, "");
+    _0x236fa3 = _0x236fa3.replace(/::$/, "");
+    _0x236fa3 = _0x236fa3.replace(/:(?:\d*\.\d+|\d+)$/, "");
+    _0x236fa3 = _0x236fa3.trim();
+  } while (_0x236fa3 !== _0x40e064);
+  return _0x236fa3;
+}
+function hasWeight(_0x15bd46) {
+  return _0x15bd46.toLowerCase() !== getBaseTag(_0x15bd46);
+}
+function deduplicateTags(_0x22ce69) {
+  if (!_0x22ce69 || typeof _0x22ce69 !== "string") {
+    return "";
+  }
+  const _0x5def9e = _0x22ce69.split(",").map(_0x4c63f7 => _0x4c63f7.trim()).filter(_0x2bcd39 => _0x2bcd39.length > 0);
+  if (_0x5def9e.length === 0) {
+    return "";
+  }
+  const _0x3832e8 = new Map();
+  for (const _0x1c7c27 of _0x5def9e) {
+    const _0x417922 = getBaseTag(_0x1c7c27);
+    if (!_0x3832e8.has(_0x417922)) {
+      _0x3832e8.set(_0x417922, _0x1c7c27);
+    } else {
+      const _0x4fcfd1 = _0x3832e8.get(_0x417922);
+      const _0x3b34d7 = hasWeight(_0x1c7c27);
+      const _0x1ac241 = hasWeight(_0x4fcfd1);
+      if (!_0x1ac241 && _0x3b34d7) {
+        _0x3832e8.set(_0x417922, _0x1c7c27);
+      }
+    }
+  }
+  const _0x173426 = Array.from(_0x3832e8.values()).join(", ");
+  if (_0x5def9e.length !== _0x3832e8.size) {
+    addLog("[去重] " + _0x5def9e.length + " 个标签 → " + _0x3832e8.size + " 个标签 (移除 " + (_0x5def9e.length - _0x3832e8.size) + " 个重复)");
+  }
+  return _0x173426;
+}
+function parsePromptStringWithCoordinates(_0x35d364) {
+  addLog("解析场景构图字符串: " + _0x35d364);
+  const _0x3d49cc = {
+    "Scene Composition": "",
+    "Character 1 Prompt": "",
+    "Character 1 UC": "",
+    "Character 2 Prompt": "",
+    "Character 2 UC": "",
+    "Character 3 Prompt": "",
+    "Character 3 UC": "",
+    "Character 4 Prompt": "",
+    "Character 4 UC": "",
+    "Character 1 centers": "",
+    "Character 2 centers": "",
+    "Character 3 centers": "",
+    "Character 4 centers": "",
+    "Character 1 coordinates": {},
+    "Character 2 coordinates": {},
+    "Character 3 coordinates": {},
+    "Character 4 coordinates": {}
+  };
+  const _0x484e8b = _0x35d364.match(/Scene Composition:([^;]+);/);
+  if (_0x484e8b) {
+    _0x3d49cc["Scene Composition"] = deduplicateTags(_0x484e8b[1].trim());
+  }
+  for (let _0x3efbd3 = 1; _0x3efbd3 <= 4; _0x3efbd3++) {
+    const _0x5e0114 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " Prompt:(.*?)(?:\\s*\\|\\s*centers:([^;\\s]+))?\\s*;"));
+    if (_0x5e0114) {
+      _0x3d49cc["Character " + _0x3efbd3 + " Prompt"] = deduplicateTags(_0x5e0114[1].trim());
+      if (_0x5e0114[2]) {
+        _0x3d49cc["Character " + _0x3efbd3 + " centers"] = _0x5e0114[2].trim();
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = centersToCoordinates(_0x5e0114[2].trim());
+      } else {
+        _0x3d49cc["Character " + _0x3efbd3 + " coordinates"] = {};
+      }
+    }
+    const _0x1b9234 = _0x35d364.match(new RegExp("Character " + _0x3efbd3 + " UC:([^;]+);"));
+    if (_0x1b9234) {
+      _0x3d49cc["Character " + _0x3efbd3 + " UC"] = _0x1b9234[1].trim();
+    }
+  }
+  addLog("解析结果: " + JSON.stringify(_0x3d49cc, null, 2));
+  return _0x3d49cc;
+}
+function centersToCoordinates(_0x2a260c) {
+  if (!_0x2a260c) {
+
+====================================================================================================
+MATCH='832' OFFSET=603679
+st _0x27f74b = {
+      controller: _0x3b3ab8,
+      kind: "default",
+      channel: _0xa22126,
+      id: _0x3e156c
+    };
+    activeRequests.set(_0xf67a4b, _0x27f74b);
+    let _0x5c9757;
+    if (_0x406114 === 0) {
+      const _0x1202a2 = {
+        name: "LLM: 外部请求",
+        type: TaskType.LLM,
+        prompt: _0x3e156c
+      };
+      _0x5c9757 = taskQueue.addTask(_0x1202a2);
+      llmTaskControllers.set(_0x5c9757, _0x3b3ab8);
+      taskQueue.updateStatus(_0x5c9757, TaskStatus.RUNNING);
+      acquireFabLoading();
+    } else {
+      llmTaskControllers.set(_0x5c9757, _0x3b3ab8);
+    }
+    const _0x5b291 = String(_0x3e156c).startsWith("ai-assistant-") || String(_0x3e156c).length === 13;
+    if (!_0x5b291 && _0x406114 === 0) {
+      addLog("===== LLM 默认请求开始 [" + _0xf67a4b + "] =====");
+      addLog("请求 ID: " + _0x3e156c);
+      addLog("发送的 Prompt:");
+      addLog(formatPromptForDisplay(_0x19cba5));
+    }
+    if (_0x406114 > 0) {
+      const _0x2c6a34 = "第 " + _0x406114 + " 次重试（共 " + _0x454abc + " 次）...";
+      console.log("[LLM Retry] 外部请求 " + _0x2c6a34);
+      if (!_0x5b291) {
+        addLog("⏳ " + _0x2c6a34);
+      }
+      if (_0x113006) {
+        _0x113006(_0x2c6a34 + "\n正在处理外部请求，请稍候...");
+      }
+      await new Promise(_0x2d8119 => setTimeout(_0x2d8119, 2000));
+    }
+    const {
+      api_url: _0x11b311,
+      api_key: _0x56e794,
+      model: _0x48c08b,
+      temperature: _0x418322,
+      top_p: _0x25e8d0,
+      max_tokens: _0x37cac9,
+      stream: _0x1bb123,
+      bypass_proxy: _0x242990
+    } = _0x3472b0;
+    const _0xcce0db = _0x3472b0.send_images ?? false;
+    try {
+      const _0x42b9f9 = _0x1f7cf3[extensionName].current_llm_profile || "默认";
+      const _0x4ea017 = countImageParts(_0x19cba5);
+      console.warn("[发送图片诊断/默认请求] profile=\"" + _0x42b9f9 + "\" | send_images=" + _0xcce0db + " | prompt 中图片数=" + _0x4ea017 + " | 将" + (_0xcce0db ? "保留" : "剥离") + "图片");
+    } catch (_0x2fc78e) {}
+    const _0x478566 = _0xcce0db ? _0x19cba5 : stripImagesFromMessages(_0x19cba5);
+    if (!_0x11b311 || !_0x56e794 || !_0x48c08b) {
+      const _0x38887f = "API URL, API Key, 或 Model 未配置。";
+      toastr.error(_0x38887f);
+      activeRequests.delete(_0xf67a4b);
+      if (_0x406114 === 0) {
+        releaseFabLoading();
+        llmTaskControllers.delete(_0x5c9757);
+      }
+      const _0x1d78e2 = {
+        success: false,
+        result: _0x38887f,
+        id: _0x3e156c
+      };
+      _0x1b4f67.emit(eventNames.LLM_EXECUTE_RESPONSE, _0x1d78e2);
+      return;
+    }
+    const _0x160a40 = _0x11b311.replace(/\/$/, "");
+    let _0x525e5f;
+    let _0x224c8f;
+    let _0xfbd7b3;
+    if (_0x242990) {
+      _0x525e5f = _0x160a40 + "/chat/completions";
+      const _0x1b9fb1 = {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + _0x56e794
+      };
+      _0x224c8f = _0x1b9fb1;
+      const _0x4c5a4f = {
+        model: _0x48c08b,
+        messages: _0x478566,
+        temperature: _0x418322,
+        top_p: _0x25e8d0,
+        max_tokens: _0x37cac9,
+        stream: _0x1bb123 ?? false
+      };
+      _0xfbd7b3 = _0x4c5a4f;
+    } else {
+      let _0x4483c8 = _0x160a40;
+      _0x525e5f = "/api/backends/chat-completions/generate";
+      _0x224c8f = getRequest
+
+====================================================================================================
+MATCH='832' OFFSET=605211
+
+    const _0xcce0db = _0x3472b0.send_images ?? false;
+    try {
+      const _0x42b9f9 = _0x1f7cf3[extensionName].current_llm_profile || "默认";
+      const _0x4ea017 = countImageParts(_0x19cba5);
+      console.warn("[发送图片诊断/默认请求] profile=\"" + _0x42b9f9 + "\" | send_images=" + _0xcce0db + " | prompt 中图片数=" + _0x4ea017 + " | 将" + (_0xcce0db ? "保留" : "剥离") + "图片");
+    } catch (_0x2fc78e) {}
+    const _0x478566 = _0xcce0db ? _0x19cba5 : stripImagesFromMessages(_0x19cba5);
+    if (!_0x11b311 || !_0x56e794 || !_0x48c08b) {
+      const _0x38887f = "API URL, API Key, 或 Model 未配置。";
+      toastr.error(_0x38887f);
+      activeRequests.delete(_0xf67a4b);
+      if (_0x406114 === 0) {
+        releaseFabLoading();
+        llmTaskControllers.delete(_0x5c9757);
+      }
+      const _0x1d78e2 = {
+        success: false,
+        result: _0x38887f,
+        id: _0x3e156c
+      };
+      _0x1b4f67.emit(eventNames.LLM_EXECUTE_RESPONSE, _0x1d78e2);
+      return;
+    }
+    const _0x160a40 = _0x11b311.replace(/\/$/, "");
+    let _0x525e5f;
+    let _0x224c8f;
+    let _0xfbd7b3;
+    if (_0x242990) {
+      _0x525e5f = _0x160a40 + "/chat/completions";
+      const _0x1b9fb1 = {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + _0x56e794
+      };
+      _0x224c8f = _0x1b9fb1;
+      const _0x4c5a4f = {
+        model: _0x48c08b,
+        messages: _0x478566,
+        temperature: _0x418322,
+        top_p: _0x25e8d0,
+        max_tokens: _0x37cac9,
+        stream: _0x1bb123 ?? false
+      };
+      _0xfbd7b3 = _0x4c5a4f;
+    } else {
+      let _0x4483c8 = _0x160a40;
+      _0x525e5f = "/api/backends/chat-completions/generate";
+      _0x224c8f = getRequestHeaders(window.token);
+      const _0x30b674 = {
+        chat_completion_source: "custom",
+        custom_url: _0x4483c8,
+        custom_include_headers: "Authorization: \"Bearer " + _0x56e794 + "\"",
+        model: _0x48c08b,
+        messages: _0x478566,
+        temperature: _0x418322,
+        top_p: _0x25e8d0,
+        max_tokens: _0x37cac9,
+        stream: false
+      };
+      _0xfbd7b3 = _0x30b674;
+    }
+    if (_0x113006 && _0x406114 === 0) {
+      console.log("[DEBUG-SVC] ✉ 调用 updateResultUI(\"正在处理外部请求，请稍候...\")");
+      _0x113006("正在处理外部请求，请稍候...");
+      console.log("[DEBUG-SVC]   updateResultUI 第1次调用完成");
+    }
+    try {
+      console.log("[DEBUG-SVC] 🌐 发起 fetch 请求...");
+      console.log("[DEBUG-SVC]   requestUrl:", _0x525e5f);
+      console.log("[DEBUG-SVC]   bypass_proxy:", _0x242990);
+      const _0x3c6bda = await fetch(_0x525e5f, {
+        method: "POST",
+        headers: _0x224c8f,
+        body: JSON.stringify(_0xfbd7b3),
+        signal: _0x27965f
+      });
+      console.log("[DEBUG-SVC] ✅ fetch 响应已收到, status:", _0x3c6bda.status, _0x3c6bda.statusText);
+      const _0x24b2b4 = await _0x3c6bda.json();
+      console.log("[DEBUG-SVC]   responseData 已解析, choices 数量:", _0x24b2b4.choices?.length);
+      if (_0x24b2b4.error) {
+        let _0x36adad;
+        if (typeof _0x24b2b4.error === "object" && _0x24b2b4.error.message) {
+          _0x36adad = "" + _0x24b2b4.error.message;
+          const _0x15b3a5 = [];
+          if (_0x24b2b4.error.type) {
+            _0x15b3a5.push("类型: " + _0x24b2b4.error.type
+
+====================================================================================================
+MATCH='832' OFFSET=605764
+URL, API Key, 或 Model 未配置。";
+      toastr.error(_0x38887f);
+      activeRequests.delete(_0xf67a4b);
+      if (_0x406114 === 0) {
+        releaseFabLoading();
+        llmTaskControllers.delete(_0x5c9757);
+      }
+      const _0x1d78e2 = {
+        success: false,
+        result: _0x38887f,
+        id: _0x3e156c
+      };
+      _0x1b4f67.emit(eventNames.LLM_EXECUTE_RESPONSE, _0x1d78e2);
+      return;
+    }
+    const _0x160a40 = _0x11b311.replace(/\/$/, "");
+    let _0x525e5f;
+    let _0x224c8f;
+    let _0xfbd7b3;
+    if (_0x242990) {
+      _0x525e5f = _0x160a40 + "/chat/completions";
+      const _0x1b9fb1 = {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + _0x56e794
+      };
+      _0x224c8f = _0x1b9fb1;
+      const _0x4c5a4f = {
+        model: _0x48c08b,
+        messages: _0x478566,
+        temperature: _0x418322,
+        top_p: _0x25e8d0,
+        max_tokens: _0x37cac9,
+        stream: _0x1bb123 ?? false
+      };
+      _0xfbd7b3 = _0x4c5a4f;
+    } else {
+      let _0x4483c8 = _0x160a40;
+      _0x525e5f = "/api/backends/chat-completions/generate";
+      _0x224c8f = getRequestHeaders(window.token);
+      const _0x30b674 = {
+        chat_completion_source: "custom",
+        custom_url: _0x4483c8,
+        custom_include_headers: "Authorization: \"Bearer " + _0x56e794 + "\"",
+        model: _0x48c08b,
+        messages: _0x478566,
+        temperature: _0x418322,
+        top_p: _0x25e8d0,
+        max_tokens: _0x37cac9,
+        stream: false
+      };
+      _0xfbd7b3 = _0x30b674;
+    }
+    if (_0x113006 && _0x406114 === 0) {
+      console.log("[DEBUG-SVC] ✉ 调用 updateResultUI(\"正在处理外部请求，请稍候...\")");
+      _0x113006("正在处理外部请求，请稍候...");
+      console.log("[DEBUG-SVC]   updateResultUI 第1次调用完成");
+    }
+    try {
+      console.log("[DEBUG-SVC] 🌐 发起 fetch 请求...");
+      console.log("[DEBUG-SVC]   requestUrl:", _0x525e5f);
+      console.log("[DEBUG-SVC]   bypass_proxy:", _0x242990);
+      const _0x3c6bda = await fetch(_0x525e5f, {
+        method: "POST",
+        headers: _0x224c8f,
+        body: JSON.stringify(_0xfbd7b3),
+        signal: _0x27965f
+      });
+      console.log("[DEBUG-SVC] ✅ fetch 响应已收到, status:", _0x3c6bda.status, _0x3c6bda.statusText);
+      const _0x24b2b4 = await _0x3c6bda.json();
+      console.log("[DEBUG-SVC]   responseData 已解析, choices 数量:", _0x24b2b4.choices?.length);
+      if (_0x24b2b4.error) {
+        let _0x36adad;
+        if (typeof _0x24b2b4.error === "object" && _0x24b2b4.error.message) {
+          _0x36adad = "" + _0x24b2b4.error.message;
+          const _0x15b3a5 = [];
+          if (_0x24b2b4.error.type) {
+            _0x15b3a5.push("类型: " + _0x24b2b4.error.type);
+          }
+          if (_0x24b2b4.error.code) {
+            _0x15b3a5.push("代码: " + _0x24b2b4.error.code);
+          }
+          if (_0x15b3a5.length > 0) {
+            _0x36adad += " (" + _0x15b3a5.join(", ") + ")";
+          }
+        } else {
+          _0x36adad = "" + JSON.stringify(_0x24b2b4.error);
+        }
+        throw new Error(_0x36adad);
+      }
+      if (!_0x3c6bda.ok) {
+        throw new Error("请求失败: " + _0x3c6bda.status + " " + _0x3c6bda.statusText);
+      }
+      let _0x40f118 = _0x24b2b4.choices?.[0]?.message?.reasoning_conte
